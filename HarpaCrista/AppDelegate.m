@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "CDSong.h"
+
+#define IS_NOT_FIRST_USE_KEY @"notFirstUse"
 
 @interface AppDelegate ()
 
@@ -16,8 +19,54 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // create a standardUserDefaults variable
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL isNotFirstUse = [standardUserDefaults boolForKey:IS_NOT_FIRST_USE_KEY];
+    
+    if (!isNotFirstUse)
+    {
+        [self initData];
+    }
+    
+    [standardUserDefaults setBool:YES forKey:IS_NOT_FIRST_USE_KEY];
+    // synchronize the settings
+    [standardUserDefaults synchronize];
+    
     return YES;
+}
+
+- (void)initData {
+    NSString * filePath =[[NSBundle mainBundle] pathForResource:@"app-data" ofType:@"json"];
+    
+    NSError * error;
+    NSString* fileContents =[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSDictionary *itemDict = (NSDictionary *)[NSJSONSerialization
+                                              JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding]
+                                              options:0 error:NULL];
+    NSArray *chordList = itemDict[@"chords"];
+    NSArray *titleList = itemDict[@"titles"];
+    
+    for (NSDictionary *titleDict in titleList) {
+        NSString *objectID = titleDict[@"objectId"];
+        NSString *title = titleDict[@"title"];
+        
+        //Create a new CDSong object and its data
+        CDSong *song = [CDSong getOrCreateSongWithId:[objectID intValue]];
+        song.cdTitle = title;
+        song.cdIsFavorite = [NSNumber numberWithBool:NO];
+        [CDSong saveContext];
+    }
+    
+    for (NSDictionary *chordsDict in chordList) {
+        NSString *objectID = chordsDict[@"objectId"];
+        NSString *chord = chordsDict[@"chords"];
+        
+        CDSong *song = [CDSong getOrCreateSongWithId:[objectID intValue]];
+        song.cdChord = chord;
+        [CDSong saveContext];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
