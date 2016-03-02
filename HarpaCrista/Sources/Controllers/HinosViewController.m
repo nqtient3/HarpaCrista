@@ -6,13 +6,13 @@
 //  Copyright © 2016 Chinh Le. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HinosViewController.h"
 
-@interface ViewController ()
+@interface HinosViewController ()
 
 @end
 
-@implementation ViewController
+@implementation HinosViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -9,11 +9,29 @@
 /* Begin PBXBuildFile section */
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
 		23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DD1C85D9D500144193 /* AppDelegate.m */; };
-		23B859E11C85D9D500144193 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859E01C85D9D500144193 /* ViewController.m */; };
 		23B859E41C85D9D500144193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E21C85D9D500144193 /* Main.storyboard */; };
-		23B859E71C85D9D500144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B859E51C85D9D500144193 /* HarpaCrista.xcdatamodeld */; };
 		23B859E91C85D9D500144193 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E81C85D9D500144193 /* Assets.xcassets */; };
 		23B859EC1C85D9D500144193 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859EA1C85D9D500144193 /* LaunchScreen.storyboard */; };
+		23B85A1D1C85E30B00144193 /* global.ai in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A0F1C85E30B00144193 /* global.ai */; };
+		23B85A1E1C85E30B00144193 /* HinosDetails in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A101C85E30B00144193 /* HinosDetails */; };
+		23B85A1F1C85E30B00144193 /* ic_azuda.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A111C85E30B00144193 /* ic_azuda.png */; };
+		23B85A201C85E30B00144193 /* ic_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A121C85E30B00144193 /* ic_book.png */; };
+		23B85A211C85E30B00144193 /* ic_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A131C85E30B00144193 /* ic_facebook.png */; };
+		23B85A221C85E30B00144193 /* ic_instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A141C85E30B00144193 /* ic_instagram.png */; };
+		23B85A231C85E30B00144193 /* ic_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A151C85E30B00144193 /* ic_mail.png */; };
+		23B85A241C85E30B00144193 /* ic_notification.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A161C85E30B00144193 /* ic_notification.png */; };
+		23B85A251C85E30B00144193 /* ic_person.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A171C85E30B00144193 /* ic_person.png */; };
+		23B85A261C85E30B00144193 /* ic_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A181C85E30B00144193 /* ic_share.png */; };
+		23B85A271C85E30B00144193 /* ic_star_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A191C85E30B00144193 /* ic_star_settings.png */; };
+		23B85A281C85E30B00144193 /* ic_trolley.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1A1C85E30B00144193 /* ic_trolley.png */; };
+		23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1B1C85E30B00144193 /* ic_twiiter.png */; };
+		23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1C1C85E30B00144193 /* logo_secondary.png */; };
+		23B85A2C1C85E31800144193 /* app-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A2B1C85E31800144193 /* app-data.json */; };
+		23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A2E1C85E32F00144193 /* FavoritosViewController.m */; };
+		23B85A361C85E32F00144193 /* HinosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A301C85E32F00144193 /* HinosViewController.m */; };
+		23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A321C85E32F00144193 /* HinosDetailViewController.m */; };
+		23B85A381C85E32F00144193 /* MaisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* MaisViewController.m */; };
+		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +39,34 @@
 		23B859DA1C85D9D500144193 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23B859DC1C85D9D500144193 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		23B859DD1C85D9D500144193 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		23B859DF1C85D9D500144193 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		23B859E01C85D9D500144193 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		23B859E31C85D9D500144193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		23B859E61C85D9D500144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
 		23B859E81C85D9D500144193 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23B859EB1C85D9D500144193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23B859ED1C85D9D500144193 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23B85A0F1C85E30B00144193 /* global.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = global.ai; path = Resources/Images/global.ai; sourceTree = "<group>"; };
+		23B85A101C85E30B00144193 /* HinosDetails */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HinosDetails; path = Resources/Images/HinosDetails; sourceTree = "<group>"; };
+		23B85A111C85E30B00144193 /* ic_azuda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_azuda.png; path = Resources/Images/ic_azuda.png; sourceTree = "<group>"; };
+		23B85A121C85E30B00144193 /* ic_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_book.png; path = Resources/Images/ic_book.png; sourceTree = "<group>"; };
+		23B85A131C85E30B00144193 /* ic_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_facebook.png; path = Resources/Images/ic_facebook.png; sourceTree = "<group>"; };
+		23B85A141C85E30B00144193 /* ic_instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_instagram.png; path = Resources/Images/ic_instagram.png; sourceTree = "<group>"; };
+		23B85A151C85E30B00144193 /* ic_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_mail.png; path = Resources/Images/ic_mail.png; sourceTree = "<group>"; };
+		23B85A161C85E30B00144193 /* ic_notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_notification.png; path = Resources/Images/ic_notification.png; sourceTree = "<group>"; };
+		23B85A171C85E30B00144193 /* ic_person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_person.png; path = Resources/Images/ic_person.png; sourceTree = "<group>"; };
+		23B85A181C85E30B00144193 /* ic_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_share.png; path = Resources/Images/ic_share.png; sourceTree = "<group>"; };
+		23B85A191C85E30B00144193 /* ic_star_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_star_settings.png; path = Resources/Images/ic_star_settings.png; sourceTree = "<group>"; };
+		23B85A1A1C85E30B00144193 /* ic_trolley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_trolley.png; path = Resources/Images/ic_trolley.png; sourceTree = "<group>"; };
+		23B85A1B1C85E30B00144193 /* ic_twiiter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_twiiter.png; path = Resources/Images/ic_twiiter.png; sourceTree = "<group>"; };
+		23B85A1C1C85E30B00144193 /* logo_secondary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_secondary.png; path = Resources/Images/logo_secondary.png; sourceTree = "<group>"; };
+		23B85A2B1C85E31800144193 /* app-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "app-data.json"; path = "Resources/Files/app-data.json"; sourceTree = "<group>"; };
+		23B85A2D1C85E32F00144193 /* FavoritosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritosViewController.h; path = Sources/Controllers/FavoritosViewController.h; sourceTree = "<group>"; };
+		23B85A2E1C85E32F00144193 /* FavoritosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritosViewController.m; path = Sources/Controllers/FavoritosViewController.m; sourceTree = "<group>"; };
+		23B85A2F1C85E32F00144193 /* HinosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HinosViewController.h; path = Sources/Controllers/HinosViewController.h; sourceTree = "<group>"; };
+		23B85A301C85E32F00144193 /* HinosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HinosViewController.m; path = Sources/Controllers/HinosViewController.m; sourceTree = "<group>"; };
+		23B85A311C85E32F00144193 /* HinosDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HinosDetailViewController.h; path = Sources/Controllers/HinosDetailViewController.h; sourceTree = "<group>"; };
+		23B85A321C85E32F00144193 /* HinosDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HinosDetailViewController.m; path = Sources/Controllers/HinosDetailViewController.m; sourceTree = "<group>"; };
+		23B85A331C85E32F00144193 /* MaisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaisViewController.h; path = Sources/Controllers/MaisViewController.h; sourceTree = "<group>"; };
+		23B85A341C85E32F00144193 /* MaisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaisViewController.m; path = Sources/Controllers/MaisViewController.m; sourceTree = "<group>"; };
+		23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +99,13 @@
 		23B859D81C85D9D500144193 /* HarpaCrista */ = {
 			isa = PBXGroup;
 			children = (
+				23B859F41C85DA6000144193 /* Resources */,
+				23B859F31C85DA5A00144193 /* Sources */,
 				23B859DC1C85D9D500144193 /* AppDelegate.h */,
 				23B859DD1C85D9D500144193 /* AppDelegate.m */,
-				23B859DF1C85D9D500144193 /* ViewController.h */,
-				23B859E01C85D9D500144193 /* ViewController.m */,
 				23B859E21C85D9D500144193 /* Main.storyboard */,
 				23B859E81C85D9D500144193 /* Assets.xcassets */,
 				23B859EA1C85D9D500144193 /* LaunchScreen.storyboard */,
-				23B859ED1C85D9D500144193 /* Info.plist */,
-				23B859E51C85D9D500144193 /* HarpaCrista.xcdatamodeld */,
 				23B859D91C85D9D500144193 /* Supporting Files */,
 			);
 			path = HarpaCrista;
@@ -77,9 +114,88 @@
 		23B859D91C85D9D500144193 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23B859ED1C85D9D500144193 /* Info.plist */,
 				23B859DA1C85D9D500144193 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		23B859F31C85DA5A00144193 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				23B859F71C85DA8600144193 /* Models */,
+				23B859F61C85DA7D00144193 /* Controllers */,
+				23B859F51C85DA7300144193 /* Views */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		23B859F41C85DA6000144193 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				23B859F91C85DA9600144193 /* Files */,
+				23B859F81C85DA8D00144193 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		23B859F51C85DA7300144193 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		23B859F61C85DA7D00144193 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				23B85A2D1C85E32F00144193 /* FavoritosViewController.h */,
+				23B85A2E1C85E32F00144193 /* FavoritosViewController.m */,
+				23B85A2F1C85E32F00144193 /* HinosViewController.h */,
+				23B85A301C85E32F00144193 /* HinosViewController.m */,
+				23B85A311C85E32F00144193 /* HinosDetailViewController.h */,
+				23B85A321C85E32F00144193 /* HinosDetailViewController.m */,
+				23B85A331C85E32F00144193 /* MaisViewController.h */,
+				23B85A341C85E32F00144193 /* MaisViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		23B859F71C85DA8600144193 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		23B859F81C85DA8D00144193 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				23B85A0F1C85E30B00144193 /* global.ai */,
+				23B85A101C85E30B00144193 /* HinosDetails */,
+				23B85A111C85E30B00144193 /* ic_azuda.png */,
+				23B85A121C85E30B00144193 /* ic_book.png */,
+				23B85A131C85E30B00144193 /* ic_facebook.png */,
+				23B85A141C85E30B00144193 /* ic_instagram.png */,
+				23B85A151C85E30B00144193 /* ic_mail.png */,
+				23B85A161C85E30B00144193 /* ic_notification.png */,
+				23B85A171C85E30B00144193 /* ic_person.png */,
+				23B85A181C85E30B00144193 /* ic_share.png */,
+				23B85A191C85E30B00144193 /* ic_star_settings.png */,
+				23B85A1A1C85E30B00144193 /* ic_trolley.png */,
+				23B85A1B1C85E30B00144193 /* ic_twiiter.png */,
+				23B85A1C1C85E30B00144193 /* logo_secondary.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		23B859F91C85DA9600144193 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				23B85A2B1C85E31800144193 /* app-data.json */,
+			);
+			name = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +255,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B85A1E1C85E30B00144193 /* HinosDetails in Resources */,
 				23B859EC1C85D9D500144193 /* LaunchScreen.storyboard in Resources */,
 				23B859E91C85D9D500144193 /* Assets.xcassets in Resources */,
+				23B85A1D1C85E30B00144193 /* global.ai in Resources */,
+				23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */,
 				23B859E41C85D9D500144193 /* Main.storyboard in Resources */,
+				23B85A201C85E30B00144193 /* ic_book.png in Resources */,
+				23B85A231C85E30B00144193 /* ic_mail.png in Resources */,
+				23B85A1F1C85E30B00144193 /* ic_azuda.png in Resources */,
+				23B85A271C85E30B00144193 /* ic_star_settings.png in Resources */,
+				23B85A211C85E30B00144193 /* ic_facebook.png in Resources */,
+				23B85A241C85E30B00144193 /* ic_notification.png in Resources */,
+				23B85A261C85E30B00144193 /* ic_share.png in Resources */,
+				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
+				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
+				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
+				23B85A251C85E30B00144193 /* ic_person.png in Resources */,
+				23B85A221C85E30B00144193 /* ic_instagram.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23B859E11C85D9D500144193 /* ViewController.m in Sources */,
+				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
+				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
+				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
-				23B859E71C85D9D500144193 /* HarpaCrista.xcdatamodeld in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
+				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
+				23B85A381C85E32F00144193 /* MaisViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +403,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gcs.HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gcs.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -280,7 +414,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gcs.HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gcs.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -304,17 +438,19 @@
 				23B859F21C85D9D500144193 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		23B859E51C85D9D500144193 /* HarpaCrista.xcdatamodeld */ = {
+		23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				23B859E61C85D9D500144193 /* HarpaCrista.xcdatamodel */,
+				23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */,
 			);
-			currentVersion = 23B859E61C85D9D500144193 /* HarpaCrista.xcdatamodel */;
-			path = HarpaCrista.xcdatamodeld;
+			currentVersion = 23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */;
+			name = HarpaCrista.xcdatamodeld;
+			path = Sources/Models/HarpaCrista.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
