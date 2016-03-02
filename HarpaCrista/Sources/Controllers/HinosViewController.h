@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HinosViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *searchView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIButton *exitButton;
-@property (weak, nonatomic) IBOutlet UITableView *hinosTableView;
-
+@interface HinosViewController : UIViewController 
 
 @end
 

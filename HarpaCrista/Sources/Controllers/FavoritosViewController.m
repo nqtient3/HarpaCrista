@@ -8,10 +8,14 @@
 
 #import "FavoritosViewController.h"
 
-@interface FavoritosViewController () {
+@interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate> {
     NSArray *indexArray;
     NSArray *nameArray;
 }
+
+@property (weak, nonatomic) IBOutlet UITableView *favoritosTableView;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -33,14 +37,11 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 54.0f;
 }
 
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [nameArray count];
 }
 
@@ -52,26 +53,21 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     [self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
 
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
     UILabel *indexLabel = (UILabel *)[cell viewWithTag:1];
     indexLabel.text = [indexArray objectAtIndex:indexPath.row];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.text = [nameArray objectAtIndex:indexPath.row];
-    
 }
 
 @end

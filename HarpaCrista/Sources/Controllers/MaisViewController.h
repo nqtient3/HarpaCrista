@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MaisViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *maisTableView;
+@interface MaisViewController : UIViewController
 
 @end
