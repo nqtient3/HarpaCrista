@@ -13,7 +13,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CDSong : NSManagedObject
 
-// Insert code here to declare functionality of your managed object subclass
+//The common managed object context from AppDelegate
++ (NSManagedObjectContext *)context;
+
+//Return the existing card or create a new card
++ (CDSong *)getOrCreateSongWithId:(int)songID;
+
++ (CDSong *)firstSongWithID:(int)songID;
+
+//Create a new thumbnail
++ (CDSong *)createNewSong;
+
++ (NSArray *)fetchItemsWithPredicate:(NSPredicate *)predicate;
+
+//Get all cards
++ (NSArray *)getAllSongs;
+//Get the card with title
++ (NSArray *)getAllFavoriteSongs;
+
+//Save context to write data into DB
++ (void)saveContext;
+
+- (void)save;
 
 @end
 
