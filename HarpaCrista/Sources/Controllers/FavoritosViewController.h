@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FavoritosViewController : UIViewController
+@interface FavoritosViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *favoritosTableView;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

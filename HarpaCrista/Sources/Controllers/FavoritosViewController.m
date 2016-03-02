@@ -8,7 +8,10 @@
 
 #import "FavoritosViewController.h"
 
-@interface FavoritosViewController ()
+@interface FavoritosViewController () {
+    NSArray *indexArray;
+    NSArray *nameArray;
+}
 
 @end
 
@@ -16,7 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view, typically from a nib.
+    self.searchBar.barTintColor = nil;
+    self.searchBar.tintColor = [UIColor grayColor];
+    indexArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10", nil];
+    nameArray = [NSArray arrayWithObjects:@"Anh",@"Ve ben em",@"Em oi",@"Nho oi",@"Tinh cam",@"Hay ve ben anh",@"Noe",@"Tam",@"Chin",@"Muoi", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +31,47 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UITableViewDataSource, UITableViewDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 54.0f;
 }
-*/
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [nameArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cellIdentifier = @"customFavoritoCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    UILabel *indexLabel = (UILabel *)[cell viewWithTag:1];
+    indexLabel.text = [indexArray objectAtIndex:indexPath.row];
+    
+    UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
+    nameLabel.text = [nameArray objectAtIndex:indexPath.row];
+    
+}
 
 @end
