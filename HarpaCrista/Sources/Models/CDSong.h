@@ -28,8 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 //Get all cards
 + (NSArray *)getAllSongs;
+
 //Get the card with title
 + (NSArray *)getAllFavoriteSongs;
+
++ (void)makeSongWithSongID:(int)songID isFavorite:(BOOL)isFavorite;
 
 //Save context to write data into DB
 + (void)saveContext;

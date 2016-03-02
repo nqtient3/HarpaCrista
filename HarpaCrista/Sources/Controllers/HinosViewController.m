@@ -7,10 +7,10 @@
 //
 
 #import "HinosViewController.h"
+#import "CDSong.h"
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate> {
-    NSArray *indexArray;
-    NSArray *nameArray;
+    NSArray *_arraySongs;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *searchView;
@@ -27,14 +27,16 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.searchBar.barTintColor = nil;
     self.searchBar.tintColor = [UIColor grayColor];
-    indexArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10", nil];
-    nameArray = [NSArray arrayWithObjects:@"Anh",@"Ve ben em",@"Em oi",@"Nho oi",@"Tinh cam",@"Hay ve ben anh",@"Noe",@"Tam",@"Chin",@"Muoi", nil];
+    
+    _arraySongs = [CDSong getAllSongs];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Actions
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
@@ -43,7 +45,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [nameArray count];
+    return [_arraySongs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,7 +55,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     [self configureCell:cell atIndexPath:indexPath];
+    
     return cell;
 }
 
@@ -63,11 +67,13 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    CDSong *songItem = _arraySongs[indexPath.row];
+    
     UILabel *indexLabel = (UILabel *)[cell viewWithTag:1];
-    indexLabel.text = [indexArray objectAtIndex:indexPath.row];
+    indexLabel.text = [NSString stringWithFormat:@"%i", [songItem.cdSongID intValue]];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
-    nameLabel.text = [nameArray objectAtIndex:indexPath.row];
+    nameLabel.text = [NSString stringWithFormat:@"%@", songItem.cdTitle];
 }
 
 @end

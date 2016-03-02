@@ -123,6 +123,12 @@
     return songs;
 }
 
++ (void)makeSongWithSongID:(int)songID isFavorite:(BOOL)isFavorite {
+    CDSong *songItem = [CDSong getOrCreateSongWithId:songID];
+    songItem.cdIsFavorite = [NSNumber numberWithBool:isFavorite];
+    [CDSong saveContext];
+}
+
 //Save context to write data into DB
 + (void)saveContext {
     NSManagedObjectContext *context = [CDSong context];
