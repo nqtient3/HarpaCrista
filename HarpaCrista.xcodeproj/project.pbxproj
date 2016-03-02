@@ -32,6 +32,9 @@
 		23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A321C85E32F00144193 /* HinosDetailViewController.m */; };
 		23B85A381C85E32F00144193 /* MaisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* MaisViewController.m */; };
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
+		A64F01551C8692E700FE5FA8 /* BaseRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F01541C8692E700FE5FA8 /* BaseRepository.m */; };
+		A64F01581C86930300FE5FA8 /* CoreDataManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F01571C86930300FE5FA8 /* CoreDataManagement.m */; };
+		A64F015C1C86945900FE5FA8 /* ImportDataCoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A64F015B1C86945900FE5FA8 /* ImportDataCoreDataHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,12 @@
 		23B85A331C85E32F00144193 /* MaisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaisViewController.h; path = Sources/Controllers/MaisViewController.h; sourceTree = "<group>"; };
 		23B85A341C85E32F00144193 /* MaisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaisViewController.m; path = Sources/Controllers/MaisViewController.m; sourceTree = "<group>"; };
 		23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
+		A64F01531C8692E700FE5FA8 /* BaseRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRepository.h; sourceTree = "<group>"; };
+		A64F01541C8692E700FE5FA8 /* BaseRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRepository.m; sourceTree = "<group>"; };
+		A64F01561C86930300FE5FA8 /* CoreDataManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManagement.h; sourceTree = "<group>"; };
+		A64F01571C86930300FE5FA8 /* CoreDataManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManagement.m; sourceTree = "<group>"; };
+		A64F015A1C86945900FE5FA8 /* ImportDataCoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportDataCoreDataHandler.h; sourceTree = "<group>"; };
+		A64F015B1C86945900FE5FA8 /* ImportDataCoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportDataCoreDataHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +108,7 @@
 		23B859D81C85D9D500144193 /* HarpaCrista */ = {
 			isa = PBXGroup;
 			children = (
+				A64F01501C86925300FE5FA8 /* Classes */,
 				23B859F41C85DA6000144193 /* Resources */,
 				23B859F31C85DA5A00144193 /* Sources */,
 				23B859DC1C85D9D500144193 /* AppDelegate.h */,
@@ -198,6 +208,43 @@
 			name = Files;
 			sourceTree = "<group>";
 		};
+		A64F01501C86925300FE5FA8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A64F01591C86943500FE5FA8 /* Objects */,
+				A64F01511C86925E00FE5FA8 /* Models */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		A64F01511C86925E00FE5FA8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A64F01521C8692D600FE5FA8 /* BaseRepository */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		A64F01521C8692D600FE5FA8 /* BaseRepository */ = {
+			isa = PBXGroup;
+			children = (
+				A64F01561C86930300FE5FA8 /* CoreDataManagement.h */,
+				A64F01571C86930300FE5FA8 /* CoreDataManagement.m */,
+				A64F01531C8692E700FE5FA8 /* BaseRepository.h */,
+				A64F01541C8692E700FE5FA8 /* BaseRepository.m */,
+			);
+			name = BaseRepository;
+			sourceTree = "<group>";
+		};
+		A64F01591C86943500FE5FA8 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A64F015A1C86945900FE5FA8 /* ImportDataCoreDataHandler.h */,
+				A64F015B1C86945900FE5FA8 /* ImportDataCoreDataHandler.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,9 +333,12 @@
 				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
+				A64F01581C86930300FE5FA8 /* CoreDataManagement.m in Sources */,
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
 				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
+				A64F01551C8692E700FE5FA8 /* BaseRepository.m in Sources */,
+				A64F015C1C86945900FE5FA8 /* ImportDataCoreDataHandler.m in Sources */,
 				23B85A381C85E32F00144193 /* MaisViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
