@@ -123,16 +123,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rbr-6x-f8J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2Ta-VP-SlC"/>
                             <constraint firstItem="Naa-S3-8vo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Lb-Oi-cok"/>
                             <constraint firstItem="Naa-S3-8vo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fsh-wr-2mh"/>
                             <constraint firstItem="Rbr-6x-f8J" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FxR-bp-b9T"/>
                             <constraint firstItem="HCS-cO-79q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="J5J-qU-ehJ"/>
                             <constraint firstItem="HCS-cO-79q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M3Z-g8-CWy"/>
                             <constraint firstItem="HCS-cO-79q" firstAttribute="top" secondItem="Rbr-6x-f8J" secondAttribute="bottom" constant="1" id="NJk-ad-wMJ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HCS-cO-79q" secondAttribute="bottom" id="T8j-t4-bnK"/>
                             <constraint firstItem="Naa-S3-8vo" firstAttribute="width" secondItem="Rbr-6x-f8J" secondAttribute="width" id="ZcW-2t-IM1"/>
                             <constraint firstItem="Naa-S3-8vo" firstAttribute="top" secondItem="Rbr-6x-f8J" secondAttribute="bottom" id="cXn-LS-lLJ"/>
-                            <constraint firstItem="Rbr-6x-f8J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fix-bC-zGn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HCS-cO-79q" secondAttribute="bottom" id="dwZ-I7-4MY"/>
                             <constraint firstItem="Rbr-6x-f8J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lQc-ir-Id8"/>
                         </constraints>
                         <variation key="default">
@@ -154,7 +154,7 @@
             </objects>
             <point key="canvasLocation" x="966.5" y="436.5"/>
         </scene>
-        <!--Favoritos View Controller-->
+        <!--Favoritos-->
         <scene sceneID="jlj-3c-2Cq">
             <objects>
                 <viewController id="6io-SZ-awp" customClass="FavoritosViewController" sceneMemberID="viewController">
@@ -167,14 +167,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0mI-sr-WTJ"/>
+                    <navigationItem key="navigationItem" title="Favoritos" id="0mI-sr-WTJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dht-7T-lSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="966.5" y="1201.5"/>
         </scene>
-        <!--Mais View Controller-->
+        <!--Mais-->
         <scene sceneID="6Dl-04-i6O">
             <objects>
                 <viewController id="5QK-ZS-hbf" customClass="MaisViewController" sceneMemberID="viewController">
@@ -185,10 +185,74 @@
                     <view key="view" contentMode="scaleToFill" id="Esf-2Y-Do7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uf0-ea-1VI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customMaisCell" id="MBR-a7-15d">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MBR-a7-15d" id="o2S-Nq-x1C">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_book.png" translatesAutoresizingMaskIntoConstraints="NO" id="gjx-Bf-aU9">
+                                                    <rect key="frame" x="18" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="F9t-c8-ths"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Z26-8t-UMO"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9P-Am-2YI">
+                                                    <rect key="frame" x="58" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDM-qE-6sX">
+                                                    <rect key="frame" x="348" y="12" width="11" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.79904286649214662" green="0.79904286649214662" blue="0.79904286649214662" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="U9P-Am-2YI" firstAttribute="leading" secondItem="gjx-Bf-aU9" secondAttribute="trailing" constant="10" id="AhJ-9c-hsE"/>
+                                                <constraint firstItem="U9P-Am-2YI" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="Cp9-it-AMk"/>
+                                                <constraint firstItem="gjx-Bf-aU9" firstAttribute="leading" secondItem="o2S-Nq-x1C" secondAttribute="leadingMargin" constant="10" id="FI5-Mo-nZx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rDM-qE-6sX" secondAttribute="trailing" constant="8" id="Gsh-3Z-MXR"/>
+                                                <constraint firstItem="gjx-Bf-aU9" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="I2T-mt-OpD"/>
+                                                <constraint firstItem="rDM-qE-6sX" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="WBS-ep-UHw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5QK-ZS-hbf" id="y9x-Pb-wRh"/>
+                                    <outlet property="delegate" destination="5QK-ZS-hbf" id="QFL-Fo-llt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83867801047120416" green="0.83867801047120416" blue="0.83867801047120416" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Uf0-ea-1VI" firstAttribute="centerX" secondItem="Esf-2Y-Do7" secondAttribute="centerX" id="3ZZ-gH-W1W"/>
+                            <constraint firstItem="Uf0-ea-1VI" firstAttribute="centerY" secondItem="Esf-2Y-Do7" secondAttribute="centerY" id="EQB-F4-hts"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Uf0-ea-1VI" secondAttribute="bottom" id="U5W-MV-VZf"/>
+                            <constraint firstItem="Uf0-ea-1VI" firstAttribute="top" secondItem="Esf-2Y-Do7" secondAttribute="top" id="eLi-Z0-zg4"/>
+                            <constraint firstItem="Uf0-ea-1VI" firstAttribute="width" secondItem="Esf-2Y-Do7" secondAttribute="width" id="koi-6M-Vdh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EQB-F4-hts"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="O6p-gn-fQD"/>
+                    <navigationItem key="navigationItem" title="Mais" id="O6p-gn-fQD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="maisTableView" destination="Uf0-ea-1VI" id="xJc-X7-fX6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNM-1L-LOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,12 +309,16 @@
         <scene sceneID="xdF-Qm-DIA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="REc-Ch-OOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favoritos" id="u3e-Q0-DSm"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="ic_star.png" selectedImage="ic_star_selected.png" id="u3e-Q0-DSm"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrr-xO-wQU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.241315157" green="0.66619862269999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -265,12 +333,16 @@
         <scene sceneID="esx-7S-egy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mais" id="5b0-kj-kzy"/>
+                    <tabBarItem key="tabBarItem" title="Mais" image="ic_global.png" selectedImage="ic_global_selected.png" id="5b0-kj-kzy"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u1d-dQ-b9w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.241315157" green="0.66619862269999996" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -283,9 +355,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_book.png" width="62" height="57"/>
+        <image name="ic_global.png" width="36" height="36"/>
+        <image name="ic_global_selected.png" width="36" height="36"/>
         <image name="ic_hinos.png" width="36" height="36"/>
         <image name="ic_hinos_selected.png" width="36" height="36"/>
         <image name="ic_star.png" width="36" height="36"/>
+        <image name="ic_star_selected.png" width="36" height="36"/>
         <image name="ic_x.png" width="256" height="256"/>
     </resources>
 </document>

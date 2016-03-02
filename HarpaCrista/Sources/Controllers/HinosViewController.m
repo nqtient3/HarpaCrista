@@ -73,18 +73,6 @@
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.text = [nameArray objectAtIndex:indexPath.row];
 
-//
-//    labelContactName.text = [array objectAtIndex:indexPath.row];
-//    
-//    if ([labelContactName.text isEqualToString:strSelectCountry]) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        buttonItemDone.enabled = YES;
-//        indexCheck = indexPath;
-//    }
-//    else
-//    {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//    }
 }
 
 @end
