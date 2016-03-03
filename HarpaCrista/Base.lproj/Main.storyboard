@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -22,29 +22,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="54"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busca" translatesAutoresizingMaskIntoConstraints="NO" id="k9M-AW-R3G">
-                                        <rect key="frame" x="10" y="4" width="325" height="46"/>
+                                        <rect key="frame" x="10" y="4" width="355" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="q2b-B4-RJz"/>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-Ig-NHL">
-                                        <rect key="frame" x="345" y="17" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="BUk-d8-1xc"/>
-                                            <constraint firstAttribute="width" constant="20" id="ZgB-CF-3tG"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_x.png"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="9bQ-Ig-NHL" secondAttribute="trailing" constant="10" id="4ev-R5-YVr"/>
-                                    <constraint firstItem="9bQ-Ig-NHL" firstAttribute="centerY" secondItem="Rbr-6x-f8J" secondAttribute="centerY" id="GJV-jc-kQa"/>
                                     <constraint firstItem="k9M-AW-R3G" firstAttribute="leading" secondItem="Rbr-6x-f8J" secondAttribute="leading" constant="10" id="IHc-eN-23v"/>
+                                    <constraint firstItem="k9M-AW-R3G" firstAttribute="centerY" secondItem="Rbr-6x-f8J" secondAttribute="centerY" id="IX9-yc-R24"/>
                                     <constraint firstAttribute="height" constant="54" id="MMd-AV-LY8"/>
-                                    <constraint firstItem="9bQ-Ig-NHL" firstAttribute="centerY" secondItem="k9M-AW-R3G" secondAttribute="centerY" id="oTH-ke-jZW"/>
-                                    <constraint firstItem="9bQ-Ig-NHL" firstAttribute="leading" secondItem="k9M-AW-R3G" secondAttribute="trailing" constant="10" id="tvT-pS-3BQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="k9M-AW-R3G" secondAttribute="trailing" constant="10" id="ZdC-Iq-ckf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Naa-S3-8vo" userLabel="LineView">
@@ -149,7 +139,6 @@
                     <navigationItem key="navigationItem" title="Harpa Crista com Acordes" id="0vG-Xt-qKF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="exitButton" destination="9bQ-Ig-NHL" id="YJ1-rU-Wwi"/>
                         <outlet property="hinosTableView" destination="HCS-cO-79q" id="2uB-5I-Xrl"/>
                         <outlet property="searchBar" destination="k9M-AW-R3G" id="DSy-1w-T1k"/>
                         <outlet property="searchView" destination="Rbr-6x-f8J" id="d7J-w0-R1M"/>
@@ -273,29 +262,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="54"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busca" translatesAutoresizingMaskIntoConstraints="NO" id="Mh6-2b-nPD">
-                                        <rect key="frame" x="10" y="4" width="325" height="46"/>
+                                        <rect key="frame" x="10" y="4" width="355" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="jLD-Nw-BBl"/>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97J-VL-rRc">
-                                        <rect key="frame" x="345" y="17" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="ChJ-dp-L9R"/>
-                                            <constraint firstAttribute="width" constant="20" id="Wyr-so-N4a"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_x.png"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="97J-VL-rRc" firstAttribute="centerY" secondItem="WRx-RI-vqn" secondAttribute="centerY" id="2iC-cP-ruZ"/>
-                                    <constraint firstItem="97J-VL-rRc" firstAttribute="centerY" secondItem="Mh6-2b-nPD" secondAttribute="centerY" id="AeK-IS-eQ3"/>
-                                    <constraint firstAttribute="trailing" secondItem="97J-VL-rRc" secondAttribute="trailing" constant="10" id="U38-7i-hvO"/>
-                                    <constraint firstItem="97J-VL-rRc" firstAttribute="leading" secondItem="Mh6-2b-nPD" secondAttribute="trailing" constant="10" id="aFP-yl-hfL"/>
+                                    <constraint firstItem="Mh6-2b-nPD" firstAttribute="centerY" secondItem="WRx-RI-vqn" secondAttribute="centerY" id="Iil-Rm-KWL"/>
                                     <constraint firstItem="Mh6-2b-nPD" firstAttribute="leading" secondItem="WRx-RI-vqn" secondAttribute="leading" constant="10" id="aLd-Bb-2BN"/>
                                     <constraint firstAttribute="height" constant="54" id="bwv-W5-oL8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mh6-2b-nPD" secondAttribute="trailing" constant="10" id="cXc-bO-xDN"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NTH-RA-k3Z">
@@ -646,6 +625,5 @@
         <image name="ic_star.png" width="36" height="36"/>
         <image name="ic_star_yellow.png" width="36" height="36"/>
         <image name="ic_tuner_selected.png" width="72" height="66"/>
-        <image name="ic_x.png" width="256" height="256"/>
     </resources>
 </document>

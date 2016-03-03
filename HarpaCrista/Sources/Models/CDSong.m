@@ -18,7 +18,7 @@
 }
 
 //Return the existing card or create a new card
-+ (CDSong *)getOrCreateSongWithId:(NSnum)songID {
++ (CDSong *)getOrCreateSongWithId:(int)songID {
     CDSong *song = (CDSong*)[CDSong firstSongWithID:songID];
     if (song) {
         return song;
@@ -104,11 +104,13 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([CDSong class]) inManagedObjectContext:[CDSong context]];
     [request setEntity:entity];
     
-    // setup a predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdTitle contains[c] %@", [NSNumber numberWithBool:YES], keyword];
-    
-    // give the predicate to the fetch request
-    request.predicate = predicate;
+    if (![keyword isEqualToString:@""]) {
+        // setup a predicate
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdTitle contains[c] %@", keyword];
+        
+        // give the predicate to the fetch request
+        request.predicate = predicate;
+    }
     
     // define a sort descriptor
     NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"cdSongID" ascending:YES];
@@ -156,7 +158,12 @@
     [request setEntity:entity];
     
     // setup a predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(cdIsFavorite == %i) AND (cdTitle contains[c] %@)", [NSNumber numberWithBool:YES], keyword];
+    NSPredicate *predicate;
+    if (![keyword isEqualToString:@""]) {
+        predicate = [NSPredicate predicateWithFormat:@"(cdIsFavorite == %i) AND (cdTitle contains[c] %@)", [[NSNumber numberWithBool:YES] intValue], keyword];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"cdIsFavorite == %i", [[NSNumber numberWithBool:YES] intValue]];
+    }
     
     // give the predicate to the fetch request
     request.predicate = predicate;
