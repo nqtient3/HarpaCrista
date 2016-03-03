@@ -29,8 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 //Get all cards
 + (NSArray *)getAllSongs;
 
++ (NSArray *)getAllSongsWithKeyword:(NSString *)keyword;
+
 //Get the card with title
 + (NSArray *)getAllFavoriteSongs;
+
++ (NSArray *)getAllFavoriteSongsWithKeyword:(NSString *)keyword;
 
 + (void)makeSongWithSongID:(int)songID isFavorite:(BOOL)isFavorite;
 

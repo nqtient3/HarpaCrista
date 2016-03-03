@@ -18,7 +18,7 @@
 }
 
 //Return the existing card or create a new card
-+ (CDSong *)getOrCreateSongWithId:(int)songID {
++ (CDSong *)getOrCreateSongWithId:(NSnum)songID {
     CDSong *song = (CDSong*)[CDSong firstSongWithID:songID];
     if (song) {
         return song;
@@ -97,6 +97,31 @@
     return songs;
 }
 
++ (NSArray *)getAllSongsWithKeyword:(NSString *)keyword {
+    NSArray *songs = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([CDSong class]) inManagedObjectContext:[CDSong context]];
+    [request setEntity:entity];
+    
+    // setup a predicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdTitle contains[c] %@", [NSNumber numberWithBool:YES], keyword];
+    
+    // give the predicate to the fetch request
+    request.predicate = predicate;
+    
+    // define a sort descriptor
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"cdSongID" ascending:YES];
+    
+    NSArray *scArray = [[NSArray alloc]initWithObjects:descriptor, nil];
+    // give sort descriptor array to the fetch request
+    request.sortDescriptors = scArray;
+    
+    songs = [[CDSong context] executeFetchRequest:request error:nil];
+    
+    return songs;
+}
+
 //Get the card with title
 + (NSArray *)getAllFavoriteSongs {
     NSArray *songs = nil;
@@ -107,6 +132,31 @@
     
     // setup a predicate
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdIsFavorite == %i", [NSNumber numberWithBool:YES]];
+    
+    // give the predicate to the fetch request
+    request.predicate = predicate;
+    
+    // define a sort descriptor
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"cdSongID" ascending:YES];
+    
+    NSArray *scArray = [[NSArray alloc]initWithObjects:descriptor, nil];
+    // give sort descriptor array to the fetch request
+    request.sortDescriptors = scArray;
+    
+    songs = [[CDSong context] executeFetchRequest:request error:nil];
+    
+    return songs;
+}
+
++ (NSArray *)getAllFavoriteSongsWithKeyword:(NSString *)keyword {
+    NSArray *songs = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([CDSong class]) inManagedObjectContext:[CDSong context]];
+    [request setEntity:entity];
+    
+    // setup a predicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(cdIsFavorite == %i) AND (cdTitle contains[c] %@)", [NSNumber numberWithBool:YES], keyword];
     
     // give the predicate to the fetch request
     request.predicate = predicate;
