@@ -9,12 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HarpaCrista/Sources/Controllers/HinosViewController.m"
-            timestampString = "478667884.49024"
+            filePath = "HarpaCrista/Sources/Controllers/FavoritosViewController.m"
+            timestampString = "478689576.271677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-starButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>

@@ -36,6 +36,13 @@
 
 #pragma mark - Actions
 
+- (void)starButtonClicked:(UIButton*)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [favoritosTableView indexPathForCell:cell];
+    CDSong *songItem = _arrayFavoriteSongs[indexPath.row];
+    [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:NO];
+}
+
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -71,6 +78,9 @@
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.text = songItem.cdTitle;
+    
+    UIButton *starButton = (UIButton *)[cell viewWithTag:4];
+    [starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end

@@ -43,7 +43,6 @@
     NSIndexPath *indexPath = [hinosTableView indexPathForCell:cell];
     CDSong *songItem = _arraySongs[indexPath.row];
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:sender.isSelected];
-    
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
