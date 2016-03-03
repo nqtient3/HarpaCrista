@@ -106,7 +106,7 @@
     [request setEntity:entity];
     
     // setup a predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdIsFavorite == %i", [NSNumber numberWithBool:YES]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdIsFavorite == %i", [[NSNumber numberWithBool:YES] intValue]];
     
     // give the predicate to the fetch request
     request.predicate = predicate;
