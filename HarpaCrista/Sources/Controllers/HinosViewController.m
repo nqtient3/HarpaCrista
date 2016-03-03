@@ -38,6 +38,15 @@
 
 #pragma mark - Actions
 
+- (void)starButtonClicked:(UIButton*)sender {
+    sender.selected = !sender.isSelected;
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [self.hinosTableView indexPathForCell:cell];
+    CDSong *songItem = _arraySongs[indexPath.row];
+    [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:sender.isSelected];
+    
+}
+
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +71,7 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 
@@ -74,6 +83,10 @@
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.text = [NSString stringWithFormat:@"%@", songItem.cdTitle];
+    
+    UIButton *starButton = (UIButton *)[cell viewWithTag:4];
+    starButton.selected = [songItem.cdIsFavorite boolValue];
+    [starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end
