@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -425,6 +425,7 @@
                         <outlet property="favoritosTableView" destination="NTH-RA-k3Z" id="uSv-oa-bmh"/>
                         <outlet property="searchBar" destination="Mh6-2b-nPD" id="Uca-ec-VuF"/>
                         <outlet property="searchView" destination="WRx-RI-vqn" id="pFc-rd-xJw"/>
+                        <segue destination="Gcc-k7-XO8" kind="show" identifier="showFavoritosDetail" id="rrD-12-YWC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dht-7T-lSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -626,4 +627,7 @@
         <image name="ic_star_yellow.png" width="36" height="36"/>
         <image name="ic_tuner_selected.png" width="72" height="66"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rrD-12-YWC"/>
+    </inferredMetricsTieBreakers>
 </document>
