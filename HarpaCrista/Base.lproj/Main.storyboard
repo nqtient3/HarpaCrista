@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -442,7 +442,7 @@
         <scene sceneID="I89-IM-WDJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hwl-jm-jKT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hinos" image="ic_hinos.png" selectedImage="ic_hinos_selected.png" id="laY-ws-HbR"/>
+                    <tabBarItem key="tabBarItem" title="Hinos" image="ic_hinos.png" id="laY-ws-HbR"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ke1-nw-hpS">
@@ -492,7 +492,7 @@
         <scene sceneID="xdF-Qm-DIA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="REc-Ch-OOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favoritos" image="ic_star.png" selectedImage="ic_star_selected.png" id="u3e-Q0-DSm"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="ic_star.png" id="u3e-Q0-DSm"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrr-xO-wQU">
@@ -516,7 +516,7 @@
         <scene sceneID="esx-7S-egy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mais" image="ic_global.png" selectedImage="ic_global_selected.png" id="5b0-kj-kzy"/>
+                    <tabBarItem key="tabBarItem" title="Mais" image="ic_global.png" id="5b0-kj-kzy"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u1d-dQ-b9w">
@@ -540,11 +540,8 @@
     <resources>
         <image name="ic_book.png" width="62" height="57"/>
         <image name="ic_global.png" width="36" height="36"/>
-        <image name="ic_global_selected.png" width="36" height="36"/>
         <image name="ic_hinos.png" width="36" height="36"/>
-        <image name="ic_hinos_selected.png" width="36" height="36"/>
         <image name="ic_star.png" width="36" height="36"/>
-        <image name="ic_star_selected.png" width="36" height="36"/>
         <image name="ic_star_yellow.png" width="36" height="36"/>
         <image name="ic_x.png" width="256" height="256"/>
     </resources>
