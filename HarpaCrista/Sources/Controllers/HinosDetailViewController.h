@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CDSong.h"
 
 @interface HinosDetailViewController : UIViewController
+
+@property (nonatomic, strong) CDSong *currentCDSong;
 
 @end

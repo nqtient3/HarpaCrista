@@ -8,6 +8,7 @@
 
 #import "HinosViewController.h"
 #import "CDSong.h"
+#import "HinosDetailViewController.h"
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate> {
     NSArray *_arraySongs;
@@ -82,6 +83,20 @@
     UIButton *starButton = (UIButton *)[cell viewWithTag:4];
     starButton.selected = [songItem.cdIsFavorite boolValue];
     [starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+     CDSong *currentSongItem = _arraySongs[indexPath.row];
+    [self performSegueWithIdentifier:@"showHinosDetail" sender:currentSongItem];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showHinosDetail"]) {
+        HinosDetailViewController *hinosDetailVC = segue.destinationViewController;
+        hinosDetailVC.currentCDSong = sender;
+    }
 }
 
 @end
