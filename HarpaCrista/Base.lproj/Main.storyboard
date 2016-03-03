@@ -201,7 +201,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NTH-RA-k3Z">
-                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customFavoritoCell" id="sUK-Zk-cQP">
@@ -277,27 +277,40 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NTH-RA-k3Z" firstAttribute="centerX" secondItem="buB-9M-fbe" secondAttribute="centerX" id="1Qu-L3-29B"/>
                             <constraint firstItem="NTH-RA-k3Z" firstAttribute="width" secondItem="buB-9M-fbe" secondAttribute="width" id="4Ef-l3-Mv6"/>
                             <constraint firstItem="DVs-6W-ANj" firstAttribute="top" secondItem="WRx-RI-vqn" secondAttribute="bottom" id="B41-uB-DzY"/>
+                            <constraint firstItem="NTH-RA-k3Z" firstAttribute="bottom" secondItem="buB-9M-fbe" secondAttribute="bottomMargin" id="Kdz-P9-TdC"/>
                             <constraint firstItem="NTH-RA-k3Z" firstAttribute="top" secondItem="WRx-RI-vqn" secondAttribute="bottom" constant="1" id="Nah-Rk-76w"/>
                             <constraint firstItem="DVs-6W-ANj" firstAttribute="width" secondItem="buB-9M-fbe" secondAttribute="width" id="Ndy-Ua-S0V"/>
                             <constraint firstItem="WRx-RI-vqn" firstAttribute="width" secondItem="buB-9M-fbe" secondAttribute="width" id="SdH-gC-Nph"/>
                             <constraint firstItem="DVs-6W-ANj" firstAttribute="width" secondItem="WRx-RI-vqn" secondAttribute="width" id="T1O-37-WgU"/>
+                            <constraint firstItem="jGY-4D-K4t" firstAttribute="top" secondItem="NTH-RA-k3Z" secondAttribute="bottom" id="Uat-8b-tVv"/>
                             <constraint firstItem="NTH-RA-k3Z" firstAttribute="top" secondItem="WRx-RI-vqn" secondAttribute="bottom" id="V0V-Cm-ANw"/>
                             <constraint firstItem="WRx-RI-vqn" firstAttribute="top" secondItem="buB-9M-fbe" secondAttribute="topMargin" constant="64" id="Vsk-FR-1xr"/>
                             <constraint firstItem="NTH-RA-k3Z" firstAttribute="centerX" secondItem="buB-9M-fbe" secondAttribute="centerX" id="Wow-mE-3tL"/>
                             <constraint firstItem="DVs-6W-ANj" firstAttribute="centerX" secondItem="buB-9M-fbe" secondAttribute="centerX" id="Zuq-2v-Oln"/>
                             <constraint firstItem="WRx-RI-vqn" firstAttribute="centerX" secondItem="buB-9M-fbe" secondAttribute="centerX" id="lz8-sv-MzI"/>
                             <constraint firstAttribute="bottomMargin" secondItem="NTH-RA-k3Z" secondAttribute="bottom" id="nBb-iW-442"/>
+                            <constraint firstItem="NTH-RA-k3Z" firstAttribute="width" secondItem="buB-9M-fbe" secondAttribute="width" id="xHW-Yd-ll7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="4Ef-l3-Mv6"/>
+                                <exclude reference="Kdz-P9-TdC"/>
                                 <exclude reference="V0V-Cm-ANw"/>
+                                <exclude reference="Wow-mE-3tL"/>
+                                <exclude reference="nBb-iW-442"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Favoritos" id="0mI-sr-WTJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="favoritosTableView" destination="NTH-RA-k3Z" id="uSv-oa-bmh"/>
+                        <outlet property="searchBar" destination="Mh6-2b-nPD" id="Uca-ec-VuF"/>
+                        <outlet property="searchView" destination="WRx-RI-vqn" id="pFc-rd-xJw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dht-7T-lSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
