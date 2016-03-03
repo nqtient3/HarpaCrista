@@ -165,42 +165,42 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-Jk-PYx" userLabel="MetronomeButton">
-                                        <rect key="frame" x="20" y="12" width="40" height="30"/>
+                                        <rect key="frame" x="20" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="IOs-vr-bo9"/>
-                                            <constraint firstAttribute="height" constant="30" id="R3L-37-pyj"/>
+                                            <constraint firstAttribute="width" constant="20" id="IOs-vr-bo9"/>
+                                            <constraint firstAttribute="height" constant="25" id="R3L-37-pyj"/>
                                         </constraints>
                                         <state key="normal" image="ic_metronome_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-V7-Seb" userLabel="TunerButton">
-                                        <rect key="frame" x="90" y="10" width="30" height="34"/>
+                                        <rect key="frame" x="85" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="GxN-H0-4dw"/>
-                                            <constraint firstAttribute="width" constant="30" id="txe-66-Jnx"/>
+                                            <constraint firstAttribute="height" constant="25" id="GxN-H0-4dw"/>
+                                            <constraint firstAttribute="width" constant="20" id="txe-66-Jnx"/>
                                         </constraints>
                                         <state key="normal" image="ic_tuner_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h87-9N-Ixt" userLabel="MudeButton">
-                                        <rect key="frame" x="160" y="10" width="30" height="34"/>
+                                        <rect key="frame" x="145" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="DE9-Y4-FJE"/>
-                                            <constraint firstAttribute="height" constant="34" id="cah-dl-agU"/>
+                                            <constraint firstAttribute="width" constant="20" id="DE9-Y4-FJE"/>
+                                            <constraint firstAttribute="height" constant="25" id="cah-dl-agU"/>
                                         </constraints>
                                         <state key="normal" image="ic_mude_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-DN-fpK" userLabel="ReturnButton">
-                                        <rect key="frame" x="225" y="10" width="30" height="34"/>
+                                        <rect key="frame" x="205" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="QHX-1R-dvs"/>
-                                            <constraint firstAttribute="width" constant="30" id="ZQw-8y-Tyc"/>
+                                            <constraint firstAttribute="height" constant="25" id="QHX-1R-dvs"/>
+                                            <constraint firstAttribute="width" constant="20" id="ZQw-8y-Tyc"/>
                                         </constraints>
                                         <state key="normal" image="ic_return_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-0f-lwv" userLabel="ZoomButton">
-                                        <rect key="frame" x="325" y="10" width="30" height="34"/>
+                                        <rect key="frame" x="325" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="9Dj-Y9-ETc"/>
-                                            <constraint firstAttribute="width" constant="30" id="Zo0-Ls-d20"/>
+                                            <constraint firstAttribute="height" constant="25" id="9Dj-Y9-ETc"/>
+                                            <constraint firstAttribute="width" constant="20" id="Zo0-Ls-d20"/>
                                         </constraints>
                                         <state key="normal" image="ic_auto_scroll_selected.png"/>
                                     </button>
@@ -211,12 +211,12 @@
                                     <constraint firstItem="M2t-Jk-PYx" firstAttribute="leading" secondItem="kd5-fE-hy0" secondAttribute="leading" constant="20" id="7A9-l0-ONO"/>
                                     <constraint firstAttribute="height" constant="54" id="BjO-CI-Ys7"/>
                                     <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="t8W-V7-Seb" secondAttribute="centerY" id="CHL-7u-S4N"/>
-                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="leading" secondItem="h87-9N-Ixt" secondAttribute="trailing" constant="35" id="K51-se-ZQG"/>
-                                    <constraint firstAttribute="trailing" secondItem="hwi-0f-lwv" secondAttribute="trailing" constant="20" id="XsR-Gn-0sE"/>
+                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="leading" secondItem="h87-9N-Ixt" secondAttribute="trailing" constant="40" id="K51-se-ZQG"/>
+                                    <constraint firstAttribute="trailing" secondItem="hwi-0f-lwv" secondAttribute="trailing" constant="30" id="XsR-Gn-0sE"/>
                                     <constraint firstItem="M2t-Jk-PYx" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="fdE-VP-FCl"/>
                                     <constraint firstItem="t8W-V7-Seb" firstAttribute="centerY" secondItem="M2t-Jk-PYx" secondAttribute="centerY" id="gYN-aX-tfL"/>
                                     <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="t8W-V7-Seb" secondAttribute="centerY" id="qS5-Ua-I2m"/>
-                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="leading" secondItem="M2t-Jk-PYx" secondAttribute="trailing" constant="30" id="qhh-GF-mMq"/>
+                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="leading" secondItem="M2t-Jk-PYx" secondAttribute="trailing" constant="45" id="qhh-GF-mMq"/>
                                     <constraint firstItem="h87-9N-Ixt" firstAttribute="leading" secondItem="t8W-V7-Seb" secondAttribute="trailing" constant="40" id="sp8-PZ-Enf"/>
                                     <constraint firstItem="hwi-0f-lwv" firstAttribute="centerY" secondItem="rRh-DN-fpK" secondAttribute="centerY" id="tjm-5u-nyX"/>
                                 </constraints>
@@ -630,4 +630,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="rrD-12-YWC"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
