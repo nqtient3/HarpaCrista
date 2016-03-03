@@ -8,12 +8,14 @@
 
 #import "FavoritosViewController.h"
 #import "CDSong.h"
+#import "HinosDetailViewController.h"
 
 @interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
     NSArray *_arrayFavoriteSongs;
     __weak IBOutlet UITableView *favoritosTableView;
     __weak IBOutlet UIView *searchView;
     __weak IBOutlet UISearchBar *searchBar;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 @end
@@ -31,12 +33,21 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
     
-    //Add tapGestureRecognizer for view to hide the keyboard
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+    // Listen for keyboard appearances and disappearances
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    // Add tapGestureRecognizer for view to hide the keyboard
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
                                                     action:@selector(dismissKeyboard)];
-    
-    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +56,14 @@
 }
 
 #pragma mark - Actions
+
+- (void)keyboardDidShow {
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)keyboardDidHide {
+    [self.view removeGestureRecognizer:_tapGestureRecognizer];
+}
 
 - (void)dismissKeyboard {
     [searchBar resignFirstResponder];
@@ -102,10 +121,24 @@
     [starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CDSong *currentSongItem = _arrayFavoriteSongs[indexPath.row];
+    [self performSegueWithIdentifier:@"showFavoritosDetail" sender:currentSongItem];
+}
+
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongsWithKeyword:searchText];
     [favoritosTableView reloadData];
+}
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showFavoritosDetail"]) {
+        HinosDetailViewController *hinosDetailVC = segue.destinationViewController;
+        hinosDetailVC.currentCDSong = sender;
+    }
 }
 
 @end

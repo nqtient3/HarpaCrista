@@ -14,8 +14,8 @@
     NSArray *_arraySongs;
     __weak IBOutlet UIView *searchView;
     __weak IBOutlet UISearchBar *searchBar;
-    __weak IBOutlet UIButton *exitButton;
     __weak IBOutlet UITableView *hinosTableView;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 @end
@@ -33,12 +33,21 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
     
-    //Add tapGestureRecognizer for view to hide the keyboard
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
+    // Listen for keyboard appearances and disappearances
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
     
-    [self.view addGestureRecognizer:tapGestureRecognizer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    // Add tapGestureRecognizer for view to hide the keyboard
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                             initWithTarget:self
+                             action:@selector(dismissKeyboard)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,6 +56,13 @@
 }
 
 #pragma mark - Actions
+- (void)keyboardDidShow {
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)keyboardDidHide {
+    [self.view removeGestureRecognizer:_tapGestureRecognizer];
+}
 
 - (void)dismissKeyboard {
     [searchBar resignFirstResponder];
