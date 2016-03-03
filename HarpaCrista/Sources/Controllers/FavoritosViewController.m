@@ -11,11 +11,10 @@
 
 @interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate> {
     NSArray *_arrayFavoriteSongs;
+    __weak IBOutlet UITableView *favoritosTableView;
+    __weak IBOutlet UIView *searchView;
+    __weak IBOutlet UISearchBar *searchBar;
 }
-
-@property (weak, nonatomic) IBOutlet UITableView *favoritosTableView;
-@property (weak, nonatomic) IBOutlet UIView *searchView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -24,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.searchBar.barTintColor = nil;
-    self.searchBar.tintColor = [UIColor grayColor];
+    searchBar.barTintColor = nil;
+    searchBar.tintColor = [UIColor grayColor];
     
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
 }
@@ -37,6 +36,13 @@
 
 #pragma mark - Actions
 
+- (void)starButtonClicked:(UIButton*)sender {
+    UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [favoritosTableView indexPathForCell:cell];
+    CDSong *songItem = _arrayFavoriteSongs[indexPath.row];
+    [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:NO];
+}
+
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,8 +53,7 @@
     return [_arrayFavoriteSongs count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"customFavoritoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
@@ -59,8 +64,7 @@
     return cell;
 }
 
-
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 
@@ -72,6 +76,9 @@
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:3];
     nameLabel.text = songItem.cdTitle;
+    
+    UIButton *starButton = (UIButton *)[cell viewWithTag:4];
+    [starButton addTarget:self action:@selector(starButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end

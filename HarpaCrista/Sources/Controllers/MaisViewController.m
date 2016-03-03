@@ -18,9 +18,8 @@
     NSArray *contactSectionArrayImage;
     NSArray *blogSectionArrayImage;
     NSArray *socialSectionArrayImage;
+    __weak IBOutlet UITableView *maisTableView;
 }
-
-@property (weak, nonatomic) IBOutlet UITableView *maisTableView;
 
 typedef enum {
     ContactSection,
@@ -88,7 +87,6 @@ typedef enum {
     return 10.0f;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == ContactSection) {
         return [contactSectionArray count];
@@ -109,7 +107,6 @@ typedef enum {
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryDetailButton;
