@@ -53,6 +53,7 @@
 		23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A321C85E32F00144193 /* HinosDetailViewController.m */; };
 		23B85A381C85E32F00144193 /* MaisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* MaisViewController.m */; };
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
+		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,8 @@
 		23B85A331C85E32F00144193 /* MaisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaisViewController.h; path = Sources/Controllers/MaisViewController.h; sourceTree = "<group>"; };
 		23B85A341C85E32F00144193 /* MaisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MaisViewController.m; path = Sources/Controllers/MaisViewController.m; sourceTree = "<group>"; };
 		23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
+		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
+		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				23B85A321C85E32F00144193 /* HinosDetailViewController.m */,
 				23B85A331C85E32F00144193 /* MaisViewController.h */,
 				23B85A341C85E32F00144193 /* MaisViewController.m */,
+				A61720701C881BDA00CFF43D /* MainTabbarController.h */,
+				A61720711C881BDA00CFF43D /* MainTabbarController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				232D55A41C871CC9002798F4 /* CDSong+CoreDataProperties.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
+				A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */,
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
 				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
