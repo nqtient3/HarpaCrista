@@ -11,11 +11,10 @@
 
 @interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate> {
     NSArray *_arrayFavoriteSongs;
+    __weak IBOutlet UITableView *favoritosTableView;
+    __weak IBOutlet UIView *searchView;
+    __weak IBOutlet UISearchBar *searchBar;
 }
-
-@property (weak, nonatomic) IBOutlet UITableView *favoritosTableView;
-@property (weak, nonatomic) IBOutlet UIView *searchView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
@@ -24,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.searchBar.barTintColor = nil;
-    self.searchBar.tintColor = [UIColor grayColor];
+    searchBar.barTintColor = nil;
+    searchBar.tintColor = [UIColor grayColor];
     
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
 }
@@ -60,7 +59,7 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 

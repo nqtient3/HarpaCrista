@@ -11,12 +11,11 @@
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate> {
     NSArray *_arraySongs;
+    __weak IBOutlet UIView *searchView;
+    __weak IBOutlet UISearchBar *searchBar;
+    __weak IBOutlet UIButton *exitButton;
+    __weak IBOutlet UITableView *hinosTableView;
 }
-
-@property (weak, nonatomic) IBOutlet UIView *searchView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIButton *exitButton;
-@property (weak, nonatomic) IBOutlet UITableView *hinosTableView;
 
 @end
 
@@ -25,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.searchBar.barTintColor = nil;
-    self.searchBar.tintColor = [UIColor grayColor];
+    searchBar.barTintColor = nil;
+    searchBar.tintColor = [UIColor grayColor];
     
     _arraySongs = [CDSong getAllSongs];
 }
@@ -41,7 +40,7 @@
 - (void)starButtonClicked:(UIButton*)sender {
     sender.selected = !sender.isSelected;
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
-    NSIndexPath *indexPath = [self.hinosTableView indexPathForCell:cell];
+    NSIndexPath *indexPath = [hinosTableView indexPathForCell:cell];
     CDSong *songItem = _arraySongs[indexPath.row];
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:sender.isSelected];
     
@@ -64,12 +63,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     [self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;

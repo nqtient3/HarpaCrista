@@ -18,9 +18,8 @@
     NSArray *contactSectionArrayImage;
     NSArray *blogSectionArrayImage;
     NSArray *socialSectionArrayImage;
+    __weak IBOutlet UITableView *maisTableView;
 }
-
-@property (weak, nonatomic) IBOutlet UITableView *maisTableView;
 
 typedef enum {
     ContactSection,
