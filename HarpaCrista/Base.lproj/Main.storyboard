@@ -71,14 +71,17 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G5-6L-kln">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G5-6L-kln">
                                                     <rect key="frame" x="72" y="11" width="248" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="- " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-HE-qr1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="- " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0Z-HE-qr1">
                                                     <rect key="frame" x="56" y="11" width="13" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="13" id="5yE-Md-Bxc"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -103,15 +106,15 @@
                                             <constraints>
                                                 <constraint firstItem="fth-cA-YdF" firstAttribute="centerY" secondItem="oZY-zF-Rhp" secondAttribute="centerY" id="1Rk-YJ-0r9"/>
                                                 <constraint firstItem="OK9-Vg-sVs" firstAttribute="centerX" secondItem="oZY-zF-Rhp" secondAttribute="centerX" id="1b0-G5-cew"/>
+                                                <constraint firstItem="X0Z-HE-qr1" firstAttribute="centerY" secondItem="3Tg-so-XfM" secondAttribute="centerY" id="4mn-eh-zSQ"/>
                                                 <constraint firstItem="3Tg-so-XfM" firstAttribute="leading" secondItem="oZY-zF-Rhp" secondAttribute="leadingMargin" constant="5" id="6sF-NJ-wDc"/>
-                                                <constraint firstItem="X0Z-HE-qr1" firstAttribute="centerY" secondItem="oZY-zF-Rhp" secondAttribute="centerY" id="8ab-7P-35b"/>
-                                                <constraint firstItem="6G5-6L-kln" firstAttribute="centerY" secondItem="oZY-zF-Rhp" secondAttribute="centerY" id="ALz-al-Anw"/>
-                                                <constraint firstItem="fth-cA-YdF" firstAttribute="leading" secondItem="6G5-6L-kln" secondAttribute="trailing" constant="10" id="Fdc-7h-XcM"/>
                                                 <constraint firstItem="OK9-Vg-sVs" firstAttribute="width" secondItem="oZY-zF-Rhp" secondAttribute="width" id="I20-P7-ufG"/>
+                                                <constraint firstItem="6G5-6L-kln" firstAttribute="leading" secondItem="X0Z-HE-qr1" secondAttribute="trailing" constant="3" id="Iee-eh-1mk"/>
+                                                <constraint firstItem="fth-cA-YdF" firstAttribute="leading" secondItem="6G5-6L-kln" secondAttribute="trailing" constant="10" id="N5t-6D-d5u"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="fth-cA-YdF" secondAttribute="trailing" constant="10" id="Oon-Eu-SEF"/>
-                                                <constraint firstItem="6G5-6L-kln" firstAttribute="leading" secondItem="X0Z-HE-qr1" secondAttribute="trailing" constant="3" id="Qq7-ad-3tl"/>
+                                                <constraint firstItem="X0Z-HE-qr1" firstAttribute="leading" secondItem="3Tg-so-XfM" secondAttribute="trailing" constant="3" id="U6A-Cd-JQT"/>
                                                 <constraint firstAttribute="bottom" secondItem="OK9-Vg-sVs" secondAttribute="bottom" id="jAt-gJ-7bM"/>
-                                                <constraint firstItem="X0Z-HE-qr1" firstAttribute="leading" secondItem="3Tg-so-XfM" secondAttribute="trailing" constant="3" id="kJt-3a-Fkg"/>
+                                                <constraint firstItem="6G5-6L-kln" firstAttribute="centerY" secondItem="X0Z-HE-qr1" secondAttribute="centerY" id="mdO-DP-GC6"/>
                                                 <constraint firstItem="3Tg-so-XfM" firstAttribute="centerY" secondItem="oZY-zF-Rhp" secondAttribute="centerY" id="yFP-W6-fL1"/>
                                             </constraints>
                                         </tableViewCellContentView>
