@@ -463,13 +463,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9P-Am-2YI">
-                                                    <rect key="frame" x="58" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="58" y="11" width="279" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.31372549019607843" green="0.73333333333333328" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDM-qE-6sX">
-                                                    <rect key="frame" x="348" y="12" width="11" height="21"/>
+                                                    <rect key="frame" x="347" y="12" width="10" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="MWb-9G-ixS"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.79904286649214662" green="0.79904286649214662" blue="0.79904286649214662" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -479,9 +482,10 @@
                                                 <constraint firstItem="U9P-Am-2YI" firstAttribute="leading" secondItem="gjx-Bf-aU9" secondAttribute="trailing" constant="10" id="AhJ-9c-hsE"/>
                                                 <constraint firstItem="U9P-Am-2YI" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="Cp9-it-AMk"/>
                                                 <constraint firstItem="gjx-Bf-aU9" firstAttribute="leading" secondItem="o2S-Nq-x1C" secondAttribute="leadingMargin" constant="10" id="FI5-Mo-nZx"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rDM-qE-6sX" secondAttribute="trailing" constant="8" id="Gsh-3Z-MXR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rDM-qE-6sX" secondAttribute="trailing" constant="10" id="Gsh-3Z-MXR"/>
                                                 <constraint firstItem="gjx-Bf-aU9" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="I2T-mt-OpD"/>
                                                 <constraint firstItem="rDM-qE-6sX" firstAttribute="centerY" secondItem="o2S-Nq-x1C" secondAttribute="centerY" id="WBS-ep-UHw"/>
+                                                <constraint firstItem="rDM-qE-6sX" firstAttribute="leading" secondItem="U9P-Am-2YI" secondAttribute="trailing" constant="10" id="XaG-Pk-ijN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
