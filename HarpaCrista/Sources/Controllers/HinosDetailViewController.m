@@ -13,10 +13,12 @@
     __weak IBOutlet UIView *zoomView;
     __weak IBOutlet UIView *toolView;
     __weak IBOutlet UIView *exitZoomView;
+    __weak IBOutlet UIView *pauseAutoScView;
     __weak IBOutlet UIButton *maxZoomWebViewButton;
     __weak IBOutlet UIButton *minZoomWebViewButton;
     __weak IBOutlet UIButton *fullScreenWebViewButton;
     __weak IBOutlet UIButton *exitFullScreenWebViewButton;
+    __weak IBOutlet UIButton *pauseAutoScButton;
     int textFontSize;
 }
 
@@ -42,7 +44,16 @@
     exitMaskLayer.path  = exitMaskPath.CGPath;
     exitZoomView.layer.mask = exitMaskLayer;
     
+    //Corner for pauseAutoScView
+    UIBezierPath *pauseMaskPath = [UIBezierPath bezierPathWithRoundedRect:pauseAutoScView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    CAShapeLayer *pauseMaskLayer = [[CAShapeLayer alloc] init];
+    pauseMaskLayer.frame = self.view.bounds;
+    pauseMaskLayer.path = pauseMaskPath.CGPath;
+    pauseAutoScView.layer.mask = pauseMaskLayer;
+    
     exitZoomView.hidden = YES;
+    pauseAutoScView.hidden = YES;
+    
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         currenWebView.delegate = self;
@@ -87,11 +98,12 @@
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)fullScreenWebViewAction:(id)sender {
-    currenWebView.frame = self.view.bounds;
     toolView.hidden = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.tabBarController.tabBar.hidden = YES;
     exitZoomView.hidden = NO;
+    pauseAutoScView.hidden = NO;
+    currenWebView.frame = self.view.bounds;
 }
 
 #pragma mark - exitFullScreenWebViewAction
@@ -101,5 +113,12 @@
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     self.tabBarController.tabBar.hidden = NO;
     exitZoomView.hidden = YES;
+    pauseAutoScView.hidden = YES;
+}
+
+#pragma mark - pauseAutoScWebViewAction
+
+- (IBAction)pauseAutoScWebViewAction:(id)sender {
+    
 }
 @end

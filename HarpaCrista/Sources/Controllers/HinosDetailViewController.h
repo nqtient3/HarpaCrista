@@ -16,5 +16,6 @@
 - (IBAction)minZoomWebViewAction:(id)sender;
 - (IBAction)fullScreenWebViewAction:(id)sender;
 - (IBAction)exitFullScreenWebViewAction:(id)sender;
+- (IBAction)pauseAutoScWebViewAction:(id)sender;
 
 @end

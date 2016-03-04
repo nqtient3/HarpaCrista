@@ -297,12 +297,36 @@
                                     <constraint firstAttribute="bottom" secondItem="ocs-08-hb3" secondAttribute="bottom" id="eQF-9x-AVX"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-fk-Bae" userLabel="PauseAutoScView">
+                                <rect key="frame" x="335" y="0.0" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L86-fs-AaS" userLabel="PauseAutoScButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <state key="normal" title="P"/>
+                                        <connections>
+                                            <action selector="pauseAutoScWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="ryH-L4-kO2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="L86-fs-AaS" firstAttribute="centerY" secondItem="DF6-fk-Bae" secondAttribute="centerY" id="2fM-D6-ttN"/>
+                                    <constraint firstItem="L86-fs-AaS" firstAttribute="height" secondItem="DF6-fk-Bae" secondAttribute="height" id="KWB-SG-LE2"/>
+                                    <constraint firstAttribute="trailing" secondItem="L86-fs-AaS" secondAttribute="trailing" id="ibE-b6-ZWt"/>
+                                    <constraint firstAttribute="height" constant="40" id="jk2-Vc-ge6"/>
+                                    <constraint firstAttribute="width" constant="40" id="nYu-bG-RFa"/>
+                                    <constraint firstItem="L86-fs-AaS" firstAttribute="width" secondItem="DF6-fk-Bae" secondAttribute="width" id="snd-2p-W8P"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DF6-fk-Bae" firstAttribute="top" secondItem="2YO-OT-gze" secondAttribute="topMargin" id="2lW-pQ-2P1"/>
+                            <constraint firstAttribute="trailing" secondItem="DF6-fk-Bae" secondAttribute="trailing" id="4Cb-ch-SH8"/>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="top" secondItem="kd5-fE-hy0" secondAttribute="bottom" id="4DW-zQ-1YY"/>
                             <constraint firstAttribute="trailing" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="61N-20-GSB"/>
                             <constraint firstItem="lqH-aE-fK2" firstAttribute="centerY" secondItem="2YO-OT-gze" secondAttribute="centerY" id="K0n-u3-ihN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DF6-fk-Bae" secondAttribute="trailing" id="LBz-qN-hbN"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" id="M27-3W-2U7"/>
                             <constraint firstAttribute="bottomMargin" secondItem="9pt-3V-z1P" secondAttribute="bottom" id="Nba-vv-zN9"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="QQF-ss-zh9"/>
@@ -315,6 +339,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="LBz-qN-hbN"/>
                                 <exclude reference="Tqv-cL-hPB"/>
                             </mask>
                         </variation>
@@ -327,6 +352,8 @@
                         <outlet property="fullScreenWebViewButton" destination="hwi-0f-lwv" id="UeG-pW-3zc"/>
                         <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
                         <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
+                        <outlet property="pauseAutoScButton" destination="L86-fs-AaS" id="Hf8-Gn-nNh"/>
+                        <outlet property="pauseAutoScView" destination="DF6-fk-Bae" id="J2f-pG-4DP"/>
                         <outlet property="toolView" destination="kd5-fE-hy0" id="Q0z-JF-aNg"/>
                         <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>
                     </connections>
