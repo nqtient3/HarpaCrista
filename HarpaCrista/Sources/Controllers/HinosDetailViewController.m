@@ -20,6 +20,9 @@
     __weak IBOutlet UIButton *exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *pauseAutoScButton;
     int textFontSize;
+    NSInteger maxheight;
+    NSInteger currentHeight;
+    NSTimer *scriptTimer;
 }
 
 @end
@@ -28,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    maxheight = 0;
+    currentHeight = 0;
     // Do any additional setup after loading the view.
     
     //Corner for zoomView
@@ -104,19 +109,31 @@
     exitZoomView.hidden = NO;
     pauseAutoScView.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [UIView animateWithDuration:0.1
-                          delay:0.5
-                        options: UIViewAnimationOptionOverrideInheritedCurve
-                     animations:^{
-                         currenWebView.frame = self.view.bounds;
-                     }
-    completion:^(BOOL finished){
-    }];
-    NSInteger height = [[currenWebView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] intValue];
-    NSString* javascript = [NSString stringWithFormat:@"window.scrollBy(0, %ld);", (long)height];
-    [currenWebView stringByEvaluatingJavaScriptFromString:javascript];
-
+    currenWebView.frame = self.view.bounds;
+    maxheight = [[currenWebView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] intValue];
+    currentHeight = 0;
+    [self stopScriptTimer];
+    scriptTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
 }
+
+- (void)stopScriptTimer {
+    if (scriptTimer != nil) {
+        [scriptTimer invalidate];
+        scriptTimer = nil;
+    }
+}
+
+- (void)startAnimationTimer {
+    if (currentHeight >= maxheight) {
+        [self stopScriptTimer];
+    } else {
+        NSString* javascript = [NSString stringWithFormat:@"window.scrollBy(0, %ld);", (long)currentHeight];
+        [currenWebView stringByEvaluatingJavaScriptFromString:javascript];
+        currentHeight ++;
+    }
+    
+}
+
 
 #pragma mark - exitFullScreenWebViewAction
 
@@ -127,11 +144,12 @@
     exitZoomView.hidden = YES;
     pauseAutoScView.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self stopScriptTimer];
 }
 
 #pragma mark - pauseAutoScWebViewAction
 
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
-    
+    [self stopScriptTimer];
 }
 @end
