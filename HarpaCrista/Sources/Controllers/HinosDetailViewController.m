@@ -48,13 +48,13 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
     [currenWebView stringByEvaluatingJavaScriptFromString:bodyStyle];
-    textFontSize = 20;
+    textFontSize = 100;
 }
 
 #pragma mark - MaxZoomWebViewAction
 
 - (IBAction)maxZoomWebViewAction:(id)sender {
-    textFontSize = (textFontSize < 160) ? textFontSize +5 : textFontSize;
+    textFontSize = (textFontSize < 160) ? textFontSize +10 : textFontSize;
     NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
                           textFontSize];
     [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
@@ -63,7 +63,7 @@
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)minZoomWebViewAction:(id)sender {
-    textFontSize = (textFontSize > 50) ? textFontSize -5 : textFontSize;
+    textFontSize = (textFontSize > 50) ? textFontSize -10 : textFontSize;
     NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
                           textFontSize];
     [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
