@@ -40,7 +40,7 @@
     CAShapeLayer *exitMaskLayer = [[CAShapeLayer alloc] init];
     exitMaskLayer.frame = self.view.bounds;
     exitMaskLayer.path  = exitMaskPath.CGPath;
-    exitZoomView.layer.mask = maskLayer;
+    exitZoomView.layer.mask = exitMaskLayer;
     
     exitZoomView.hidden = YES;
     if (self.currentCDSong) {
