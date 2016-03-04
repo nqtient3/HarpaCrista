@@ -12,9 +12,11 @@
     __weak IBOutlet UIWebView *currenWebView;
     __weak IBOutlet UIView *zoomView;
     __weak IBOutlet UIView *toolView;
+    __weak IBOutlet UIView *exitZoomView;
     __weak IBOutlet UIButton *maxZoomWebViewButton;
     __weak IBOutlet UIButton *minZoomWebViewButton;
     __weak IBOutlet UIButton *fullScreenWebViewButton;
+    __weak IBOutlet UIButton *exitFullScreenWebViewButton;
     int textFontSize;
 }
 
@@ -25,11 +27,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //Corner for zoomView
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.view.bounds;
     maskLayer.path  = maskPath.CGPath;
     zoomView.layer.mask = maskLayer;
+    
+    //Corner for exitZoomView
+    UIBezierPath *exitMaskPath = [UIBezierPath bezierPathWithRoundedRect:exitZoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    CAShapeLayer *exitMaskLayer = [[CAShapeLayer alloc] init];
+    exitMaskLayer.frame = self.view.bounds;
+    exitMaskLayer.path  = exitMaskPath.CGPath;
+    exitZoomView.layer.mask = maskLayer;
+    
+    exitZoomView.hidden = YES;
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         currenWebView.delegate = self;
@@ -78,5 +91,15 @@
     toolView.hidden = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.tabBarController.tabBar.hidden = YES;
+    exitZoomView.hidden = NO;
+}
+
+#pragma mark - exitFullScreenWebViewAction
+
+- (IBAction)exitFullScreenWebViewAction:(id)sender {
+    toolView.hidden = NO;
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    self.tabBarController.tabBar.hidden = NO;
+    exitZoomView.hidden = YES;
 }
 @end

@@ -276,6 +276,27 @@
                                     <constraint firstItem="M3T-bL-WNC" firstAttribute="width" secondItem="lqH-aE-fK2" secondAttribute="width" id="yvO-22-4N5"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pt-3V-z1P" userLabel="ExitZoomView">
+                                <rect key="frame" x="335" y="627" width="40" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-08-hb3" userLabel="ExitZoomButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <state key="normal" title="E"/>
+                                        <connections>
+                                            <action selector="exitFullScreenWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="bUv-r8-prm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ocs-08-hb3" firstAttribute="width" secondItem="9pt-3V-z1P" secondAttribute="width" id="9eB-Kh-yqn"/>
+                                    <constraint firstAttribute="width" constant="40" id="G6V-3b-6yv"/>
+                                    <constraint firstItem="ocs-08-hb3" firstAttribute="height" secondItem="9pt-3V-z1P" secondAttribute="height" id="Lbs-Ra-Rmj"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ngu-4M-xSJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ocs-08-hb3" secondAttribute="trailing" id="c9n-YG-p0B"/>
+                                    <constraint firstAttribute="bottom" secondItem="ocs-08-hb3" secondAttribute="bottom" id="eQF-9x-AVX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -283,12 +304,14 @@
                             <constraint firstAttribute="trailing" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="61N-20-GSB"/>
                             <constraint firstItem="lqH-aE-fK2" firstAttribute="centerY" secondItem="2YO-OT-gze" secondAttribute="centerY" id="K0n-u3-ihN"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" id="M27-3W-2U7"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="9pt-3V-z1P" secondAttribute="bottom" id="Nba-vv-zN9"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="QQF-ss-zh9"/>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="SAW-f8-dZx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="Tqv-cL-hPB"/>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="UqE-fa-fBM"/>
                             <constraint firstItem="AWQ-m2-FnT" firstAttribute="top" secondItem="kuf-9m-UwF" secondAttribute="bottom" id="XfA-5D-oMb"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="dNO-A6-kbB"/>
+                            <constraint firstAttribute="trailing" secondItem="9pt-3V-z1P" secondAttribute="trailing" id="zPR-vg-vvc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -299,6 +322,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
+                        <outlet property="exitFullScreenWebViewButton" destination="ocs-08-hb3" id="uRx-G5-SSu"/>
+                        <outlet property="exitZoomView" destination="9pt-3V-z1P" id="uRj-6A-cln"/>
                         <outlet property="fullScreenWebViewButton" destination="hwi-0f-lwv" id="UeG-pW-3zc"/>
                         <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
                         <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
