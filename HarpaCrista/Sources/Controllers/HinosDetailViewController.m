@@ -10,6 +10,7 @@
 
 @interface HinosDetailViewController ()<UIWebViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
+    __weak IBOutlet UIView *zoomView;
 }
 
 @end
@@ -19,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.view.bounds;
+    maskLayer.path  = maskPath.CGPath;
+    zoomView.layer.mask = maskLayer;
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         currenWebView.delegate = self;

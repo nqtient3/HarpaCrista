@@ -225,21 +225,60 @@
                                 <rect key="frame" x="0.0" y="118" width="375" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-aE-fK2">
+                                <rect key="frame" x="335" y="292" width="40" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3T-bL-WNC" userLabel="MaxButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="yrc-0d-Zrw"/>
+                                        </constraints>
+                                        <state key="normal" title="+"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-Zb-SWa" userLabel="MinButton">
+                                        <rect key="frame" x="0.0" y="42" width="40" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="oQl-76-G7L"/>
+                                        </constraints>
+                                        <state key="normal" title="-"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="jBg-Zb-SWa" secondAttribute="bottom" id="2DK-wv-DO0"/>
+                                    <constraint firstItem="jBg-Zb-SWa" firstAttribute="leading" secondItem="lqH-aE-fK2" secondAttribute="leading" id="44c-gi-Uah"/>
+                                    <constraint firstAttribute="height" constant="84" id="QAj-g5-zM7"/>
+                                    <constraint firstItem="M3T-bL-WNC" firstAttribute="top" secondItem="lqH-aE-fK2" secondAttribute="top" id="ZGz-lv-il9"/>
+                                    <constraint firstAttribute="width" constant="40" id="buk-kl-0t6"/>
+                                    <constraint firstItem="jBg-Zb-SWa" firstAttribute="width" secondItem="lqH-aE-fK2" secondAttribute="width" id="ssp-6C-jt1"/>
+                                    <constraint firstAttribute="trailing" secondItem="M3T-bL-WNC" secondAttribute="trailing" id="tah-Iq-xSj"/>
+                                    <constraint firstItem="M3T-bL-WNC" firstAttribute="width" secondItem="lqH-aE-fK2" secondAttribute="width" id="yvO-22-4N5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="top" secondItem="kd5-fE-hy0" secondAttribute="bottom" id="4DW-zQ-1YY"/>
+                            <constraint firstAttribute="trailing" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="61N-20-GSB"/>
+                            <constraint firstItem="lqH-aE-fK2" firstAttribute="centerY" secondItem="2YO-OT-gze" secondAttribute="centerY" id="K0n-u3-ihN"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" id="M27-3W-2U7"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="QQF-ss-zh9"/>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="SAW-f8-dZx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="Tqv-cL-hPB"/>
                             <constraint firstItem="kuf-9m-UwF" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="UqE-fa-fBM"/>
                             <constraint firstItem="AWQ-m2-FnT" firstAttribute="top" secondItem="kuf-9m-UwF" secondAttribute="bottom" id="XfA-5D-oMb"/>
                             <constraint firstItem="kd5-fE-hy0" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="dNO-A6-kbB"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tqv-cL-hPB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
+                        <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Y-cd-b20" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,7 +671,7 @@
         <image name="ic_tuner_selected.png" width="72" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rrD-12-YWC"/>
+        <segue reference="068-PC-nDH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
