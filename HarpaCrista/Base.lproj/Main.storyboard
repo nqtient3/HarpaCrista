@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Harpa Crista com Acordes-->
@@ -167,58 +168,60 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-Jk-PYx" userLabel="MetronomeButton">
                                         <rect key="frame" x="20" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="IOs-vr-bo9"/>
-                                            <constraint firstAttribute="height" constant="25" id="R3L-37-pyj"/>
+                                            <constraint firstAttribute="width" constant="20" id="EGE-iD-azP"/>
+                                            <constraint firstAttribute="height" constant="25" id="lbZ-bD-x9a"/>
                                         </constraints>
                                         <state key="normal" image="ic_metronome_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-V7-Seb" userLabel="TunerButton">
-                                        <rect key="frame" x="85" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="103" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="GxN-H0-4dw"/>
-                                            <constraint firstAttribute="width" constant="20" id="txe-66-Jnx"/>
+                                            <constraint firstAttribute="height" constant="25" id="grT-Fm-1iU"/>
+                                            <constraint firstAttribute="width" constant="20" id="jwa-sj-rxm"/>
                                         </constraints>
                                         <state key="normal" image="ic_tuner_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h87-9N-Ixt" userLabel="MudeButton">
-                                        <rect key="frame" x="145" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="178" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="DE9-Y4-FJE"/>
-                                            <constraint firstAttribute="height" constant="25" id="cah-dl-agU"/>
+                                            <constraint firstAttribute="height" constant="25" id="P3Q-93-hbg"/>
+                                            <constraint firstAttribute="width" constant="20" id="oG4-dM-Uks"/>
                                         </constraints>
                                         <state key="normal" image="ic_mude_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-DN-fpK" userLabel="ReturnButton">
-                                        <rect key="frame" x="205" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="253" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="QHX-1R-dvs"/>
-                                            <constraint firstAttribute="width" constant="20" id="ZQw-8y-Tyc"/>
+                                            <constraint firstAttribute="height" constant="25" id="3e5-t1-fRg"/>
+                                            <constraint firstAttribute="width" constant="20" id="w64-aY-Spj"/>
                                         </constraints>
                                         <state key="normal" image="ic_return_selected.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-0f-lwv" userLabel="ZoomButton">
-                                        <rect key="frame" x="325" y="15" width="20" height="25"/>
+                                        <rect key="frame" x="335" y="15" width="20" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="9Dj-Y9-ETc"/>
-                                            <constraint firstAttribute="width" constant="20" id="Zo0-Ls-d20"/>
+                                            <constraint firstAttribute="height" constant="25" id="cgY-tu-33f"/>
+                                            <constraint firstAttribute="width" constant="20" id="jUA-sc-tOM"/>
                                         </constraints>
                                         <state key="normal" image="ic_auto_scroll_selected.png"/>
+                                        <connections>
+                                            <action selector="fullScreenWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="XN0-4y-UMn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="centerY" secondItem="h87-9N-Ixt" secondAttribute="centerY" id="3uJ-8Y-S0k"/>
-                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="leading" secondItem="kd5-fE-hy0" secondAttribute="leading" constant="20" id="7A9-l0-ONO"/>
+                                    <constraint firstAttribute="trailing" secondItem="hwi-0f-lwv" secondAttribute="trailing" constant="20" id="0PI-Md-qFV"/>
+                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="6I8-p2-xrm"/>
+                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="6cP-1q-CBB"/>
+                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="8cT-o2-yhl"/>
+                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" id="AkR-YB-kIB"/>
                                     <constraint firstAttribute="height" constant="54" id="BjO-CI-Ys7"/>
-                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="t8W-V7-Seb" secondAttribute="centerY" id="CHL-7u-S4N"/>
-                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="leading" secondItem="h87-9N-Ixt" secondAttribute="trailing" constant="40" id="K51-se-ZQG"/>
-                                    <constraint firstAttribute="trailing" secondItem="hwi-0f-lwv" secondAttribute="trailing" constant="30" id="XsR-Gn-0sE"/>
-                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="fdE-VP-FCl"/>
-                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="centerY" secondItem="M2t-Jk-PYx" secondAttribute="centerY" id="gYN-aX-tfL"/>
-                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="t8W-V7-Seb" secondAttribute="centerY" id="qS5-Ua-I2m"/>
-                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="leading" secondItem="M2t-Jk-PYx" secondAttribute="trailing" constant="45" id="qhh-GF-mMq"/>
-                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="leading" secondItem="t8W-V7-Seb" secondAttribute="trailing" constant="40" id="sp8-PZ-Enf"/>
-                                    <constraint firstItem="hwi-0f-lwv" firstAttribute="centerY" secondItem="rRh-DN-fpK" secondAttribute="centerY" id="tjm-5u-nyX"/>
+                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" multiplier="1.4" id="MH5-Bh-XCv"/>
+                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="leading" secondItem="kd5-fE-hy0" secondAttribute="leading" constant="20" id="NmX-SJ-1zU"/>
+                                    <constraint firstItem="hwi-0f-lwv" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="PeW-3B-Xwg"/>
+                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="aLV-Kt-DFZ"/>
+                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" multiplier="0.6" id="mva-3q-Dz5"/>
                                 </constraints>
                             </view>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuf-9m-UwF">
@@ -296,6 +299,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
+                        <outlet property="fullScreenWebViewButton" destination="hwi-0f-lwv" id="UeG-pW-3zc"/>
                         <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
                         <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
                         <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>

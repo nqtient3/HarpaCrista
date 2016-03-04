@@ -13,6 +13,7 @@
     __weak IBOutlet UIView *zoomView;
     __weak IBOutlet UIButton *maxZoomWebViewButton;
     __weak IBOutlet UIButton *minZoomWebViewButton;
+    __weak IBOutlet UIButton *fullScreenWebViewButton;
     int textFontSize;
 }
 
@@ -67,5 +68,11 @@
     NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
                           textFontSize];
     [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+}
+
+#pragma mark - MinZoomWebViewAction
+
+- (IBAction)fullScreenWebViewAction:(id)sender {
+
 }
 @end
