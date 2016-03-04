@@ -11,6 +11,9 @@
 @interface HinosDetailViewController ()<UIWebViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
     __weak IBOutlet UIView *zoomView;
+    __weak IBOutlet UIButton *maxZoomWebViewButton;
+    __weak IBOutlet UIButton *minZoomWebViewButton;
+    int textFontSize;
 }
 
 @end
@@ -41,19 +44,28 @@
 }
 
 #pragma mark - UIWebViewDelegate
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
     [currenWebView stringByEvaluatingJavaScriptFromString:bodyStyle];
+    textFontSize = 20;
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - MaxZoomWebViewAction
 
+- (IBAction)maxZoomWebViewAction:(id)sender {
+    textFontSize = (textFontSize < 160) ? textFontSize +5 : textFontSize;
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
+                          textFontSize];
+    [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+}
+
+#pragma mark - MinZoomWebViewAction
+
+- (IBAction)minZoomWebViewAction:(id)sender {
+    textFontSize = (textFontSize > 50) ? textFontSize -5 : textFontSize;
+    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
+                          textFontSize];
+    [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+}
 @end

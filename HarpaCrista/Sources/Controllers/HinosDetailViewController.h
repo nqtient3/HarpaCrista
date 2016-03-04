@@ -12,5 +12,7 @@
 @interface HinosDetailViewController : UIViewController
 
 @property (nonatomic, strong) CDSong *currentCDSong;
+- (IBAction)maxZoomWebViewAction:(id)sender;
+- (IBAction)minZoomWebViewAction:(id)sender;
 
 @end

@@ -240,6 +240,9 @@
                                         <state key="selected">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="maxZoomWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="H8r-T2-FXy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-Zb-SWa" userLabel="MinButton">
                                         <rect key="frame" x="0.0" y="42" width="40" height="42"/>
@@ -253,6 +256,9 @@
                                         <state key="selected">
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="minZoomWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="WtH-0i-5Ci"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,6 +296,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
+                        <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
+                        <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
                         <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>
                     </connections>
                 </viewController>
