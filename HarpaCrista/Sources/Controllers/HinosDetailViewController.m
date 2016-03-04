@@ -103,7 +103,19 @@
     self.tabBarController.tabBar.hidden = YES;
     exitZoomView.hidden = NO;
     pauseAutoScView.hidden = NO;
-    currenWebView.frame = self.view.bounds;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [UIView animateWithDuration:0.1
+                          delay:0.5
+                        options: UIViewAnimationOptionOverrideInheritedCurve
+                     animations:^{
+                         currenWebView.frame = self.view.bounds;
+                     }
+    completion:^(BOOL finished){
+    }];
+    NSInteger height = [[currenWebView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] intValue];
+    NSString* javascript = [NSString stringWithFormat:@"window.scrollBy(0, %ld);", (long)height];
+    [currenWebView stringByEvaluatingJavaScriptFromString:javascript];
+
 }
 
 #pragma mark - exitFullScreenWebViewAction
@@ -114,6 +126,7 @@
     self.tabBarController.tabBar.hidden = NO;
     exitZoomView.hidden = YES;
     pauseAutoScView.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 #pragma mark - pauseAutoScWebViewAction
