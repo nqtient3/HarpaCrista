@@ -302,6 +302,7 @@
                         <outlet property="fullScreenWebViewButton" destination="hwi-0f-lwv" id="UeG-pW-3zc"/>
                         <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
                         <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
+                        <outlet property="toolView" destination="kd5-fE-hy0" id="Q0z-JF-aNg"/>
                         <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>
                     </connections>
                 </viewController>

@@ -11,6 +11,7 @@
 @interface HinosDetailViewController ()<UIWebViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
     __weak IBOutlet UIView *zoomView;
+    __weak IBOutlet UIView *toolView;
     __weak IBOutlet UIButton *maxZoomWebViewButton;
     __weak IBOutlet UIButton *minZoomWebViewButton;
     __weak IBOutlet UIButton *fullScreenWebViewButton;
@@ -73,6 +74,9 @@
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)fullScreenWebViewAction:(id)sender {
-
+    currenWebView.frame = self.view.bounds;
+    toolView.hidden = YES;
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
 }
 @end
