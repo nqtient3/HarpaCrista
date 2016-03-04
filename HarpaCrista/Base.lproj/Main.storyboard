@@ -239,7 +239,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="webView" destination="kuf-9m-UwF" id="rVB-Kv-f2M"/>
+                        <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Y-cd-b20" userLabel="First Responder" sceneMemberID="firstResponder"/>
