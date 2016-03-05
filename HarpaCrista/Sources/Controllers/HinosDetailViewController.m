@@ -130,6 +130,7 @@
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)fullScreenWebViewAction:(id)sender {
+    changeToneView.hidden = YES;
     toolView.hidden = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.tabBarController.tabBar.hidden = YES;
