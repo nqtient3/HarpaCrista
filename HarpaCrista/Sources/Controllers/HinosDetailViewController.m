@@ -208,15 +208,17 @@
 #pragma mark - exitFullScreenWebViewAction
 
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
-    _isFullScreenMode = NO;
-    toolView.hidden = NO;
-    self.navigationController.navigationBar.hidden = NO;
-    self.tabBarController.tabBar.hidden = NO;
-    exitZoomView.hidden = YES;
-    pauseAutoScView.hidden = YES;
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    [self stopScriptTimer];
-    currenWebView.frame = partScreenRect;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _isFullScreenMode = NO;
+        toolView.hidden = NO;
+        self.navigationController.navigationBar.hidden = NO;
+        self.tabBarController.tabBar.hidden = NO;
+        exitZoomView.hidden = YES;
+        pauseAutoScView.hidden = YES;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [self stopScriptTimer];
+        currenWebView.frame = partScreenRect;
+    });
 }
 
 #pragma mark - pauseAutoScWebViewAction
