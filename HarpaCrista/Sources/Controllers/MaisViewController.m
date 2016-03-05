@@ -125,6 +125,7 @@ typedef enum {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://mobile.twitter.com/HarpaCrista7"]];
         }
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
