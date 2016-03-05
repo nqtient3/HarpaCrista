@@ -8,6 +8,10 @@
 
 #import "HinosDetailViewController.h"
 
+#define DISTANCE_ONCE 10
+#define DEFAULT_TIME_EACH_LOOP 0.05
+
+
 @interface HinosDetailViewController ()<UIWebViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
     __weak IBOutlet UIView *zoomView;
@@ -20,9 +24,15 @@
     __weak IBOutlet UIButton *exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *pauseAutoScButton;
     int textFontSize;
-    NSInteger maxheight;
-    NSInteger currentHeight;
+    float scrollViewContentHeight;
+    float scrollViewContentOffset;
     NSTimer *scriptTimer;
+    float timeEachLoop;
+    
+    // Status of AutoScroll/Pause button
+    BOOL _isAutoScroll;
+    // Status of Fullscreen mode
+    BOOL _isFullScreenMode;
 }
 
 @end
@@ -31,9 +41,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    maxheight = 0;
-    currentHeight = 0;
-    // Do any additional setup after loading the view.
     
     //Corner for zoomView
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
@@ -58,6 +65,8 @@
     
     exitZoomView.hidden = YES;
     pauseAutoScView.hidden = YES;
+    // Set default time for each loop
+    timeEachLoop = DEFAULT_TIME_EACH_LOOP;
     
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
@@ -85,24 +94,44 @@
 #pragma mark - MaxZoomWebViewAction
 
 - (IBAction)maxZoomWebViewAction:(id)sender {
-    textFontSize = (textFontSize < 160) ? textFontSize +10 : textFontSize;
-    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
-                          textFontSize];
-    [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+    if (!_isFullScreenMode) {
+        textFontSize = (textFontSize < 160) ? textFontSize +10 : textFontSize;
+        NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
+                              textFontSize];
+        [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+    } else {
+        if (timeEachLoop > 0.01) {
+            timeEachLoop -= 0.01;
+        }
+    }
+    [self reAutoScroll];
 }
 
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)minZoomWebViewAction:(id)sender {
-    textFontSize = (textFontSize > 50) ? textFontSize -10 : textFontSize;
-    NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
-                          textFontSize];
-    [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+    if (!_isFullScreenMode) {
+        textFontSize = (textFontSize > 50) ? textFontSize -10 : textFontSize;
+        NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
+                              textFontSize];
+        [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+    } else {
+        if (timeEachLoop < 0.1) {
+            timeEachLoop += 0.01;
+        }
+    }
+    [self reAutoScroll];
+}
+
+- (void)reAutoScroll {
+    [self pauseAutoScWebViewAction:nil];
+    [self pauseAutoScWebViewAction:nil];
 }
 
 #pragma mark - MinZoomWebViewAction
 
 - (IBAction)fullScreenWebViewAction:(id)sender {
+    _isFullScreenMode = YES;
     toolView.hidden = YES;
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     self.tabBarController.tabBar.hidden = YES;
@@ -110,10 +139,10 @@
     pauseAutoScView.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     currenWebView.frame = self.view.bounds;
-    maxheight = [[currenWebView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] intValue];
-    currentHeight = 0;
-    [self stopScriptTimer];
-    scriptTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
+    
+    scrollViewContentHeight = currenWebView.scrollView.contentSize.height;
+
+    [self pauseAutoScWebViewAction:nil];
 }
 
 - (void)stopScriptTimer {
@@ -124,12 +153,12 @@
 }
 
 - (void)startAnimationTimer {
-    if (currentHeight >= maxheight) {
+    if (currenWebView.scrollView.contentOffset.y >= scrollViewContentHeight - currenWebView.scrollView.frame.size.height) {
         [self stopScriptTimer];
     } else {
-        NSString* javascript = [NSString stringWithFormat:@"window.scrollBy(0, %ld);", (long)currentHeight];
-        [currenWebView stringByEvaluatingJavaScriptFromString:javascript];
-        currentHeight ++;
+        CGPoint point = currenWebView.scrollView.contentOffset;
+        
+        [currenWebView.scrollView setContentOffset:CGPointMake(point.x, point.y + 1)];
     }
     
 }
@@ -138,6 +167,7 @@
 #pragma mark - exitFullScreenWebViewAction
 
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
+    _isFullScreenMode = NO;
     toolView.hidden = NO;
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     self.tabBarController.tabBar.hidden = NO;
@@ -150,6 +180,13 @@
 #pragma mark - pauseAutoScWebViewAction
 
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
+    _isAutoScroll = !_isAutoScroll;
+    
     [self stopScriptTimer];
+    
+    if (_isAutoScroll) {
+        scriptTimer = [NSTimer scheduledTimerWithTimeInterval:timeEachLoop target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
+    }
 }
+
 @end
