@@ -216,7 +216,11 @@
         exitZoomView.hidden = YES;
         pauseAutoScView.hidden = YES;
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        [self stopScriptTimer];
+        if (_isAutoScroll) {
+            [self pauseAutoScWebViewAction:nil];
+        } else {
+            [self stopScriptTimer];
+        }
         currenWebView.frame = partScreenRect;
     });
 }
