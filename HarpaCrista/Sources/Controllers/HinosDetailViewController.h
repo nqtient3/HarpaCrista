@@ -17,5 +17,6 @@
 - (IBAction)fullScreenWebViewAction:(id)sender;
 - (IBAction)exitFullScreenWebViewAction:(id)sender;
 - (IBAction)pauseAutoScWebViewAction:(id)sender;
+- (IBAction)changeToneAction:(UIButton *)sender;
 
 @end
