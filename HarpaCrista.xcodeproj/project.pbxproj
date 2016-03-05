@@ -54,6 +54,18 @@
 		23B85A381C85E32F00144193 /* MaisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* MaisViewController.m */; };
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
 		A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */; };
+		A601EA571C8AB03100E0AE3F /* IntroScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */; };
+		A601EA631C8AB1EF00E0AE3F /* Tutorial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */; };
+		A601EA641C8AB1EF00E0AE3F /* Tutorial-3.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */; };
+		A601EA651C8AB1EF00E0AE3F /* Tutorial-4.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */; };
+		A601EA661C8AB1EF00E0AE3F /* Tutorial-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */; };
+		A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */; };
+		A601EA681C8AB1EF00E0AE3F /* Tutorial-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */; };
+		A601EA691C8AB1EF00E0AE3F /* Tutorial-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */; };
+		A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */; };
+		A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */; };
+		A601EA781C8ABAB300E0AE3F /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */; };
+		A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */; };
 		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +127,20 @@
 		23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
 		A601EA521C8A891500E0AE3F /* ChangeToneCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeToneCollectionViewCell.h; sourceTree = "<group>"; };
 		A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeToneCollectionViewCell.m; sourceTree = "<group>"; };
+		A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IntroScreen.storyboard; sourceTree = "<group>"; };
+		A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-2.png"; sourceTree = "<group>"; };
+		A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-3.png"; sourceTree = "<group>"; };
+		A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-4.png"; sourceTree = "<group>"; };
+		A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-5.png"; sourceTree = "<group>"; };
+		A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-6.png"; sourceTree = "<group>"; };
+		A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-7.png"; sourceTree = "<group>"; };
+		A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-8.png"; sourceTree = "<group>"; };
+		A601EA711C8AB7A600E0AE3F /* PageItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageItemViewController.h; sourceTree = "<group>"; };
+		A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageItemViewController.m; sourceTree = "<group>"; };
+		A601EA741C8AB7EB00E0AE3F /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
+		A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +218,7 @@
 		23B859F51C85DA7300144193 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */,
 				A601EA521C8A891500E0AE3F /* ChangeToneCollectionViewCell.h */,
 				A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */,
 			);
@@ -211,6 +238,10 @@
 				23B85A341C85E32F00144193 /* MaisViewController.m */,
 				A61720701C881BDA00CFF43D /* MainTabbarController.h */,
 				A61720711C881BDA00CFF43D /* MainTabbarController.m */,
+				A601EA711C8AB7A600E0AE3F /* PageItemViewController.h */,
+				A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */,
+				A601EA741C8AB7EB00E0AE3F /* TutorialViewController.h */,
+				A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -230,6 +261,7 @@
 		23B859F81C85DA8D00144193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A601EA581C8AB18500E0AE3F /* Tutorial */,
 				232D55A61C87269A002798F4 /* ic_auto_scroll_selected.png */,
 				232D55A71C87269A002798F4 /* ic_auto_scroll.png */,
 				232D55A81C87269A002798F4 /* ic_global_selected.png */,
@@ -273,6 +305,22 @@
 				23B85A2B1C85E31800144193 /* app-data.json */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		A601EA581C8AB18500E0AE3F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */,
+				A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */,
+				A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */,
+				A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */,
+				A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */,
+				A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */,
+				A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */,
+				A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */,
+				A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,12 +384,16 @@
 				232D55BE1C87269A002798F4 /* ic_hinos_selected.png in Resources */,
 				23B859EC1C85D9D500144193 /* LaunchScreen.storyboard in Resources */,
 				23B859E91C85D9D500144193 /* Assets.xcassets in Resources */,
+				A601EA681C8AB1EF00E0AE3F /* Tutorial-7.png in Resources */,
+				A601EA631C8AB1EF00E0AE3F /* Tutorial-2.png in Resources */,
 				23B85A1D1C85E30B00144193 /* global.ai in Resources */,
 				23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */,
 				232D55C21C87269A002798F4 /* ic_mude_selected.png in Resources */,
 				232D55BA1C87269A002798F4 /* ic_auto_scroll_selected.png in Resources */,
 				232D55CC1C87269A002798F4 /* ic_tuner.png in Resources */,
+				A601EA661C8AB1EF00E0AE3F /* Tutorial-5.png in Resources */,
 				232D55BC1C87269A002798F4 /* ic_global_selected.png in Resources */,
+				A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */,
 				23B859E41C85D9D500144193 /* Main.storyboard in Resources */,
 				23B85A201C85E30B00144193 /* ic_book.png in Resources */,
 				23B85A231C85E30B00144193 /* ic_mail.png in Resources */,
@@ -349,15 +401,18 @@
 				232D55CD1C87269A002798F4 /* ic_x.png in Resources */,
 				23B85A271C85E30B00144193 /* ic_star_settings.png in Resources */,
 				23B85A211C85E30B00144193 /* ic_facebook.png in Resources */,
+				A601EA781C8ABAB300E0AE3F /* Tutorial-1.png in Resources */,
 				232D55C01C87269A002798F4 /* ic_metronome_selected.png in Resources */,
 				23B85A241C85E30B00144193 /* ic_notification.png in Resources */,
 				232D55BD1C87269A002798F4 /* ic_global.png in Resources */,
 				23B85A261C85E30B00144193 /* ic_share.png in Resources */,
+				A601EA571C8AB03100E0AE3F /* IntroScreen.storyboard in Resources */,
 				232D55BF1C87269A002798F4 /* ic_hinos.png in Resources */,
 				232D55C81C87269A002798F4 /* ic_star_selected.png in Resources */,
 				232D55C91C87269A002798F4 /* ic_star_yellow.png in Resources */,
 				232D55C51C87269A002798F4 /* ic_return.png in Resources */,
 				232D55C71C87269A002798F4 /* ic_setting.png in Resources */,
+				A601EA651C8AB1EF00E0AE3F /* Tutorial-4.png in Resources */,
 				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
 				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
@@ -368,6 +423,9 @@
 				232D55CA1C87269A002798F4 /* ic_star.png in Resources */,
 				232D55BB1C87269A002798F4 /* ic_auto_scroll.png in Resources */,
 				23B85A221C85E30B00144193 /* ic_instagram.png in Resources */,
+				A601EA641C8AB1EF00E0AE3F /* Tutorial-3.png in Resources */,
+				A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */,
+				A601EA691C8AB1EF00E0AE3F /* Tutorial-8.png in Resources */,
 				232D55CB1C87269A002798F4 /* ic_tuner_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +439,7 @@
 			files = (
 				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
 				A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */,
+				A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */,
 				232D55A41C871CC9002798F4 /* CDSong+CoreDataProperties.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
@@ -388,6 +447,7 @@
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
 				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
+				A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */,
 				232D55A51C871CC9002798F4 /* CDSong.m in Sources */,
 				23B85A381C85E32F00144193 /* MaisViewController.m in Sources */,
 			);

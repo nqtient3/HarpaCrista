@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="J1n-hn-L5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -739,10 +739,96 @@
             </objects>
             <point key="canvasLocation" x="423.5" y="436.5"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="6He-e2-afu">
+            <objects>
+                <pageViewController storyboardIdentifier="PageController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Ttm-F9-ZOR" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4M-Dg-5Gz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1064.5" y="1207.5"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="hQq-zC-p9O">
+            <objects>
+                <viewController id="ybs-aJ-06C" customClass="TutorialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iJY-K0-bnA"/>
+                        <viewControllerLayoutGuide type="bottom" id="PtL-qN-sKs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lEG-by-fdf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="272-rr-aNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-953.5" y="427.5"/>
+        </scene>
+        <!--Page Item View Controller-->
+        <scene sceneID="AaZ-7v-gHr">
+            <objects>
+                <viewController storyboardIdentifier="ItemController" id="3PA-np-O52" customClass="PageItemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7nL-nD-l9x"/>
+                        <viewControllerLayoutGuide type="bottom" id="wki-XG-pID"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dfW-Gb-FXf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ggj-y1-mb8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-jn-aPQ" userLabel="EmailTextField">
+                                <rect key="frame" x="30" y="487" width="315" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Uh-9h-GmP">
+                                <rect key="frame" x="153" y="537" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3zV-Fp-3lv"/>
+                                    <constraint firstAttribute="width" constant="70" id="qv5-Pw-BIp"/>
+                                </constraints>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitEmailActiion:" destination="3PA-np-O52" eventType="touchUpInside" id="Soo-wH-393"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Uh-9h-GmP" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="88P-jB-AWL"/>
+                            <constraint firstItem="0Uh-9h-GmP" firstAttribute="top" secondItem="lQf-jn-aPQ" secondAttribute="bottom" constant="20" id="BlE-Im-lhu"/>
+                            <constraint firstItem="ggj-y1-mb8" firstAttribute="centerY" secondItem="dfW-Gb-FXf" secondAttribute="centerY" id="NRA-G7-4if"/>
+                            <constraint firstItem="ggj-y1-mb8" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="W2e-UF-gRL"/>
+                            <constraint firstItem="wki-XG-pID" firstAttribute="top" secondItem="0Uh-9h-GmP" secondAttribute="bottom" constant="100" id="Xnw-gQ-J83"/>
+                            <constraint firstItem="lQf-jn-aPQ" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="bWq-83-mYK"/>
+                            <constraint firstAttribute="trailing" secondItem="lQf-jn-aPQ" secondAttribute="trailing" constant="30" id="dxP-uE-g0u"/>
+                            <constraint firstItem="ggj-y1-mb8" firstAttribute="height" secondItem="dfW-Gb-FXf" secondAttribute="height" id="g3b-FQ-EG0"/>
+                            <constraint firstItem="lQf-jn-aPQ" firstAttribute="leading" secondItem="dfW-Gb-FXf" secondAttribute="leading" constant="30" id="gh4-6c-rX1"/>
+                            <constraint firstItem="ggj-y1-mb8" firstAttribute="width" secondItem="dfW-Gb-FXf" secondAttribute="width" id="jSZ-tF-bix"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="contentImageView" destination="ggj-y1-mb8" id="WI2-qt-TKk"/>
+                        <outlet property="emailTextField" destination="lQf-jn-aPQ" id="geU-rb-SGZ"/>
+                        <outlet property="submitButton" destination="0Uh-9h-GmP" id="AgQ-g6-CTH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7f-OL-VII" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-541.5" y="1280.5"/>
+        </scene>
         <!--Main Tabbar Controller-->
         <scene sceneID="PrQ-vF-uqb">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J1n-hn-L5q" customClass="MainTabbarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabbarController" automaticallyAdjustsScrollViewInsets="NO" id="J1n-hn-L5q" customClass="MainTabbarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="F3q-aM-tTy">
