@@ -7,22 +7,26 @@
 //
 
 #import "HinosDetailViewController.h"
+#import "ChangeToneCollectionViewCell.h"
 
-@interface HinosDetailViewController ()<UIWebViewDelegate> {
+@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
     __weak IBOutlet UIView *zoomView;
     __weak IBOutlet UIView *toolView;
     __weak IBOutlet UIView *exitZoomView;
     __weak IBOutlet UIView *pauseAutoScView;
+    __weak IBOutlet UIView *changeToneView;
     __weak IBOutlet UIButton *maxZoomWebViewButton;
     __weak IBOutlet UIButton *minZoomWebViewButton;
     __weak IBOutlet UIButton *fullScreenWebViewButton;
     __weak IBOutlet UIButton *exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *pauseAutoScButton;
+    __weak IBOutlet UICollectionView *changeToneCollectionView;
     int textFontSize;
     NSInteger maxheight;
     NSInteger currentHeight;
     NSTimer *scriptTimer;
+    NSArray *toneItemDataArray;
 }
 
 @end
@@ -34,6 +38,9 @@
     maxheight = 0;
     currentHeight = 0;
     // Do any additional setup after loading the view.
+    
+    // Init data for tone item
+    toneItemDataArray = [NSArray arrayWithObjects:@"Bb",@"B",@"C",@"Db",@"D",@"Eb",@"E",@"F",@"Gb",@"G",@"Ab",@"A",nil];
     
     //Corner for zoomView
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
@@ -56,8 +63,13 @@
     pauseMaskLayer.path = pauseMaskPath.CGPath;
     pauseAutoScView.layer.mask = pauseMaskLayer;
     
+    //Corner radius for changeToneCollectionView
+    changeToneCollectionView.layer.cornerRadius = 5;
+    changeToneCollectionView.layer.masksToBounds = YES;
+    
     exitZoomView.hidden = YES;
     pauseAutoScView.hidden = YES;
+    changeToneView.hidden = YES;
     
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
@@ -72,6 +84,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [toneItemDataArray count];
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"ChangeToneCollectionViewCell";
+    ChangeToneCollectionViewCell *changeToneCollectionViewCell = (ChangeToneCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    UILabel *titleLabel = (UILabel *)[changeToneCollectionViewCell viewWithTag:1];
+    titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
+    return changeToneCollectionViewCell;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -131,9 +158,7 @@
         [currenWebView stringByEvaluatingJavaScriptFromString:javascript];
         currentHeight ++;
     }
-    
 }
-
 
 #pragma mark - exitFullScreenWebViewAction
 
@@ -152,4 +177,15 @@
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
     [self stopScriptTimer];
 }
+
+
+- (IBAction)changeToneAction:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    if (sender.isSelected) {
+        changeToneView.hidden = NO;
+    } else {
+        changeToneView.hidden = YES;
+    }
+}
+
 @end
