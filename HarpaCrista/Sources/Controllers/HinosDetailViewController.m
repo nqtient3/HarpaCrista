@@ -114,7 +114,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *currentToneString = [toneItemDataArray objectAtIndex:indexPath.row];
+//    NSString *currentToneString = [toneItemDataArray objectAtIndex:indexPath.row];
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1];
     cell.titleLabel.textColor = [UIColor whiteColor];
@@ -222,6 +222,8 @@
 #pragma mark - pauseAutoScWebViewAction
 
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
+    UIButton *button = (UIButton*)sender;
+    button.selected = !button.isSelected;
     _isAutoScroll = !_isAutoScroll;
     
     [self stopScriptTimer];

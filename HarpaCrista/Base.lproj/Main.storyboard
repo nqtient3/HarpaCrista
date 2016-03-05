@@ -305,7 +305,10 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L86-fs-AaS" userLabel="PauseAutoScButton">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="P"/>
+                                        <state key="selected" title="R"/>
                                         <connections>
                                             <action selector="pauseAutoScWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="ryH-L4-kO2"/>
                                         </connections>
