@@ -12,6 +12,7 @@
 @interface PageItemViewController () {
     __weak IBOutlet UITextField *emailTextField;
     __weak IBOutlet UIButton *submitButton;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 @end
@@ -26,10 +27,39 @@
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     emailTextField.hidden = YES;
     submitButton.hidden = YES;
-    [super viewDidLoad];
     contentImageView.image = [UIImage imageNamed: imageName];
+    submitButton.layer.cornerRadius = 5;
+    submitButton.layer.masksToBounds = YES;
+    // Listen for keyboard appearances and disappearances
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    // Add tapGestureRecognizer for view to hide the keyboard
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                             initWithTarget:self
+                             action:@selector(dismissKeyboard)];
+}
+
+#pragma mark - Actions
+- (void)keyboardDidShow {
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)keyboardDidHide {
+    [self.view removeGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)dismissKeyboard {
+    [emailTextField resignFirstResponder];
 }
 
 #pragma mark -
