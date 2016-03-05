@@ -38,6 +38,7 @@
     BOOL _isFullScreenMode;
     NSArray *toneItemDataArray;
     CGRect partScreenRect;
+    NSString *fullString;
 }
 
 @end
@@ -84,8 +85,9 @@
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         currenWebView.delegate = self;
-        NSString *fullString = @"<body>";
+        fullString = @"<body>";
         fullString = [fullString stringByAppendingString:self.currentCDSong.cdChord];
+        NSLog(@"####3: currentCDSong : %@",self.currentCDSong.cdChord);
         fullString = [fullString stringByAppendingString:@"</body>"];
         [currenWebView loadHTMLString:[fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
     }
@@ -106,9 +108,18 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"ChangeToneCollectionViewCell";
     ChangeToneCollectionViewCell *changeToneCollectionViewCell = (ChangeToneCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    UILabel *titleLabel = (UILabel *)[changeToneCollectionViewCell viewWithTag:1];
-    titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
+    changeToneCollectionViewCell.titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
     return changeToneCollectionViewCell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *currentToneString = [toneItemDataArray objectAtIndex:indexPath.row];
+    ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1];
+    cell.titleLabel.textColor = [UIColor whiteColor];
+    changeToneView.hidden = YES;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -150,6 +161,7 @@
     }
     [self reAutoScroll];
 }
+
 
 - (void)reAutoScroll {
     [self pauseAutoScWebViewAction:nil];
