@@ -16,7 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Boot-Screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="OW3-wI-jP2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="logo_secondary.png" translatesAutoresizingMaskIntoConstraints="NO" id="IhU-2X-xYa">
+                                <rect key="frame" x="226" y="178" width="149" height="245"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="149" id="BvS-4Z-Xdx"/>
+                                    <constraint firstAttribute="height" constant="245" id="ZPu-3Y-4Mm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IhU-2X-xYa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="44o-sK-3V1"/>
+                            <constraint firstItem="OW3-wI-jP2" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="Aps-d9-61M"/>
+                            <constraint firstItem="IhU-2X-xYa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KfV-iL-MBq"/>
+                            <constraint firstItem="OW3-wI-jP2" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="SBj-9t-9S8"/>
+                            <constraint firstItem="OW3-wI-jP2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aKm-Wf-DeL"/>
+                            <constraint firstItem="OW3-wI-jP2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cCC-1c-ZaT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +44,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Boot-Screen.png" width="750" height="1334"/>
+        <image name="logo_secondary.png" width="245" height="403"/>
+    </resources>
 </document>
