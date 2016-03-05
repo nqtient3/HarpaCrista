@@ -37,6 +37,7 @@
     // Status of Fullscreen mode
     BOOL _isFullScreenMode;
     NSArray *toneItemDataArray;
+    CGRect partScreenRect;
 }
 
 @end
@@ -161,12 +162,15 @@
     _isFullScreenMode = YES;
     changeToneView.hidden = YES;
     toolView.hidden = YES;
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
     self.tabBarController.tabBar.hidden = YES;
     exitZoomView.hidden = NO;
     pauseAutoScView.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    currenWebView.frame = self.view.bounds;
+    partScreenRect = currenWebView.frame;
+    currenWebView.frame = self.view.frame;
     
     scrollViewContentHeight = currenWebView.scrollView.contentSize.height;
 
@@ -195,12 +199,13 @@
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
     _isFullScreenMode = NO;
     toolView.hidden = NO;
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.tabBar.hidden = NO;
     exitZoomView.hidden = YES;
     pauseAutoScView.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self stopScriptTimer];
+    currenWebView.frame = partScreenRect;
 }
 
 #pragma mark - pauseAutoScWebViewAction
