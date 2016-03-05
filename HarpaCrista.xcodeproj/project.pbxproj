@@ -67,6 +67,7 @@
 		A601EA781C8ABAB300E0AE3F /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */; };
 		A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */; };
 		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
+		A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +144,7 @@
 		A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
+		A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boot-Screen.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				A601EA581C8AB18500E0AE3F /* Tutorial */,
 				232D55A61C87269A002798F4 /* ic_auto_scroll_selected.png */,
 				232D55A71C87269A002798F4 /* ic_auto_scroll.png */,
+				A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */,
 				232D55A81C87269A002798F4 /* ic_global_selected.png */,
 				232D55A91C87269A002798F4 /* ic_global.png */,
 				232D55AA1C87269A002798F4 /* ic_hinos_selected.png */,
@@ -416,6 +419,7 @@
 				A601EA651C8AB1EF00E0AE3F /* Tutorial-4.png in Resources */,
 				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
+				A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */,
 				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
 				232D55C31C87269A002798F4 /* ic_mude.png in Resources */,
 				232D55C11C87269A002798F4 /* ic_metronome.png in Resources */,

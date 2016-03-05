@@ -38,6 +38,7 @@
     BOOL _isFullScreenMode;
     NSArray *toneItemDataArray;
     CGRect partScreenRect;
+    NSString *fullString;
 }
 
 @end
@@ -58,14 +59,14 @@
     zoomView.layer.mask = maskLayer;
     
     //Corner for exitZoomView
-    UIBezierPath *exitMaskPath = [UIBezierPath bezierPathWithRoundedRect:exitZoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    UIBezierPath *exitMaskPath = [UIBezierPath bezierPathWithRoundedRect:exitZoomView.bounds byRoundingCorners:(UIRectCornerTopLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *exitMaskLayer = [[CAShapeLayer alloc] init];
     exitMaskLayer.frame = self.view.bounds;
     exitMaskLayer.path  = exitMaskPath.CGPath;
     exitZoomView.layer.mask = exitMaskLayer;
     
     //Corner for pauseAutoScView
-    UIBezierPath *pauseMaskPath = [UIBezierPath bezierPathWithRoundedRect:pauseAutoScView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    UIBezierPath *pauseMaskPath = [UIBezierPath bezierPathWithRoundedRect:pauseAutoScView.bounds byRoundingCorners:(UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *pauseMaskLayer = [[CAShapeLayer alloc] init];
     pauseMaskLayer.frame = self.view.bounds;
     pauseMaskLayer.path = pauseMaskPath.CGPath;
@@ -84,7 +85,7 @@
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         currenWebView.delegate = self;
-        NSString *fullString = @"<body>";
+        fullString = @"<body>";
         fullString = [fullString stringByAppendingString:self.currentCDSong.cdChord];
         fullString = [fullString stringByAppendingString:@"</body>"];
         [currenWebView loadHTMLString:[fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
@@ -106,9 +107,18 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"ChangeToneCollectionViewCell";
     ChangeToneCollectionViewCell *changeToneCollectionViewCell = (ChangeToneCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    UILabel *titleLabel = (UILabel *)[changeToneCollectionViewCell viewWithTag:1];
-    titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
+    changeToneCollectionViewCell.titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
     return changeToneCollectionViewCell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSString *currentToneString = [toneItemDataArray objectAtIndex:indexPath.row];
+    ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1];
+    cell.titleLabel.textColor = [UIColor whiteColor];
+    changeToneView.hidden = YES;
 }
 
 #pragma mark - UIWebViewDelegate
@@ -150,6 +160,7 @@
     }
     [self reAutoScroll];
 }
+
 
 - (void)reAutoScroll {
     [self pauseAutoScWebViewAction:nil];
@@ -211,6 +222,8 @@
 #pragma mark - pauseAutoScWebViewAction
 
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
+    UIButton *button = (UIButton*)sender;
+    button.selected = !button.isSelected;
     _isAutoScroll = !_isAutoScroll;
     
     [self stopScriptTimer];

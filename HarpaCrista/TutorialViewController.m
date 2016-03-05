@@ -8,6 +8,7 @@
 
 #import "TutorialViewController.h"
 #import "PageItemViewController.h"
+#import "MainTabbarController.h"
 
 @interface TutorialViewController () <UIPageViewControllerDataSource>
 
@@ -26,6 +27,23 @@
     [super viewDidLoad];
     [self createPageViewController];
     [self setupPageControl];
+}
+
+- (void)viewDidAppear:(BOOL)animated; {
+    [super viewDidAppear:NO];
+    NSString *key = @"isLogin";
+    NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
+    NSNumber *isLogin = [userDefault objectForKey:key];
+    if ([isLogin boolValue]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
+        [self presentViewController:mainTabbarController animated:YES completion:^{
+        }];
+        
+    } else {
+        [userDefault setObject:[NSNumber numberWithBool:YES] forKey:key];
+        [userDefault synchronize];
+    }
 }
 
 - (void) createPageViewController {

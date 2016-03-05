@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChangeToneCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
