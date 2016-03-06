@@ -302,27 +302,6 @@ typedef enum {
     [self pauseAutoScWebViewAction:nil];
 }
 
-#pragma mark - MinZoomWebViewAction
-
-- (IBAction)fullScreenWebViewAction:(id)sender {
-    _isFullScreenMode = YES;
-    changeToneView.hidden = YES;
-    toolView.hidden = YES;
-    
-    self.navigationController.navigationBar.hidden = YES;
-    
-    self.tabBarController.tabBar.hidden = YES;
-    exitZoomView.hidden = NO;
-    pauseAutoScView.hidden = NO;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    partScreenRect = currenWebView.frame;
-    currenWebView.frame = self.view.frame;
-    
-    scrollViewContentHeight = currenWebView.scrollView.contentSize.height;
-
-    [self pauseAutoScWebViewAction:nil];
-}
-
 - (void)stopScriptTimer {
     if (scriptTimer != nil) {
         [scriptTimer invalidate];
@@ -340,31 +319,48 @@ typedef enum {
     }
 }
 
-#pragma mark - exitFullScreenWebViewAction
+#pragma mark - Fullscreen and Exit fullscreen modes
+- (IBAction)fullScreenWebViewAction:(id)sender {
+    _isFullScreenMode = YES;
+    changeToneView.hidden = YES;
+    toolView.hidden = YES;
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+    self.tabBarController.tabBar.hidden = YES;
+    exitZoomView.hidden = NO;
+    pauseAutoScView.hidden = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    partScreenRect = currenWebView.frame;
+    currenWebView.frame = self.view.frame;
+    
+    scrollViewContentHeight = currenWebView.scrollView.contentSize.height;
+    
+    [self pauseAutoScWebViewAction:nil];
+}
 
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _isFullScreenMode = NO;
-        toolView.hidden = NO;
-        self.navigationController.navigationBar.hidden = NO;
-        self.tabBarController.tabBar.hidden = NO;
-        exitZoomView.hidden = YES;
-        pauseAutoScView.hidden = YES;
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        if (_isAutoScroll) {
-            [self pauseAutoScWebViewAction:nil];
-        } else {
-            [self stopScriptTimer];
-        }
-        currenWebView.frame = partScreenRect;
-    });
+    _isFullScreenMode = NO;
+    toolView.hidden = NO;
+    
+    self.navigationController.navigationBar.hidden = NO;
+    
+    self.tabBarController.tabBar.hidden = NO;
+    
+    exitZoomView.hidden = YES;
+    pauseAutoScView.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    if (_isAutoScroll) {
+        [self pauseAutoScWebViewAction:nil];
+    } else {
+        [self stopScriptTimer];
+    }
+    currenWebView.frame = partScreenRect;
 }
 
 #pragma mark - pauseAutoScWebViewAction
 
 - (IBAction)pauseAutoScWebViewAction:(id)sender {
-    UIButton *button = (UIButton*)sender;
-    button.selected = !button.isSelected;
     _isAutoScroll = !_isAutoScroll;
     
     [self stopScriptTimer];
