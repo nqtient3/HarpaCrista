@@ -11,4 +11,5 @@
 @interface ChangeToneCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor;
 @end

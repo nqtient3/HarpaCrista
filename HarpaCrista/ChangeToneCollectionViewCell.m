@@ -17,4 +17,15 @@
     self.layer.borderWidth = 1.0;
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor textColor:(UIColor *)textColor{
+    self.backgroundColor = backgroundColor;
+    self.titleLabel.textColor = textColor;
+    if (backgroundColor == [UIColor whiteColor]) {
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+    } else {
+        self.layer.borderColor = backgroundColor.CGColor;
+    }
+    
+}
+
 @end

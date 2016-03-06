@@ -12,6 +12,10 @@
 #define DISTANCE_ONCE 10
 #define DEFAULT_TIME_EACH_LOOP 0.05
 
+typedef enum {
+    tone1,
+    tone2
+} tone;
 
 @interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate> {
     __weak IBOutlet UIWebView *currenWebView;
@@ -39,6 +43,8 @@
     NSArray *toneItemDataArray;
     CGRect partScreenRect;
     NSString *fullString;
+    
+    NSMutableArray *selectedRange;
 }
 
 @end
@@ -47,10 +53,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Init data for tone item
-    toneItemDataArray = [NSArray arrayWithObjects:@"Bb",@"B",@"C",@"Db",@"D",@"Eb",@"E",@"F",@"Gb",@"G",@"Ab",@"A",nil];
-    
+    if ([self currentTone] == tone1) {
+        toneItemDataArray = @[@"A ", @"A#", @"B ", @"C ", @"C#", @"D ", @"D#", @"E ", @"F ", @"F#", @"G ", @"G#"];
+    } else {
+        toneItemDataArray = @[@"A ", @"Bb", @"B ", @"C ", @"Db", @"D ", @"Eb", @"E ", @"F ", @"Gb", @"G ", @"Ab"];
+    }
+    [self changeRangeArray];
+    [self changeSelectedRangeAtIndex:0];
     //Corner for zoomView
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
@@ -92,6 +102,74 @@
     }
 }
 
+- (void)changeRangeArray {
+    NSString *firstRange = [self getFirstRange];
+    NSMutableArray *changedRange = [[NSMutableArray alloc] initWithArray:toneItemDataArray];
+    __block NSInteger firstRangeIndex = 0;
+    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *range = [(NSString *)obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if ([range isEqualToString:firstRange]) {
+            firstRangeIndex = idx;
+            *stop = YES;
+        }
+    }];
+    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        changedRange[idx] = toneItemDataArray[(firstRangeIndex-idx)%12];
+    }];
+    toneItemDataArray = [changedRange copy];
+}
+
+- (NSString *)getFirstRange {
+    NSString *inputString = self.currentCDSong.cdChord;
+    NSArray *components = [inputString componentsSeparatedByString:@"</p>"];
+    NSString *firstText = [components firstObject];
+    if (firstText) {
+        NSArray *range = [firstText componentsSeparatedByString:@"<span class=\"s1\">"];
+        NSString *lastString;
+        NSArray *nextString;
+        if ([firstText containsString:@"<span class=\"s1\">"]) {
+            lastString = [range objectAtIndex:1];
+            lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            nextString = [lastString componentsSeparatedByString:@" "];
+        } else if ([firstText containsString:@"<p class=\"p1\">"]) {
+            lastString = [range firstObject];
+            nextString = [lastString componentsSeparatedByString:@"<p class=\"p1\">"];
+            lastString = [nextString objectAtIndex:1];
+            lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            nextString = [lastString componentsSeparatedByString:@" "];
+        }
+        return [nextString firstObject];
+    }
+    return @"";
+}
+
+- (void)changeSelectedRangeAtIndex:(NSInteger)index {
+    if (!selectedRange) {
+        selectedRange = [[NSMutableArray alloc] init];
+        for (int i = 0; i<toneItemDataArray.count; i++) {
+            [selectedRange addObject:@(0)];
+        }
+    }
+    for (int i = 0; i<toneItemDataArray.count; i++) {
+        if (i == index) {
+            selectedRange[i] = @(1);
+        } else {
+            selectedRange[i] = @(0);
+        }
+    }
+}
+
+- (NSInteger)currentTone {
+    if ([self.currentCDSong.cdChord containsString:@"Eb"] ||
+        [self.currentCDSong.cdChord containsString:@"Gb"] ||
+        [self.currentCDSong.cdChord containsString:@"Ab"] ||
+        [self.currentCDSong.cdChord containsString:@"Bb"] ||
+        [self.currentCDSong.cdChord containsString:@"Db"]) {
+        return tone2;
+    }
+    return tone1;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -108,18 +186,75 @@
     static NSString *cellIdentifier = @"ChangeToneCollectionViewCell";
     ChangeToneCollectionViewCell *changeToneCollectionViewCell = (ChangeToneCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     changeToneCollectionViewCell.titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
+    NSNumber *isSelected = [selectedRange objectAtIndex:indexPath.row];
+    if (indexPath.row == 0) {
+        [changeToneCollectionViewCell setBackgroundColor:[UIColor blackColor] textColor:[UIColor whiteColor]];
+    } else {
+        [changeToneCollectionViewCell setBackgroundColor:[UIColor whiteColor] textColor:[UIColor blackColor]];
+    }
+    if ([isSelected boolValue]) {
+        [changeToneCollectionViewCell setBackgroundColor:[UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1] textColor:[UIColor whiteColor]];
+    }
     return changeToneCollectionViewCell;
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *currentToneString = [toneItemDataArray objectAtIndex:indexPath.row];
-    ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1];
-    cell.titleLabel.textColor = [UIColor whiteColor];
+    [self changeSelectedRangeAtIndex:indexPath.row];
     changeToneView.hidden = YES;
+    ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    NSString *rangeString = cell.titleLabel.text;
+    __block NSInteger toneIndex;
+    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *range = (NSString *)obj;
+        if ([range isEqualToString:rangeString]) {
+            toneIndex = idx;
+            *stop = YES;
+        }
+    }];
+    //NSString *newString = toneItemDataArray[(toneIndex-idx)%12];
+    //NSString *oldString = toneItemDataArray[idx];
+    __block NSMutableString *resultString = [[NSMutableString alloc] initWithString:fullString];
+    NSArray *arrayComponents = [fullString componentsSeparatedByString:@"</p>"];
+    [arrayComponents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx%2 == 0) {
+            NSString *oldString = [(NSString *)obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            __block NSMutableString *newString = [[NSMutableString alloc] initWithString:oldString];
+            for (NSInteger i = 0; i< toneItemDataArray.count; i++) {
+                NSRange searchRange = NSMakeRange(0,oldString.length);
+                NSRange foundRange;
+                while (searchRange.location < oldString.length) {
+                    searchRange.length = oldString.length-searchRange.location;
+                    foundRange = [oldString rangeOfString:toneItemDataArray[i] options:0 range:searchRange];
+                    if (foundRange.location != NSNotFound) {
+                        NSString *replaceString = toneItemDataArray[(labs(toneIndex - i))%12];
+                        [newString replaceOccurrencesOfString:toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
+                        searchRange.location = foundRange.location+foundRange.length;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            [resultString replaceOccurrencesOfString:oldString withString:newString options:NSCaseInsensitiveSearch range:NSMakeRange(0, fullString.length)];
+        }
+    }];
+    [currenWebView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+    [changeToneCollectionView reloadData];
 }
+
+/*
+ NSRegularExpression *_regexp = [NSRegularExpression regularExpressionWithPattern:oldString options:NSRegularExpressionCaseInsensitive error:&_error];
+ [_regexp enumerateMatchesInString:input options:NSMatchingReportCompletion range:NSMakeRange(0, input.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
+ if (result.numberOfRanges > 0) {
+ for (int i=0; i<result.numberOfRanges; i++) {
+ NSLog(@">>>>>>>>>>> oldString %@ withNewString %@", oldString, newString);
+ [outputString replaceOccurrencesOfString:oldString withString:newString options:NSCaseInsensitiveSearch range:NSMakeRange(0, outputString.length)];
+ }
+ }
+ }];
+ 
+ */
 
 #pragma mark - UIWebViewDelegate
 
