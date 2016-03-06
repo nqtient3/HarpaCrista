@@ -113,9 +113,11 @@ typedef enum {
             *stop = YES;
         }
     }];
-    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        changedRange[idx] = toneItemDataArray[(firstRangeIndex-idx)%12];
-    }];
+    for (NSInteger i=0; i<toneItemDataArray.count; i++) {
+        NSString *tone = toneItemDataArray[(firstRangeIndex+i)%12];
+        changedRange[i] = tone;
+    }
+    
     toneItemDataArray = [changedRange copy];
 }
 
@@ -215,11 +217,11 @@ typedef enum {
     }];
     //NSString *newString = toneItemDataArray[(toneIndex-idx)%12];
     //NSString *oldString = toneItemDataArray[idx];
-    __block NSMutableString *resultString = [[NSMutableString alloc] initWithString:fullString];
     NSArray *arrayComponents = [fullString componentsSeparatedByString:@"</p>"];
+    NSMutableArray *resultArray = [arrayComponents mutableCopy];
     [arrayComponents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx%2 == 0) {
-            NSString *oldString = [(NSString *)obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            NSString *oldString = [(NSString *)obj stringByAppendingString:@" "];
             __block NSMutableString *newString = [[NSMutableString alloc] initWithString:oldString];
             for (NSInteger i = 0; i< toneItemDataArray.count; i++) {
                 NSRange searchRange = NSMakeRange(0,oldString.length);
@@ -228,6 +230,9 @@ typedef enum {
                     searchRange.length = oldString.length-searchRange.location;
                     foundRange = [oldString rangeOfString:toneItemDataArray[i] options:0 range:searchRange];
                     if (foundRange.location != NSNotFound) {
+                        if (newString.length == 3118) {
+                            NSLog(@"");
+                        }
                         NSString *replaceString = toneItemDataArray[(labs(toneIndex - i))%12];
                         [newString replaceOccurrencesOfString:toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
                         searchRange.location = foundRange.location+foundRange.length;
@@ -236,25 +241,14 @@ typedef enum {
                     }
                 }
             }
-            [resultString replaceOccurrencesOfString:oldString withString:newString options:NSCaseInsensitiveSearch range:NSMakeRange(0, fullString.length)];
+            NSRange rng = [oldString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet] options:NSBackwardsSearch];
+            resultArray[idx] = [newString substringToIndex:rng.location+1];
         }
     }];
+    NSString *resultString = [resultArray componentsJoinedByString:@"</p>"];
     [currenWebView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
     [changeToneCollectionView reloadData];
 }
-
-/*
- NSRegularExpression *_regexp = [NSRegularExpression regularExpressionWithPattern:oldString options:NSRegularExpressionCaseInsensitive error:&_error];
- [_regexp enumerateMatchesInString:input options:NSMatchingReportCompletion range:NSMakeRange(0, input.length) usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
- if (result.numberOfRanges > 0) {
- for (int i=0; i<result.numberOfRanges; i++) {
- NSLog(@">>>>>>>>>>> oldString %@ withNewString %@", oldString, newString);
- [outputString replaceOccurrencesOfString:oldString withString:newString options:NSCaseInsensitiveSearch range:NSMakeRange(0, outputString.length)];
- }
- }
- }];
- 
- */
 
 #pragma mark - UIWebViewDelegate
 
