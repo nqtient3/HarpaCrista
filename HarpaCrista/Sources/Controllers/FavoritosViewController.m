@@ -12,9 +12,9 @@
 
 @interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
     NSArray *_arrayFavoriteSongs;
-    __weak IBOutlet UITableView *favoritosTableView;
-    __weak IBOutlet UIView *searchView;
-    __weak IBOutlet UISearchBar *searchBar;
+    __weak IBOutlet UITableView *_favoritosTableView;
+    __weak IBOutlet UIView *_searchView;
+    __weak IBOutlet UISearchBar *_searchBar;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
@@ -25,9 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    searchBar.barTintColor = nil;
-    searchBar.tintColor = [UIColor grayColor];
-    searchBar.delegate = self;
+    _searchBar.barTintColor = nil;
+    _searchBar.tintColor = [UIColor grayColor];
+    _searchBar.delegate = self;
     
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
     
@@ -66,17 +66,17 @@
 }
 
 - (void)dismissKeyboard {
-    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
 }
 
 - (void)reloadTableView {
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
-    [favoritosTableView reloadData];
+    [_favoritosTableView reloadData];
 }
 
 - (void)starButtonClicked:(UIButton*)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
-    NSIndexPath *indexPath = [favoritosTableView indexPathForCell:cell];
+    NSIndexPath *indexPath = [_favoritosTableView indexPathForCell:cell];
     CDSong *songItem = _arrayFavoriteSongs[indexPath.row];
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:NO];
     
@@ -129,7 +129,7 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongsWithKeyword:searchText];
-    [favoritosTableView reloadData];
+    [_favoritosTableView reloadData];
 }
 
 #pragma mark - Segue

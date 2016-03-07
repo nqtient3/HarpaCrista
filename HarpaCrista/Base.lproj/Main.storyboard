@@ -576,8 +576,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="6io-SZ-awp" id="tlD-Tu-au8"/>
-                                    <outlet property="delegate" destination="6io-SZ-awp" id="SgJ-jp-7aw"/>
+                                    <outlet property="dataSource" destination="6io-SZ-awp" id="bME-fm-Sdc"/>
+                                    <outlet property="delegate" destination="6io-SZ-awp" id="bGi-hn-Je8"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVs-6W-ANj" userLabel="LineView">
@@ -620,9 +620,9 @@
                     <navigationItem key="navigationItem" title="Favoritos" id="0mI-sr-WTJ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="favoritosTableView" destination="NTH-RA-k3Z" id="uSv-oa-bmh"/>
-                        <outlet property="searchBar" destination="Mh6-2b-nPD" id="Uca-ec-VuF"/>
-                        <outlet property="searchView" destination="WRx-RI-vqn" id="pFc-rd-xJw"/>
+                        <outlet property="_favoritosTableView" destination="NTH-RA-k3Z" id="wlN-9t-C8z"/>
+                        <outlet property="_searchBar" destination="Mh6-2b-nPD" id="iv6-uC-Xjc"/>
+                        <outlet property="_searchView" destination="WRx-RI-vqn" id="XIs-bJ-d9c"/>
                         <segue destination="Gcc-k7-XO8" kind="show" identifier="showFavoritosDetail" id="rrD-12-YWC"/>
                     </connections>
                 </viewController>
@@ -922,7 +922,7 @@
         <image name="ic_tuner_selected.png" width="72" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="068-PC-nDH"/>
+        <segue reference="rrD-12-YWC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
