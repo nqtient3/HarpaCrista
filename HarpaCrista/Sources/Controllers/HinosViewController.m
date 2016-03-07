@@ -12,9 +12,9 @@
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
     NSArray *_arraySongs;
-    __weak IBOutlet UIView *searchView;
-    __weak IBOutlet UISearchBar *searchBar;
-    __weak IBOutlet UITableView *hinosTableView;
+    __weak IBOutlet UIView *_searchView;
+    __weak IBOutlet UISearchBar *_searchBar;
+    __weak IBOutlet UITableView *_hinosTableView;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
@@ -25,9 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    searchBar.barTintColor = nil;
-    searchBar.tintColor = [UIColor grayColor];
-    searchBar.delegate = self;
+    _searchBar.barTintColor = nil;
+    _searchBar.tintColor = [UIColor grayColor];
+    _searchBar.delegate = self;
     
     _arraySongs = [CDSong getAllSongs];
     
@@ -65,18 +65,18 @@
 }
 
 - (void)dismissKeyboard {
-    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
 }
 
 - (void)reloadTableView {
     _arraySongs = [CDSong getAllSongs];
-    [hinosTableView reloadData];
+    [_hinosTableView reloadData];
 }
 
 - (void)starButtonClicked:(UIButton*)sender {
     sender.selected = !sender.isSelected;
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
-    NSIndexPath *indexPath = [hinosTableView indexPathForCell:cell];
+    NSIndexPath *indexPath = [_hinosTableView indexPathForCell:cell];
     CDSong *songItem = _arraySongs[indexPath.row];
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:sender.isSelected];
     
@@ -130,7 +130,7 @@
 #pragma mark - UISearchBarDelegate
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     _arraySongs = [CDSong getAllSongsWithKeyword:searchText];
-    [hinosTableView reloadData];
+    [_hinosTableView reloadData];
 }
 
 #pragma mark - Segue

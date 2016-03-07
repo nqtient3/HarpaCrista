@@ -112,8 +112,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="a7p-de-eNo"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kqp-kw-Ty0"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="haS-Ys-5YI"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yBS-tz-DJi"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -140,9 +140,9 @@
                     <navigationItem key="navigationItem" title="Harpa Crista com Acordes" id="0vG-Xt-qKF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="hinosTableView" destination="HCS-cO-79q" id="2uB-5I-Xrl"/>
-                        <outlet property="searchBar" destination="k9M-AW-R3G" id="DSy-1w-T1k"/>
-                        <outlet property="searchView" destination="Rbr-6x-f8J" id="d7J-w0-R1M"/>
+                        <outlet property="_hinosTableView" destination="HCS-cO-79q" id="9PV-Bz-1D9"/>
+                        <outlet property="_searchBar" destination="k9M-AW-R3G" id="548-MI-u6B"/>
+                        <outlet property="_searchView" destination="Rbr-6x-f8J" id="Ypa-OV-GhQ"/>
                         <segue destination="Gcc-k7-XO8" kind="show" identifier="showHinosDetail" id="068-PC-nDH"/>
                     </connections>
                 </viewController>
@@ -922,7 +922,7 @@
         <image name="ic_tuner_selected.png" width="72" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rrD-12-YWC"/>
+        <segue reference="068-PC-nDH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
