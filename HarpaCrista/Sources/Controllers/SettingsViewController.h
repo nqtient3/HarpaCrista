@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MaisViewController : UIViewController
+@interface SettingsViewController : UIViewController
 
 @end

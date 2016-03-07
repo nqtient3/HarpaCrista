@@ -35,13 +35,13 @@
     submitButton.layer.masksToBounds = YES;
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow)
-                                                 name:UIKeyboardDidShowNotification
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHide)
-                                                 name:UIKeyboardDidHideNotification
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
     // Add tapGestureRecognizer for view to hide the keyboard
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
@@ -50,11 +50,26 @@
 }
 
 #pragma mark - Actions
-- (void)keyboardDidShow {
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = -keyboardSize.height;
+        self.view.frame = frame;
+    }];
+    
     [self.view addGestureRecognizer:_tapGestureRecognizer];
 }
 
-- (void)keyboardDidHide {
+-(void)keyboardWillHide:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect frame = self.view.frame;
+        frame.origin.y = 0.0f;
+        self.view.frame = frame;
+    }];
     [self.view removeGestureRecognizer:_tapGestureRecognizer];
 }
 

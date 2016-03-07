@@ -6,9 +6,9 @@
 //  Copyright © 2016 Chinh Le. All rights reserved.
 //
 
-#import "MaisViewController.h"
+#import "SettingsViewController.h"
 
-@interface MaisViewController () <UITableViewDelegate,UITableViewDataSource> {
+@interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource> {
     //nameArray
     NSArray *contactSectionArray;
     NSArray *blogSectionArray;
@@ -50,7 +50,7 @@ typedef enum {
 @end
 
 
-@implementation MaisViewController
+@implementation SettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
