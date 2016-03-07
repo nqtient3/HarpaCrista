@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "CDSong.h"
+#import "MainTabbarController.h"
+#import "Constants.h"
+#import "TutorialViewController.h"
 
 #define IS_NOT_FIRST_USE_KEY @"notFirstUse"
 
@@ -31,9 +34,21 @@
     }
     
     [standardUserDefaults setBool:YES forKey:IS_NOT_FIRST_USE_KEY];
-    // synchronize the settings
-    [standardUserDefaults synchronize];
     
+    NSNumber *isLoadTutorial = [standardUserDefaults objectForKey:keyLoadTutorial];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if ([isLoadTutorial boolValue]) {
+        MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
+        self.window.rootViewController = mainTabbarController;
+        
+    } else {
+        TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+        self.window.rootViewController = tutorialViewController;
+    }
+    
+    // synchronize the settings
+    [standardUserDefaults synchronize];    
     return YES;
 }
 

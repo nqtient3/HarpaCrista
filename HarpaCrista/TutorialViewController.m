@@ -31,19 +31,6 @@
 
 - (void)viewDidAppear:(BOOL)animated; {
     [super viewDidAppear:NO];
-    NSString *key = @"isLogin";
-    NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
-    NSNumber *isLogin = [userDefault objectForKey:key];
-    if ([isLogin boolValue]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
-        [self presentViewController:mainTabbarController animated:YES completion:^{
-        }];
-        
-    } else {
-        [userDefault setObject:[NSNumber numberWithBool:YES] forKey:key];
-        [userDefault synchronize];
-    }
 }
 
 - (void) createPageViewController {
@@ -77,7 +64,8 @@
 - (void) setupPageControl {
     [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
-    [[UIPageControl appearance] setBackgroundColor: [UIColor darkGrayColor]];
+   // [[UIPageControl appearance] setBackgroundColor: [UIColor colorWithRed:8/255.0f green:0/255.0f blue:198/255.0f alpha:1]];
+    [[UIPageControl appearance] setBackgroundColor: [UIColor colorWithRed:8/255.0f green:0/255.0f blue:198/255.0f alpha:1]];
 }
 
 #pragma mark -

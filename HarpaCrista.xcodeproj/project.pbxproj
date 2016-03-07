@@ -64,10 +64,11 @@
 		A601EA691C8AB1EF00E0AE3F /* Tutorial-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */; };
 		A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */; };
 		A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */; };
-		A601EA781C8ABAB300E0AE3F /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */; };
 		A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */; };
 		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
 		A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */; };
+		A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBCF401C8D856800FA6343 /* Tutorial-1.png */; };
+		A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBCF451C8D9AEB00FA6343 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,11 +141,13 @@
 		A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageItemViewController.m; sourceTree = "<group>"; };
 		A601EA741C8AB7EB00E0AE3F /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
-		A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
 		A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
 		A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boot-Screen.png"; sourceTree = "<group>"; };
+		A6DBCF401C8D856800FA6343 /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
+		A6DBCF441C8D9AEB00FA6343 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		A6DBCF451C8D9AEB00FA6343 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,7 @@
 		23B859F31C85DA5A00144193 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A6DBCF431C8D9AD400FA6343 /* Common */,
 				23B859F71C85DA8600144193 /* Models */,
 				23B859F61C85DA7D00144193 /* Controllers */,
 				23B859F51C85DA7300144193 /* Views */,
@@ -313,8 +317,8 @@
 		A601EA581C8AB18500E0AE3F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				A6DBCF401C8D856800FA6343 /* Tutorial-1.png */,
 				A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */,
-				A601EA771C8ABAB300E0AE3F /* Tutorial-1.png */,
 				A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */,
 				A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */,
 				A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */,
@@ -324,6 +328,15 @@
 				A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */,
 			);
 			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		A6DBCF431C8D9AD400FA6343 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A6DBCF441C8D9AEB00FA6343 /* Constants.h */,
+				A6DBCF451C8D9AEB00FA6343 /* Constants.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +370,7 @@
 				TargetAttributes = {
 					23B859D51C85D9D500144193 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RYQFFB6SJD;
+						DevelopmentTeam = 6JZ875332V;
 					};
 				};
 			};
@@ -403,9 +416,9 @@
 				23B85A231C85E30B00144193 /* ic_mail.png in Resources */,
 				23B85A1F1C85E30B00144193 /* ic_azuda.png in Resources */,
 				232D55CD1C87269A002798F4 /* ic_x.png in Resources */,
+				A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */,
 				23B85A271C85E30B00144193 /* ic_star_settings.png in Resources */,
 				23B85A211C85E30B00144193 /* ic_facebook.png in Resources */,
-				A601EA781C8ABAB300E0AE3F /* Tutorial-1.png in Resources */,
 				232D55C01C87269A002798F4 /* ic_metronome_selected.png in Resources */,
 				23B85A241C85E30B00144193 /* ic_notification.png in Resources */,
 				232D55BD1C87269A002798F4 /* ic_global.png in Resources */,
@@ -447,6 +460,7 @@
 				A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */,
 				232D55A41C871CC9002798F4 /* CDSong+CoreDataProperties.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
+				A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
 				A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */,
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
@@ -497,8 +511,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -542,8 +556,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -568,14 +582,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4861110-ca8d-405a-84d6-5a2ed73a6eab";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -583,14 +597,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4861110-ca8d-405a-84d6-5a2ed73a6eab";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
