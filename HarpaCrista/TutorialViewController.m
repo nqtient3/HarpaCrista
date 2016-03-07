@@ -10,7 +10,9 @@
 #import "PageItemViewController.h"
 #import "MainTabbarController.h"
 
-@interface TutorialViewController () <UIPageViewControllerDataSource>
+@interface TutorialViewController () <UIPageViewControllerDataSource> {
+    __weak IBOutlet UIPageControl *_pageControl;
+}
 
 @property (nonatomic, strong) NSArray *contentImages;
 @property (nonatomic, strong) UIPageViewController *_pageViewController;
@@ -25,8 +27,8 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self createPageViewController];
-    [self setupPageControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated; {
@@ -56,15 +58,13 @@
     }
     
     self._pageViewController = pageController;
+    [[self._pageViewController view] setFrame:CGRectMake(0, 0, [[self view] bounds].size.width, [[self view] bounds].size.height + 37)];
+    
     [self addChildViewController: self._pageViewController];
     [self.view addSubview: self._pageViewController.view];
     [self._pageViewController didMoveToParentViewController: self];
-}
-
-- (void) setupPageControl {
-    [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
-    [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
-    [[UIPageControl appearance] setBackgroundColor: [UIColor colorWithRed:8/255.0f green:0/255.0f blue:198/255.0f alpha:1]];
+    
+    [self.view bringSubviewToFront:_pageControl];
 }
 
 #pragma mark -
@@ -73,16 +73,21 @@
 - (UIViewController *) pageViewController: (UIPageViewController *) pageViewController viewControllerBeforeViewController:(UIViewController *) viewController {
     PageItemViewController *itemController = (PageItemViewController *) viewController;
     
+    _pageControl.currentPage = itemController.itemIndex;
+    
     if (itemController.itemIndex > 0) {
-        return [self itemControllerForIndex: itemController.itemIndex-1];
+        return [self itemControllerForIndex: itemController.itemIndex - 1];
     }
     return nil;
 }
 
 - (UIViewController *) pageViewController: (UIPageViewController *) pageViewController viewControllerAfterViewController:(UIViewController *) viewController {
     PageItemViewController *itemController = (PageItemViewController *) viewController;
-    if (itemController.itemIndex+1 < [contentImages count]) {
-        return [self itemControllerForIndex: itemController.itemIndex+1];
+    
+    _pageControl.currentPage = itemController.itemIndex;
+    
+    if (itemController.itemIndex < [contentImages count] - 1) {
+        return [self itemControllerForIndex: itemController.itemIndex + 1];
     }
     return nil;
 }
@@ -102,6 +107,8 @@
 #pragma mark Page Indicator
 
 - (NSInteger) presentationCountForPageViewController: (UIPageViewController *) pageViewController {
+    _pageControl.numberOfPages = contentImages.count;
+    
     return [contentImages count] ;
 }
 
