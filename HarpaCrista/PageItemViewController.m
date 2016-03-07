@@ -53,13 +53,11 @@
 #pragma mark - Actions
 - (void)keyboardWillShow:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
     [UIView animateWithDuration:0.3 animations:^{
         CGRect frame = self.view.frame;
         frame.origin.y = -keyboardSize.height;
         self.view.frame = frame;
     }];
-    
     [self.view addGestureRecognizer:_tapGestureRecognizer];
 }
 
@@ -89,6 +87,8 @@
         });
     }
 }
+
+#pragma mark -Submit Email Action
 
 - (IBAction)submitEmailAction:(id)sender {
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];

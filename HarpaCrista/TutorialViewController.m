@@ -64,7 +64,6 @@
 - (void) setupPageControl {
     [[UIPageControl appearance] setPageIndicatorTintColor: [UIColor grayColor]];
     [[UIPageControl appearance] setCurrentPageIndicatorTintColor: [UIColor whiteColor]];
-   // [[UIPageControl appearance] setBackgroundColor: [UIColor colorWithRed:8/255.0f green:0/255.0f blue:198/255.0f alpha:1]];
     [[UIPageControl appearance] setBackgroundColor: [UIColor colorWithRed:8/255.0f green:0/255.0f blue:198/255.0f alpha:1]];
 }
 
@@ -77,18 +76,14 @@
     if (itemController.itemIndex > 0) {
         return [self itemControllerForIndex: itemController.itemIndex-1];
     }
-    
     return nil;
 }
 
 - (UIViewController *) pageViewController: (UIPageViewController *) pageViewController viewControllerAfterViewController:(UIViewController *) viewController {
     PageItemViewController *itemController = (PageItemViewController *) viewController;
-    
-    if (itemController.itemIndex+1 < [contentImages count])
-    {
+    if (itemController.itemIndex+1 < [contentImages count]) {
         return [self itemControllerForIndex: itemController.itemIndex+1];
     }
-    
     return nil;
 }
 
