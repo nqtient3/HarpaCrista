@@ -310,7 +310,7 @@
                                         <state key="normal" title="P"/>
                                         <state key="selected" title="R"/>
                                         <connections>
-                                            <action selector="pauseAutoScWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="ryH-L4-kO2"/>
+                                            <action selector="pausePlayAutoScrollWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="DSl-25-mY5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -362,8 +362,8 @@
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
-                                            <outlet property="dataSource" destination="Gcc-k7-XO8" id="m3r-5A-uU3"/>
-                                            <outlet property="delegate" destination="Gcc-k7-XO8" id="dO8-cA-ctB"/>
+                                            <outlet property="dataSource" destination="Gcc-k7-XO8" id="Xcn-0e-0Is"/>
+                                            <outlet property="delegate" destination="Gcc-k7-XO8" id="PYK-6j-AfP"/>
                                         </connections>
                                     </collectionView>
                                 </subviews>
@@ -426,18 +426,18 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="changeToneCollectionView" destination="koA-10-qs0" id="fqE-nk-4cS"/>
-                        <outlet property="changeToneView" destination="fGd-ZJ-j0F" id="cf4-C1-PYe"/>
-                        <outlet property="currenWebView" destination="kuf-9m-UwF" id="NG2-Zq-FS2"/>
-                        <outlet property="exitFullScreenWebViewButton" destination="ocs-08-hb3" id="uRx-G5-SSu"/>
-                        <outlet property="exitZoomView" destination="9pt-3V-z1P" id="uRj-6A-cln"/>
-                        <outlet property="fullScreenWebViewButton" destination="hwi-0f-lwv" id="UeG-pW-3zc"/>
-                        <outlet property="maxZoomWebViewButton" destination="M3T-bL-WNC" id="uKv-W7-fq2"/>
-                        <outlet property="minZoomWebViewButton" destination="jBg-Zb-SWa" id="idk-0v-qPb"/>
-                        <outlet property="pauseAutoScButton" destination="L86-fs-AaS" id="Hf8-Gn-nNh"/>
-                        <outlet property="pauseAutoScView" destination="DF6-fk-Bae" id="J2f-pG-4DP"/>
-                        <outlet property="toolView" destination="kd5-fE-hy0" id="Q0z-JF-aNg"/>
-                        <outlet property="zoomView" destination="lqH-aE-fK2" id="dqf-NY-fDQ"/>
+                        <outlet property="_changeToneCollectionView" destination="koA-10-qs0" id="E7g-PN-rI7"/>
+                        <outlet property="_changeToneView" destination="fGd-ZJ-j0F" id="esa-Lw-zuw"/>
+                        <outlet property="_exitFullScreenWebViewButton" destination="ocs-08-hb3" id="pnT-h6-ATG"/>
+                        <outlet property="_exitZoomView" destination="9pt-3V-z1P" id="CfG-x3-oyg"/>
+                        <outlet property="_fullScreenWebViewButton" destination="hwi-0f-lwv" id="BTJ-2o-Flk"/>
+                        <outlet property="_maxZoomWebViewButton" destination="M3T-bL-WNC" id="gml-SO-87g"/>
+                        <outlet property="_minZoomWebViewButton" destination="jBg-Zb-SWa" id="ANy-oh-bbf"/>
+                        <outlet property="_pauseAutoScrollButton" destination="L86-fs-AaS" id="oZM-j3-D5l"/>
+                        <outlet property="_pausePlayAutoScrollView" destination="DF6-fk-Bae" id="4oq-0Y-zCv"/>
+                        <outlet property="_toolView" destination="kd5-fE-hy0" id="uVd-IV-w7A"/>
+                        <outlet property="_webView" destination="kuf-9m-UwF" id="rQg-bw-Kha"/>
+                        <outlet property="_zoomView" destination="lqH-aE-fK2" id="ahH-gh-enf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Y-cd-b20" userLabel="First Responder" sceneMemberID="firstResponder"/>

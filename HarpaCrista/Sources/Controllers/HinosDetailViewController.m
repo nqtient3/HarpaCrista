@@ -18,18 +18,18 @@ typedef enum {
 } tone;
 
 @interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate> {
-    __weak IBOutlet UIWebView *currenWebView;
-    __weak IBOutlet UIView *zoomView;
-    __weak IBOutlet UIView *toolView;
-    __weak IBOutlet UIView *exitZoomView;
-    __weak IBOutlet UIView *pauseAutoScView;
-    __weak IBOutlet UIView *changeToneView;
-    __weak IBOutlet UIButton *maxZoomWebViewButton;
-    __weak IBOutlet UIButton *minZoomWebViewButton;
-    __weak IBOutlet UIButton *fullScreenWebViewButton;
-    __weak IBOutlet UIButton *exitFullScreenWebViewButton;
-    __weak IBOutlet UIButton *pauseAutoScButton;
-    __weak IBOutlet UICollectionView *changeToneCollectionView;
+    __weak IBOutlet UIWebView *_webView;
+    __weak IBOutlet UIView *_zoomView;
+    __weak IBOutlet UIView *_toolView;
+    __weak IBOutlet UIView *_exitZoomView;
+    __weak IBOutlet UIView *_pausePlayAutoScrollView;
+    __weak IBOutlet UIView *_changeToneView;
+    __weak IBOutlet UIButton *_maxZoomWebViewButton;
+    __weak IBOutlet UIButton *_minZoomWebViewButton;
+    __weak IBOutlet UIButton *_fullScreenWebViewButton;
+    __weak IBOutlet UIButton *_exitFullScreenWebViewButton;
+    __weak IBOutlet UIButton *_pauseAutoScrollButton;
+    __weak IBOutlet UICollectionView *_changeToneCollectionView;
     int textFontSize;
     float scrollViewContentHeight;
     float scrollViewContentOffset;
@@ -62,43 +62,43 @@ typedef enum {
     [self changeRangeArray];
     [self changeSelectedRangeAtIndex:0];
     //Corner for zoomView
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_zoomView.bounds byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = self.view.bounds;
     maskLayer.path  = maskPath.CGPath;
-    zoomView.layer.mask = maskLayer;
+    _zoomView.layer.mask = maskLayer;
     
     //Corner for exitZoomView
-    UIBezierPath *exitMaskPath = [UIBezierPath bezierPathWithRoundedRect:exitZoomView.bounds byRoundingCorners:(UIRectCornerTopLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    UIBezierPath *exitMaskPath = [UIBezierPath bezierPathWithRoundedRect:_exitZoomView.bounds byRoundingCorners:(UIRectCornerTopLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *exitMaskLayer = [[CAShapeLayer alloc] init];
     exitMaskLayer.frame = self.view.bounds;
     exitMaskLayer.path  = exitMaskPath.CGPath;
-    exitZoomView.layer.mask = exitMaskLayer;
+    _exitZoomView.layer.mask = exitMaskLayer;
     
     //Corner for pauseAutoScView
-    UIBezierPath *pauseMaskPath = [UIBezierPath bezierPathWithRoundedRect:pauseAutoScView.bounds byRoundingCorners:(UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
+    UIBezierPath *pauseMaskPath = [UIBezierPath bezierPathWithRoundedRect:_pausePlayAutoScrollView.bounds byRoundingCorners:(UIRectCornerBottomLeft) cornerRadii:CGSizeMake(5.0, 5.0)];
     CAShapeLayer *pauseMaskLayer = [[CAShapeLayer alloc] init];
     pauseMaskLayer.frame = self.view.bounds;
     pauseMaskLayer.path = pauseMaskPath.CGPath;
-    pauseAutoScView.layer.mask = pauseMaskLayer;
+    _pausePlayAutoScrollView.layer.mask = pauseMaskLayer;
     
     //Corner radius for changeToneCollectionView
-    changeToneCollectionView.layer.cornerRadius = 5;
-    changeToneCollectionView.layer.masksToBounds = YES;
+    _changeToneCollectionView.layer.cornerRadius = 5;
+    _changeToneCollectionView.layer.masksToBounds = YES;
     
-    exitZoomView.hidden = YES;
-    pauseAutoScView.hidden = YES;
+    _exitZoomView.hidden = YES;
+    _pausePlayAutoScrollView.hidden = YES;
     // Set default time for each loop
     timeEachLoop = DEFAULT_TIME_EACH_LOOP;
-    changeToneView.hidden = YES;
+    _changeToneView.hidden = YES;
     
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
-        currenWebView.delegate = self;
+        _webView.delegate = self;
         fullString = @"<body>";
         fullString = [fullString stringByAppendingString:self.currentCDSong.cdChord];
         fullString = [fullString stringByAppendingString:@"</body>"];
-        [currenWebView loadHTMLString:[fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+        [_webView loadHTMLString:[fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
     }
 }
 
@@ -204,7 +204,7 @@ typedef enum {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self changeSelectedRangeAtIndex:indexPath.row];
-    changeToneView.hidden = YES;
+    _changeToneView.hidden = YES;
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
     __block NSInteger toneIndex;
@@ -215,8 +215,6 @@ typedef enum {
             *stop = YES;
         }
     }];
-    //NSString *newString = toneItemDataArray[(toneIndex-idx)%12];
-    //NSString *oldString = toneItemDataArray[idx];
     NSArray *arrayComponents = [fullString componentsSeparatedByString:@"</p>"];
     NSMutableArray *resultArray = [arrayComponents mutableCopy];
     [arrayComponents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -246,15 +244,15 @@ typedef enum {
         }
     }];
     NSString *resultString = [resultArray componentsJoinedByString:@"</p>"];
-    [currenWebView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
-    [changeToneCollectionView reloadData];
+    [_webView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+    [_changeToneCollectionView reloadData];
 }
 
 #pragma mark - UIWebViewDelegate
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
-    [currenWebView stringByEvaluatingJavaScriptFromString:bodyStyle];
+    [_webView stringByEvaluatingJavaScriptFromString:bodyStyle];
     textFontSize = 100;
 }
 
@@ -265,7 +263,7 @@ typedef enum {
         textFontSize = (textFontSize < 160) ? textFontSize +10 : textFontSize;
         NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
                               textFontSize];
-        [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+        [_webView stringByEvaluatingJavaScriptFromString:jsString];
     } else {
         if (timeEachLoop > 0.01) {
             timeEachLoop -= 0.01;
@@ -281,7 +279,7 @@ typedef enum {
         textFontSize = (textFontSize > 50) ? textFontSize -10 : textFontSize;
         NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
                               textFontSize];
-        [currenWebView stringByEvaluatingJavaScriptFromString:jsString];
+        [_webView stringByEvaluatingJavaScriptFromString:jsString];
     } else {
         if (timeEachLoop < 0.1) {
             timeEachLoop += 0.01;
@@ -292,8 +290,8 @@ typedef enum {
 
 
 - (void)reAutoScroll {
-    [self pauseAutoScWebViewAction:nil];
-    [self pauseAutoScWebViewAction:nil];
+    [self pausePlayAutoScrollWebViewAction:nil];
+    [self pausePlayAutoScrollWebViewAction:nil];
 }
 
 - (void)stopScriptTimer {
@@ -304,57 +302,57 @@ typedef enum {
 }
 
 - (void)startAnimationTimer {
-    if (currenWebView.scrollView.contentOffset.y >= scrollViewContentHeight - currenWebView.scrollView.frame.size.height) {
+    if (_webView.scrollView.contentOffset.y >= scrollViewContentHeight - _webView.scrollView.frame.size.height) {
         [self stopScriptTimer];
     } else {
-        CGPoint point = currenWebView.scrollView.contentOffset;
+        CGPoint point = _webView.scrollView.contentOffset;
         
-        [currenWebView.scrollView setContentOffset:CGPointMake(point.x, point.y + 1)];
+        [_webView.scrollView setContentOffset:CGPointMake(point.x, point.y + 1)];
     }
 }
 
 #pragma mark - Fullscreen and Exit fullscreen modes
 - (IBAction)fullScreenWebViewAction:(id)sender {
     _isFullScreenMode = YES;
-    changeToneView.hidden = YES;
-    toolView.hidden = YES;
+    _changeToneView.hidden = YES;
+    _toolView.hidden = YES;
     
     self.navigationController.navigationBar.hidden = YES;
     
     self.tabBarController.tabBar.hidden = YES;
-    exitZoomView.hidden = NO;
-    pauseAutoScView.hidden = NO;
+    _exitZoomView.hidden = NO;
+    _pausePlayAutoScrollView.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    partScreenRect = currenWebView.frame;
-    currenWebView.frame = self.view.frame;
+    partScreenRect = _webView.frame;
+    _webView.frame = self.view.frame;
     
-    scrollViewContentHeight = currenWebView.scrollView.contentSize.height;
+    scrollViewContentHeight = _webView.scrollView.contentSize.height;
     
-    [self pauseAutoScWebViewAction:nil];
+    [self pausePlayAutoScrollWebViewAction:nil];
 }
 
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
     _isFullScreenMode = NO;
-    toolView.hidden = NO;
+    _toolView.hidden = NO;
     
     self.navigationController.navigationBar.hidden = NO;
     
     self.tabBarController.tabBar.hidden = NO;
     
-    exitZoomView.hidden = YES;
-    pauseAutoScView.hidden = YES;
+    _exitZoomView.hidden = YES;
+    _pausePlayAutoScrollView.hidden = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if (_isAutoScroll) {
-        [self pauseAutoScWebViewAction:nil];
+        [self pausePlayAutoScrollWebViewAction:nil];
     } else {
         [self stopScriptTimer];
     }
-    currenWebView.frame = partScreenRect;
+    _webView.frame = partScreenRect;
 }
 
 #pragma mark - pauseAutoScWebViewAction
 
-- (IBAction)pauseAutoScWebViewAction:(id)sender {
+- (IBAction)pausePlayAutoScrollWebViewAction:(id)sender {
     _isAutoScroll = !_isAutoScroll;
     
     [self stopScriptTimer];
@@ -367,9 +365,9 @@ typedef enum {
 - (IBAction)changeToneAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
-        changeToneView.hidden = NO;
+        _changeToneView.hidden = NO;
     } else {
-        changeToneView.hidden = YES;
+        _changeToneView.hidden = YES;
     }
 }
 
