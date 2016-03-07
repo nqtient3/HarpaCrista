@@ -9,7 +9,7 @@
 #import "MainTabbarController.h"
 
 @interface MainTabbarController () {
-    __weak IBOutlet UITabBar *mainTabBarController;
+    __weak IBOutlet UITabBar *_mainTabBarController;
 }
 
 @end

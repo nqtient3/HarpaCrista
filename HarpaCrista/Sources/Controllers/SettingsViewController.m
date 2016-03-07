@@ -19,7 +19,7 @@
     NSArray *contactSectionArrayImage;
     NSArray *blogSectionArrayImage;
     NSArray *socialSectionArrayImage;
-    __weak IBOutlet UITableView *maisTableView;
+    __weak IBOutlet UITableView *_maisTableView;
 }
 
 typedef enum {
@@ -106,9 +106,7 @@ typedef enum {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
     [self configureCell:cell atIndexPath:indexPath];
-    
     return cell;
 }
 

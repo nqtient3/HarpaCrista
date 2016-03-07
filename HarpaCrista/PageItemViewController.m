@@ -11,10 +11,10 @@
 #import "Constants.h"
 
 @interface PageItemViewController () {
-    __weak IBOutlet UITextField *emailTextField;
-    __weak IBOutlet UIButton *submitButton;
+    __weak IBOutlet UITextField *_emailTextField;
+    __weak IBOutlet UIButton *_submitButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    __weak IBOutlet UIImageView *contentImageView;
+    __weak IBOutlet UIImageView *_contentImageView;
 }
 
 @end
@@ -29,11 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    emailTextField.hidden = YES;
-    submitButton.hidden = YES;
-    contentImageView.image = [UIImage imageNamed: imageName];
-    submitButton.layer.cornerRadius = 5;
-    submitButton.layer.masksToBounds = YES;
+    _emailTextField.hidden = YES;
+    _submitButton.hidden = YES;
+    _contentImageView.image = [UIImage imageNamed: imageName];
+    _submitButton.layer.cornerRadius = 5;
+    _submitButton.layer.masksToBounds = YES;
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -71,7 +71,7 @@
 }
 
 - (void)dismissKeyboard {
-    [emailTextField resignFirstResponder];
+    [_emailTextField resignFirstResponder];
 }
 
 #pragma mark -
@@ -79,11 +79,11 @@
 
 - (void) setImageName: (NSString *) name {
     imageName = name;
-    contentImageView.image = [UIImage imageNamed: imageName];
+    _contentImageView.image = [UIImage imageNamed: imageName];
     if ([imageName isEqualToString:@"Tutorial-9.png"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            emailTextField.hidden = NO;
-            submitButton.hidden = NO;
+            _emailTextField.hidden = NO;
+            _submitButton.hidden = NO;
         });
     }
 }

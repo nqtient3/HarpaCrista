@@ -689,8 +689,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="5QK-ZS-hbf" id="y9x-Pb-wRh"/>
-                                    <outlet property="delegate" destination="5QK-ZS-hbf" id="QFL-Fo-llt"/>
+                                    <outlet property="dataSource" destination="5QK-ZS-hbf" id="R6t-lZ-pEA"/>
+                                    <outlet property="delegate" destination="5QK-ZS-hbf" id="6XA-bt-Rjc"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -711,7 +711,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="O6p-gn-fQD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="maisTableView" destination="Uf0-ea-1VI" id="xJc-X7-fX6"/>
+                        <outlet property="_maisTableView" destination="Uf0-ea-1VI" id="SbH-8s-9y5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNM-1L-LOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -828,9 +828,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="contentImageView" destination="ggj-y1-mb8" id="WI2-qt-TKk"/>
-                        <outlet property="emailTextField" destination="lQf-jn-aPQ" id="geU-rb-SGZ"/>
-                        <outlet property="submitButton" destination="0Uh-9h-GmP" id="AgQ-g6-CTH"/>
+                        <outlet property="_contentImageView" destination="ggj-y1-mb8" id="r2U-Y5-p8I"/>
+                        <outlet property="_emailTextField" destination="lQf-jn-aPQ" id="iqd-EJ-Cug"/>
+                        <outlet property="_submitButton" destination="0Uh-9h-GmP" id="wAD-22-bpf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D7f-OL-VII" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -850,7 +850,7 @@
                         <color key="selectedImageTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <outlet property="mainTabBarController" destination="F3q-aM-tTy" id="4HQ-bY-jGl"/>
+                        <outlet property="_mainTabBarController" destination="F3q-aM-tTy" id="pbm-t5-DIp"/>
                         <segue destination="Hwl-jm-jKT" kind="relationship" relationship="viewControllers" id="Ura-tR-P7A"/>
                         <segue destination="REc-Ch-OOF" kind="relationship" relationship="viewControllers" id="4YP-s9-v8s"/>
                         <segue destination="2Cm-IO-Xc5" kind="relationship" relationship="viewControllers" id="wWo-ht-0PG"/>

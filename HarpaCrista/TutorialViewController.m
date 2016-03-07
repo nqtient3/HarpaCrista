@@ -13,7 +13,7 @@
 @interface TutorialViewController () <UIPageViewControllerDataSource>
 
 @property (nonatomic, strong) NSArray *contentImages;
-@property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UIPageViewController *_pageViewController;
 
 @end
 
@@ -55,10 +55,10 @@
                                 completion: nil];
     }
     
-    self.pageViewController = pageController;
-    [self addChildViewController: self.pageViewController];
-    [self.view addSubview: self.pageViewController.view];
-    [self.pageViewController didMoveToParentViewController: self];
+    self._pageViewController = pageController;
+    [self addChildViewController: self._pageViewController];
+    [self.view addSubview: self._pageViewController.view];
+    [self._pageViewController didMoveToParentViewController: self];
 }
 
 - (void) setupPageControl {
