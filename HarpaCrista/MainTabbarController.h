@@ -10,6 +10,4 @@
 
 @interface MainTabbarController : UITabBarController
 
-@property (weak, nonatomic) IBOutlet UITabBar *mainTabBarController;
-
 @end

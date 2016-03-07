@@ -803,7 +803,7 @@
                                 </constraints>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitEmailActiion:" destination="3PA-np-O52" eventType="touchUpInside" id="Soo-wH-393"/>
+                                    <action selector="submitEmailAction:" destination="3PA-np-O52" eventType="touchUpInside" id="euP-Bp-T0B"/>
                                 </connections>
                             </button>
                         </subviews>

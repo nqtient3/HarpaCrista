@@ -14,6 +14,7 @@
     __weak IBOutlet UITextField *emailTextField;
     __weak IBOutlet UIButton *submitButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    __weak IBOutlet UIImageView *contentImageView;
 }
 
 @end
@@ -22,7 +23,6 @@
 
 @synthesize itemIndex;
 @synthesize imageName;
-@synthesize contentImageView;
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -51,8 +51,7 @@
 }
 
 #pragma mark - Actions
-- (void)keyboardWillShow:(NSNotification *)notification
-{
+- (void)keyboardWillShow:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     
     [UIView animateWithDuration:0.3 animations:^{
@@ -64,8 +63,7 @@
     [self.view addGestureRecognizer:_tapGestureRecognizer];
 }
 
--(void)keyboardWillHide:(NSNotification *)notification
-{
+-(void)keyboardWillHide:(NSNotification *)notification {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect frame = self.view.frame;
         frame.origin.y = 0.0f;
@@ -92,7 +90,7 @@
     }
 }
 
-- (IBAction)submitEmailActiion:(id)sender {
+- (IBAction)submitEmailAction:(id)sender {
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
     [userDefault synchronize];

@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource> {
+    
     //nameArray
     NSArray *contactSectionArray;
     NSArray *blogSectionArray;

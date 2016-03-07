@@ -12,11 +12,5 @@
 @interface HinosDetailViewController : UIViewController
 
 @property (nonatomic, strong) CDSong *currentCDSong;
-- (IBAction)maxZoomWebViewAction:(id)sender;
-- (IBAction)minZoomWebViewAction:(id)sender;
-- (IBAction)fullScreenWebViewAction:(id)sender;
-- (IBAction)exitFullScreenWebViewAction:(id)sender;
-- (IBAction)pauseAutoScWebViewAction:(id)sender;
-- (IBAction)changeToneAction:(UIButton *)sender;
 
 @end
