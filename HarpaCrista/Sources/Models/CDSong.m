@@ -106,7 +106,7 @@
     
     if (![keyword isEqualToString:@""]) {
         // setup a predicate
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"cdTitle contains[c] %@", keyword];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(cdTitle contains[c] %@) OR (cdSongID contains[c] %@)", keyword, keyword];
         
         // give the predicate to the fetch request
         request.predicate = predicate;
@@ -160,7 +160,7 @@
     // setup a predicate
     NSPredicate *predicate;
     if (![keyword isEqualToString:@""]) {
-        predicate = [NSPredicate predicateWithFormat:@"(cdIsFavorite == %i) AND (cdTitle contains[c] %@)", [[NSNumber numberWithBool:YES] intValue], keyword];
+        predicate = [NSPredicate predicateWithFormat:@"(cdIsFavorite == %i) AND ((cdTitle contains[c] %@)  OR (cdSongID contains[c] %@))", [[NSNumber numberWithBool:YES] intValue], keyword, keyword];
     } else {
         predicate = [NSPredicate predicateWithFormat:@"cdIsFavorite == %i", [[NSNumber numberWithBool:YES] intValue]];
     }
