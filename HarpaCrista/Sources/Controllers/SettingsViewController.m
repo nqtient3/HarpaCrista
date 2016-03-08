@@ -59,13 +59,13 @@ typedef enum {
 
 - (void)initData {
     //Init Name Array
-    _contactSectionArray = [NSArray arrayWithObjects:@"Notificatoes",@"Ajuda",@"Contactar",@"Avaliacao",@"Compatihar", nil];
+    _contactSectionArray = [NSArray arrayWithObjects:@"Ajuda",@"Contactar",@"Avaliacao",@"Compatihar", nil];
     _blogSectionArray = [NSArray arrayWithObjects:@"Loja",@"Blog",@"Boletim", nil];
     _socialSectionArray = [NSArray arrayWithObjects:@"Instagram",@"Facebook",@"Twitter", nil];
     
     //Init ImageArray
     
-    _contactSectionArrayImage = [NSArray arrayWithObjects:@"ic_notification",@"ic_azuda",@"ic_person",@"ic_star_settings",@"ic_share", nil];
+    _contactSectionArrayImage = [NSArray arrayWithObjects:@"ic_azuda",@"ic_person",@"ic_star_settings",@"ic_share", nil];
     _blogSectionArrayImage = [NSArray arrayWithObjects:@"ic_trolley",@"ic_book",@"ic_mail", nil];
     _socialSectionArrayImage = [NSArray arrayWithObjects:@"ic_instagram",@"ic_facebook",@"ic_twiiter", nil];
 }
@@ -114,7 +114,12 @@ typedef enum {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 2) {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Coming soon" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        }
+    } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.instagram.com/harpacrista7"]];
         } else if (indexPath.row == 1) {
