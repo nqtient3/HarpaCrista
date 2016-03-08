@@ -29,6 +29,7 @@ typedef enum {
     __weak IBOutlet UIButton *_fullScreenWebViewButton;
     __weak IBOutlet UIButton *_exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *_pauseAutoScrollButton;
+    __weak IBOutlet UIButton *_mudeButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
     int _textFontSize;
     float _scrollViewContentHeight;
@@ -43,6 +44,7 @@ typedef enum {
     CGRect _partScreenRect;
     NSString *_fullString;
     NSMutableArray *_selectedRange;
+    BOOL _isChangeToneView;
 }
 @end
 
@@ -201,7 +203,7 @@ typedef enum {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self changeSelectedRangeAtIndex:indexPath.row];
-    _changeToneView.hidden = YES;
+    [self changeToneAction:_mudeButton];
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
     __block NSInteger toneIndex;
@@ -242,6 +244,7 @@ typedef enum {
     }];
     NSString *resultString = [resultArray componentsJoinedByString:@"</p>"];
     [_webView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+    _isChangeToneView = NO;
     [_changeToneCollectionView reloadData];
 }
 
@@ -360,8 +363,8 @@ typedef enum {
 }
 
 - (IBAction)changeToneAction:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    if (sender.isSelected) {
+     sender.selected = !sender.isSelected;
+    if (sender.selected) {
         _changeToneView.hidden = NO;
     } else {
         _changeToneView.hidden = YES;

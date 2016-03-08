@@ -433,6 +433,7 @@
                         <outlet property="_fullScreenWebViewButton" destination="hwi-0f-lwv" id="BTJ-2o-Flk"/>
                         <outlet property="_maxZoomWebViewButton" destination="M3T-bL-WNC" id="gml-SO-87g"/>
                         <outlet property="_minZoomWebViewButton" destination="jBg-Zb-SWa" id="ANy-oh-bbf"/>
+                        <outlet property="_mudeButton" destination="h87-9N-Ixt" id="YgD-8B-LOO"/>
                         <outlet property="_pauseAutoScrollButton" destination="L86-fs-AaS" id="oZM-j3-D5l"/>
                         <outlet property="_pausePlayAutoScrollView" destination="DF6-fk-Bae" id="4oq-0Y-zCv"/>
                         <outlet property="_toolView" destination="kd5-fE-hy0" id="uVd-IV-w7A"/>
