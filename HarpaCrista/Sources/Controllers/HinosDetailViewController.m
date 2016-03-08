@@ -30,23 +30,20 @@ typedef enum {
     __weak IBOutlet UIButton *_exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *_pauseAutoScrollButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
-    int textFontSize;
-    float scrollViewContentHeight;
-    float scrollViewContentOffset;
-    NSTimer *scriptTimer;
+    int _textFontSize;
+    float _scrollViewContentHeight;
+    float _scrollViewContentOffset;
+    NSTimer *_scriptTimer;
     float timeEachLoop;
-    
     // Status of AutoScroll/Pause button
     BOOL _isAutoScroll;
     // Status of Fullscreen mode
     BOOL _isFullScreenMode;
-    NSArray *toneItemDataArray;
-    CGRect partScreenRect;
-    NSString *fullString;
-    
-    NSMutableArray *selectedRange;
+    NSArray *_toneItemDataArray;
+    CGRect _partScreenRect;
+    NSString *_fullString;
+    NSMutableArray *_selectedRange;
 }
-
 @end
 
 @implementation HinosDetailViewController
@@ -55,9 +52,9 @@ typedef enum {
     [super viewDidLoad];
     // Init data for tone item
     if ([self currentTone] == tone1) {
-        toneItemDataArray = @[@"A ", @"A#", @"B ", @"C ", @"C#", @"D ", @"D#", @"E ", @"F ", @"F#", @"G ", @"G#"];
+        _toneItemDataArray = @[@"A ", @"A#", @"B ", @"C ", @"C#", @"D ", @"D#", @"E ", @"F ", @"F#", @"G ", @"G#"];
     } else {
-        toneItemDataArray = @[@"A ", @"Bb", @"B ", @"C ", @"Db", @"D ", @"Eb", @"E ", @"F ", @"Gb", @"G ", @"Ab"];
+        _toneItemDataArray = @[@"A ", @"Bb", @"B ", @"C ", @"Db", @"D ", @"Eb", @"E ", @"F ", @"Gb", @"G ", @"Ab"];
     }
     [self changeRangeArray];
     [self changeSelectedRangeAtIndex:0];
@@ -95,30 +92,30 @@ typedef enum {
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
         _webView.delegate = self;
-        fullString = @"<body>";
-        fullString = [fullString stringByAppendingString:self.currentCDSong.cdChord];
-        fullString = [fullString stringByAppendingString:@"</body>"];
-        [_webView loadHTMLString:[fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+        _fullString = @"<body>";
+        _fullString = [_fullString stringByAppendingString:self.currentCDSong.cdChord];
+        _fullString = [_fullString stringByAppendingString:@"</body>"];
+        [_webView loadHTMLString:[_fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
     }
 }
 
 - (void)changeRangeArray {
     NSString *firstRange = [self getFirstRange];
-    NSMutableArray *changedRange = [[NSMutableArray alloc] initWithArray:toneItemDataArray];
+    NSMutableArray *changedRange = [[NSMutableArray alloc] initWithArray:_toneItemDataArray];
     __block NSInteger firstRangeIndex = 0;
-    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *range = [(NSString *)obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         if ([range isEqualToString:firstRange]) {
             firstRangeIndex = idx;
             *stop = YES;
         }
     }];
-    for (NSInteger i=0; i<toneItemDataArray.count; i++) {
-        NSString *tone = toneItemDataArray[(firstRangeIndex+i)%12];
+    for (NSInteger i=0; i<_toneItemDataArray.count; i++) {
+        NSString *tone = _toneItemDataArray[(firstRangeIndex+i)%12];
         changedRange[i] = tone;
     }
     
-    toneItemDataArray = [changedRange copy];
+    _toneItemDataArray = [changedRange copy];
 }
 
 - (NSString *)getFirstRange {
@@ -146,17 +143,17 @@ typedef enum {
 }
 
 - (void)changeSelectedRangeAtIndex:(NSInteger)index {
-    if (!selectedRange) {
-        selectedRange = [[NSMutableArray alloc] init];
-        for (int i = 0; i<toneItemDataArray.count; i++) {
-            [selectedRange addObject:@(0)];
+    if (!_selectedRange) {
+        _selectedRange = [[NSMutableArray alloc] init];
+        for (int i = 0; i<_toneItemDataArray.count; i++) {
+            [_selectedRange addObject:@(0)];
         }
     }
-    for (int i = 0; i<toneItemDataArray.count; i++) {
+    for (int i = 0; i<_toneItemDataArray.count; i++) {
         if (i == index) {
-            selectedRange[i] = @(1);
+            _selectedRange[i] = @(1);
         } else {
-            selectedRange[i] = @(0);
+            _selectedRange[i] = @(0);
         }
     }
 }
@@ -180,15 +177,15 @@ typedef enum {
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [toneItemDataArray count];
+    return [_toneItemDataArray count];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"ChangeToneCollectionViewCell";
     ChangeToneCollectionViewCell *changeToneCollectionViewCell = (ChangeToneCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    changeToneCollectionViewCell.titleLabel.text = [toneItemDataArray objectAtIndex:indexPath.row];
-    NSNumber *isSelected = [selectedRange objectAtIndex:indexPath.row];
+    changeToneCollectionViewCell.titleLabel.text = [_toneItemDataArray objectAtIndex:indexPath.row];
+    NSNumber *isSelected = [_selectedRange objectAtIndex:indexPath.row];
     if (indexPath.row == 0) {
         [changeToneCollectionViewCell setBackgroundColor:[UIColor blackColor] textColor:[UIColor whiteColor]];
     } else {
@@ -208,31 +205,31 @@ typedef enum {
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
     __block NSInteger toneIndex;
-    [toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *range = (NSString *)obj;
         if ([range isEqualToString:rangeString]) {
             toneIndex = idx;
             *stop = YES;
         }
     }];
-    NSArray *arrayComponents = [fullString componentsSeparatedByString:@"</p>"];
+    NSArray *arrayComponents = [_fullString componentsSeparatedByString:@"</p>"];
     NSMutableArray *resultArray = [arrayComponents mutableCopy];
     [arrayComponents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx%2 == 0) {
             NSString *oldString = [(NSString *)obj stringByAppendingString:@" "];
             __block NSMutableString *newString = [[NSMutableString alloc] initWithString:oldString];
-            for (NSInteger i = 0; i< toneItemDataArray.count; i++) {
+            for (NSInteger i = 0; i< _toneItemDataArray.count; i++) {
                 NSRange searchRange = NSMakeRange(0,oldString.length);
                 NSRange foundRange;
                 while (searchRange.location < oldString.length) {
                     searchRange.length = oldString.length-searchRange.location;
-                    foundRange = [oldString rangeOfString:toneItemDataArray[i] options:0 range:searchRange];
+                    foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:0 range:searchRange];
                     if (foundRange.location != NSNotFound) {
                         if (newString.length == 3118) {
                             NSLog(@"");
                         }
-                        NSString *replaceString = toneItemDataArray[(labs(toneIndex - i))%12];
-                        [newString replaceOccurrencesOfString:toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
+                        NSString *replaceString = _toneItemDataArray[(labs(toneIndex - i))%12];
+                        [newString replaceOccurrencesOfString:_toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
                         searchRange.location = foundRange.location+foundRange.length;
                     } else {
                         break;
@@ -253,16 +250,16 @@ typedef enum {
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
     [_webView stringByEvaluatingJavaScriptFromString:bodyStyle];
-    textFontSize = 100;
+    _textFontSize = 100;
 }
 
 #pragma mark - MaxZoomWebViewAction
 
 - (IBAction)maxZoomWebViewAction:(id)sender {
     if (!_isFullScreenMode) {
-        textFontSize = (textFontSize < 160) ? textFontSize +10 : textFontSize;
+        _textFontSize = (_textFontSize < 160) ? _textFontSize +10 : _textFontSize;
         NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
-                              textFontSize];
+                              _textFontSize];
         [_webView stringByEvaluatingJavaScriptFromString:jsString];
     } else {
         if (timeEachLoop > 0.01) {
@@ -276,9 +273,9 @@ typedef enum {
 
 - (IBAction)minZoomWebViewAction:(id)sender {
     if (!_isFullScreenMode) {
-        textFontSize = (textFontSize > 50) ? textFontSize -10 : textFontSize;
+        _textFontSize = (_textFontSize > 50) ? _textFontSize -10 : _textFontSize;
         NSString *jsString = [[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '%d%%'",
-                              textFontSize];
+                              _textFontSize];
         [_webView stringByEvaluatingJavaScriptFromString:jsString];
     } else {
         if (timeEachLoop < 0.1) {
@@ -295,14 +292,14 @@ typedef enum {
 }
 
 - (void)stopScriptTimer {
-    if (scriptTimer != nil) {
-        [scriptTimer invalidate];
-        scriptTimer = nil;
+    if (_scriptTimer != nil) {
+        [_scriptTimer invalidate];
+        _scriptTimer = nil;
     }
 }
 
 - (void)startAnimationTimer {
-    if (_webView.scrollView.contentOffset.y >= scrollViewContentHeight - _webView.scrollView.frame.size.height) {
+    if (_webView.scrollView.contentOffset.y >= _scrollViewContentHeight - _webView.scrollView.frame.size.height) {
         [self stopScriptTimer];
     } else {
         CGPoint point = _webView.scrollView.contentOffset;
@@ -323,10 +320,10 @@ typedef enum {
     _exitZoomView.hidden = NO;
     _pausePlayAutoScrollView.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    partScreenRect = _webView.frame;
+    _partScreenRect = _webView.frame;
     _webView.frame = self.view.frame;
     
-    scrollViewContentHeight = _webView.scrollView.contentSize.height;
+    _scrollViewContentHeight = _webView.scrollView.contentSize.height;
     
     [self pausePlayAutoScrollWebViewAction:nil];
 }
@@ -347,7 +344,7 @@ typedef enum {
     } else {
         [self stopScriptTimer];
     }
-    _webView.frame = partScreenRect;
+    _webView.frame = _partScreenRect;
 }
 
 #pragma mark - pauseAutoScWebViewAction
@@ -358,7 +355,7 @@ typedef enum {
     [self stopScriptTimer];
     
     if (_isAutoScroll) {
-        scriptTimer = [NSTimer scheduledTimerWithTimeInterval:timeEachLoop target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
+        _scriptTimer = [NSTimer scheduledTimerWithTimeInterval:timeEachLoop target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
     }
 }
 

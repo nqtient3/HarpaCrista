@@ -17,7 +17,6 @@
     __weak IBOutlet UISearchBar *_searchBar;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
-
 @end
 
 @implementation FavoritosViewController

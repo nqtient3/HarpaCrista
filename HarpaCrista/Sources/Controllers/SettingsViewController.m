@@ -9,16 +9,15 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource> {
-    
     //nameArray
-    NSArray *contactSectionArray;
-    NSArray *blogSectionArray;
-    NSArray *socialSectionArray;
+    NSArray *_contactSectionArray;
+    NSArray *_blogSectionArray;
+    NSArray *_socialSectionArray;
     
     //ImageArray
-    NSArray *contactSectionArrayImage;
-    NSArray *blogSectionArrayImage;
-    NSArray *socialSectionArrayImage;
+    NSArray *_contactSectionArrayImage;
+    NSArray *_blogSectionArrayImage;
+    NSArray *_socialSectionArrayImage;
     __weak IBOutlet UITableView *_maisTableView;
 }
 
@@ -47,7 +46,6 @@ typedef enum {
     Facebook,
     Twitter
 } SocialsSection;
-
 @end
 
 
@@ -59,16 +57,17 @@ typedef enum {
     [self initData];
 }
 
-- (void) initData {
+- (void)initData {
     //Init Name Array
-    contactSectionArray = [NSArray arrayWithObjects:@"Notificatoes",@"Ajuda",@"Contactar",@"Avaliacao",@"Compatihar", nil];
-    blogSectionArray = [NSArray arrayWithObjects:@"Loja",@"Blog",@"Boletim", nil];
-    socialSectionArray = [NSArray arrayWithObjects:@"Instagram",@"Facebook",@"Twitter", nil];
+    _contactSectionArray = [NSArray arrayWithObjects:@"Notificatoes",@"Ajuda",@"Contactar",@"Avaliacao",@"Compatihar", nil];
+    _blogSectionArray = [NSArray arrayWithObjects:@"Loja",@"Blog",@"Boletim", nil];
+    _socialSectionArray = [NSArray arrayWithObjects:@"Instagram",@"Facebook",@"Twitter", nil];
     
     //Init ImageArray
-    contactSectionArrayImage = [NSArray arrayWithObjects:@"ic_notification",@"ic_azuda",@"ic_person",@"ic_star_settings",@"ic_share", nil];
-    blogSectionArrayImage = [NSArray arrayWithObjects:@"ic_trolley",@"ic_book",@"ic_mail", nil];
-    socialSectionArrayImage = [NSArray arrayWithObjects:@"ic_instagram",@"ic_facebook",@"ic_twiiter", nil];
+    
+    _contactSectionArrayImage = [NSArray arrayWithObjects:@"ic_notification",@"ic_azuda",@"ic_person",@"ic_star_settings",@"ic_share", nil];
+    _blogSectionArrayImage = [NSArray arrayWithObjects:@"ic_trolley",@"ic_book",@"ic_mail", nil];
+    _socialSectionArrayImage = [NSArray arrayWithObjects:@"ic_instagram",@"ic_facebook",@"ic_twiiter", nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,11 +90,11 @@ typedef enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == ContactSection) {
-        return [contactSectionArray count];
+        return [_contactSectionArray count];
     } else if (section == BlogSection ) {
-        return [blogSectionArray count];
+        return [_blogSectionArray count];
     } else {
-        return [socialSectionArray count];
+        return [_socialSectionArray count];
     }
 }
 
@@ -131,14 +130,14 @@ typedef enum {
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
     if (indexPath.section == ContactSection) {
-        nameLabel.text = [contactSectionArray objectAtIndex:indexPath.row];
-        imageView.image = [UIImage imageNamed:[contactSectionArrayImage objectAtIndex:indexPath.row]];
+        nameLabel.text = [_contactSectionArray objectAtIndex:indexPath.row];
+        imageView.image = [UIImage imageNamed:[_contactSectionArrayImage objectAtIndex:indexPath.row]];
     } else if (indexPath.section == BlogSection) {
-        nameLabel.text = [blogSectionArray objectAtIndex:indexPath.row];
-        imageView.image = [UIImage imageNamed:[blogSectionArrayImage objectAtIndex:indexPath.row]];
+        nameLabel.text = [_blogSectionArray objectAtIndex:indexPath.row];
+        imageView.image = [UIImage imageNamed:[_blogSectionArrayImage objectAtIndex:indexPath.row]];
     } else {
-        nameLabel.text = [socialSectionArray objectAtIndex:indexPath.row];
-        imageView.image = [UIImage imageNamed:[socialSectionArrayImage objectAtIndex:indexPath.row]];
+        nameLabel.text = [_socialSectionArray objectAtIndex:indexPath.row];
+        imageView.image = [UIImage imageNamed:[_socialSectionArrayImage objectAtIndex:indexPath.row]];
     }
 }
 

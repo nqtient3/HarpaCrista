@@ -17,7 +17,6 @@
     __weak IBOutlet UITableView *_hinosTableView;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
-
 @end
 
 @implementation HinosViewController
