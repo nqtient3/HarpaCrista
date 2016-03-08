@@ -16,9 +16,12 @@
     UITapGestureRecognizer *_tapGestureRecognizer;
     __weak IBOutlet UIImageView *_contentImageView;
 }
+
 @end
 
 @implementation PageItemViewController
+
+@synthesize itemIndex,imageName;
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -27,7 +30,7 @@
     [super viewDidLoad];
     _emailTextField.hidden = YES;
     _submitButton.hidden = YES;
-    _contentImageView.image = [UIImage imageNamed: self.imageName];
+    _contentImageView.image = [UIImage imageNamed:imageName];
     _submitButton.layer.cornerRadius = 5;
     _submitButton.layer.masksToBounds = YES;
     // Listen for keyboard appearances and disappearances
@@ -73,10 +76,10 @@
 #pragma mark -
 #pragma mark Content
 
-- (void) setImageName: (NSString *) name {
-    self.imageName = name;
-    _contentImageView.image = [UIImage imageNamed: self.imageName];
-    if ([self.imageName isEqualToString:@"Tutorial-9.png"]) {
+- (void) setImageName:(NSString *)name {
+    imageName = name;
+    _contentImageView.image = [UIImage imageNamed:imageName];
+    if ([imageName isEqualToString:@"Tutorial-9.png"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _emailTextField.hidden = NO;
             _submitButton.hidden = NO;
