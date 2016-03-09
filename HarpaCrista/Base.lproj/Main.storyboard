@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -716,6 +716,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="_maisTableView" destination="Uf0-ea-1VI" id="SbH-8s-9y5"/>
+                        <segue destination="4ru-4s-Mus" kind="show" identifier="boletimSegue" id="y6z-CP-ZK5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qNM-1L-LOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -931,8 +932,85 @@
             </objects>
             <point key="canvasLocation" x="423.5" y="1955.5"/>
         </scene>
+        <!--Boletim View Controller-->
+        <scene sceneID="OUq-Uz-cud">
+            <objects>
+                <viewController id="4ru-4s-Mus" customClass="BoletimViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lyg-CW-ybY"/>
+                        <viewControllerLayoutGuide type="bottom" id="wYA-t6-xh1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XgS-I0-wm3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial-9.png" translatesAutoresizingMaskIntoConstraints="NO" id="Njc-HA-KzK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MKI-rF-Fas" userLabel="EmailTextField">
+                                <rect key="frame" x="30" y="458" width="315" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-Tv-2dx">
+                                <rect key="frame" x="153" y="508" width="70" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="D3p-8Q-pK7"/>
+                                    <constraint firstAttribute="height" constant="30" id="LYD-ZP-wVh"/>
+                                </constraints>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitEmailAction:" destination="4ru-4s-Mus" eventType="touchUpInside" id="NBT-OE-uuM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MKI-rF-Fas" firstAttribute="leading" secondItem="XgS-I0-wm3" secondAttribute="leading" constant="30" id="7xL-41-c8M"/>
+                            <constraint firstItem="wYA-t6-xh1" firstAttribute="top" secondItem="Njc-HA-KzK" secondAttribute="bottom" id="BXC-LK-sBp"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="Bgh-ly-4Pn"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="width" secondItem="XgS-I0-wm3" secondAttribute="width" id="CCv-ed-Mf5"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="height" secondItem="XgS-I0-wm3" secondAttribute="height" id="MtT-Z5-03o"/>
+                            <constraint firstItem="MKI-rF-Fas" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="SHW-t4-Jr1"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="leading" secondItem="XgS-I0-wm3" secondAttribute="leading" id="VaZ-Ec-tac"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="top" secondItem="Lyg-CW-ybY" secondAttribute="bottom" id="Wdz-Rh-DXN"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="width" secondItem="XgS-I0-wm3" secondAttribute="width" id="aRr-Cz-FuR"/>
+                            <constraint firstItem="wYA-t6-xh1" firstAttribute="top" secondItem="xvl-Tv-2dx" secondAttribute="bottom" constant="80" id="cit-L7-3o4"/>
+                            <constraint firstItem="xvl-Tv-2dx" firstAttribute="top" secondItem="MKI-rF-Fas" secondAttribute="bottom" constant="20" id="e0v-Pz-qNQ"/>
+                            <constraint firstItem="xvl-Tv-2dx" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="kye-6D-aaW"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="n5G-wp-Czt"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="poA-m2-kdA"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="centerX" secondItem="XgS-I0-wm3" secondAttribute="centerX" id="qLL-kt-oWa"/>
+                            <constraint firstItem="Njc-HA-KzK" firstAttribute="centerY" secondItem="XgS-I0-wm3" secondAttribute="centerY" id="tan-6O-pak"/>
+                            <constraint firstAttribute="trailing" secondItem="MKI-rF-Fas" secondAttribute="trailing" constant="30" id="tew-yu-3re"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bgh-ly-4Pn"/>
+                                <exclude reference="CCv-ed-Mf5"/>
+                                <exclude reference="MtT-Z5-03o"/>
+                                <exclude reference="n5G-wp-Czt"/>
+                                <exclude reference="poA-m2-kdA"/>
+                                <exclude reference="qLL-kt-oWa"/>
+                                <exclude reference="tan-6O-pak"/>
+                                <exclude reference="SHW-t4-Jr1"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="_emailTextField" destination="MKI-rF-Fas" id="GkQ-hf-sZL"/>
+                        <outlet property="_submitButton" destination="xvl-Tv-2dx" id="UnY-Dm-uIX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfd-Ic-gLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1516.5" y="1960.5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Tutorial-9.png" width="750" height="1334"/>
         <image name="ic_auto_scroll_selected.png" width="57" height="57"/>
         <image name="ic_book.png" width="62" height="57"/>
         <image name="ic_global.png" width="36" height="36"/>

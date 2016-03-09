@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "BoletimViewController.h"
 
 @interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate> {
     //nameArray
@@ -145,6 +146,14 @@ typedef enum {
             
             // Present the controller
             [self presentViewController:controller animated:YES completion:nil];
+        }
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            //To do
+        } else if (indexPath.row == 1) {
+           // To do
+        } else if (indexPath.row == 2 ) {
+            [self performSegueWithIdentifier:@"boletimSegue" sender:nil];
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {

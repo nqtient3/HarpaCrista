@@ -69,6 +69,7 @@
 		A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */; };
 		A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBCF401C8D856800FA6343 /* Tutorial-1.png */; };
 		A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBCF451C8D9AEB00FA6343 /* Constants.m */; };
+		A6E3F3B91C909998004BCEA6 /* BoletimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3B81C909998004BCEA6 /* BoletimViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +149,8 @@
 		A6DBCF401C8D856800FA6343 /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
 		A6DBCF441C8D9AEB00FA6343 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A6DBCF451C8D9AEB00FA6343 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		A6E3F3B71C909998004BCEA6 /* BoletimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoletimViewController.h; sourceTree = "<group>"; };
+		A6E3F3B81C909998004BCEA6 /* BoletimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoletimViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +251,8 @@
 				A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */,
 				A601EA741C8AB7EB00E0AE3F /* TutorialViewController.h */,
 				A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */,
+				A6E3F3B71C909998004BCEA6 /* BoletimViewController.h */,
+				A6E3F3B81C909998004BCEA6 /* BoletimViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E3F3B91C909998004BCEA6 /* BoletimViewController.m in Sources */,
 				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
 				A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */,
 				A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */,
