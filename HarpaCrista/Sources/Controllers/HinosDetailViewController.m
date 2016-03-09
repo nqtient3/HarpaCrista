@@ -102,24 +102,31 @@ typedef enum {
 }
 
 - (void)changeRangeArray {
-    NSString *firstRange = [self getFirstRange];
+    NSString *firstRange = [[self getFirstRange] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSMutableArray *changedRange = [[NSMutableArray alloc] initWithArray:_toneItemDataArray];
     __block NSInteger firstRangeIndex = 0;
     [_toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *range = [(NSString *)obj stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        if ([range isEqualToString:firstRange]) {
+        // String that use to check first String contains m
+        NSString *secondString;
+        if ([firstRange containsString:@"m"]) {
+            secondString = [firstRange substringToIndex:1];
+        }
+         NSLog(@">>>>>>firstRange:%@>>>>>>range:%@>>>>>>>>",firstRange,range);
+        if ([range isEqualToString:firstRange] || [range isEqualToString:secondString]) {
             firstRangeIndex = idx;
             *stop = YES;
         }
     }];
     for (NSInteger i=0; i<_toneItemDataArray.count; i++) {
+        //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher 
         NSString *tone = _toneItemDataArray[(firstRangeIndex+i)%12];
         changedRange[i] = tone;
     }
-    
     _toneItemDataArray = [changedRange copy];
 }
 
+// Get the first Tone
 - (NSString *)getFirstRange {
     NSString *inputString = self.currentCDSong.cdChord;
     NSArray *components = [inputString componentsSeparatedByString:@"</p>"];
@@ -132,6 +139,11 @@ typedef enum {
             lastString = [range objectAtIndex:1];
             lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             nextString = [lastString componentsSeparatedByString:@" "];
+            if ([lastString containsString:@"<span class=\"s2\">"]) {
+                NSArray *nextRange = [lastString componentsSeparatedByString:@"</span><span class=\"s2\">"];
+                lastString = [nextRange objectAtIndex:1];
+                lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+                nextString = [lastString componentsSeparatedByString:@" "];        }
         } else if ([firstText containsString:@"<p class=\"p1\">"]) {
             lastString = [range firstObject];
             nextString = [lastString componentsSeparatedByString:@"<p class=\"p1\">"];
@@ -207,6 +219,7 @@ typedef enum {
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
     __block NSInteger toneIndex;
+    // Find index of tone want to change
     [_toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSString *range = (NSString *)obj;
         if ([range isEqualToString:rangeString]) {
@@ -214,23 +227,30 @@ typedef enum {
             *stop = YES;
         }
     }];
+    
+    // Seperate string to array by character </p>
     NSArray *arrayComponents = [_fullString componentsSeparatedByString:@"</p>"];
     NSMutableArray *resultArray = [arrayComponents mutableCopy];
     [arrayComponents enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx%2 == 0) {
-            NSString *oldString = [(NSString *)obj stringByAppendingString:@" "];
+            // If it is index of tone
+            BOOL isSpan = NO;
+            NSString *oldString = (NSString *)obj;
+            if ([oldString hasSuffix:@"</span>"]) {// The end string has </span>
+                oldString = [oldString substringToIndex:oldString.length - 7];
+                isSpan = YES;
+            }
+            oldString = [oldString stringByAppendingString:@" "];
             __block NSMutableString *newString = [[NSMutableString alloc] initWithString:oldString];
             for (NSInteger i = 0; i< _toneItemDataArray.count; i++) {
                 NSRange searchRange = NSMakeRange(0,oldString.length);
                 NSRange foundRange;
-                while (searchRange.location < oldString.length) {
+                while (searchRange.location < oldString.length) { // find va replace tone
                     searchRange.length = oldString.length-searchRange.location;
                     foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:0 range:searchRange];
                     if (foundRange.location != NSNotFound) {
-                        if (newString.length == 3118) {
-                            NSLog(@"");
-                        }
-                        NSString *replaceString = _toneItemDataArray[(labs(toneIndex - i))%12];
+                        //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher
+                        NSString *replaceString = _toneItemDataArray[(toneIndex + i)%12];
                         [newString replaceOccurrencesOfString:_toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
                         searchRange.location = foundRange.location+foundRange.length;
                     } else {
@@ -238,10 +258,18 @@ typedef enum {
                     }
                 }
             }
-            NSRange rng = [oldString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet] options:NSBackwardsSearch];
-            resultArray[idx] = [newString substringToIndex:rng.location+1];
+            NSRange range = [oldString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet] options:NSBackwardsSearch];
+            NSString *result;
+            if (isSpan) {
+                result = [[newString substringToIndex:range.location+1] stringByAppendingString:@"</span>"];
+            } else {
+                result = [newString substringToIndex:range.location+1];
+            }
+            // Update array result
+            resultArray[idx] = result;
         }
     }];
+    // Plus string from all array value
     NSString *resultString = [resultArray componentsJoinedByString:@"</p>"];
     [_webView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
     _isChangeToneView = NO;
