@@ -129,33 +129,21 @@ typedef enum {
 // Get the first Tone
 - (NSString *)getFirstRange {
     NSString *inputString = self.currentCDSong.cdChord;
-    NSArray *components = [inputString componentsSeparatedByString:@"</p>"];
-    NSString *firstText = [components firstObject];
-    if (firstText) {
-        NSArray *range = [firstText componentsSeparatedByString:@"<span class=\"s1\">"];
-        NSString *lastString;
-        NSArray *nextString;
-        if ([firstText containsString:@"<span class=\"s1\">"]) {
-            lastString = [range objectAtIndex:1];
-            lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            nextString = [lastString componentsSeparatedByString:@" "];
-            if ([lastString containsString:@"<span class=\"s2\">"]) {
-                NSArray *nextRange = [lastString componentsSeparatedByString:@"</span><span class=\"s2\">"];
-                lastString = [nextRange objectAtIndex:1];
-                lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-                nextString = [lastString componentsSeparatedByString:@" "];        }
-        } else if ([firstText containsString:@"<p class=\"p1\">"]) {
-            lastString = [range firstObject];
-            nextString = [lastString componentsSeparatedByString:@"<p class=\"p1\">"];
-            lastString = [nextString objectAtIndex:1];
-            lastString = [lastString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            nextString = [lastString componentsSeparatedByString:@" "];
-        }
-        return [nextString firstObject];
-    }
-    return @"";
+    NSString *outPutString = [self stringByStrippingHTML:inputString];
+    return outPutString;
 }
 
+
+// Remove HTML tags from NSString
+-(NSString *) stringByStrippingHTML:(NSString *)stringHTML {
+    NSRange range;
+    while ((range = [stringHTML rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound){
+            stringHTML = [stringHTML stringByReplacingCharactersInRange:range withString:@""];
+    }
+    stringHTML = [stringHTML stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSArray *stringArray = [stringHTML componentsSeparatedByString:@" "];
+    return [stringArray firstObject];
+}
 - (void)changeSelectedRangeAtIndex:(NSInteger)index {
     if (!_selectedRange) {
         _selectedRange = [[NSMutableArray alloc] init];
