@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/Sources/Controllers/HinosDetailViewController.m"
-            timestampString = "479221982.076445"
+            timestampString = "479223115.660082"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-stringByStrippingHTML:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

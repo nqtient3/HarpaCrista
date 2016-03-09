@@ -138,7 +138,7 @@ typedef enum {
 -(NSString *) stringByStrippingHTML:(NSString *)stringHTML {
     NSRange range;
     while ((range = [stringHTML rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound){
-            stringHTML = [stringHTML stringByReplacingCharactersInRange:range withString:@""];
+            stringHTML = [stringHTML stringByReplacingCharactersInRange:range withString:@" "];
     }
     stringHTML = [stringHTML stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray *stringArray = [stringHTML componentsSeparatedByString:@" "];
@@ -236,7 +236,7 @@ typedef enum {
                 NSRange foundRange;
                 while (searchRange.location < oldString.length) { // find va replace tone
                     searchRange.length = oldString.length-searchRange.location;
-                    foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:NSCaseInsensitiveSearch range:searchRange];
+                    foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:0 range:searchRange];
                     if (foundRange.location != NSNotFound) {
                         //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher
                         NSString *replaceString = _toneItemDataArray[(toneIndex + i)%12];
