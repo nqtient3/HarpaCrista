@@ -7,8 +7,9 @@
 //
 
 #import "SettingsViewController.h"
+#import <MessageUI/MessageUI.h>
 
-@interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource> {
+@interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate> {
     //nameArray
     NSArray *_contactSectionArray;
     NSArray *_blogSectionArray;
@@ -116,8 +117,23 @@ typedef enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Coming soon" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alertView show];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/perguntas-e-respostas/"]];
+        } else if (indexPath.row == 1) {
+            // Email Subject
+            NSString *emailTitle = @"Example title";
+            // Email Content
+            NSString *messageBody = @"Example message";
+            // To address
+            NSArray *toRecipents = [NSArray arrayWithObject:@"contato@harpacca.com"];
+            
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            [mc setToRecipients:toRecipents];
+            
+            // Present mail view controller on screen
+            [self presentViewController:mc animated:YES completion:NULL];
         }
     } else if (indexPath.section == 2) {
         if (indexPath.row == 0) {
@@ -144,6 +160,29 @@ typedef enum {
         nameLabel.text = [_socialSectionArray objectAtIndex:indexPath.row];
         imageView.image = [UIImage imageNamed:[_socialSectionArrayImage objectAtIndex:indexPath.row]];
     }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
