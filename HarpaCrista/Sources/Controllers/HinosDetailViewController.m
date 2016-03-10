@@ -54,9 +54,9 @@ typedef enum {
     [super viewDidLoad];
     // Init data for tone item
     if ([self currentTone] == tone1) {
-        _toneItemDataArray = @[@"A ", @"A#", @"B ", @"C ", @"C#", @"D ", @"D#", @"E ", @"F ", @"F#", @"G ", @"G#"];
+        _toneItemDataArray = @[@"A", @"A#", @"B", @"C", @"C#", @"D", @"D#", @"E", @"F", @"F#", @"G", @"G#"];
     } else {
-        _toneItemDataArray = @[@"A ", @"Bb", @"B ", @"C ", @"Db", @"D ", @"Eb", @"E ", @"F ", @"Gb", @"G ", @"Ab"];
+        _toneItemDataArray = @[@"A", @"Bb", @"B", @"C", @"Db", @"D", @"Eb", @"E", @"F", @"Gb", @"G", @"Ab"];
     }
     [self changeRangeArray];
     [self changeSelectedRangeAtIndex:0];
@@ -243,12 +243,18 @@ typedef enum {
                 NSRange foundRange;
                 while (searchRange.location < oldString.length) { // find and replace tone
                     searchRange.length = oldString.length-searchRange.location;
-                    [_toneItemDataArray[i] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
                     foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:NSLiteralSearch range:searchRange];
                     if (foundRange.location != NSNotFound) {
                         //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher
                         NSString *replaceString = _toneItemDataArray[(toneIndex + i)%12];
-                        [newString replaceOccurrencesOfString:_toneItemDataArray[i] withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
+                        NSString *currentString = _toneItemDataArray[i];
+                        if (replaceString.length > currentString.length) {
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(foundRange.location, foundRange.length+1)];
+                        } else if (replaceString.length < currentString.length) {
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(foundRange.location, foundRange.length-1)];
+                        } else {
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
+                        }
                         searchRange.location = foundRange.location+foundRange.length;
                     } else {
                         break;
