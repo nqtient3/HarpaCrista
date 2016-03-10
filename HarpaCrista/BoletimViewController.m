@@ -46,21 +46,21 @@
 
 #pragma mark - Actions
 - (void)keyboardWillShow:(NSNotification *)notification {
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect frame = self.view.frame;
-        frame.origin.y = -keyboardSize.height;
-        self.view.frame = frame;
-    }];
+//    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    [UIView animateWithDuration:0.3 animations:^{
+//        CGRect frame = self.view.frame;
+//        frame.origin.y = -keyboardSize.height;
+//        self.view.frame = frame;
+//    }];
     [self.view addGestureRecognizer:_tapGestureRecognizer];
 }
 
 -(void)keyboardWillHide:(NSNotification *)notification {
-    [UIView animateWithDuration:0.3 animations:^{
-        CGRect frame = self.view.frame;
-        frame.origin.y = 0.0f;
-        self.view.frame = frame;
-    }];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        CGRect frame = self.view.frame;
+//        frame.origin.y = 0.0f;
+//        self.view.frame = frame;
+//    }];
     [self.view removeGestureRecognizer:_tapGestureRecognizer];
 }
 
