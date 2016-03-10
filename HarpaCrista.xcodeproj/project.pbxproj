@@ -70,6 +70,36 @@
 		A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBCF401C8D856800FA6343 /* Tutorial-1.png */; };
 		A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBCF451C8D9AEB00FA6343 /* Constants.m */; };
 		A6E3F3B91C909998004BCEA6 /* BoletimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3B81C909998004BCEA6 /* BoletimViewController.m */; };
+		A6E3F3C51C909FC2004BCEA6 /* BaseApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3C21C909FC2004BCEA6 /* BaseApi.m */; };
+		A6E3F3C61C909FC2004BCEA6 /* JSONObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3C41C909FC2004BCEA6 /* JSONObject.m */; };
+		A6E3F4071C90A006004BCEA6 /* LRRestyResponse+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3CA1C90A006004BCEA6 /* LRRestyResponse+Json.m */; };
+		A6E3F4081C90A006004BCEA6 /* NSArray+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3CC1C90A006004BCEA6 /* NSArray+Json.m */; };
+		A6E3F4091C90A006004BCEA6 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3CE1C90A006004BCEA6 /* NSData+Base64.m */; };
+		A6E3F40A1C90A006004BCEA6 /* NSDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3D01C90A006004BCEA6 /* NSDictionary+Json.m */; };
+		A6E3F40B1C90A006004BCEA6 /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3D21C90A006004BCEA6 /* NSDictionary+QueryString.m */; };
+		A6E3F40C1C90A006004BCEA6 /* NSObject+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3D41C90A006004BCEA6 /* NSObject+Block.m */; };
+		A6E3F40D1C90A006004BCEA6 /* NSObject+SynchronousProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3D61C90A006004BCEA6 /* NSObject+SynchronousProxy.m */; };
+		A6E3F40E1C90A006004BCEA6 /* NSObject+Tap.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3D81C90A006004BCEA6 /* NSObject+Tap.m */; };
+		A6E3F40F1C90A006004BCEA6 /* NSRunLoop+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3DA1C90A006004BCEA6 /* NSRunLoop+Additions.m */; };
+		A6E3F4101C90A006004BCEA6 /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3DC1C90A006004BCEA6 /* NSString+QueryString.m */; };
+		A6E3F4111C90A006004BCEA6 /* NSURL+QueryInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3DE1C90A006004BCEA6 /* NSURL+QueryInspector.m */; };
+		A6E3F4121C90A006004BCEA6 /* UIImage+sample.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3E01C90A006004BCEA6 /* UIImage+sample.m */; };
+		A6E3F4131C90A006004BCEA6 /* LRResty.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3E21C90A006004BCEA6 /* LRResty.m */; };
+		A6E3F4141C90A006004BCEA6 /* LRRestyClient+DELETE.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3E41C90A006004BCEA6 /* LRRestyClient+DELETE.m */; };
+		A6E3F4151C90A006004BCEA6 /* LRRestyClient+GET.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3E61C90A006004BCEA6 /* LRRestyClient+GET.m */; };
+		A6E3F4161C90A006004BCEA6 /* LRRestyClient+POST.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3E81C90A006004BCEA6 /* LRRestyClient+POST.m */; };
+		A6E3F4171C90A006004BCEA6 /* LRRestyClient+PUT.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3EA1C90A006004BCEA6 /* LRRestyClient+PUT.m */; };
+		A6E3F4181C90A006004BCEA6 /* LRRestyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3EC1C90A006004BCEA6 /* LRRestyClient.m */; };
+		A6E3F4191C90A006004BCEA6 /* LRRestyClientBlockDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3EE1C90A006004BCEA6 /* LRRestyClientBlockDelegate.m */; };
+		A6E3F41A1C90A006004BCEA6 /* LRRestyClientProxyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3F11C90A006004BCEA6 /* LRRestyClientProxyDelegate.m */; };
+		A6E3F41B1C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3F41C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m */; };
+		A6E3F41C1C90A006004BCEA6 /* LRRestyHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3F61C90A006004BCEA6 /* LRRestyHTTPClient.m */; };
+		A6E3F41D1C90A006004BCEA6 /* LRRestyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3F81C90A006004BCEA6 /* LRRestyRequest.m */; };
+		A6E3F41E1C90A006004BCEA6 /* LRRestyRequestPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3FB1C90A006004BCEA6 /* LRRestyRequestPayload.m */; };
+		A6E3F41F1C90A006004BCEA6 /* LRRestyResource.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F3FD1C90A006004BCEA6 /* LRRestyResource.m */; };
+		A6E3F4201C90A006004BCEA6 /* LRRestyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4011C90A006004BCEA6 /* LRRestyResponse.m */; };
+		A6E3F4211C90A006004BCEA6 /* LRSynchronousProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4041C90A006004BCEA6 /* LRSynchronousProxy.m */; };
+		A6E3F4221C90A006004BCEA6 /* LRURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4061C90A006004BCEA6 /* LRURLRequestOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +181,72 @@
 		A6DBCF451C8D9AEB00FA6343 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		A6E3F3B71C909998004BCEA6 /* BoletimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoletimViewController.h; sourceTree = "<group>"; };
 		A6E3F3B81C909998004BCEA6 /* BoletimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoletimViewController.m; sourceTree = "<group>"; };
+		A6E3F3C11C909FC2004BCEA6 /* BaseApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseApi.h; sourceTree = "<group>"; };
+		A6E3F3C21C909FC2004BCEA6 /* BaseApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseApi.m; sourceTree = "<group>"; };
+		A6E3F3C31C909FC2004BCEA6 /* JSONObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONObject.h; sourceTree = "<group>"; };
+		A6E3F3C41C909FC2004BCEA6 /* JSONObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONObject.m; sourceTree = "<group>"; };
+		A6E3F3C91C90A006004BCEA6 /* LRRestyResponse+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyResponse+Json.h"; sourceTree = "<group>"; };
+		A6E3F3CA1C90A006004BCEA6 /* LRRestyResponse+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyResponse+Json.m"; sourceTree = "<group>"; };
+		A6E3F3CB1C90A006004BCEA6 /* NSArray+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Json.h"; sourceTree = "<group>"; };
+		A6E3F3CC1C90A006004BCEA6 /* NSArray+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Json.m"; sourceTree = "<group>"; };
+		A6E3F3CD1C90A006004BCEA6 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		A6E3F3CE1C90A006004BCEA6 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		A6E3F3CF1C90A006004BCEA6 /* NSDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Json.h"; sourceTree = "<group>"; };
+		A6E3F3D01C90A006004BCEA6 /* NSDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Json.m"; sourceTree = "<group>"; };
+		A6E3F3D11C90A006004BCEA6 /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QueryString.h"; sourceTree = "<group>"; };
+		A6E3F3D21C90A006004BCEA6 /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QueryString.m"; sourceTree = "<group>"; };
+		A6E3F3D31C90A006004BCEA6 /* NSObject+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Block.h"; sourceTree = "<group>"; };
+		A6E3F3D41C90A006004BCEA6 /* NSObject+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Block.m"; sourceTree = "<group>"; };
+		A6E3F3D51C90A006004BCEA6 /* NSObject+SynchronousProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SynchronousProxy.h"; sourceTree = "<group>"; };
+		A6E3F3D61C90A006004BCEA6 /* NSObject+SynchronousProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SynchronousProxy.m"; sourceTree = "<group>"; };
+		A6E3F3D71C90A006004BCEA6 /* NSObject+Tap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Tap.h"; sourceTree = "<group>"; };
+		A6E3F3D81C90A006004BCEA6 /* NSObject+Tap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Tap.m"; sourceTree = "<group>"; };
+		A6E3F3D91C90A006004BCEA6 /* NSRunLoop+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRunLoop+Additions.h"; sourceTree = "<group>"; };
+		A6E3F3DA1C90A006004BCEA6 /* NSRunLoop+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+Additions.m"; sourceTree = "<group>"; };
+		A6E3F3DB1C90A006004BCEA6 /* NSString+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QueryString.h"; sourceTree = "<group>"; };
+		A6E3F3DC1C90A006004BCEA6 /* NSString+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QueryString.m"; sourceTree = "<group>"; };
+		A6E3F3DD1C90A006004BCEA6 /* NSURL+QueryInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryInspector.h"; sourceTree = "<group>"; };
+		A6E3F3DE1C90A006004BCEA6 /* NSURL+QueryInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryInspector.m"; sourceTree = "<group>"; };
+		A6E3F3DF1C90A006004BCEA6 /* UIImage+sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+sample.h"; sourceTree = "<group>"; };
+		A6E3F3E01C90A006004BCEA6 /* UIImage+sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+sample.m"; sourceTree = "<group>"; };
+		A6E3F3E11C90A006004BCEA6 /* LRResty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRResty.h; sourceTree = "<group>"; };
+		A6E3F3E21C90A006004BCEA6 /* LRResty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRResty.m; sourceTree = "<group>"; };
+		A6E3F3E31C90A006004BCEA6 /* LRRestyClient+DELETE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+DELETE.h"; sourceTree = "<group>"; };
+		A6E3F3E41C90A006004BCEA6 /* LRRestyClient+DELETE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+DELETE.m"; sourceTree = "<group>"; };
+		A6E3F3E51C90A006004BCEA6 /* LRRestyClient+GET.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+GET.h"; sourceTree = "<group>"; };
+		A6E3F3E61C90A006004BCEA6 /* LRRestyClient+GET.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+GET.m"; sourceTree = "<group>"; };
+		A6E3F3E71C90A006004BCEA6 /* LRRestyClient+POST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+POST.h"; sourceTree = "<group>"; };
+		A6E3F3E81C90A006004BCEA6 /* LRRestyClient+POST.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+POST.m"; sourceTree = "<group>"; };
+		A6E3F3E91C90A006004BCEA6 /* LRRestyClient+PUT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyClient+PUT.h"; sourceTree = "<group>"; };
+		A6E3F3EA1C90A006004BCEA6 /* LRRestyClient+PUT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LRRestyClient+PUT.m"; sourceTree = "<group>"; };
+		A6E3F3EB1C90A006004BCEA6 /* LRRestyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClient.h; sourceTree = "<group>"; };
+		A6E3F3EC1C90A006004BCEA6 /* LRRestyClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClient.m; sourceTree = "<group>"; };
+		A6E3F3ED1C90A006004BCEA6 /* LRRestyClientBlockDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientBlockDelegate.h; sourceTree = "<group>"; };
+		A6E3F3EE1C90A006004BCEA6 /* LRRestyClientBlockDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientBlockDelegate.m; sourceTree = "<group>"; };
+		A6E3F3EF1C90A006004BCEA6 /* LRRestyClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientDelegate.h; sourceTree = "<group>"; };
+		A6E3F3F01C90A006004BCEA6 /* LRRestyClientProxyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientProxyDelegate.h; sourceTree = "<group>"; };
+		A6E3F3F11C90A006004BCEA6 /* LRRestyClientProxyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientProxyDelegate.m; sourceTree = "<group>"; };
+		A6E3F3F21C90A006004BCEA6 /* LRRestyClientResponseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientResponseDelegate.h; sourceTree = "<group>"; };
+		A6E3F3F31C90A006004BCEA6 /* LRRestyClientStreamingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyClientStreamingDelegate.h; sourceTree = "<group>"; };
+		A6E3F3F41C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyClientStreamingDelegate.m; sourceTree = "<group>"; };
+		A6E3F3F51C90A006004BCEA6 /* LRRestyHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyHTTPClient.h; sourceTree = "<group>"; };
+		A6E3F3F61C90A006004BCEA6 /* LRRestyHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyHTTPClient.m; sourceTree = "<group>"; };
+		A6E3F3F71C90A006004BCEA6 /* LRRestyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequest.h; sourceTree = "<group>"; };
+		A6E3F3F81C90A006004BCEA6 /* LRRestyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyRequest.m; sourceTree = "<group>"; };
+		A6E3F3F91C90A006004BCEA6 /* LRRestyRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequestDelegate.h; sourceTree = "<group>"; };
+		A6E3F3FA1C90A006004BCEA6 /* LRRestyRequestPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyRequestPayload.h; sourceTree = "<group>"; };
+		A6E3F3FB1C90A006004BCEA6 /* LRRestyRequestPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyRequestPayload.m; sourceTree = "<group>"; };
+		A6E3F3FC1C90A006004BCEA6 /* LRRestyResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResource.h; sourceTree = "<group>"; };
+		A6E3F3FD1C90A006004BCEA6 /* LRRestyResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyResource.m; sourceTree = "<group>"; };
+		A6E3F3FE1C90A006004BCEA6 /* LRRestyResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResourceDelegate.h; sourceTree = "<group>"; };
+		A6E3F3FF1C90A006004BCEA6 /* LRRestyResponse+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LRRestyResponse+Internal.h"; sourceTree = "<group>"; };
+		A6E3F4001C90A006004BCEA6 /* LRRestyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyResponse.h; sourceTree = "<group>"; };
+		A6E3F4011C90A006004BCEA6 /* LRRestyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRRestyResponse.m; sourceTree = "<group>"; };
+		A6E3F4021C90A006004BCEA6 /* LRRestyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRRestyTypes.h; sourceTree = "<group>"; };
+		A6E3F4031C90A006004BCEA6 /* LRSynchronousProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSynchronousProxy.h; sourceTree = "<group>"; };
+		A6E3F4041C90A006004BCEA6 /* LRSynchronousProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSynchronousProxy.m; sourceTree = "<group>"; };
+		A6E3F4051C90A006004BCEA6 /* LRURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRURLRequestOperation.h; sourceTree = "<group>"; };
+		A6E3F4061C90A006004BCEA6 /* LRURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRURLRequestOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +279,7 @@
 		23B859D81C85D9D500144193 /* HarpaCrista */ = {
 			isa = PBXGroup;
 			children = (
+				A6E3F3BB1C909E6B004BCEA6 /* Libraries */,
 				23B859F41C85DA6000144193 /* Resources */,
 				23B859F31C85DA5A00144193 /* Sources */,
 				23B859DC1C85D9D500144193 /* AppDelegate.h */,
@@ -207,6 +304,7 @@
 		23B859F31C85DA5A00144193 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A6E3F3C01C909F99004BCEA6 /* Apis */,
 				A6DBCF431C8D9AD400FA6343 /* Common */,
 				23B859F71C85DA8600144193 /* Models */,
 				23B859F61C85DA7D00144193 /* Controllers */,
@@ -344,6 +442,102 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		A6E3F3BB1C909E6B004BCEA6 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A6E3F3C71C90A006004BCEA6 /* LRResty */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A6E3F3C01C909F99004BCEA6 /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+				A6E3F3C11C909FC2004BCEA6 /* BaseApi.h */,
+				A6E3F3C21C909FC2004BCEA6 /* BaseApi.m */,
+				A6E3F3C31C909FC2004BCEA6 /* JSONObject.h */,
+				A6E3F3C41C909FC2004BCEA6 /* JSONObject.m */,
+			);
+			name = Apis;
+			sourceTree = "<group>";
+		};
+		A6E3F3C71C90A006004BCEA6 /* LRResty */ = {
+			isa = PBXGroup;
+			children = (
+				A6E3F3C81C90A006004BCEA6 /* Categories */,
+				A6E3F3E11C90A006004BCEA6 /* LRResty.h */,
+				A6E3F3E21C90A006004BCEA6 /* LRResty.m */,
+				A6E3F3E31C90A006004BCEA6 /* LRRestyClient+DELETE.h */,
+				A6E3F3E41C90A006004BCEA6 /* LRRestyClient+DELETE.m */,
+				A6E3F3E51C90A006004BCEA6 /* LRRestyClient+GET.h */,
+				A6E3F3E61C90A006004BCEA6 /* LRRestyClient+GET.m */,
+				A6E3F3E71C90A006004BCEA6 /* LRRestyClient+POST.h */,
+				A6E3F3E81C90A006004BCEA6 /* LRRestyClient+POST.m */,
+				A6E3F3E91C90A006004BCEA6 /* LRRestyClient+PUT.h */,
+				A6E3F3EA1C90A006004BCEA6 /* LRRestyClient+PUT.m */,
+				A6E3F3EB1C90A006004BCEA6 /* LRRestyClient.h */,
+				A6E3F3EC1C90A006004BCEA6 /* LRRestyClient.m */,
+				A6E3F3ED1C90A006004BCEA6 /* LRRestyClientBlockDelegate.h */,
+				A6E3F3EE1C90A006004BCEA6 /* LRRestyClientBlockDelegate.m */,
+				A6E3F3EF1C90A006004BCEA6 /* LRRestyClientDelegate.h */,
+				A6E3F3F01C90A006004BCEA6 /* LRRestyClientProxyDelegate.h */,
+				A6E3F3F11C90A006004BCEA6 /* LRRestyClientProxyDelegate.m */,
+				A6E3F3F21C90A006004BCEA6 /* LRRestyClientResponseDelegate.h */,
+				A6E3F3F31C90A006004BCEA6 /* LRRestyClientStreamingDelegate.h */,
+				A6E3F3F41C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m */,
+				A6E3F3F51C90A006004BCEA6 /* LRRestyHTTPClient.h */,
+				A6E3F3F61C90A006004BCEA6 /* LRRestyHTTPClient.m */,
+				A6E3F3F71C90A006004BCEA6 /* LRRestyRequest.h */,
+				A6E3F3F81C90A006004BCEA6 /* LRRestyRequest.m */,
+				A6E3F3F91C90A006004BCEA6 /* LRRestyRequestDelegate.h */,
+				A6E3F3FA1C90A006004BCEA6 /* LRRestyRequestPayload.h */,
+				A6E3F3FB1C90A006004BCEA6 /* LRRestyRequestPayload.m */,
+				A6E3F3FC1C90A006004BCEA6 /* LRRestyResource.h */,
+				A6E3F3FD1C90A006004BCEA6 /* LRRestyResource.m */,
+				A6E3F3FE1C90A006004BCEA6 /* LRRestyResourceDelegate.h */,
+				A6E3F3FF1C90A006004BCEA6 /* LRRestyResponse+Internal.h */,
+				A6E3F4001C90A006004BCEA6 /* LRRestyResponse.h */,
+				A6E3F4011C90A006004BCEA6 /* LRRestyResponse.m */,
+				A6E3F4021C90A006004BCEA6 /* LRRestyTypes.h */,
+				A6E3F4031C90A006004BCEA6 /* LRSynchronousProxy.h */,
+				A6E3F4041C90A006004BCEA6 /* LRSynchronousProxy.m */,
+				A6E3F4051C90A006004BCEA6 /* LRURLRequestOperation.h */,
+				A6E3F4061C90A006004BCEA6 /* LRURLRequestOperation.m */,
+			);
+			path = LRResty;
+			sourceTree = "<group>";
+		};
+		A6E3F3C81C90A006004BCEA6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A6E3F3C91C90A006004BCEA6 /* LRRestyResponse+Json.h */,
+				A6E3F3CA1C90A006004BCEA6 /* LRRestyResponse+Json.m */,
+				A6E3F3CB1C90A006004BCEA6 /* NSArray+Json.h */,
+				A6E3F3CC1C90A006004BCEA6 /* NSArray+Json.m */,
+				A6E3F3CD1C90A006004BCEA6 /* NSData+Base64.h */,
+				A6E3F3CE1C90A006004BCEA6 /* NSData+Base64.m */,
+				A6E3F3CF1C90A006004BCEA6 /* NSDictionary+Json.h */,
+				A6E3F3D01C90A006004BCEA6 /* NSDictionary+Json.m */,
+				A6E3F3D11C90A006004BCEA6 /* NSDictionary+QueryString.h */,
+				A6E3F3D21C90A006004BCEA6 /* NSDictionary+QueryString.m */,
+				A6E3F3D31C90A006004BCEA6 /* NSObject+Block.h */,
+				A6E3F3D41C90A006004BCEA6 /* NSObject+Block.m */,
+				A6E3F3D51C90A006004BCEA6 /* NSObject+SynchronousProxy.h */,
+				A6E3F3D61C90A006004BCEA6 /* NSObject+SynchronousProxy.m */,
+				A6E3F3D71C90A006004BCEA6 /* NSObject+Tap.h */,
+				A6E3F3D81C90A006004BCEA6 /* NSObject+Tap.m */,
+				A6E3F3D91C90A006004BCEA6 /* NSRunLoop+Additions.h */,
+				A6E3F3DA1C90A006004BCEA6 /* NSRunLoop+Additions.m */,
+				A6E3F3DB1C90A006004BCEA6 /* NSString+QueryString.h */,
+				A6E3F3DC1C90A006004BCEA6 /* NSString+QueryString.m */,
+				A6E3F3DD1C90A006004BCEA6 /* NSURL+QueryInspector.h */,
+				A6E3F3DE1C90A006004BCEA6 /* NSURL+QueryInspector.m */,
+				A6E3F3DF1C90A006004BCEA6 /* UIImage+sample.h */,
+				A6E3F3E01C90A006004BCEA6 /* UIImage+sample.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -462,17 +656,47 @@
 			files = (
 				A6E3F3B91C909998004BCEA6 /* BoletimViewController.m in Sources */,
 				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
+				A6E3F40B1C90A006004BCEA6 /* NSDictionary+QueryString.m in Sources */,
 				A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */,
 				A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */,
+				A6E3F4191C90A006004BCEA6 /* LRRestyClientBlockDelegate.m in Sources */,
 				232D55A41C871CC9002798F4 /* CDSong+CoreDataProperties.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
+				A6E3F4081C90A006004BCEA6 /* NSArray+Json.m in Sources */,
+				A6E3F4201C90A006004BCEA6 /* LRRestyResponse.m in Sources */,
 				A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */,
+				A6E3F41B1C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
+				A6E3F3C61C909FC2004BCEA6 /* JSONObject.m in Sources */,
+				A6E3F4221C90A006004BCEA6 /* LRURLRequestOperation.m in Sources */,
 				A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */,
+				A6E3F40F1C90A006004BCEA6 /* NSRunLoop+Additions.m in Sources */,
+				A6E3F4151C90A006004BCEA6 /* LRRestyClient+GET.m in Sources */,
+				A6E3F4111C90A006004BCEA6 /* NSURL+QueryInspector.m in Sources */,
+				A6E3F4071C90A006004BCEA6 /* LRRestyResponse+Json.m in Sources */,
+				A6E3F4101C90A006004BCEA6 /* NSString+QueryString.m in Sources */,
+				A6E3F3C51C909FC2004BCEA6 /* BaseApi.m in Sources */,
+				A6E3F4121C90A006004BCEA6 /* UIImage+sample.m in Sources */,
+				A6E3F40D1C90A006004BCEA6 /* NSObject+SynchronousProxy.m in Sources */,
+				A6E3F4171C90A006004BCEA6 /* LRRestyClient+PUT.m in Sources */,
+				A6E3F41A1C90A006004BCEA6 /* LRRestyClientProxyDelegate.m in Sources */,
+				A6E3F41C1C90A006004BCEA6 /* LRRestyHTTPClient.m in Sources */,
+				A6E3F41D1C90A006004BCEA6 /* LRRestyRequest.m in Sources */,
+				A6E3F41E1C90A006004BCEA6 /* LRRestyRequestPayload.m in Sources */,
+				A6E3F41F1C90A006004BCEA6 /* LRRestyResource.m in Sources */,
 				23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */,
+				A6E3F40A1C90A006004BCEA6 /* NSDictionary+Json.m in Sources */,
+				A6E3F4131C90A006004BCEA6 /* LRResty.m in Sources */,
+				A6E3F4161C90A006004BCEA6 /* LRRestyClient+POST.m in Sources */,
+				A6E3F40E1C90A006004BCEA6 /* NSObject+Tap.m in Sources */,
+				A6E3F4211C90A006004BCEA6 /* LRSynchronousProxy.m in Sources */,
+				A6E3F4181C90A006004BCEA6 /* LRRestyClient.m in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
 				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
+				A6E3F4141C90A006004BCEA6 /* LRRestyClient+DELETE.m in Sources */,
 				A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */,
+				A6E3F4091C90A006004BCEA6 /* NSData+Base64.m in Sources */,
+				A6E3F40C1C90A006004BCEA6 /* NSObject+Block.m in Sources */,
 				232D55A51C871CC9002798F4 /* CDSong.m in Sources */,
 				23B85A381C85E32F00144193 /* SettingsViewController.m in Sources */,
 			);
