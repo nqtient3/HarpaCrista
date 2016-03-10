@@ -207,6 +207,14 @@ typedef enum {
     [self changeToneAction:_mudeButton];
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
+    [self findAndReplaceCorrespondingTone:rangeString];
+    _isChangeToneView = NO;
+    [_changeToneCollectionView reloadData];
+}
+
+#pragma mark - findAndReplaceCorrespondingTone
+
+- (void)findAndReplaceCorrespondingTone:(NSString *)rangeString {
     __block NSInteger toneIndex;
     // Find index of tone want to change
     [_toneItemDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -216,7 +224,6 @@ typedef enum {
             *stop = YES;
         }
     }];
-    
     // Seperate string to array by character </p>
     NSArray *arrayComponents = [_fullString componentsSeparatedByString:@"</p>"];
     NSMutableArray *resultArray = [arrayComponents mutableCopy];
@@ -261,12 +268,9 @@ typedef enum {
     // Plus string from all array value
     NSString *resultString = [resultArray componentsJoinedByString:@"</p>"];
     [_webView loadHTMLString:[resultString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
-    _isChangeToneView = NO;
-    [_changeToneCollectionView reloadData];
 }
 
 #pragma mark - UIWebViewDelegate
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *bodyStyle = @"document.getElementsByTagName('body')[0].style.textAlign = 'center';";
     [_webView stringByEvaluatingJavaScriptFromString:bodyStyle];
