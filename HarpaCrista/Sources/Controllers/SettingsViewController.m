@@ -61,7 +61,7 @@ typedef enum {
 
 - (void)initData {
     //Init Name Array
-    _contactSectionArray = [NSArray arrayWithObjects:@"Ajuda",@"Contactar",@"Avaliacao",@"Compatihar", nil];
+    _contactSectionArray = [NSArray arrayWithObjects:@"Ajuda",@"Contactar",@"Avaliação",@"Compatihar", nil];
     _blogSectionArray = [NSArray arrayWithObjects:@"Loja",@"Blog",@"Boletim", nil];
     _socialSectionArray = [NSArray arrayWithObjects:@"Instagram",@"Facebook",@"Twitter", nil];
     
