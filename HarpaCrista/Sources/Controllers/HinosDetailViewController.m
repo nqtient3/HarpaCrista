@@ -113,7 +113,6 @@ typedef enum {
         if ([firstRange containsString:@"m"]) {
             secondString = [firstRange substringToIndex:1];
         }
-         NSLog(@">>>>>>firstRange:%@>>>>>>range:%@>>>>>>>>",firstRange,range);
         if ([range isEqualToString:firstRange] || [range isEqualToString:secondString]) {
             firstRangeIndex = idx;
             *stop = YES;
@@ -248,12 +247,18 @@ typedef enum {
                         //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher
                         NSString *replaceString = _toneItemDataArray[(toneIndex + i)%12];
                         NSString *currentString = _toneItemDataArray[i];
+                        if (currentString.length < 2 && replaceString.length < 2) {
+                            NSString *nextString = [oldString substringWithRange:NSMakeRange(foundRange.location + 1, 1)];
+                            if ([nextString isEqualToString:@"b"] || [nextString isEqualToString:@"#"]) {
+                                break;
+                            }
+                        }
                         if (replaceString.length > currentString.length) {
-                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(foundRange.location, foundRange.length+1)];
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSLiteralSearch range:NSMakeRange(foundRange.location, foundRange.length+1)];
                         } else if (replaceString.length < currentString.length) {
-                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(foundRange.location, foundRange.length-1)];
+                            [newString replaceOccurrencesOfString:currentString withString:[replaceString stringByAppendingString:@" "] options:NSLiteralSearch range:foundRange];
                         } else {
-                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSLiteralSearch range:foundRange];
                         }
                         searchRange.location = foundRange.location+foundRange.length;
                     } else {
@@ -261,12 +266,12 @@ typedef enum {
                     }
                 }
             }
-            NSRange range = [oldString rangeOfCharacterFromSet:[NSCharacterSet whitespaceCharacterSet] options:NSBackwardsSearch];
+            [newString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             NSString *result;
             if (isSpan) {
-                result = [[newString substringToIndex:range.location+1] stringByAppendingString:@"</span>"];
+                result = [newString stringByAppendingString:@"</span>"];
             } else {
-                result = [newString substringToIndex:range.location+1];
+                result = newString;
             }
             // Update array result
             resultArray[idx] = result;
