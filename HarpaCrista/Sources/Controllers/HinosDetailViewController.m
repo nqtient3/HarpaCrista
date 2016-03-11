@@ -30,6 +30,7 @@ typedef enum {
     __weak IBOutlet UIButton *_exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *_pauseAutoScrollButton;
     __weak IBOutlet UIButton *_mudeButton;
+    __weak IBOutlet UIButton *_metromomoButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
     int _textFontSize;
     float _scrollViewContentHeight;
@@ -395,6 +396,14 @@ typedef enum {
     }
 }
 
+#pragma mark - metronomoAction
+
+- (IBAction)metronomoAction:(id)sender {
+    [self performSegueWithIdentifier:@"metronomoSegue" sender:nil];
+}
+
+#pragma mark - changeToneAction
+
 - (IBAction)changeToneAction:(UIButton *)sender {
      sender.selected = !sender.isSelected;
     if (sender.selected) {
@@ -403,6 +412,8 @@ typedef enum {
         _changeToneView.hidden = YES;
     }
 }
+
+#pragma mark - buttonShareTapped
 
 - (IBAction)buttonShareTapped:(id)sender {
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[] applicationActivities:nil];

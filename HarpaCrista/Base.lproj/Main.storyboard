@@ -172,6 +172,9 @@
                                             <constraint firstAttribute="height" constant="25" id="lbZ-bD-x9a"/>
                                         </constraints>
                                         <state key="normal" image="ic_metronome_selected.png"/>
+                                        <connections>
+                                            <action selector="metronomoAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="y1E-CX-59K"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-V7-Seb" userLabel="TunerButton">
                                         <rect key="frame" x="103" y="15" width="20" height="25"/>
@@ -435,6 +438,7 @@
                         <outlet property="_exitZoomView" destination="9pt-3V-z1P" id="CfG-x3-oyg"/>
                         <outlet property="_fullScreenWebViewButton" destination="hwi-0f-lwv" id="BTJ-2o-Flk"/>
                         <outlet property="_maxZoomWebViewButton" destination="M3T-bL-WNC" id="gml-SO-87g"/>
+                        <outlet property="_metromomoButton" destination="M2t-Jk-PYx" id="RVK-GQ-Yha"/>
                         <outlet property="_minZoomWebViewButton" destination="jBg-Zb-SWa" id="ANy-oh-bbf"/>
                         <outlet property="_mudeButton" destination="h87-9N-Ixt" id="YgD-8B-LOO"/>
                         <outlet property="_pauseAutoScrollButton" destination="L86-fs-AaS" id="oZM-j3-D5l"/>
@@ -442,11 +446,60 @@
                         <outlet property="_toolView" destination="kd5-fE-hy0" id="uVd-IV-w7A"/>
                         <outlet property="_webView" destination="kuf-9m-UwF" id="rQg-bw-Kha"/>
                         <outlet property="_zoomView" destination="lqH-aE-fK2" id="ahH-gh-enf"/>
+                        <segue destination="uyc-AQ-s3u" kind="show" identifier="metronomoSegue" id="HPD-zd-Ncf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Y-cd-b20" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1476.5" y="436.5"/>
+        </scene>
+        <!--Metronomo View Controller-->
+        <scene sceneID="LjY-Zu-uUn">
+            <objects>
+                <viewController id="uyc-AQ-s3u" customClass="MetronomoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ft-Kc-Uv1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ora-FZ-yUQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sDx-Ux-FuR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="208" translatesAutoresizingMaskIntoConstraints="NO" id="HC1-CP-p1H">
+                                <rect key="frame" x="34" y="319" width="307" height="31"/>
+                                <color key="tintColor" red="0.2002544701" green="0.5938498378" blue="0.93481230739999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" red="0.31372549020000001" green="0.73333333329999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeTempo:" destination="uyc-AQ-s3u" eventType="valueChanged" id="ksc-T2-Gsu"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCi-w0-oXw">
+                                <rect key="frame" x="173" y="359" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="??">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HC1-CP-p1H" firstAttribute="centerY" secondItem="sDx-Ux-FuR" secondAttribute="centerY" id="09v-cT-U0d"/>
+                            <constraint firstItem="iCi-w0-oXw" firstAttribute="top" secondItem="HC1-CP-p1H" secondAttribute="bottom" constant="10" id="7ao-9i-Wn2"/>
+                            <constraint firstItem="iCi-w0-oXw" firstAttribute="centerX" secondItem="sDx-Ux-FuR" secondAttribute="centerX" id="Lru-oW-DuG"/>
+                            <constraint firstItem="HC1-CP-p1H" firstAttribute="leading" secondItem="sDx-Ux-FuR" secondAttribute="leadingMargin" constant="20" id="XYf-hE-sqf"/>
+                            <constraint firstItem="HC1-CP-p1H" firstAttribute="centerX" secondItem="sDx-Ux-FuR" secondAttribute="centerX" id="Zhq-XO-6MK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HC1-CP-p1H" secondAttribute="trailing" constant="20" id="zfu-P4-9Or"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="slider" destination="HC1-CP-p1H" id="laf-gR-xkB"/>
+                        <outlet property="tempoButton" destination="iCi-w0-oXw" id="8mv-er-E5s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJB-cg-RBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1973.5" y="435.5"/>
         </scene>
         <!--Favoritos-->
         <scene sceneID="jlj-3c-2Cq">
