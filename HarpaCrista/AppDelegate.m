@@ -22,9 +22,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     // Setup Push Notification service
-    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:@"" handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
+    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:@"e60521a3-724d-4fe2-a9f2-2bb036b84513" handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
         // This function gets call when a notification is tapped on or one is received while the app is in focus.
         NSString* messageTitle = @"Harpa Crista";
         NSString* fullMessage = [message copy];
@@ -39,8 +39,8 @@
         
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
                                                             message:fullMessage
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Close"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil, nil];
         [alertView show];
     }];
