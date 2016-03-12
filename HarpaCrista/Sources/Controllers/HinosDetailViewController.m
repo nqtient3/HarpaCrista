@@ -243,7 +243,7 @@ typedef enum {
                 NSRange foundRange;
                 while (searchRange.location < oldString.length) { // find and replace tone
                     searchRange.length = oldString.length-searchRange.location;
-                    foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:NSLiteralSearch range:searchRange];
+                    foundRange = [oldString rangeOfString:_toneItemDataArray[i] options:0 range:searchRange];
                     if (foundRange.location != NSNotFound) {
                         //Apply Caesar_cipher follow link : https://en.wikipedia.org/wiki/Caesar_cipher
                         NSString *replaceString = _toneItemDataArray[(toneIndex + i)%12];
@@ -255,11 +255,11 @@ typedef enum {
                             }
                         }
                         if (replaceString.length > currentString.length) {
-                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSLiteralSearch range:NSMakeRange(foundRange.location, foundRange.length+1)];
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(foundRange.location, foundRange.length+1)];
                         } else if (replaceString.length < currentString.length) {
-                            [newString replaceOccurrencesOfString:currentString withString:[replaceString stringByAppendingString:@" "] options:NSLiteralSearch range:foundRange];
+                            [newString replaceOccurrencesOfString:currentString withString:[replaceString stringByAppendingString:@" "] options:NSCaseInsensitiveSearch range:foundRange];
                         } else {
-                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSLiteralSearch range:foundRange];
+                            [newString replaceOccurrencesOfString:currentString withString:replaceString options:NSCaseInsensitiveSearch range:foundRange];
                         }
                         searchRange.location = foundRange.location+foundRange.length;
                     } else {
