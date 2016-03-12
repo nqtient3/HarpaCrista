@@ -669,6 +669,7 @@
                                     <constraint firstAttribute="width" constant="30" id="qui-cE-S5V"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="ic_emptyblank.png"/>
+                                <state key="selected" image="ic_emptycircle.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4w-V4-AZO">
                                 <rect key="frame" x="64" y="367" width="30" height="30"/>
@@ -679,7 +680,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="hdg-55-evZ"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="ic_emptyblank.png"/>
-                                <state key="selected" image="ic_emptyblank.png"/>
+                                <state key="selected" image="ic_emptycircle.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbu-Ve-dyR">
                                 <rect key="frame" x="102" y="367" width="30" height="30"/>
@@ -765,10 +766,6 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="ic_emptyblank.png"/>
                                 <state key="selected" image="ic_emptycircle.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaL-tt-420">
-                                <rect key="frame" x="151" y="453" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-az-8uK">
                                 <rect key="frame" x="289" y="367" width="30" height="30"/>
@@ -883,6 +880,14 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="beat1Button" destination="dFp-LM-ROG" id="lv3-9n-HAl"/>
+                        <outlet property="beat2Button" destination="V4w-V4-AZO" id="GXY-ZE-tTK"/>
+                        <outlet property="beat3Button" destination="Dbu-Ve-dyR" id="iN4-BA-0WV"/>
+                        <outlet property="beat4Button" destination="xm6-Mk-Fbq" id="dRx-aG-j6a"/>
+                        <outlet property="beat5Button" destination="JsO-Pa-jzD" id="xBN-P9-YRJ"/>
+                        <outlet property="beat6Button" destination="zT0-0j-KOU" id="IDl-2C-HmB"/>
+                        <outlet property="beat7Button" destination="aT6-TE-tuX" id="0Sn-Fg-aqf"/>
+                        <outlet property="beat8Button" destination="Xb8-az-8uK" id="LYa-Be-nlJ"/>
                         <outlet property="discreaseBPMButton" destination="mek-Mk-Md8" id="ljP-aA-Izf"/>
                         <outlet property="increaseBPMButton" destination="gUk-FI-SZF" id="iOr-jJ-9pF"/>
                         <outlet property="playPauseBeatButton" destination="dWV-NF-An8" id="aF1-N1-wvS"/>
