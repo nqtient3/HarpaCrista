@@ -22,6 +22,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    // Setup Push Notification service
+    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:@"e60521a3-724d-4fe2-a9f2-2bb036b84513" handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
+        // This function gets call when a notification is tapped on or one is received while the app is in focus.
+        NSString* messageTitle = @"Harpa Crista";
+        NSString* fullMessage = [message copy];
+        
+        if (additionalData) {
+            if (additionalData[@"inAppTitle"])
+                messageTitle = additionalData[@"inAppTitle"];
+            
+            if (additionalData[@"actionSelected"])
+                fullMessage = [fullMessage stringByAppendingString:[NSString stringWithFormat:@"\nPressed ButtonId:%@", additionalData[@"actionSelected"]]];
+        }
+        
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:messageTitle
+                                                            message:fullMessage
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+    }];
     
     // create a standardUserDefaults variable
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
