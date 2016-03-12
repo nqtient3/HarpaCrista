@@ -183,6 +183,9 @@
                                             <constraint firstAttribute="width" constant="20" id="jwa-sj-rxm"/>
                                         </constraints>
                                         <state key="normal" image="ic_tuner_selected.png"/>
+                                        <connections>
+                                            <action selector="tunerAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="VbG-HW-D4K"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h87-9N-Ixt" userLabel="MudeButton">
                                         <rect key="frame" x="178" y="15" width="20" height="25"/>
@@ -447,11 +450,53 @@
                         <outlet property="_webView" destination="kuf-9m-UwF" id="rQg-bw-Kha"/>
                         <outlet property="_zoomView" destination="lqH-aE-fK2" id="ahH-gh-enf"/>
                         <segue destination="uyc-AQ-s3u" kind="show" identifier="metronomoSegue" id="HPD-zd-Ncf"/>
+                        <segue destination="1C9-ge-ST8" kind="show" identifier="tunerSegue" id="P0R-D9-nKF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9Y-cd-b20" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1476.5" y="436.5"/>
+        </scene>
+        <!--Tuner View Controller-->
+        <scene sceneID="WKX-gG-xDk">
+            <objects>
+                <viewController id="1C9-ge-ST8" customClass="TunerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GQm-dq-Pgt"/>
+                        <viewControllerLayoutGuide type="bottom" id="OI6-ZC-3z3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M3D-T5-bIc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHk-MY-9tG">
+                                <rect key="frame" x="0.0" y="124" width="375" height="434"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OI6-ZC-3z3" firstAttribute="top" secondItem="gHk-MY-9tG" secondAttribute="bottom" constant="60" id="FKk-J1-Irr"/>
+                            <constraint firstItem="gHk-MY-9tG" firstAttribute="leading" secondItem="M3D-T5-bIc" secondAttribute="leading" id="MQH-gT-MyN"/>
+                            <constraint firstItem="gHk-MY-9tG" firstAttribute="top" secondItem="GQm-dq-Pgt" secondAttribute="bottom" constant="60" id="YKo-2E-uG2"/>
+                            <constraint firstItem="gHk-MY-9tG" firstAttribute="leading" secondItem="M3D-T5-bIc" secondAttribute="leadingMargin" id="xMA-bi-dmg"/>
+                            <constraint firstItem="gHk-MY-9tG" firstAttribute="width" secondItem="M3D-T5-bIc" secondAttribute="width" id="xY6-8D-P1X"/>
+                            <constraint firstAttribute="trailing" secondItem="gHk-MY-9tG" secondAttribute="trailing" id="xfg-Sa-mq9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xMA-bi-dmg"/>
+                                <exclude reference="xY6-8D-P1X"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="gHk-MY-9tG" id="QVH-YQ-K1e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FfI-fh-K8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962.5" y="-300.5"/>
         </scene>
         <!--Metronomo View Controller-->
         <scene sceneID="LjY-Zu-uUn">
@@ -482,13 +527,13 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="10">
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time signature :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxY-vX-0Si">
                                 <rect key="frame" x="26" y="74" width="123" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-xE-HDu">
@@ -499,7 +544,7 @@
                                     <constraint firstAttribute="width" constant="36" id="cDH-Mb-aZl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -595,7 +640,7 @@
                                     <constraint firstAttribute="height" constant="30" id="g7C-UW-ILx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTf-4s-rNb">
@@ -605,7 +650,7 @@
                                     <constraint firstAttribute="height" constant="30" id="eWy-r2-SmF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRK-le-eCf">
@@ -615,7 +660,7 @@
                                     <constraint firstAttribute="width" constant="30" id="YLb-QR-c62"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vS-hN-RLx">
@@ -625,19 +670,19 @@
                                     <constraint firstAttribute="height" constant="30" id="D5M-zv-aTN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs1-34-LTS">
                                 <rect key="frame" x="26" y="145" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acl-NF-7Jf">
                                 <rect key="frame" x="26" y="336" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mek-Mk-Md8">
@@ -650,7 +695,7 @@
                                     <constraint firstAttribute="width" constant="35" id="vRs-a2-gJz"/>
                                 </constraints>
                                 <state key="normal" image="ic_decrease.png">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1405,7 +1450,7 @@
                                     <constraint firstAttribute="height" constant="100" id="CHB-cx-Zdl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-Tv-2dx">
