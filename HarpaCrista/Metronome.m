@@ -1,12 +1,14 @@
 #import "Metronome.h"
 
-@implementation Metronome
-@synthesize beatsPerMinute;
+@implementation Metronome {
+    NSTimer *tickTimer;
+    AVAudioPlayer *audioPlayer;
+}
 
 - (id)initWithInitialBPM:(int)speed {
-    float bpm = speed;
-    float timeInterval = 60.0/bpm;
-    NSLog(@"%f", timeInterval);
+    _beatsPerMinute = speed;
+    float timeInterval = 60.0/_beatsPerMinute;
+
     tickTimer = [NSTimer timerWithTimeInterval:timeInterval target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:tickTimer forMode:NSDefaultRunLoopMode];
     NSError *error = nil;
@@ -26,6 +28,7 @@
 
 - (void)stop {
     [tickTimer invalidate];
+    tickTimer = nil;
 }
 
 - (void)timerFireMethod:(NSTimer*)theTimer {

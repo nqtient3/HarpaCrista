@@ -7,11 +7,14 @@
 //
 
 #import "MetronomoViewController.h"
-#import <UIKit/UIKit.h>
-#import <iAD/iAD.h>
-#import "Metronome.h"
 #import <AVFoundation/AVFoundation.h>
 
+typedef enum {
+    BeatType4DevisionBy4 = 0,
+    BeatType3DevisionBy4,
+    BeatType2DevisionBy4,
+    BeatType6DevisionBy8
+} BeatType;
 
 @interface MetronomoViewController () <AVAudioRecorderDelegate> {
     __weak IBOutlet UISlider *slider;
@@ -19,10 +22,12 @@
     __weak IBOutlet UIButton *increaseBPMButton;
     __weak IBOutlet UIButton *discreaseBPMButton;
     __weak IBOutlet UIButton *playPauseBeatButton;
+    
     __weak IBOutlet UIButton *tone44Button;
     __weak IBOutlet UIButton *tone34Button;
     __weak IBOutlet UIButton *tone24Button;
     __weak IBOutlet UIButton *tone68Button;
+    
     __weak IBOutlet UIButton *beat1Button;
     __weak IBOutlet UIButton *beat2Button;
     __weak IBOutlet UIButton *beat3Button;
@@ -31,9 +36,11 @@
     __weak IBOutlet UIButton *beat6Button;
     __weak IBOutlet UIButton *beat7Button;
     __weak IBOutlet UIButton *beat8Button;
-    Metronome *currentMetronome;
-    NSTimer *myTime;
-    int count;
+    
+    NSTimer *timerBeat;
+    int _currentBeatNumber;
+    AVAudioPlayer *_audioPlayer;
+    BeatType _beatType;
 }
 
 @end
@@ -45,12 +52,26 @@
     // Do any additional setup after loading the view.
     self.title = @"Metrónomo";
     slider.value = 10;
-    tone44Button.selected = YES;
-    beat5Button.hidden = YES;
-    beat6Button.hidden = YES;
-    beat7Button.hidden = YES;
-    beat8Button.hidden = YES;
+    // Set beat type 3/4 to be the default
+    [self tone34Action:tone34Button];
     
+    //Set the current beat number to be 1 as default
+    _currentBeatNumber = 1;
+    
+    //
+    NSError *error = nil;
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"Pop-02"
+                                              withExtension:@"wav"];
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (timerBeat) {
+        [timerBeat invalidate];
+        timerBeat = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,154 +82,202 @@
 #pragma mark - discreaseBPMButton
 
 - (IBAction)tone44Action:(UIButton *)sender {
-    sender.selected =! sender.selected;
     if (sender.selected) {
-        beat5Button.hidden = YES;
-        beat6Button.hidden = YES;
-        beat7Button.hidden = YES;
-        beat8Button.hidden = YES;
-        
+        return;
+    }
+    sender.selected = !sender.selected;
+    [self changeBeatTypeToType:BeatType4DevisionBy4];
+    if (sender.selected) {
+        [self hide4LastButtons:YES];
+        [self beginBeating];
     }
 }
-
-#pragma mark - discreaseBPMButton
 
 - (IBAction)tone34Action:(UIButton *)sender {
-    sender.selected =! sender.selected;
     if (sender.selected) {
-        beat5Button.hidden = YES;
-        beat6Button.hidden = YES;
-        beat7Button.hidden = YES;
-        beat8Button.hidden = YES;
+        return;
+    }
+    sender.selected =!sender.selected;
+    [self changeBeatTypeToType:BeatType3DevisionBy4];
+    if (sender.selected) {
+        [self hide4LastButtons:YES];
+        [self beginBeating];
     }
 }
-
-#pragma mark - discreaseBPMButton
 
 - (IBAction)tone24Action:(UIButton *)sender {
-    sender.selected =! sender.selected;
     if (sender.selected) {
-        beat5Button.hidden = YES;
-        beat6Button.hidden = YES;
-        beat7Button.hidden = YES;
-        beat8Button.hidden = YES;
+        return;
+    }
+    sender.selected = !sender.selected;
+    [self changeBeatTypeToType:BeatType2DevisionBy4];
+    if (sender.selected) {
+        [self hide4LastButtons:YES];
+        [self beginBeating];
     }
 }
-
-#pragma mark - discreaseBPMButton
 
 - (IBAction)tone68Action:(UIButton *)sender {
-    sender.selected =! sender.selected;
     if (sender.selected) {
-        beat5Button.hidden = NO;
-        beat6Button.hidden = NO;
-        beat7Button.hidden = NO;
-        beat8Button.hidden = NO;
+        return;
+    }
+    sender.selected = !sender.selected;
+    [self changeBeatTypeToType:BeatType6DevisionBy8];
+    if (sender.selected) {
+        [self hide4LastButtons:NO];
+        [self beginBeating];
     }
 }
 
-#pragma mark - increaseBPMButton
+- (void)hide4LastButtons:(BOOL)isHidden {
+    beat5Button.hidden = isHidden;
+    beat6Button.hidden = isHidden;
+    beat7Button.hidden = isHidden;
+    beat8Button.hidden = isHidden;
+}
+
+- (void)changeBeatTypeToType:(BeatType)beatType {
+    switch (_beatType) {
+        case BeatType4DevisionBy4:
+            tone44Button.selected = NO;
+            
+            break;
+        case BeatType3DevisionBy4:
+            tone34Button.selected = NO;
+            
+            break;
+        case BeatType2DevisionBy4:
+            tone24Button.selected = NO;
+
+            break;
+        case BeatType6DevisionBy8:
+            tone68Button.selected = NO;
+
+            break;
+        default:
+            break;
+    }
+    _beatType = beatType;
+}
+
+- (IBAction)changeTempo:(id)sender {
+    [self beginBeating];
+}
 
 - (IBAction)increaseBPMButton:(UIButton *)sender {
-    [currentMetronome stop];
-    currentMetronome = nil;
     slider.value = slider.value + 1;
-    [self setValueToSide:slider.value];
+    [self beginBeating];
 }
-
-#pragma mark - discreaseBPMButton
 
 - (IBAction)discreaseBPMButton:(UIButton *)sender {
-    [currentMetronome stop];
-    currentMetronome = nil;
-    slider.value = slider.value - 1;
-    [self setValueToSide:slider.value];
-    
+    slider.value--;
+    [self beginBeating];
 }
-
-- (void)setValueToSide:(float) slideValue {
-    [currentMetronome stop];
-    currentMetronome = nil;
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.roundingIncrement = [NSNumber numberWithDouble:1];
-    formatter.numberStyle = NSNumberFormatterDecimalStyle;
-    if (playPauseBeatButton.selected) {
-        [currentMetronome start];
-    }
-    currentMetronome = [[Metronome alloc] initWithInitialBPM:[slider value]];
-    [tempoButton setTitle:[formatter stringFromNumber:[NSNumber numberWithFloat:slideValue]] forState: UIControlStateNormal];
-}
-
-#pragma mark - playPauseBeatAction
 
 - (IBAction)playPauseBeatAction:(UIButton *)sender {
-    //currentMetronome = nil;
-    [self setValueToSide:slider.value];
     sender.selected = !sender.selected;
-    if (sender.selected) {
-        [currentMetronome start];
-        myTime = [NSTimer scheduledTimerWithTimeInterval: 60.0/slider.value
-                                                  target: self
-                                                selector: @selector (updateBackgroundButton:)
-                                                userInfo: nil
-                                                 repeats: YES];
-    } else {
-        [currentMetronome stop];
-        if (myTime != nil) {
-            [myTime invalidate];
-            myTime = nil;
-        }
+    
+    [self beginBeating];
+}
+
+- (void)beginBeating {
+    [tempoButton setTitle:[NSString stringWithFormat:@"%i", (int)slider.value] forState: UIControlStateNormal];
+    
+    if (timerBeat) {
+        [timerBeat invalidate];
+        timerBeat = nil;
+    }
+    
+    if (playPauseBeatButton.selected) {
+        timerBeat = [NSTimer timerWithTimeInterval:60.0/slider.value target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timerBeat forMode:NSDefaultRunLoopMode];
     }
 }
 
-- (void)updateBackgroundButton:(NSTimer *)theTimer {
-    count = count + 1;
-    [UIView beginAnimations: nil context: nil];
-    [UIView setAnimationDuration: 60.0/slider.value];
-    if (count == 5) {
-        count = 1;
+- (void)timerFireMethod {
+    [_audioPlayer play];
+    [self changeCurrentButtonBackground];
+}
+
+- (void)changeCurrentButtonBackground {
+    int maxBeatNumber;
+    switch (_beatType) {
+        case 0:
+            maxBeatNumber = 4;
+            break;
+        case 1:
+            maxBeatNumber = 3;
+            break;
+        case 2:
+            maxBeatNumber = 2;
+            break;
+        case 3:
+            maxBeatNumber = 6;
+            break;
+        default:
+            break;
     }
-        if (count == 1) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                beat1Button.selected = YES;
+    
+    switch (_currentBeatNumber) {
+        case 1:
+            beat1Button.selected = NO;
+            beat2Button.selected = YES;
+            break;
+        case 2:
+            if (maxBeatNumber == 2) {
                 beat2Button.selected = NO;
-                beat3Button.selected = NO;
-                beat4Button.selected = NO;
-            });
-        } else if (count == 2) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                beat1Button.selected = NO;
-                beat2Button.selected = YES;
-                beat3Button.selected = NO;
-                beat4Button.selected = NO;
-            });
-        } else if (count == 3) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                beat1Button.selected = NO;
+                beat1Button.selected = YES;
+            } else {
                 beat2Button.selected = NO;
                 beat3Button.selected = YES;
-                beat4Button.selected = NO;
-             });
-        } else if (count == 4) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                beat1Button.selected = NO;
-                beat2Button.selected = NO;
+            }
+            
+            break;
+        case 3:
+            if (maxBeatNumber == 3) {
+                beat3Button.selected = NO;
+                beat1Button.selected = YES;
+            } else {
                 beat3Button.selected = NO;
                 beat4Button.selected = YES;
-             });
-        }
-
-        [UIView commitAnimations];
+            }
+            
+            break;
+        case 4:
+            if (maxBeatNumber == 4) {
+                beat4Button.selected = NO;
+                beat1Button.selected = YES;
+            } else {
+                beat4Button.selected = NO;
+                beat5Button.selected = YES;
+            }
+            
+            break;
+        case 5:
+            beat5Button.selected = NO;
+            beat6Button.selected = YES;
+            break;
+        case 6:
+            beat6Button.selected = NO;
+            beat1Button.selected = YES;
+            break;
+        default:
+            break;
+    }
+    
+    if (_currentBeatNumber == maxBeatNumber) {
+        _currentBeatNumber = 1;
+    } else {
+        _currentBeatNumber++;
+    }
 }
 
 #pragma mark - Alter Metronome
-
-- (IBAction)changeTempo:(id)sender {
-    [self setValueToSide:slider.value];
-}
-
 - (void) dealloc {
-    [currentMetronome stop];
+    if (timerBeat) {
+        [timerBeat invalidate];
+        timerBeat = nil;
+    }
 }
 
 @end
