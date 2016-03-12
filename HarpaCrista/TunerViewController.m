@@ -37,7 +37,7 @@
     [userDefaults synchronize];
     
     CGRect currentFrame = self.view.frame;
-    self.knobPlaceholder = [[UIView alloc] initWithFrame:CGRectMake(currentFrame.size.width/6, currentFrame.size.width/5, currentFrame.size.width/1.5, currentFrame.size.width/1.5)];
+    self.knobPlaceholder = [[UIView alloc] initWithFrame:CGRectMake(currentFrame.size.width/6, currentFrame.size.width/3, currentFrame.size.width/1.5, currentFrame.size.width/1.5)];
     [self.view addSubview:self.knobPlaceholder];
     self.knobControl = [[RWKnobControl alloc] initWithFrame:self.knobPlaceholder.bounds];
     [self.knobPlaceholder addSubview:_knobControl];
@@ -46,23 +46,6 @@
     self.knobControl.pointerLength = 8.0;
     self.knobControl.tintColor = [UIColor colorWithRed:0.237 green:0.504 blue:1.000 alpha:1.000];
     [self.knobControl setValue:0.004 animated:NO];
-    
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, currentFrame.size.height/1.33, currentFrame.size.width, currentFrame.size.height/4)];
-    _scrollView.contentSize = CGSizeMake(currentFrame.size.width * 4, currentFrame.size.height/4);
-    _scrollView.backgroundColor = [UIColor lightGrayColor];
-    _scrollView.pagingEnabled = YES;
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    [self.view addSubview:_scrollView];
-    
-    int i = 0;
-    while (i <= 3)
-    {
-        UIView *views = [[UIView alloc] initWithFrame:CGRectMake(((_scrollView.frame.size.width)*i)+20, 10, (_scrollView.frame.size.width)-40, _scrollView.frame.size.height-20)];
-        views.backgroundColor=[UIColor yellowColor];
-        [views setTag:i];
-        [_scrollView addSubview:views];
-        i++;
-    }
     
     m_toggleButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     CGRect buttonRect = m_toggleButton.frame;
@@ -73,7 +56,7 @@
     [m_toggleButton addTarget:self action:@selector(togglePopover:) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:m_toggleButton];
     
-    _noteDisplay = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2.65, self.view.frame.size.width/2.65, 80, 80)];
+    _noteDisplay = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2.65, self.view.frame.size.width/1.8, 80, 80)];
     [_noteDisplay setText:@"-"];
     [_noteDisplay setTextColor:[UIColor whiteColor]];
     [_noteDisplay setTextAlignment:NSTextAlignmentCenter];
@@ -105,20 +88,17 @@
     }];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     _noteDisplay = nil;
     _freqencyDisplay = nil;
     [super viewDidDisappear:animated];
 }
 
-- (void)updateNoteLabel
-{
+- (void)updateNoteLabel {
     _noteDisplay.text = _noteData.currentNote;
 }
 
-- (void)updateFrequencyLabel
-{
+- (void)updateFrequencyLabel {
     _freqencyDisplay.text = [NSString stringWithFormat:@"%.2f", _noteData.currentFrequency];
     self.knobControl.minimumValue = _noteData.minFrequency;
     self.knobControl.maximumValue = _noteData.maxFreqency;
@@ -131,8 +111,7 @@
     }
 }
 
-- (void)updateToFrequncy:(double)freqency
-{
+- (void)updateToFrequncy:(double)freqency {
     NSString *huh = [NSString stringWithFormat:@"%.2f", freqency];
     
     if ([huh isEqualToString:lastFreq])
@@ -141,39 +120,6 @@
     lastFreq = [NSString stringWithFormat:@"%.2f", freqency];
 }
 
-#pragma mark - Flipside View Controller
-
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        [self dismissViewControllerAnimated:YES completion:nil];
-    else
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    self.flipsidePopoverController = nil;
-}
-
-- (void)togglePopover:(id)sender {
-    if (self.flipsidePopoverController) {
-        [self.flipsidePopoverController dismissPopoverAnimated:YES];
-        self.flipsidePopoverController = nil;
-    } else {
-        FlipsideViewController *flipSideViewController = [[FlipsideViewController alloc] init];
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:flipSideViewController];
-            popoverController.popoverContentSize = CGSizeMake(444, 425);
-            self.flipsidePopoverController = popoverController;
-            popoverController.delegate = self;
-            [popoverController presentPopoverFromRect:m_toggleButton.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-        } else {
-            FlipsideViewController *flipSideViewController = [[FlipsideViewController alloc] init];
-            [self presentViewController:flipSideViewController animated:YES completion:nil];
-        }
-    }
-}
 
 - (void)dealloc {
     [self.pitchDetector TurnOffMicrophone];
