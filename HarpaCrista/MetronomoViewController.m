@@ -21,7 +21,7 @@
     __weak IBOutlet UIButton *playPauseBeatButton;
     __weak IBOutlet UIButton *tone44Button;
     __weak IBOutlet UIButton *tone34Button;
-    __weak IBOutlet UIButton *tonn24Button;
+    __weak IBOutlet UIButton *tone24Button;
     __weak IBOutlet UIButton *tone68Button;
     Metronome *currentMetronome;
 }

@@ -888,10 +888,10 @@
                         <outlet property="playPauseBeatButton" destination="dWV-NF-An8" id="aF1-N1-wvS"/>
                         <outlet property="slider" destination="HC1-CP-p1H" id="laf-gR-xkB"/>
                         <outlet property="tempoButton" destination="iCi-w0-oXw" id="8mv-er-E5s"/>
+                        <outlet property="tone24Button" destination="jD0-P1-2w1" id="ze5-ZQ-hBD"/>
                         <outlet property="tone34Button" destination="yge-ds-lsT" id="0c3-Xh-znL"/>
                         <outlet property="tone44Button" destination="Vcy-a8-o8F" id="nlp-pd-TrN"/>
                         <outlet property="tone68Button" destination="Lb9-sG-724" id="SkG-wE-sbV"/>
-                        <outlet property="tonn24Button" destination="jD0-P1-2w1" id="Ajg-qE-Ter"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJB-cg-RBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
