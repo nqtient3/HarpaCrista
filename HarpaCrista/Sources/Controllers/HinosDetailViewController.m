@@ -136,7 +136,7 @@ typedef enum {
 }
 
 // Remove HTML tags from NSString
--(NSString *) stringByStrippingHTML:(NSString *)stringHTML {
+- (NSString *) stringByStrippingHTML:(NSString *)stringHTML {
     NSRange range;
     while ((range = [stringHTML rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound){
             stringHTML = [stringHTML stringByReplacingCharactersInRange:range withString:@" "];

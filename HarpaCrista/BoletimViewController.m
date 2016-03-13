@@ -22,8 +22,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Boletim";
+    // Border for submitButton
     _submitButton.layer.cornerRadius = 5;
     _submitButton.layer.masksToBounds = YES;
+    // Border for emailTextField
+    _emailTextField.layer.cornerRadius = 5;
+    _emailTextField.layer.masksToBounds = YES;
+    _emailTextField.layer.borderColor =[[UIColor grayColor]CGColor];
+    _emailTextField.layer.borderWidth= 1.0;
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -58,7 +64,7 @@
     [_emailTextField resignFirstResponder];
 }
 
-#pragma mark - Submit Email Action
+#pragma mark - Submit Email Action 
 
 - (IBAction)submitEmailAction:(id)sender {
     if ([self validateEmailWithString:_emailTextField.text]) {

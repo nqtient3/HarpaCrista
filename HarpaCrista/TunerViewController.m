@@ -46,16 +46,7 @@
     self.knobControl.pointerLength = 8.0;
     self.knobControl.tintColor = [UIColor colorWithRed:0.237 green:0.504 blue:1.000 alpha:1.000];
     [self.knobControl setValue:0.004 animated:NO];
-    
-    m_toggleButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    CGRect buttonRect = m_toggleButton.frame;
-    buttonRect.origin.x = self.view.frame.size.width-buttonRect.size.width - 8;
-    buttonRect.origin.y = buttonRect.size.height + 4;
-    m_toggleButton.frame = buttonRect;
-    
-    [m_toggleButton addTarget:self action:@selector(togglePopover:) forControlEvents:UIControlEventTouchDown];
-    [self.view addSubview:m_toggleButton];
-    
+        
     _noteDisplay = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2.65, self.view.frame.size.width/1.8, 80, 80)];
     [_noteDisplay setText:@"-"];
     [_noteDisplay setTextColor:[UIColor whiteColor]];
@@ -83,9 +74,18 @@
     }];
     
     [_KVOController observe:_noteData keyPath:@"currentFrequency" options:NSKeyValueObservingOptionNew block:^(TunerViewController *observer, GTNote *object, NSDictionary *change) {
-        //NSLog(@"FreqChange: %@", change[NSKeyValueChangeNewKey]);
         [self performSelectorInBackground:@selector(updateFrequencyLabel) withObject:nil];
     }];
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+        [_KVOController unobserve:_noteData keyPath:@"currentNote"];
+        [_KVOController unobserve:_noteData keyPath:@"currentFrequency"];
+    }
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -122,7 +122,7 @@
 
 
 - (void)dealloc {
-    [self.pitchDetector TurnOffMicrophone];
+   _pitchDetector = nil;
 }
 
 @end

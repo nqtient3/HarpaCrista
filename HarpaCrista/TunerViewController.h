@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIView *knobPlaceholder;
 @property (strong, nonatomic) GTNote *noteData;
 @property (nonatomic, strong) UILabel *noteDisplay;
-@property (nonatomic, retain) UILabel *freqencyDisplay;
+@property (nonatomic, strong) UILabel *freqencyDisplay;
 @property (nonatomic, assign) double currentFrequency;
 @property (nonatomic, strong) NSString *currentNote;
 @property(assign) BOOL isListening;
