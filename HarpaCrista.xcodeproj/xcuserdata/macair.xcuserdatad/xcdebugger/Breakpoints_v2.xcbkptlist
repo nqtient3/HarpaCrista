@@ -56,32 +56,7 @@
                </BreakpointActionProxy>
             </Actions>
             <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "malloc_error_break"
-                  moduleName = "libsystem_malloc.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-               </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479536959.745969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "-TurnOnMicrophoneTuner:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -113,22 +88,6 @@
             startingLineNumber = "53"
             endingLineNumber = "53"
             landmarkName = "-initializePitchDetecter"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479536959.745969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "-TurnOnMicrophone_test_1_4096_0:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -354,38 +313,6 @@
             endingLineNumber = "73"
             landmarkName = "-submitEmailAction:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__43-[BoletimViewController submitEmailAction:]_block_invoke"
-                  moduleName = "HarpaCrista"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macair/Documents/Work/HarpaCrista/HarpaCrista/HarpaCrista/BoletimViewController.m"
-                  timestampString = "479538474.397131"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__43-[BoletimViewController submitEmailAction:]_block_invoke_2"
-                  moduleName = "HarpaCrista"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macair/Documents/Work/HarpaCrista/HarpaCrista/HarpaCrista/BoletimViewController.m"
-                  timestampString = "479538474.397465"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "56">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
