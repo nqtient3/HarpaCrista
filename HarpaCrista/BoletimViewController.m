@@ -70,9 +70,10 @@
     if ([self validateEmailWithString:_emailTextField.text]) {
         NSDictionary *object = @{@"email":_emailTextField.text};
         [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_submit_email.php" onSuccess:^(id data, id header) {
-            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"Submit the email successfully!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
         }onError:^(NSInteger code, NSError *error) {
-            
+            NSLog(@"Failed with error: %@", error.description);
         }];
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"This email is invalid. Please check it again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

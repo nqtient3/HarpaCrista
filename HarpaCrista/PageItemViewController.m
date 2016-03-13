@@ -95,7 +95,15 @@
         NSDictionary *object = @{@"email":_emailTextField.text};
         [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_submit_email.php" onSuccess:^(id data, id header) {
             // Post email successfully. Continue!
+            //
+            NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
+            [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
+            [userDefault synchronize];
             
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
+            [self presentViewController:mainTabbarController animated:YES completion:^{
+            }];
         }onError:^(NSInteger code, NSError *error) {
             NSLog(@"Failed with error: %@", error.description);
         }];
@@ -103,15 +111,6 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"This email is invalid. Please check it again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
-    //
-    NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
-    [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
-    [userDefault synchronize];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
-    [self presentViewController:mainTabbarController animated:YES completion:^{
-    }];
 }
 
 - (BOOL)validateEmailWithString:(NSString*)checkString {
