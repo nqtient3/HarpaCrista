@@ -515,7 +515,7 @@
                                 <color key="tintColor" red="0.2002544701" green="0.5938498378" blue="0.93481230739999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" red="0.31372549020000001" green="0.73333333329999995" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="changeTempo:" destination="uyc-AQ-s3u" eventType="valueChanged" id="ksc-T2-Gsu"/>
+                                    <action selector="sliderChangeBPMValueChanged:" destination="uyc-AQ-s3u" eventType="valueChanged" id="6SB-SC-z7O"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCi-w0-oXw">
@@ -552,7 +552,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUk-FI-SZF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUk-FI-SZF" userLabel="Button Increase BPM">
                                 <rect key="frame" x="254" y="219" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -565,7 +565,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="increaseBPMButton:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="gCC-Gc-fky"/>
+                                    <action selector="buttonIncreaseBPMTapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="sCe-y9-5jf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWV-NF-An8">
@@ -578,7 +578,7 @@
                                 <state key="normal" image="ic_play.png"/>
                                 <state key="selected" image="ic_pause.png"/>
                                 <connections>
-                                    <action selector="playPauseBeatAction:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="is1-8j-RKR"/>
+                                    <action selector="buttonPlayPauseBeatingTapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="ei2-ad-wR4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcy-a8-o8F">
@@ -591,7 +591,7 @@
                                 <state key="normal" image="ic_emptyblank.png"/>
                                 <state key="selected" image="ic_emptycircle.png"/>
                                 <connections>
-                                    <action selector="tone44Action:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="hvu-w7-jRK"/>
+                                    <action selector="buttonTone44Tapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="BNh-Pb-tsR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yge-ds-lsT">
@@ -604,7 +604,7 @@
                                 <state key="normal" image="ic_emptyblank.png"/>
                                 <state key="selected" image="ic_emptycircle.png"/>
                                 <connections>
-                                    <action selector="tone34Action:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="JIH-Oc-5fl"/>
+                                    <action selector="buttonTone34Tapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="cva-u6-ghC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD0-P1-2w1">
@@ -617,7 +617,7 @@
                                 <state key="normal" image="ic_emptyblank.png"/>
                                 <state key="selected" image="ic_emptycircle.png"/>
                                 <connections>
-                                    <action selector="tone24Action:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="Hvv-bD-KF0"/>
+                                    <action selector="buttonTone24Tapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="oRx-na-6HG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb9-sG-724">
@@ -630,7 +630,7 @@
                                 <state key="normal" image="ic_emptyblank.png"/>
                                 <state key="selected" image="ic_emptycircle.png"/>
                                 <connections>
-                                    <action selector="tone68Action:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="mqW-my-9r1"/>
+                                    <action selector="buttonTone68Tapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="8QF-9L-d20"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4/4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nc-Ed-xBj">
@@ -685,7 +685,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mek-Mk-Md8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mek-Mk-Md8" userLabel="Button Decrease BPM">
                                 <rect key="frame" x="99" y="220" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -704,7 +704,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="discreaseBPMButton:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="OMi-FC-5XB"/>
+                                    <action selector="buttonDecreaseBPMTapped:" destination="uyc-AQ-s3u" eventType="touchUpInside" id="pgh-45-W3g"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFp-LM-ROG">
@@ -925,23 +925,21 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="beat1Button" destination="dFp-LM-ROG" id="lv3-9n-HAl"/>
-                        <outlet property="beat2Button" destination="V4w-V4-AZO" id="GXY-ZE-tTK"/>
-                        <outlet property="beat3Button" destination="Dbu-Ve-dyR" id="iN4-BA-0WV"/>
-                        <outlet property="beat4Button" destination="xm6-Mk-Fbq" id="dRx-aG-j6a"/>
-                        <outlet property="beat5Button" destination="JsO-Pa-jzD" id="xBN-P9-YRJ"/>
-                        <outlet property="beat6Button" destination="zT0-0j-KOU" id="IDl-2C-HmB"/>
-                        <outlet property="beat7Button" destination="aT6-TE-tuX" id="0Sn-Fg-aqf"/>
-                        <outlet property="beat8Button" destination="Xb8-az-8uK" id="LYa-Be-nlJ"/>
-                        <outlet property="discreaseBPMButton" destination="mek-Mk-Md8" id="ljP-aA-Izf"/>
-                        <outlet property="increaseBPMButton" destination="gUk-FI-SZF" id="iOr-jJ-9pF"/>
-                        <outlet property="playPauseBeatButton" destination="dWV-NF-An8" id="aF1-N1-wvS"/>
-                        <outlet property="slider" destination="HC1-CP-p1H" id="laf-gR-xkB"/>
-                        <outlet property="tempoButton" destination="iCi-w0-oXw" id="8mv-er-E5s"/>
-                        <outlet property="tone24Button" destination="jD0-P1-2w1" id="ze5-ZQ-hBD"/>
-                        <outlet property="tone34Button" destination="yge-ds-lsT" id="0c3-Xh-znL"/>
-                        <outlet property="tone44Button" destination="Vcy-a8-o8F" id="nlp-pd-TrN"/>
-                        <outlet property="tone68Button" destination="Lb9-sG-724" id="SkG-wE-sbV"/>
+                        <outlet property="_buttonBeat1" destination="dFp-LM-ROG" id="fK1-5S-bSy"/>
+                        <outlet property="_buttonBeat2" destination="V4w-V4-AZO" id="8ja-u9-ajK"/>
+                        <outlet property="_buttonBeat3" destination="Dbu-Ve-dyR" id="iBQ-eb-8CN"/>
+                        <outlet property="_buttonBeat4" destination="xm6-Mk-Fbq" id="zNz-XB-Uvq"/>
+                        <outlet property="_buttonBeat5" destination="JsO-Pa-jzD" id="gKX-2Q-dgB"/>
+                        <outlet property="_buttonBeat6" destination="zT0-0j-KOU" id="cPU-wG-GZz"/>
+                        <outlet property="_buttonBeat7" destination="aT6-TE-tuX" id="fGG-IX-G3w"/>
+                        <outlet property="_buttonBeat8" destination="Xb8-az-8uK" id="B0X-M6-vMM"/>
+                        <outlet property="_buttonPlayPauseBeating" destination="dWV-NF-An8" id="Te8-O1-HJb"/>
+                        <outlet property="_buttonShowBPM" destination="iCi-w0-oXw" id="Vwp-nz-wR1"/>
+                        <outlet property="_buttonTone24" destination="jD0-P1-2w1" id="2Bo-sl-e1o"/>
+                        <outlet property="_buttonTone34" destination="yge-ds-lsT" id="kPs-5k-sGR"/>
+                        <outlet property="_buttonTone44" destination="Vcy-a8-o8F" id="mn5-fz-VkK"/>
+                        <outlet property="_buttonTone68" destination="Lb9-sG-724" id="FP2-te-rEr"/>
+                        <outlet property="_slider" destination="HC1-CP-p1H" id="haC-KV-iou"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJB-cg-RBc" userLabel="First Responder" sceneMemberID="firstResponder"/>

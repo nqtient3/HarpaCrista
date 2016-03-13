@@ -17,27 +17,26 @@ typedef enum {
 } BeatType;
 
 @interface MetronomoViewController () <AVAudioRecorderDelegate> {
-    __weak IBOutlet UISlider *slider;
-    __weak IBOutlet UIButton *tempoButton;
-    __weak IBOutlet UIButton *increaseBPMButton;
-    __weak IBOutlet UIButton *discreaseBPMButton;
-    __weak IBOutlet UIButton *playPauseBeatButton;
+    __weak IBOutlet UISlider *_slider;
+    __weak IBOutlet UIButton *_buttonShowBPM;
     
-    __weak IBOutlet UIButton *tone44Button;
-    __weak IBOutlet UIButton *tone34Button;
-    __weak IBOutlet UIButton *tone24Button;
-    __weak IBOutlet UIButton *tone68Button;
+    __weak IBOutlet UIButton *_buttonPlayPauseBeating;
     
-    __weak IBOutlet UIButton *beat1Button;
-    __weak IBOutlet UIButton *beat2Button;
-    __weak IBOutlet UIButton *beat3Button;
-    __weak IBOutlet UIButton *beat4Button;
-    __weak IBOutlet UIButton *beat5Button;
-    __weak IBOutlet UIButton *beat6Button;
-    __weak IBOutlet UIButton *beat7Button;
-    __weak IBOutlet UIButton *beat8Button;
+    __weak IBOutlet UIButton *_buttonTone44;
+    __weak IBOutlet UIButton *_buttonTone34;
+    __weak IBOutlet UIButton *_buttonTone24;
+    __weak IBOutlet UIButton *_buttonTone68;
     
-    NSTimer *timerBeat;
+    __weak IBOutlet UIButton *_buttonBeat1;
+    __weak IBOutlet UIButton *_buttonBeat2;
+    __weak IBOutlet UIButton *_buttonBeat3;
+    __weak IBOutlet UIButton *_buttonBeat4;
+    __weak IBOutlet UIButton *_buttonBeat5;
+    __weak IBOutlet UIButton *_buttonBeat6;
+    __weak IBOutlet UIButton *_buttonBeat7;
+    __weak IBOutlet UIButton *_buttonBeat8;
+    
+    NSTimer *_timerBeat;
     int _currentBeatNumber;
     AVAudioPlayer *_audioPlayer;
     BeatType _beatType;
@@ -50,15 +49,20 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.title = @"Metrónomo";
-    slider.value = 10;
+    
+    // Init the default value for slider and set it for label BPM
+    _slider.value = 10;
+    [_buttonShowBPM setTitle:[NSString stringWithFormat:@"%i", (int)_slider.value] forState:UIControlStateNormal];
+    
     // Set beat type 3/4 to be the default
-    [self tone34Action:tone34Button];
+    [self buttonTone34Tapped:_buttonTone34];
     
-    //Set the current beat number to be 1 as default
-    _currentBeatNumber = 1;
+    //Set the current beat number to be 0 as default
+    _currentBeatNumber = 0;
     
-    //
+    // Init the audio Player to play sound
     NSError *error = nil;
     NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"Pop-02"
                                               withExtension:@"wav"];
@@ -68,20 +72,17 @@ typedef enum {
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if (timerBeat) {
-        [timerBeat invalidate];
-        timerBeat = nil;
-    }
+    [self removeTimer];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [self removeTimer];
 }
 
-#pragma mark - discreaseBPMButton
-
-- (IBAction)tone44Action:(UIButton *)sender {
+#pragma mark - Actions
+- (IBAction)buttonTone44Tapped:(UIButton *)sender {
     if (sender.selected) {
         return;
     }
@@ -93,7 +94,7 @@ typedef enum {
     }
 }
 
-- (IBAction)tone34Action:(UIButton *)sender {
+- (IBAction)buttonTone34Tapped:(UIButton *)sender {
     if (sender.selected) {
         return;
     }
@@ -105,7 +106,7 @@ typedef enum {
     }
 }
 
-- (IBAction)tone24Action:(UIButton *)sender {
+- (IBAction)buttonTone24Tapped:(UIButton *)sender {
     if (sender.selected) {
         return;
     }
@@ -117,7 +118,7 @@ typedef enum {
     }
 }
 
-- (IBAction)tone68Action:(UIButton *)sender {
+- (IBAction)buttonTone68Tapped:(UIButton *)sender {
     if (sender.selected) {
         return;
     }
@@ -130,28 +131,28 @@ typedef enum {
 }
 
 - (void)hide4LastButtons:(BOOL)isHidden {
-    beat5Button.hidden = isHidden;
-    beat6Button.hidden = isHidden;
-    beat7Button.hidden = isHidden;
-    beat8Button.hidden = isHidden;
+    _buttonBeat5.hidden = isHidden;
+    _buttonBeat6.hidden = isHidden;
+    _buttonBeat7.hidden = isHidden;
+    _buttonBeat8.hidden = isHidden;
 }
 
 - (void)changeBeatTypeToType:(BeatType)beatType {
     switch (_beatType) {
         case BeatType4DevisionBy4:
-            tone44Button.selected = NO;
+            _buttonTone44.selected = NO;
             
             break;
         case BeatType3DevisionBy4:
-            tone34Button.selected = NO;
+            _buttonTone34.selected = NO;
             
             break;
         case BeatType2DevisionBy4:
-            tone24Button.selected = NO;
+            _buttonTone24.selected = NO;
 
             break;
         case BeatType6DevisionBy8:
-            tone68Button.selected = NO;
+            _buttonTone68.selected = NO;
 
             break;
         default:
@@ -160,37 +161,35 @@ typedef enum {
     _beatType = beatType;
 }
 
-- (IBAction)changeTempo:(id)sender {
+- (IBAction)sliderChangeBPMValueChanged:(id)sender {
     [self beginBeating];
 }
 
-- (IBAction)increaseBPMButton:(UIButton *)sender {
-    slider.value = slider.value + 1;
+- (IBAction)buttonIncreaseBPMTapped:(UIButton *)sender {
+    _slider.value++;
     [self beginBeating];
 }
 
-- (IBAction)discreaseBPMButton:(UIButton *)sender {
-    slider.value--;
+- (IBAction)buttonDecreaseBPMTapped:(UIButton *)sender {
+    _slider.value--;
     [self beginBeating];
 }
 
-- (IBAction)playPauseBeatAction:(UIButton *)sender {
+- (IBAction)buttonPlayPauseBeatingTapped:(UIButton *)sender {
     sender.selected = !sender.selected;
     
     [self beginBeating];
 }
 
+// Set and start timer to play sound and change the current button background
 - (void)beginBeating {
-    [tempoButton setTitle:[NSString stringWithFormat:@"%i", (int)slider.value] forState: UIControlStateNormal];
+    [_buttonShowBPM setTitle:[NSString stringWithFormat:@"%i", (int)_slider.value] forState:UIControlStateNormal];
     
-    if (timerBeat) {
-        [timerBeat invalidate];
-        timerBeat = nil;
-    }
+    [self removeTimer];
     
-    if (playPauseBeatButton.selected) {
-        timerBeat = [NSTimer timerWithTimeInterval:60.0/slider.value target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:timerBeat forMode:NSDefaultRunLoopMode];
+    if (_buttonPlayPauseBeating.selected) {
+        _timerBeat = [NSTimer timerWithTimeInterval:60.0/_slider.value target:self selector:@selector(timerFireMethod) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timerBeat forMode:NSDefaultRunLoopMode];
     }
 }
 
@@ -218,66 +217,87 @@ typedef enum {
             break;
     }
     
+    // If the current beat number reaches to max, back to 1, otherwise increase it
     switch (_currentBeatNumber) {
         case 1:
-            beat1Button.selected = NO;
-            beat2Button.selected = YES;
+            _buttonBeat1.selected = NO;
+            _buttonBeat2.selected = YES;
+            _currentBeatNumber++;
+            
             break;
         case 2:
             if (maxBeatNumber == 2) {
-                beat2Button.selected = NO;
-                beat1Button.selected = YES;
+                _buttonBeat2.selected = NO;
+                _buttonBeat1.selected = YES;
+                _currentBeatNumber = 1;
             } else {
-                beat2Button.selected = NO;
-                beat3Button.selected = YES;
+                _buttonBeat2.selected = NO;
+                _buttonBeat3.selected = YES;
+                _currentBeatNumber++;
             }
             
             break;
         case 3:
-            if (maxBeatNumber == 3) {
-                beat3Button.selected = NO;
-                beat1Button.selected = YES;
+            if (maxBeatNumber <= 3) {
+                _buttonBeat3.selected = NO;
+                _buttonBeat1.selected = YES;
+                _currentBeatNumber = 1;
             } else {
-                beat3Button.selected = NO;
-                beat4Button.selected = YES;
+                _buttonBeat3.selected = NO;
+                _buttonBeat4.selected = YES;
+                _currentBeatNumber++;
             }
             
             break;
         case 4:
-            if (maxBeatNumber == 4) {
-                beat4Button.selected = NO;
-                beat1Button.selected = YES;
+            if (maxBeatNumber <= 4) {
+                _buttonBeat4.selected = NO;
+                _buttonBeat1.selected = YES;
+                _currentBeatNumber = 1;
             } else {
-                beat4Button.selected = NO;
-                beat5Button.selected = YES;
+                _buttonBeat4.selected = NO;
+                _buttonBeat5.selected = YES;
+                _currentBeatNumber++;
             }
             
             break;
         case 5:
-            beat5Button.selected = NO;
-            beat6Button.selected = YES;
+            if (maxBeatNumber == 6) {
+                _buttonBeat5.selected = NO;
+                _buttonBeat6.selected = YES;
+                _currentBeatNumber++;
+            } else {
+                _buttonBeat5.selected = NO;
+                _buttonBeat1.selected = YES;
+                _currentBeatNumber = 1;
+            }
+            
             break;
         case 6:
-            beat6Button.selected = NO;
-            beat1Button.selected = YES;
+            _buttonBeat6.selected = NO;
+            _buttonBeat1.selected = YES;
+            _currentBeatNumber = 1;
+            
             break;
+            
         default:
+            _buttonBeat1.selected = YES;
+            _currentBeatNumber++;
+            
             break;
     }
-    
-    if (_currentBeatNumber == maxBeatNumber) {
-        _currentBeatNumber = 1;
-    } else {
-        _currentBeatNumber++;
+}
+
+- (void)removeTimer {
+    if (_timerBeat) {
+        [_timerBeat invalidate];
+        _timerBeat = nil;
     }
 }
 
 #pragma mark - Alter Metronome
-- (void) dealloc {
-    if (timerBeat) {
-        [timerBeat invalidate];
-        timerBeat = nil;
-    }
+- (void)dealloc {
+    [self removeTimer];
 }
 
 @end
