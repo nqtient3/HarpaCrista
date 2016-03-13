@@ -11,6 +11,9 @@
 
 #define DISTANCE_ONCE 10
 #define DEFAULT_TIME_EACH_LOOP 0.05
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) // iPhone and       iPod touch style UI
+#define IS_IPHONE_6 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0f)
+#define IS_IPHONE_6P (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0f)
 
 typedef enum {
     tone1,
@@ -199,6 +202,13 @@ typedef enum {
         [changeToneCollectionViewCell setBackgroundColor:[UIColor colorWithRed:87/255.0f green:161/255.0f blue:(230/255.0f) alpha:1] textColor:[UIColor whiteColor]];
     }
     return changeToneCollectionViewCell;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (IS_IPHONE_6 || IS_IPHONE_6P) {
+        return UIEdgeInsetsMake(32, 10, 32, 10);
+    }
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 #pragma mark - UICollectionViewDelegate

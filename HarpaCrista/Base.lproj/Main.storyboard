@@ -337,10 +337,10 @@
                                 <rect key="frame" x="-1" y="118" width="376" height="500"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="koA-10-qs0" userLabel="ChangeToneCollectionView">
-                                        <rect key="frame" x="11" y="185" width="355" height="130"/>
+                                        <rect key="frame" x="11" y="155" width="355" height="190"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="fMg-Jv-8J7"/>
+                                            <constraint firstAttribute="height" constant="190" id="fMg-Jv-8J7"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="97T-2A-0td">
                                             <size key="itemSize" width="50" height="50"/>
