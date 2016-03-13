@@ -367,6 +367,7 @@ typedef enum {
     self.tabBarController.tabBar.hidden = YES;
     _exitZoomView.hidden = NO;
     _pausePlayAutoScrollView.hidden = NO;
+    _pauseAutoScrollButton.selected = YES;
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     _partScreenRect = _webView.frame;
     _webView.frame = self.view.frame;
