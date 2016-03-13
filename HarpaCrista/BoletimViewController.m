@@ -7,6 +7,7 @@
 //
 
 #import "BoletimViewController.h"
+#import "BaseApi.h"
 
 @interface BoletimViewController () {
     __weak IBOutlet UITextField *_emailTextField;
@@ -57,9 +58,30 @@
     [_emailTextField resignFirstResponder];
 }
 
-#pragma mark -Submit Email Action
+#pragma mark - Submit Email Action
 
 - (IBAction)submitEmailAction:(id)sender {
-    // To do
+    if ([self validateEmailWithString:_emailTextField.text]) {
+        NSDictionary *object = @{@"email":_emailTextField.text};
+        [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_submit_email.php" onSuccess:^(id data, id header) {
+            
+        }onError:^(NSInteger code, NSError *error) {
+            
+        }];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"This email is invalid. Please check it again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
 }
+
+- (BOOL)validateEmailWithString:(NSString*)checkString
+{
+    BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
 @end
