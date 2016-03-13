@@ -399,7 +399,8 @@ typedef enum {
 
 - (IBAction)pausePlayAutoScrollWebViewAction:(id)sender {
     _isAutoScroll = !_isAutoScroll;
-    
+    UIButton *button = (UIButton *)sender;
+    button.selected =!button.selected;
     [self stopScriptTimer];
     
     if (_isAutoScroll) {

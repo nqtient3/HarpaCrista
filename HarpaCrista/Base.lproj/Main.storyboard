@@ -312,12 +312,12 @@
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DF6-fk-Bae" userLabel="PauseAutoScView">
                                 <rect key="frame" x="335" y="0.0" width="40" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L86-fs-AaS" userLabel="PauseAutoScButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L86-fs-AaS" userLabel="PauseAutoScButton">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="P"/>
-                                        <state key="selected" title="R"/>
+                                        <state key="normal" title="P" image="icon_play.png"/>
+                                        <state key="selected" image="icon_pause.png"/>
                                         <connections>
                                             <action selector="pausePlayAutoScrollWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="DSl-25-mY5"/>
                                         </connections>
@@ -1513,6 +1513,8 @@
         <image name="ic_star_yellow.png" width="36" height="36"/>
         <image name="ic_tuner_selected.png" width="72" height="66"/>
         <image name="icon_exit_fullscreen.png" width="128" height="128"/>
+        <image name="icon_pause.png" width="128" height="128"/>
+        <image name="icon_play.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="068-PC-nDH"/>
