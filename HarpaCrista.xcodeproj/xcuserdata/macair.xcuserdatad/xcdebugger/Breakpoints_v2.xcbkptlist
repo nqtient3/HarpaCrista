@@ -75,12 +75,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "-bootUpAndTurnOnMicrophone"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-TurnOnMicrophoneTuner:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -91,11 +91,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479538191.460301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-createMicrophone"
             landmarkType = "5">
          </BreakpointContent>
@@ -123,27 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "-TurnOnMicrophoneTuner:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-TurnOnMicrophone_test_1_4096_0:"
             landmarkType = "5">
          </BreakpointContent>
@@ -155,11 +139,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-TurnOnMicrophone_test_1_4096_50:"
             landmarkType = "5">
          </BreakpointContent>
@@ -171,11 +155,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-TurnOnMicrophone_test_1_8192_0:"
             landmarkType = "5">
          </BreakpointContent>
@@ -187,11 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "-TurnOnMicrophone_test_1_8192_50:"
             landmarkType = "5">
          </BreakpointContent>
@@ -203,11 +187,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-TurnOnMicrophone_test_1_16384_0:"
             landmarkType = "5">
          </BreakpointContent>
@@ -219,11 +203,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-TurnOnMicrophone_test_1_16384_50:"
             landmarkType = "5">
          </BreakpointContent>
@@ -235,12 +219,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
-            landmarkName = "-printPitchDetecterConfig"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "-TurnOffMicrophone"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -251,7 +235,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "581"
+            endingLineNumber = "581"
+            landmarkName = "-printASBD:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarpaCrista/PitchDetector.m"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "593"
@@ -267,7 +267,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479533185.940898"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "612"
@@ -283,7 +283,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HarpaCrista/PitchDetector.m"
-            timestampString = "479529241.374217"
+            timestampString = "479536959.745969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -305,22 +305,6 @@
             startingLineNumber = "45"
             endingLineNumber = "45"
             landmarkName = "-isDetectorRunning"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HarpaCrista/TunerViewController.m"
-            timestampString = "479532233.508333"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -379,11 +363,11 @@
                   moduleName = "HarpaCrista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macair/Documents/Work/HarpaCrista/HarpaCrista/HarpaCrista/BoletimViewController.m"
-                  timestampString = "479534232.147615"
+                  timestampString = "479538474.397131"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
                   offsetFromSymbolStart = "80">
                </Location>
                <Location
@@ -394,11 +378,11 @@
                   moduleName = "HarpaCrista"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macair/Documents/Work/HarpaCrista/HarpaCrista/HarpaCrista/BoletimViewController.m"
-                  timestampString = "479534232.147912"
+                  timestampString = "479538474.397465"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -465,6 +449,22 @@
             startingLineNumber = "89"
             endingLineNumber = "89"
             landmarkName = "-postJSON:headers:toUri:onSuccess:onError:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HarpaCrista/PitchDetector.m"
+            timestampString = "479538292.572259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-ASBDForSoundMode"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

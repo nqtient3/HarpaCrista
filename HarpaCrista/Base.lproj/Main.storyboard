@@ -537,11 +537,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-xE-HDu">
-                                <rect key="frame" x="210" y="216" width="36" height="42"/>
+                                <rect key="frame" x="210" y="216" width="40" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="0RJ-PT-ab4"/>
                                     <constraint firstAttribute="height" constant="42" id="JBf-fq-KKQ"/>
-                                    <constraint firstAttribute="width" constant="36" id="cDH-Mb-aZl"/>
+                                    <constraint firstAttribute="width" constant="40" id="cDH-Mb-aZl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -553,7 +553,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUk-FI-SZF" userLabel="Button Increase BPM">
-                                <rect key="frame" x="254" y="219" width="35" height="35"/>
+                                <rect key="frame" x="258" y="219" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="1Ee-4t-BOn"/>
