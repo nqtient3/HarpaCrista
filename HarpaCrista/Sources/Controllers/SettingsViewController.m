@@ -150,9 +150,9 @@ typedef enum {
 //        }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            //To do
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/shop/"]];
         } else if (indexPath.row == 1) {
-           // To do
+           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/artigos-recentes/"]];
         } else if (indexPath.row == 2 ) {
             [self performSegueWithIdentifier:@"boletimSegue" sender:nil];
         }

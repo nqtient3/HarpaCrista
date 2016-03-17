@@ -68,6 +68,7 @@
 		A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */; };
 		A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */; };
 		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
+		A61F0AF91C9AC1B700258549 /* circle_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A61F0AF81C9AC1B700258549 /* circle_blue.png */; };
 		A689C0A11C9318DA003C5AAC /* MetronomoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */; };
 		A689C0A31C931A72003C5AAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A21C931A72003C5AAC /* AVFoundation.framework */; };
 		A689C0A51C931A7C003C5AAC /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A41C931A7C003C5AAC /* iAd.framework */; };
@@ -207,6 +208,7 @@
 		A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
+		A61F0AF81C9AC1B700258549 /* circle_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_blue.png; sourceTree = "<group>"; };
 		A689C09F1C9318DA003C5AAC /* MetronomoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomoViewController.h; sourceTree = "<group>"; };
 		A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomoViewController.m; sourceTree = "<group>"; };
 		A689C0A21C931A72003C5AAC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -458,6 +460,7 @@
 		23B859F81C85DA8D00144193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A61F0AF81C9AC1B700258549 /* circle_blue.png */,
 				A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */,
 				A6DD84E41C9416EE00A7ED01 /* ic_emptycircle.png */,
 				A6FC30961C93F0B500F01DF4 /* ic_decrease.png */,
@@ -768,6 +771,7 @@
 				A601EA681C8AB1EF00E0AE3F /* Tutorial-7.png in Resources */,
 				A601EA631C8AB1EF00E0AE3F /* Tutorial-2.png in Resources */,
 				23B85A1D1C85E30B00144193 /* global.ai in Resources */,
+				A61F0AF91C9AC1B700258549 /* circle_blue.png in Resources */,
 				23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */,
 				232D55C21C87269A002798F4 /* ic_mude_selected.png in Resources */,
 				232D55BA1C87269A002798F4 /* ic_auto_scroll_selected.png in Resources */,
