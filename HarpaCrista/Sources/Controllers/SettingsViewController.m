@@ -135,18 +135,19 @@ typedef enum {
             
             // Present mail view controller on screen
             [self presentViewController:mc animated:YES completion:NULL];
-        } else if (indexPath.row == 3) {
-            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[] applicationActivities:nil];
-            
-            // Exclude all activities except AirDrop.
-            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
-                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
-            controller.excludedActivityTypes = excludedActivities;
-            
-            // Present the controller
-            [self presentViewController:controller animated:YES completion:nil];
         }
+//        else if (indexPath.row == 3) {
+//            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[] applicationActivities:nil];
+//            
+//            // Exclude all activities except AirDrop.
+//            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
+//                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+//                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
+//            controller.excludedActivityTypes = excludedActivities;
+//            
+//            // Present the controller
+//            [self presentViewController:controller animated:YES completion:nil];
+//        }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             //To do
