@@ -8,6 +8,7 @@
 
 #import "MetronomoViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 typedef enum {
     BeatType4DevisionBy4 = 0,
@@ -18,6 +19,10 @@ typedef enum {
 
 @interface MetronomoViewController () <AVAudioRecorderDelegate> {
     __weak IBOutlet UISlider *_slider;
+    __weak IBOutlet UISlider *_volumeSlider;
+    
+    __weak IBOutlet UILabel *_tempoTypeLabel;
+    
     __weak IBOutlet UIButton *_buttonShowBPM;
     
     __weak IBOutlet UIButton *_buttonPlayPauseBeating;
@@ -40,6 +45,8 @@ typedef enum {
     int _currentBeatNumber;
     AVAudioPlayer *_audioPlayer;
     BeatType _beatType;
+    NSArray *tempoMilestone;
+    NSArray *tempoMilestoneType;
 }
 
 @end
@@ -51,9 +58,14 @@ typedef enum {
     // Do any additional setup after loading the view.
     
     self.title = @"Metrónomo";
+//    
+    // Init array tempoMilestone
+    tempoMilestone = [NSArray arrayWithObjects:@"24", @"45", @"60", @"66", @"76", @"80", @"108", @"112", @"120", @"168", @"176", @"200", nil];
+    tempoMilestoneType = [NSArray arrayWithObjects:@"Larghissimo", @"Grave", @"Largo", @"Larghetto", @"Adagio", @"Andante", @"Andantino", @"Allegretto", @"Allegro", @"Vivace", @"Presto", @"Prestissimo", nil];
     
     // Init the default value for slider and set it for label BPM
     _slider.value = 10;
+    _volumeSlider.value = 0.5;
     [_buttonShowBPM setTitle:[NSString stringWithFormat:@"%i", (int)_slider.value] forState:UIControlStateNormal];
     
     // Set beat type 3/4 to be the default
@@ -161,6 +173,11 @@ typedef enum {
     _beatType = beatType;
 }
 
+- (IBAction)sliderChangeVolumeValueChanged:(id)sender {
+    _audioPlayer.volume = _volumeSlider.value / 1.0;
+    NSLog(@"_audioPlayer.volume : %f",_audioPlayer.volume);
+}
+
 - (IBAction)sliderChangeBPMValueChanged:(id)sender {
     [self beginBeating];
 }
@@ -177,14 +194,13 @@ typedef enum {
 
 - (IBAction)buttonPlayPauseBeatingTapped:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
     [self beginBeating];
 }
 
 // Set and start timer to play sound and change the current button background
 - (void)beginBeating {
     [_buttonShowBPM setTitle:[NSString stringWithFormat:@"%i", (int)_slider.value] forState:UIControlStateNormal];
-    
+    [self setTextTempoType:(int)_slider.value];
     [self removeTimer];
     
     if (_buttonPlayPauseBeating.selected) {
@@ -193,6 +209,16 @@ typedef enum {
     }
 }
 
+- (void)setTextTempoType:(int)value {
+    for (int i=0; i< [tempoMilestone count]; i++) {
+        NSInteger temPoMilestoneInt = [tempoMilestone[i] integerValue];
+        if (value <= temPoMilestoneInt) {
+            _tempoTypeLabel.text = [tempoMilestoneType objectAtIndex:i];
+            break;
+        }
+        
+    }
+}
 - (void)timerFireMethod {
     [_audioPlayer play];
     [self changeCurrentButtonBackground];
