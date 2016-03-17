@@ -13,6 +13,7 @@
 #import "TutorialViewController.h"
 
 #define IS_NOT_FIRST_USE_KEY @"notFirstUse"
+#define PUSH_NOTIFICATION_APP_ID @"a97ee6a1-abf5-4206-b311-09bb350b1e85"
 
 @interface AppDelegate ()
 
@@ -24,7 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     // Setup Push Notification service
-    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:@"e60521a3-724d-4fe2-a9f2-2bb036b84513" handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
+    self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:PUSH_NOTIFICATION_APP_ID handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
         // This function gets call when a notification is tapped on or one is received while the app is in focus.
         NSString* messageTitle = @"Harpa Crista";
         NSString* fullMessage = [message copy];
