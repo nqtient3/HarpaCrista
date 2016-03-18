@@ -112,17 +112,16 @@
 		A6E3F4201C90A006004BCEA6 /* LRRestyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4011C90A006004BCEA6 /* LRRestyResponse.m */; };
 		A6E3F4211C90A006004BCEA6 /* LRSynchronousProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4041C90A006004BCEA6 /* LRSynchronousProxy.m */; };
 		A6E3F4221C90A006004BCEA6 /* LRURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E3F4061C90A006004BCEA6 /* LRURLRequestOperation.m */; };
-		A6E4F0711C9459ED005BA03B /* TunerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0701C9459ED005BA03B /* TunerViewController.m */; };
-		A6E4F0781C945D7B005BA03B /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0741C945D7B005BA03B /* FBKVOController.m */; };
-		A6E4F0791C945D7B005BA03B /* NSStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0771C945D7B005BA03B /* NSStringHelper.m */; };
-		A6E4F07D1C945DA2005BA03B /* PitchDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F07C1C945DA2005BA03B /* PitchDetector.m */; };
-		A6E4F0851C945DD2005BA03B /* RWKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0801C945DD2005BA03B /* RWKnobControl.m */; };
-		A6E4F0861C945DD2005BA03B /* RWKnobRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0821C945DD2005BA03B /* RWKnobRenderer.m */; };
-		A6E4F0871C945DD2005BA03B /* RWRotationGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0841C945DD2005BA03B /* RWRotationGestureRecognizer.m */; };
+		A6E4F0711C9459ED005BA03B /* TunerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0701C9459ED005BA03B /* TunerViewController.mm */; };
 		A6E4F0891C945E69005BA03B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E4F0881C945E69005BA03B /* MobileCoreServices.framework */; };
 		A6E4F08D1C945E97005BA03B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E4F08C1C945E97005BA03B /* AudioToolbox.framework */; };
-		A6E4F0901C946058005BA03B /* GTNote.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F08F1C946058005BA03B /* GTNote.m */; };
-		A6E4F0931C9460A2005BA03B /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E4F0921C9460A2005BA03B /* FlipsideViewController.m */; };
+		A6F789781C9AFAC300B1618E /* FFTHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6F789771C9AFAC300B1618E /* FFTHelper.mm */; };
+		A6F7897A1C9AFC5D00B1618E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F789791C9AFC5D00B1618E /* CoreMedia.framework */; };
+		A6F7897C1C9AFC7200B1618E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F7897B1C9AFC7200B1618E /* Accelerate.framework */; };
+		A6F789821C9AFCEC00B1618E /* mo_audio.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6F7897F1C9AFCEC00B1618E /* mo_audio.mm */; };
+		A6F789831C9AFCEC00B1618E /* mo_gfx.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6F789811C9AFCEC00B1618E /* mo_gfx.mm */; };
+		A6F789851C9AFD5700B1618E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F789841C9AFD5700B1618E /* OpenGLES.framework */; };
+		A6F789871C9B24A700B1618E /* icon_select.png in Resources */ = {isa = PBXBuildFile; fileRef = A6F789861C9B24A700B1618E /* icon_select.png */; };
 		A6FC30911C93EA1300F01DF4 /* icon_exit_fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FC308E1C93EA1300F01DF4 /* icon_exit_fullscreen.png */; };
 		A6FC30921C93EA1300F01DF4 /* icon_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FC308F1C93EA1300F01DF4 /* icon_pause.png */; };
 		A6FC30931C93EA1300F01DF4 /* icon_play.png in Resources */ = {isa = PBXBuildFile; fileRef = A6FC30901C93EA1300F01DF4 /* icon_play.png */; };
@@ -292,27 +291,21 @@
 		A6E3F4051C90A006004BCEA6 /* LRURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRURLRequestOperation.h; sourceTree = "<group>"; };
 		A6E3F4061C90A006004BCEA6 /* LRURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRURLRequestOperation.m; sourceTree = "<group>"; };
 		A6E4F06F1C9459ED005BA03B /* TunerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunerViewController.h; sourceTree = "<group>"; };
-		A6E4F0701C9459ED005BA03B /* TunerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TunerViewController.m; sourceTree = "<group>"; };
-		A6E4F0731C945D7B005BA03B /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
-		A6E4F0741C945D7B005BA03B /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
-		A6E4F0751C945D7B005BA03B /* MacroHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroHelpers.h; sourceTree = "<group>"; };
-		A6E4F0761C945D7B005BA03B /* NSStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringHelper.h; sourceTree = "<group>"; };
-		A6E4F0771C945D7B005BA03B /* NSStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringHelper.m; sourceTree = "<group>"; };
-		A6E4F07B1C945DA2005BA03B /* PitchDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PitchDetector.h; sourceTree = "<group>"; };
-		A6E4F07C1C945DA2005BA03B /* PitchDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PitchDetector.m; sourceTree = "<group>"; };
-		A6E4F07F1C945DD2005BA03B /* RWKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWKnobControl.h; sourceTree = "<group>"; };
-		A6E4F0801C945DD2005BA03B /* RWKnobControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWKnobControl.m; sourceTree = "<group>"; };
-		A6E4F0811C945DD2005BA03B /* RWKnobRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWKnobRenderer.h; sourceTree = "<group>"; };
-		A6E4F0821C945DD2005BA03B /* RWKnobRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWKnobRenderer.m; sourceTree = "<group>"; };
-		A6E4F0831C945DD2005BA03B /* RWRotationGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWRotationGestureRecognizer.h; sourceTree = "<group>"; };
-		A6E4F0841C945DD2005BA03B /* RWRotationGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWRotationGestureRecognizer.m; sourceTree = "<group>"; };
+		A6E4F0701C9459ED005BA03B /* TunerViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TunerViewController.mm; sourceTree = "<group>"; };
 		A6E4F0881C945E69005BA03B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A6E4F08A1C945E79005BA03B /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		A6E4F08C1C945E97005BA03B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		A6E4F08E1C946058005BA03B /* GTNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTNote.h; sourceTree = "<group>"; };
-		A6E4F08F1C946058005BA03B /* GTNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTNote.m; sourceTree = "<group>"; };
-		A6E4F0911C9460A2005BA03B /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
-		A6E4F0921C9460A2005BA03B /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		A6F789761C9AFAC300B1618E /* FFTHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTHelper.h; sourceTree = "<group>"; };
+		A6F789771C9AFAC300B1618E /* FFTHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FFTHelper.mm; sourceTree = "<group>"; };
+		A6F789791C9AFC5D00B1618E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A6F7897B1C9AFC7200B1618E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		A6F7897D1C9AFCEC00B1618E /* mo_def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mo_def.h; sourceTree = "<group>"; };
+		A6F7897E1C9AFCEC00B1618E /* mo_audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mo_audio.h; sourceTree = "<group>"; };
+		A6F7897F1C9AFCEC00B1618E /* mo_audio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mo_audio.mm; sourceTree = "<group>"; };
+		A6F789801C9AFCEC00B1618E /* mo_gfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mo_gfx.h; sourceTree = "<group>"; };
+		A6F789811C9AFCEC00B1618E /* mo_gfx.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mo_gfx.mm; sourceTree = "<group>"; };
+		A6F789841C9AFD5700B1618E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A6F789861C9B24A700B1618E /* icon_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_select.png; sourceTree = "<group>"; };
 		A6FC308E1C93EA1300F01DF4 /* icon_exit_fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_exit_fullscreen.png; sourceTree = "<group>"; };
 		A6FC308F1C93EA1300F01DF4 /* icon_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pause.png; sourceTree = "<group>"; };
 		A6FC30901C93EA1300F01DF4 /* icon_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_play.png; sourceTree = "<group>"; };
@@ -328,6 +321,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F789851C9AFD5700B1618E /* OpenGLES.framework in Frameworks */,
+				A6F7897C1C9AFC7200B1618E /* Accelerate.framework in Frameworks */,
+				A6F7897A1C9AFC5D00B1618E /* CoreMedia.framework in Frameworks */,
 				A6E4F08D1C945E97005BA03B /* AudioToolbox.framework in Frameworks */,
 				A6E4F0891C945E69005BA03B /* MobileCoreServices.framework in Frameworks */,
 				233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */,
@@ -440,7 +436,7 @@
 				A689C09F1C9318DA003C5AAC /* MetronomoViewController.h */,
 				A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */,
 				A6E4F06F1C9459ED005BA03B /* TunerViewController.h */,
-				A6E4F0701C9459ED005BA03B /* TunerViewController.m */,
+				A6E4F0701C9459ED005BA03B /* TunerViewController.mm */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -460,6 +456,7 @@
 		23B859F81C85DA8D00144193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A6F789861C9B24A700B1618E /* icon_select.png */,
 				A61F0AF81C9AC1B700258549 /* circle_blue.png */,
 				A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */,
 				A6DD84E41C9416EE00A7ED01 /* ic_emptycircle.png */,
@@ -537,6 +534,9 @@
 		A689C0AC1C931AA3003C5AAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6F789841C9AFD5700B1618E /* OpenGLES.framework */,
+				A6F7897B1C9AFC7200B1618E /* Accelerate.framework */,
+				A6F789791C9AFC5D00B1618E /* CoreMedia.framework */,
 				A6E4F08C1C945E97005BA03B /* AudioToolbox.framework */,
 				A6E4F08A1C945E79005BA03B /* AudioUnit.framework */,
 				A6E4F0881C945E69005BA03B /* MobileCoreServices.framework */,
@@ -563,6 +563,13 @@
 		A6E3F3BB1C909E6B004BCEA6 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A6F7897D1C9AFCEC00B1618E /* mo_def.h */,
+				A6F7897E1C9AFCEC00B1618E /* mo_audio.h */,
+				A6F7897F1C9AFCEC00B1618E /* mo_audio.mm */,
+				A6F789801C9AFCEC00B1618E /* mo_gfx.h */,
+				A6F789811C9AFCEC00B1618E /* mo_gfx.mm */,
+				A6F789761C9AFAC300B1618E /* FFTHelper.h */,
+				A6F789771C9AFAC300B1618E /* FFTHelper.mm */,
 				A6E3F3C71C90A006004BCEA6 /* LRResty */,
 			);
 			name = Libraries;
@@ -659,41 +666,8 @@
 		A6E4F0721C945D5B005BA03B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4F07E1C945DB9005BA03B /* RWKnob */,
-				A6E4F07A1C945D7F005BA03B /* PitchDetector */,
-				A6E4F0731C945D7B005BA03B /* FBKVOController.h */,
-				A6E4F0741C945D7B005BA03B /* FBKVOController.m */,
-				A6E4F0751C945D7B005BA03B /* MacroHelpers.h */,
-				A6E4F0761C945D7B005BA03B /* NSStringHelper.h */,
-				A6E4F0771C945D7B005BA03B /* NSStringHelper.m */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		A6E4F07A1C945D7F005BA03B /* PitchDetector */ = {
-			isa = PBXGroup;
-			children = (
-				A6E4F0911C9460A2005BA03B /* FlipsideViewController.h */,
-				A6E4F0921C9460A2005BA03B /* FlipsideViewController.m */,
-				A6E4F08E1C946058005BA03B /* GTNote.h */,
-				A6E4F08F1C946058005BA03B /* GTNote.m */,
-				A6E4F07B1C945DA2005BA03B /* PitchDetector.h */,
-				A6E4F07C1C945DA2005BA03B /* PitchDetector.m */,
-			);
-			name = PitchDetector;
-			sourceTree = "<group>";
-		};
-		A6E4F07E1C945DB9005BA03B /* RWKnob */ = {
-			isa = PBXGroup;
-			children = (
-				A6E4F07F1C945DD2005BA03B /* RWKnobControl.h */,
-				A6E4F0801C945DD2005BA03B /* RWKnobControl.m */,
-				A6E4F0811C945DD2005BA03B /* RWKnobRenderer.h */,
-				A6E4F0821C945DD2005BA03B /* RWKnobRenderer.m */,
-				A6E4F0831C945DD2005BA03B /* RWRotationGestureRecognizer.h */,
-				A6E4F0841C945DD2005BA03B /* RWRotationGestureRecognizer.m */,
-			);
-			name = RWKnob;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -780,6 +754,7 @@
 				A601EA661C8AB1EF00E0AE3F /* Tutorial-5.png in Resources */,
 				232D55BC1C87269A002798F4 /* ic_global_selected.png in Resources */,
 				A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */,
+				A6F789871C9B24A700B1618E /* icon_select.png in Resources */,
 				A6DD84E61C9416EE00A7ED01 /* ic_emptycircle.png in Resources */,
 				23B859E41C85D9D500144193 /* Main.storyboard in Resources */,
 				A6FC30911C93EA1300F01DF4 /* icon_exit_fullscreen.png in Resources */,
@@ -834,27 +809,23 @@
 			files = (
 				A6E3F3B91C909998004BCEA6 /* BoletimViewController.m in Sources */,
 				23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */,
-				A6E4F0781C945D7B005BA03B /* FBKVOController.m in Sources */,
 				A6E3F40B1C90A006004BCEA6 /* NSDictionary+QueryString.m in Sources */,
 				A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */,
 				A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */,
+				A6F789821C9AFCEC00B1618E /* mo_audio.mm in Sources */,
 				A6E3F4191C90A006004BCEA6 /* LRRestyClientBlockDelegate.m in Sources */,
 				232D55A41C871CC9002798F4 /* CDSong+CoreDataProperties.m in Sources */,
-				A6E4F0791C945D7B005BA03B /* NSStringHelper.m in Sources */,
 				23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */,
 				A6E3F4081C90A006004BCEA6 /* NSArray+Json.m in Sources */,
-				A6E4F07D1C945DA2005BA03B /* PitchDetector.m in Sources */,
 				A6E3F4201C90A006004BCEA6 /* LRRestyResponse.m in Sources */,
 				A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */,
-				A6E4F0901C946058005BA03B /* GTNote.m in Sources */,
 				A6E3F41B1C90A006004BCEA6 /* LRRestyClientStreamingDelegate.m in Sources */,
-				A6E4F0711C9459ED005BA03B /* TunerViewController.m in Sources */,
+				A6E4F0711C9459ED005BA03B /* TunerViewController.mm in Sources */,
 				23B85A361C85E32F00144193 /* HinosViewController.m in Sources */,
 				A6E3F3C61C909FC2004BCEA6 /* JSONObject.m in Sources */,
 				A6E3F4221C90A006004BCEA6 /* LRURLRequestOperation.m in Sources */,
 				A689C0A11C9318DA003C5AAC /* MetronomoViewController.m in Sources */,
 				A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */,
-				A6E4F0871C945DD2005BA03B /* RWRotationGestureRecognizer.m in Sources */,
 				A6E3F40F1C90A006004BCEA6 /* NSRunLoop+Additions.m in Sources */,
 				A6E3F4151C90A006004BCEA6 /* LRRestyClient+GET.m in Sources */,
 				A6E3F4111C90A006004BCEA6 /* NSURL+QueryInspector.m in Sources */,
@@ -875,14 +846,13 @@
 				A6E3F4161C90A006004BCEA6 /* LRRestyClient+POST.m in Sources */,
 				A6E3F40E1C90A006004BCEA6 /* NSObject+Tap.m in Sources */,
 				A6E3F4211C90A006004BCEA6 /* LRSynchronousProxy.m in Sources */,
-				A6E4F0851C945DD2005BA03B /* RWKnobControl.m in Sources */,
+				A6F789831C9AFCEC00B1618E /* mo_gfx.mm in Sources */,
+				A6F789781C9AFAC300B1618E /* FFTHelper.mm in Sources */,
 				A6E3F4181C90A006004BCEA6 /* LRRestyClient.m in Sources */,
 				23B859DB1C85D9D500144193 /* main.m in Sources */,
 				23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */,
 				A6E3F4141C90A006004BCEA6 /* LRRestyClient+DELETE.m in Sources */,
 				A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */,
-				A6E4F0931C9460A2005BA03B /* FlipsideViewController.m in Sources */,
-				A6E4F0861C945DD2005BA03B /* RWKnobRenderer.m in Sources */,
 				A6E3F4091C90A006004BCEA6 /* NSData+Base64.m in Sources */,
 				A6E3F40C1C90A006004BCEA6 /* NSObject+Block.m in Sources */,
 				232D55A51C871CC9002798F4 /* CDSong.m in Sources */,
