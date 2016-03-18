@@ -31,6 +31,7 @@
 		232D55CD1C87269A002798F4 /* ic_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 232D55B91C87269A002798F4 /* ic_x.png */; };
 		233D72F11C93EDF70015A0E6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F01C93EDF70015A0E6 /* OneSignal.framework */; };
 		233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */; };
+		238759A71C9B18BA009D643E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238759A61C9B18BA009D643E /* MessageUI.framework */; };
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
 		23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DD1C85D9D500144193 /* AppDelegate.m */; };
 		23B859E41C85D9D500144193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E21C85D9D500144193 /* Main.storyboard */; };
@@ -159,6 +160,7 @@
 		232D55B91C87269A002798F4 /* ic_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_x.png; path = Resources/Images/ic_x.png; sourceTree = "<group>"; };
 		233D72F01C93EDF70015A0E6 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 		233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		238759A61C9B18BA009D643E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		23B859D61C85D9D500144193 /* HarpaCrista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpaCrista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B859DA1C85D9D500144193 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23B859DC1C85D9D500144193 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -321,9 +323,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				A6F789851C9AFD5700B1618E /* OpenGLES.framework in Frameworks */,
 				A6F7897C1C9AFC7200B1618E /* Accelerate.framework in Frameworks */,
 				A6F7897A1C9AFC5D00B1618E /* CoreMedia.framework in Frameworks */,
+=======
+				238759A71C9B18BA009D643E /* MessageUI.framework in Frameworks */,
+>>>>>>> d01c661808eed503821075d6c96b744df8d24901
 				A6E4F08D1C945E97005BA03B /* AudioToolbox.framework in Frameworks */,
 				A6E4F0891C945E69005BA03B /* MobileCoreServices.framework in Frameworks */,
 				233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */,
@@ -534,9 +540,13 @@
 		A689C0AC1C931AA3003C5AAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				A6F789841C9AFD5700B1618E /* OpenGLES.framework */,
 				A6F7897B1C9AFC7200B1618E /* Accelerate.framework */,
 				A6F789791C9AFC5D00B1618E /* CoreMedia.framework */,
+=======
+				238759A61C9B18BA009D643E /* MessageUI.framework */,
+>>>>>>> d01c661808eed503821075d6c96b744df8d24901
 				A6E4F08C1C945E97005BA03B /* AudioToolbox.framework */,
 				A6E4F08A1C945E79005BA03B /* AudioUnit.framework */,
 				A6E4F0881C945E69005BA03B /* MobileCoreServices.framework */,
@@ -701,7 +711,7 @@
 				TargetAttributes = {
 					23B859D51C85D9D500144193 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 6JZ875332V;
+						DevelopmentTeam = RYQFFB6SJD;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -899,8 +909,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -923,7 +933,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e4861110-ca8d-405a-84d6-5a2ed73a6eab";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -946,8 +956,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jose viana (RYQFFB6SJD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jose viana (RYQFFB6SJD)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -963,7 +973,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e4861110-ca8d-405a-84d6-5a2ed73a6eab";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -974,8 +984,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jose viana (XHR5FJ9L49)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jose viana (XHR5FJ9L49)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HarpaCrista",
@@ -983,7 +993,7 @@
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -993,8 +1003,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HarpaCrista",
@@ -1002,7 +1012,7 @@
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
