@@ -538,8 +538,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWO-kY-FRp">
-                                                    <rect key="frame" x="10" y="10" width="351" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <rect key="frame" x="10" y="12" width="351" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -596,6 +596,7 @@
                     <connections>
                         <outlet property="_hzValueLabel" destination="pZS-9e-0Xm" id="O97-Y9-pRl"/>
                         <outlet property="_toneTypeButton" destination="ZqS-eF-Tiz" id="R7Z-Gu-4L8"/>
+                        <outlet property="_toneTypeLabel" destination="vZw-jx-LMK" id="CZI-s9-xHi"/>
                         <outlet property="_toneTypeTableView" destination="0Za-dA-iC9" id="Ljg-jI-HFE"/>
                     </connections>
                 </viewController>

@@ -9,6 +9,8 @@
 #import "TunerViewController.h"
 #import "mo_audio.h" //stuff that helps set up low-level audio
 #import "FFTHelper.h"
+#import "Constants.h"
+#include <math.h>
 
 
 #define SAMPLE_RATE 44100  //22050 //44100
@@ -114,23 +116,29 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         Float32 maxHZValue = 0;
         Float32 maxHZ = strongestFrequencyHZ(dataAccumulator, fftConverter, accumulatorDataLenght, &maxHZValue);
         
-        NSLog(@" max HZ = %0.3f ", maxHZ);
+        NSLog(@" max HZ = %0.2f ", maxHZ);
         dispatch_async(dispatch_get_main_queue(), ^{ //update UI only on main thread
-            labelToUpdate.text = [NSString stringWithFormat:@"%0.3f HZ",maxHZ];
+            labelToUpdate.text = [NSString stringWithFormat:@"%0.2f HZ",maxHZ];
+            TunerViewController *tunerViewController = [[TunerViewController alloc]init];
+            [tunerViewController updateCoresspondingToneType:ceilf((float)maxHZ*100)/100];
         });
         emptyAccumulator(); //empty the accumulator when finished
     }
     memset(buffer, 0, sizeof(Float32)*frameSize*NUMCHANNELS);
 }
 
+
 @interface TunerViewController () <UITableViewDataSource,UITableViewDelegate>
 @end
 
 @implementation TunerViewController {
+    __weak IBOutlet UILabel *_toneTypeLabel;
     __weak IBOutlet UILabel *_hzValueLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
+    NSInteger _checkToneType;
     NSArray *_toneTypeArray;
+    NSDictionary *_standToneTypeDict, *_downAHalfStepToneDictTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -140,7 +148,9 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Afinador";
+    _checkToneType = 0;
     [self initToneTypeData];
+    [self initToneDictionarry];
     labelToUpdate = _hzValueLabel;
     // Border for toneTypeTableView
     _toneTypeTableView.layer.cornerRadius = 5;
@@ -156,6 +166,68 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     [self initMomuAudio];
 }
 
+- (void) initToneDictionarry {
+    // Init data with standard tone
+    NSArray *_standardToneNumber = @[@(82.41), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    NSArray *_standardToneString = @[@"E",@"A",@"D",@"G",@"B",@"E"];
+    NSDictionary *_standToneDict = [NSDictionary dictionaryWithObjects:_standardToneString forKeys:_standardToneNumber];
+   _standToneTypeDict = [NSDictionary dictionaryWithObject:_standToneDict forKey:keyStandard];
+    
+    // Init data with down a half step tone
+    NSArray *_downAHalfStepToneNumber = @[@(77.78), @(103.83),@(138.59),@(185.00),@(233.08),@(311.13)];
+    NSArray *_downAHalfStepToneString = @[@"D#",@"G#",@"C#",@"F#",@"A#",@"D#"];
+    NSDictionary *_downAHalfStepToneDict = [NSDictionary dictionaryWithObjects:_downAHalfStepToneString forKeys:_downAHalfStepToneNumber];
+    _downAHalfStepToneDictTypeDict = [NSDictionary dictionaryWithObject:_downAHalfStepToneDict forKey:keyDownAHalfStep];
+    
+    // Init data with dropped D tone
+    NSArray *_droppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    NSArray *_droppedDToneString = @[@"D",@"A",@"D",@"G",@"B",@"E"];
+    NSDictionary *_droppedDToneDict = [NSDictionary dictionaryWithObjects:_droppedDToneString forKeys:_droppedDToneNumber];
+    _droppedDToneDictTypeDict = [NSDictionary dictionaryWithObject:_droppedDToneDict forKey:keyDroppedD];
+    
+    // Init data with double Dropped D tone
+    NSArray *_doubleDroppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    NSArray *_doubleDroppedDToneString = @[@"D",@"A",@"D",@"G",@"B",@"D"];
+    NSDictionary *_doubleDroppedDToneDict = [NSDictionary dictionaryWithObjects:_doubleDroppedDToneString forKeys:_doubleDroppedDToneNumber];
+    _doubleDroppedDToneTypeDict = [NSDictionary dictionaryWithObject:_doubleDroppedDToneDict forKey:keyDoubleDroppedD];
+    
+    // Init data with open A tone
+    NSArray *_openAToneNumber = @[@(82.41), @(110.00),@(164.81),@(220.00),@(277.18),@(329.63)];
+    NSArray *_openAToneString = @[@"E",@"A",@"E",@"A",@"C#",@"E"];
+    NSDictionary *_openAToneDict = [NSDictionary dictionaryWithObjects:_openAToneString forKeys:_openAToneNumber];
+    _openAToneTypeDict = [NSDictionary dictionaryWithObject:_openAToneDict forKey:keyOpenA];
+    
+    // Init data with open C tone
+    NSArray *_openCToneNumber = @[@(65.41), @(98.00),@(130.81),@(196.00),@(261.63),@(329.63)];
+    NSArray *_openCToneString = @[@"C",@"G",@"C",@"G",@"C",@"E"];
+    NSDictionary *_openCToneDict = [NSDictionary dictionaryWithObjects:_openCToneString forKeys:_openCToneNumber];
+    _openCToneTypeDict = [NSDictionary dictionaryWithObject:_openCToneDict forKey:keyOpenC];
+    
+    // Init data with open D tone
+    NSArray *_openDToneNumber = @[@(73.42), @(110.00),@(146.83),@(185.00),@(220.00),@(293.66)];
+    NSArray *_openDToneString = @[@"D",@"A",@"D",@"F#",@"A",@"D"];
+    NSDictionary *_openDToneDict = [NSDictionary dictionaryWithObjects:_openDToneString forKeys:_openDToneNumber];
+    _openDToneTypeDict = [NSDictionary dictionaryWithObject:_openDToneDict forKey:keyOpenD];
+    
+    // Init data with open E tone
+    NSArray *_openEToneNumber = @[@(82.41), @(123.47),@(164.81),@(207.65),@(246.94),@(329.63)];
+    NSArray *_openEToneString = @[@"E",@"B",@"E",@"G#",@"B",@"E"];
+    NSDictionary *_openEToneDict = [NSDictionary dictionaryWithObjects:_openEToneString forKeys:_openEToneNumber];
+    _openEToneTypeDict = [NSDictionary dictionaryWithObject:_openEToneDict forKey:keyOpenE];
+    
+    // Init data with open Em tone
+    NSArray *_openEmToneNumber = @[@(82.41), @(123.47),@(164.81),@(196.00),@(246.94),@(329.63)];
+    NSArray *_openEmToneString = @[@"E",@"B",@"E",@"G",@"B",@"E"];
+    NSDictionary *_openEmToneDict = [NSDictionary dictionaryWithObjects:_openEmToneString forKeys:_openEmToneNumber];
+    _openEmToneTypeDict = [NSDictionary dictionaryWithObject:_openEmToneDict forKey:keyOpenEm];
+    
+    // Init data with open G tone
+    NSArray *_openGToneNumber = @[@(98.00), @(123.47),@(146.83),@(196.00),@(246.94),@(293.66)];
+    NSArray *_openGToneString = @[@"E",@"B",@"E",@"G",@"B",@"E"];
+    NSDictionary *_openGToneDict = [NSDictionary dictionaryWithObjects:_openGToneString forKeys:_openGToneNumber];
+    _openGToneTypeDict = [NSDictionary dictionaryWithObject:_openGToneDict forKey:keyOpenG];
+}
+
 - (void)initToneTypeData {
     _toneTypeArray = [NSArray arrayWithObjects:@"Standard (E,A,D,G,B)",@"Down a half step(D#,G#,C#,F#,A#,D#)",@"Dropped D (D,A,D,G,B,D)",@"Double Dropped D(D,A,D,G,B,D)",@"Open A (E,A,E,A,C#,E)",@"Open C (C,G,C,G,C,E)",@"Open D (D,A,D,F#,A,D)",@"Open E (E,B,E,G#,B,E)",@"Open Em (E,B,E,G,B,E)",@"Open G (G,B,D,G,B,D)", nil];
 }
@@ -169,6 +241,57 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+}
+
+- (void)updateCoresspondingToneType:(float)hzValue {
+    NSLog(@"updateCoresspondingToneType : %f",hzValue);
+    NSString *toneValueString;
+    switch (_checkToneType) {
+            //standard tone
+        case 0:
+            toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(hzValue)];
+            break;
+            // Down a half step
+        case 1:
+            toneValueString = [[_downAHalfStepToneDictTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(hzValue)];
+            break;
+            // Dropped D
+        case 2:
+            toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(hzValue)];
+            break;
+            // Double Dropped D
+        case 3:
+            toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(hzValue)];
+            break;
+            // Open A
+        case 4:
+            toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(hzValue)];
+            break;
+            // Open C
+        case 5:
+            toneValueString = [[_openCToneTypeDict objectForKey:keyOpenC] objectForKey:@(hzValue)];
+            break;
+            // Open D
+        case 6:
+            toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(hzValue)];
+            break;
+            // Open E
+        case 7:
+            toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(hzValue)];
+            break;
+            // Open Em
+        case 8:
+            toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(hzValue)];
+            break;
+            // Open G
+        case 9:
+            toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(hzValue)];
+            break;
+        default:
+            break;
+    }
+    _toneTypeLabel.text = [NSString stringWithFormat:@"%@",toneValueString];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -193,7 +316,6 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
     nameLabel.text = [NSString stringWithFormat:@"%@", _toneTypeArray[indexPath.row]];
     
@@ -202,6 +324,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_toneTypeButton setTitle:[_toneTypeArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     _toneTypeTableView.hidden = YES;
+    _checkToneType = indexPath.row;
 }
 
 - (IBAction)toneTypeButtonAction:(id)sender {

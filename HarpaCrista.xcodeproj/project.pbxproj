@@ -31,7 +31,6 @@
 		232D55CD1C87269A002798F4 /* ic_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 232D55B91C87269A002798F4 /* ic_x.png */; };
 		233D72F11C93EDF70015A0E6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F01C93EDF70015A0E6 /* OneSignal.framework */; };
 		233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */; };
-		238759A71C9B18BA009D643E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238759A61C9B18BA009D643E /* MessageUI.framework */; };
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
 		23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DD1C85D9D500144193 /* AppDelegate.m */; };
 		23B859E41C85D9D500144193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E21C85D9D500144193 /* Main.storyboard */; };
@@ -160,7 +159,6 @@
 		232D55B91C87269A002798F4 /* ic_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_x.png; path = Resources/Images/ic_x.png; sourceTree = "<group>"; };
 		233D72F01C93EDF70015A0E6 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 		233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		238759A61C9B18BA009D643E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		23B859D61C85D9D500144193 /* HarpaCrista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpaCrista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B859DA1C85D9D500144193 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23B859DC1C85D9D500144193 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -703,7 +701,7 @@
 				TargetAttributes = {
 					23B859D51C85D9D500144193 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RYQFFB6SJD;
+						DevelopmentTeam = 6JZ875332V;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -976,8 +974,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jose viana (XHR5FJ9L49)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jose viana (XHR5FJ9L49)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HarpaCrista",
@@ -985,7 +983,7 @@
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -995,8 +993,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Loi Ngo (VRJGCGFK8N)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HarpaCrista",
@@ -1004,7 +1002,7 @@
 				INFOPLIST_FILE = HarpaCrista/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HarpaCrista;
+				PRODUCT_BUNDLE_IDENTIFIER = app.com.HarpaCrista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -8,5 +8,15 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const keyLoadTutorial;
+extern NSString * const keyStandard;
+extern NSString * const keyDownAHalfStep;
+extern NSString * const keyDroppedD;
+extern NSString * const keyDoubleDroppedD;
+extern NSString * const keyOpenA;
+extern NSString * const keyOpenC;
+extern NSString * const keyOpenD;
+extern NSString * const keyOpenE;
+extern NSString * const keyOpenEm;
+extern NSString * const keyOpenG;
 
 
