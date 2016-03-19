@@ -102,7 +102,8 @@ typedef enum {
         _fullString = @"<body>";
         _fullString = [_fullString stringByAppendingString:self.currentCDSong.cdChord];
         _fullString = [_fullString stringByAppendingString:@"</body>"];
-        [_webView loadHTMLString:[_fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+//        [_webView loadHTMLString:[_fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+        [_webView loadHTMLString:_fullString baseURL:nil];
     }
 }
 

@@ -122,9 +122,9 @@ typedef enum {
         } else if (indexPath.row == 1) {
             if ([MFMailComposeViewController canSendMail]) {
                 // Email Subject
-                NSString *emailTitle = @"Harpa Crista";
+                NSString *emailTitle = @"Contact from app";
                 // Email Content
-                NSString *messageBody = @"Achei o melhor aplicativo evangélico! @harpacrista7\n- Android: https://play.google.com/store/apps/details?id=com.harpacrista\n- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8";
+                NSString *messageBody = @"";
                 // To address
                 NSArray *toRecipents = @[@"contact@harpacca.com"];
                 
@@ -142,19 +142,18 @@ typedef enum {
             }
         } else if (indexPath.row == 2) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"]];
+        } else if (indexPath.row == 3) {
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7\n- Android: https://play.google.com/store/apps/details?id=com.harpacrista\n- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
+            
+            // Exclude all activities except AirDrop.
+            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
+                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
+            controller.excludedActivityTypes = excludedActivities;
+            
+            // Present the controller
+            [self presentViewController:controller animated:YES completion:nil];
         }
-//        else if (indexPath.row == 3) {
-//            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[] applicationActivities:nil];
-//            
-//            // Exclude all activities except AirDrop.
-//            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
-//                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-//                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
-//            controller.excludedActivityTypes = excludedActivities;
-//            
-//            // Present the controller
-//            [self presentViewController:controller animated:YES completion:nil];
-//        }
     } else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/shop/"]];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -293,7 +293,8 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-08-hb3" userLabel="ExitZoomButton">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <state key="normal" image="icon_exit_fullscreen.png"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="X"/>
                                         <connections>
                                             <action selector="exitFullScreenWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="bUv-r8-prm"/>
                                         </connections>
@@ -1651,7 +1652,6 @@
         <image name="ic_star.png" width="36" height="36"/>
         <image name="ic_star_yellow.png" width="36" height="36"/>
         <image name="ic_tuner_selected.png" width="72" height="66"/>
-        <image name="icon_exit_fullscreen.png" width="128" height="128"/>
         <image name="icon_pause.png" width="128" height="128"/>
         <image name="icon_play.png" width="128" height="128"/>
         <image name="icon_select.png" width="128" height="128"/>
