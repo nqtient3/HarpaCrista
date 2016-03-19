@@ -20,7 +20,8 @@
 #define kOutputBus 0
 #define kInputBus 1
 
-
+static NSInteger _checkToneType;
+static NSDictionary *_standToneTypeDict, *_downAHalfStepToneTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 
 /// Nyquist Maximum Frequency
 const Float32 NyquistMaxFreq = SAMPLE_RATE/2.0;
@@ -100,6 +101,7 @@ static Float32 strongestFrequencyHZ(Float32 *buffer, FFTHelperRef *fftHelper, UI
 }
 
 __weak UILabel *labelToUpdate = nil;
+__weak UILabel *_toneTypeToUpdateLabel = nil;
 
 #pragma mark MAIN CALLBACK
 void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
@@ -136,9 +138,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     __weak IBOutlet UILabel *_hzValueLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
-    NSInteger _checkToneType;
     NSArray *_toneTypeArray;
-    NSDictionary *_standToneTypeDict, *_downAHalfStepToneDictTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -152,6 +152,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     [self initToneTypeData];
     [self initToneDictionarry];
     labelToUpdate = _hzValueLabel;
+    _toneTypeToUpdateLabel = _toneTypeLabel;
     // Border for toneTypeTableView
     _toneTypeTableView.layer.cornerRadius = 5;
     _toneTypeTableView.layer.masksToBounds = YES;
@@ -172,12 +173,12 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     NSArray *_standardToneString = @[@"E",@"A",@"D",@"G",@"B",@"E"];
     NSDictionary *_standToneDict = [NSDictionary dictionaryWithObjects:_standardToneString forKeys:_standardToneNumber];
    _standToneTypeDict = [NSDictionary dictionaryWithObject:_standToneDict forKey:keyStandard];
-    
+
     // Init data with down a half step tone
     NSArray *_downAHalfStepToneNumber = @[@(77.78), @(103.83),@(138.59),@(185.00),@(233.08),@(311.13)];
     NSArray *_downAHalfStepToneString = @[@"D#",@"G#",@"C#",@"F#",@"A#",@"D#"];
     NSDictionary *_downAHalfStepToneDict = [NSDictionary dictionaryWithObjects:_downAHalfStepToneString forKeys:_downAHalfStepToneNumber];
-    _downAHalfStepToneDictTypeDict = [NSDictionary dictionaryWithObject:_downAHalfStepToneDict forKey:keyDownAHalfStep];
+    _downAHalfStepToneTypeDict = [NSDictionary dictionaryWithObject:_downAHalfStepToneDict forKey:keyDownAHalfStep];
     
     // Init data with dropped D tone
     NSArray *_droppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
@@ -254,7 +255,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
             break;
             // Down a half step
         case 1:
-            toneValueString = [[_downAHalfStepToneDictTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(hzValue)];
+            toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(hzValue)];
             break;
             // Dropped D
         case 2:
@@ -291,7 +292,12 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         default:
             break;
     }
-    _toneTypeLabel.text = [NSString stringWithFormat:@"%@",toneValueString];
+    if([toneValueString length] > 0) {
+        _toneTypeToUpdateLabel.text = [NSString stringWithFormat:@"%@",toneValueString];
+    } else {
+        _toneTypeToUpdateLabel.text = @"?";
+    }
+   
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
