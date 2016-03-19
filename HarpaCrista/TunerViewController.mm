@@ -22,6 +22,7 @@
 
 static NSInteger _checkToneType;
 static NSDictionary *_standToneTypeDict, *_downAHalfStepToneTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
+static NSArray *_standardToneNumber, *_downAHalfStepToneNumber, *_droppedDToneNumber, *_doubleDroppedDToneNumber, *_openAToneNumber, *_openDToneNumber, *_openCToneNumber, *_openEToneNumber, *_openEmToneNumber, *_openGToneNumber;
 
 /// Nyquist Maximum Frequency
 const Float32 NyquistMaxFreq = SAMPLE_RATE/2.0;
@@ -169,61 +170,61 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void) initToneDictionarry {
     // Init data with standard tone
-    NSArray *_standardToneNumber = @[@(82.41), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    _standardToneNumber = @[@(82.41), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
     NSArray *_standardToneString = @[@"E",@"A",@"D",@"G",@"B",@"E"];
     NSDictionary *_standToneDict = [NSDictionary dictionaryWithObjects:_standardToneString forKeys:_standardToneNumber];
    _standToneTypeDict = [NSDictionary dictionaryWithObject:_standToneDict forKey:keyStandard];
 
     // Init data with down a half step tone
-    NSArray *_downAHalfStepToneNumber = @[@(77.78), @(103.83),@(138.59),@(185.00),@(233.08),@(311.13)];
+    _downAHalfStepToneNumber = @[@(77.78), @(103.83),@(138.59),@(185.00),@(233.08),@(311.13)];
     NSArray *_downAHalfStepToneString = @[@"D#",@"G#",@"C#",@"F#",@"A#",@"D#"];
     NSDictionary *_downAHalfStepToneDict = [NSDictionary dictionaryWithObjects:_downAHalfStepToneString forKeys:_downAHalfStepToneNumber];
     _downAHalfStepToneTypeDict = [NSDictionary dictionaryWithObject:_downAHalfStepToneDict forKey:keyDownAHalfStep];
     
     // Init data with dropped D tone
-    NSArray *_droppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    _droppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
     NSArray *_droppedDToneString = @[@"D",@"A",@"D",@"G",@"B",@"E"];
     NSDictionary *_droppedDToneDict = [NSDictionary dictionaryWithObjects:_droppedDToneString forKeys:_droppedDToneNumber];
     _droppedDToneDictTypeDict = [NSDictionary dictionaryWithObject:_droppedDToneDict forKey:keyDroppedD];
     
     // Init data with double Dropped D tone
-    NSArray *_doubleDroppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
+    _doubleDroppedDToneNumber = @[@(73.42), @(110.00),@(146.83),@(196.00),@(246.94),@(329.63)];
     NSArray *_doubleDroppedDToneString = @[@"D",@"A",@"D",@"G",@"B",@"D"];
     NSDictionary *_doubleDroppedDToneDict = [NSDictionary dictionaryWithObjects:_doubleDroppedDToneString forKeys:_doubleDroppedDToneNumber];
     _doubleDroppedDToneTypeDict = [NSDictionary dictionaryWithObject:_doubleDroppedDToneDict forKey:keyDoubleDroppedD];
     
     // Init data with open A tone
-    NSArray *_openAToneNumber = @[@(82.41), @(110.00),@(164.81),@(220.00),@(277.18),@(329.63)];
+    _openAToneNumber = @[@(82.41), @(110.00),@(164.81),@(220.00),@(277.18),@(329.63)];
     NSArray *_openAToneString = @[@"E",@"A",@"E",@"A",@"C#",@"E"];
     NSDictionary *_openAToneDict = [NSDictionary dictionaryWithObjects:_openAToneString forKeys:_openAToneNumber];
     _openAToneTypeDict = [NSDictionary dictionaryWithObject:_openAToneDict forKey:keyOpenA];
     
     // Init data with open C tone
-    NSArray *_openCToneNumber = @[@(65.41), @(98.00),@(130.81),@(196.00),@(261.63),@(329.63)];
+    _openCToneNumber = @[@(65.41), @(98.00),@(130.81),@(196.00),@(261.63),@(329.63)];
     NSArray *_openCToneString = @[@"C",@"G",@"C",@"G",@"C",@"E"];
     NSDictionary *_openCToneDict = [NSDictionary dictionaryWithObjects:_openCToneString forKeys:_openCToneNumber];
     _openCToneTypeDict = [NSDictionary dictionaryWithObject:_openCToneDict forKey:keyOpenC];
     
     // Init data with open D tone
-    NSArray *_openDToneNumber = @[@(73.42), @(110.00),@(146.83),@(185.00),@(220.00),@(293.66)];
+    _openDToneNumber = @[@(73.42), @(110.00),@(146.83),@(185.00),@(220.00),@(293.66)];
     NSArray *_openDToneString = @[@"D",@"A",@"D",@"F#",@"A",@"D"];
     NSDictionary *_openDToneDict = [NSDictionary dictionaryWithObjects:_openDToneString forKeys:_openDToneNumber];
     _openDToneTypeDict = [NSDictionary dictionaryWithObject:_openDToneDict forKey:keyOpenD];
     
     // Init data with open E tone
-    NSArray *_openEToneNumber = @[@(82.41), @(123.47),@(164.81),@(207.65),@(246.94),@(329.63)];
+    _openEToneNumber = @[@(82.41), @(123.47),@(164.81),@(207.65),@(246.94),@(329.63)];
     NSArray *_openEToneString = @[@"E",@"B",@"E",@"G#",@"B",@"E"];
     NSDictionary *_openEToneDict = [NSDictionary dictionaryWithObjects:_openEToneString forKeys:_openEToneNumber];
     _openEToneTypeDict = [NSDictionary dictionaryWithObject:_openEToneDict forKey:keyOpenE];
     
     // Init data with open Em tone
-    NSArray *_openEmToneNumber = @[@(82.41), @(123.47),@(164.81),@(196.00),@(246.94),@(329.63)];
+    _openEmToneNumber = @[@(82.41), @(123.47),@(164.81),@(196.00),@(246.94),@(329.63)];
     NSArray *_openEmToneString = @[@"E",@"B",@"E",@"G",@"B",@"E"];
     NSDictionary *_openEmToneDict = [NSDictionary dictionaryWithObjects:_openEmToneString forKeys:_openEmToneNumber];
     _openEmToneTypeDict = [NSDictionary dictionaryWithObject:_openEmToneDict forKey:keyOpenEm];
     
     // Init data with open G tone
-    NSArray *_openGToneNumber = @[@(98.00), @(123.47),@(146.83),@(196.00),@(246.94),@(293.66)];
+    _openGToneNumber = @[@(98.00), @(123.47),@(146.83),@(196.00),@(246.94),@(293.66)];
     NSArray *_openGToneString = @[@"E",@"B",@"E",@"G",@"B",@"E"];
     NSDictionary *_openGToneDict = [NSDictionary dictionaryWithObjects:_openGToneString forKeys:_openGToneNumber];
     _openGToneTypeDict = [NSDictionary dictionaryWithObject:_openGToneDict forKey:keyOpenG];
@@ -246,48 +247,108 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 - (void)updateCoresspondingToneType:(float)hzValue {
-    NSLog(@"updateCoresspondingToneType : %f",hzValue);
+    float checkHZFLoat = floorf (hzValue);
     NSString *toneValueString;
     switch (_checkToneType) {
             //standard tone
         case 0:
-            toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(hzValue)];
+            for (int i = 0; i < _standardToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_standardToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_standardToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_standardToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(checkHZFLoat)];
             break;
             // Down a half step
         case 1:
-            toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(hzValue)];
+            for (int i = 0; i < _downAHalfStepToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_downAHalfStepToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_downAHalfStepToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_downAHalfStepToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(checkHZFLoat)];
             break;
             // Dropped D
         case 2:
-            toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(hzValue)];
+            for (int i = 0; i < _droppedDToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_droppedDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_droppedDToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_droppedDToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(checkHZFLoat)];
             break;
             // Double Dropped D
         case 3:
-            toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(hzValue)];
+            for (int i = 0; i < _doubleDroppedDToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_doubleDroppedDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_doubleDroppedDToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_doubleDroppedDToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(checkHZFLoat)];
             break;
             // Open A
         case 4:
-            toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openAToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openAToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openAToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openAToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(checkHZFLoat)];
             break;
             // Open C
         case 5:
-            toneValueString = [[_openCToneTypeDict objectForKey:keyOpenC] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openCToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openCToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openCToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openCToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openCToneTypeDict objectForKey:keyOpenC] objectForKey:@(checkHZFLoat)];
             break;
             // Open D
         case 6:
-            toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openDToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openDToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openDToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
             break;
             // Open E
         case 7:
-            toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openEToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openEToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openEToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openEToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
             break;
             // Open Em
         case 8:
-            toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openEmToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openEmToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openEmToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openEmToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(checkHZFLoat)];
             break;
             // Open G
         case 9:
-            toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(hzValue)];
+            for (int i = 0; i < _openGToneNumber.count ; i ++) {
+                if ((checkHZFLoat > [_openGToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openGToneNumber[i] floatValue] + 50)) {
+                    checkHZFLoat = [_openGToneNumber[i] floatValue];
+                    break;
+                }
+            }
+            toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(checkHZFLoat)];
             break;
         default:
             break;
