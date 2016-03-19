@@ -57,17 +57,18 @@
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
 		A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */; };
 		A601EA571C8AB03100E0AE3F /* IntroScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */; };
-		A601EA631C8AB1EF00E0AE3F /* Tutorial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */; };
-		A601EA641C8AB1EF00E0AE3F /* Tutorial-3.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */; };
-		A601EA651C8AB1EF00E0AE3F /* Tutorial-4.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */; };
-		A601EA661C8AB1EF00E0AE3F /* Tutorial-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */; };
-		A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */; };
-		A601EA681C8AB1EF00E0AE3F /* Tutorial-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */; };
-		A601EA691C8AB1EF00E0AE3F /* Tutorial-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */; };
 		A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */; };
 		A601EA761C8AB7EB00E0AE3F /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */; };
-		A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */; };
 		A61720721C881BDA00CFF43D /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61720711C881BDA00CFF43D /* MainTabbarController.m */; };
+		A6192E581C9D5FEF00191DD6 /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E4F1C9D5FEF00191DD6 /* Tutorial-1.png */; };
+		A6192E591C9D5FEF00191DD6 /* Tutorial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E501C9D5FEF00191DD6 /* Tutorial-2.png */; };
+		A6192E5A1C9D5FEF00191DD6 /* Tutorial-3.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E511C9D5FEF00191DD6 /* Tutorial-3.png */; };
+		A6192E5B1C9D5FEF00191DD6 /* Tutorial-4.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E521C9D5FEF00191DD6 /* Tutorial-4.png */; };
+		A6192E5C1C9D5FEF00191DD6 /* Tutorial-5.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E531C9D5FEF00191DD6 /* Tutorial-5.png */; };
+		A6192E5D1C9D5FEF00191DD6 /* Tutorial-6.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E541C9D5FEF00191DD6 /* Tutorial-6.png */; };
+		A6192E5E1C9D5FEF00191DD6 /* Tutorial-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E551C9D5FEF00191DD6 /* Tutorial-7.png */; };
+		A6192E5F1C9D5FEF00191DD6 /* Tutorial-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E561C9D5FEF00191DD6 /* Tutorial-8.png */; };
+		A6192E601C9D5FEF00191DD6 /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E571C9D5FEF00191DD6 /* Tutorial-9.png */; };
 		A61F0AF91C9AC1B700258549 /* circle_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A61F0AF81C9AC1B700258549 /* circle_blue.png */; };
 		A689C0A11C9318DA003C5AAC /* MetronomoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */; };
 		A689C0A31C931A72003C5AAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A21C931A72003C5AAC /* AVFoundation.framework */; };
@@ -77,7 +78,6 @@
 		A689C0AB1C931A9B003C5AAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0AA1C931A9B003C5AAC /* CoreGraphics.framework */; };
 		A689C0BE1C932765003C5AAC /* Pop-02.wav in Resources */ = {isa = PBXBuildFile; fileRef = A689C0BD1C932765003C5AAC /* Pop-02.wav */; };
 		A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */; };
-		A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DBCF401C8D856800FA6343 /* Tutorial-1.png */; };
 		A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBCF451C8D9AEB00FA6343 /* Constants.m */; };
 		A6DD84E51C9416EE00A7ED01 /* ic_emptyblank.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */; };
 		A6DD84E61C9416EE00A7ED01 /* ic_emptycircle.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DD84E41C9416EE00A7ED01 /* ic_emptycircle.png */; };
@@ -193,20 +193,21 @@
 		A601EA521C8A891500E0AE3F /* ChangeToneCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeToneCollectionViewCell.h; sourceTree = "<group>"; };
 		A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeToneCollectionViewCell.m; sourceTree = "<group>"; };
 		A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IntroScreen.storyboard; sourceTree = "<group>"; };
-		A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-2.png"; sourceTree = "<group>"; };
-		A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-3.png"; sourceTree = "<group>"; };
-		A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-4.png"; sourceTree = "<group>"; };
-		A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-5.png"; sourceTree = "<group>"; };
-		A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-6.png"; sourceTree = "<group>"; };
-		A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-7.png"; sourceTree = "<group>"; };
-		A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-8.png"; sourceTree = "<group>"; };
 		A601EA711C8AB7A600E0AE3F /* PageItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageItemViewController.h; sourceTree = "<group>"; };
 		A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageItemViewController.m; sourceTree = "<group>"; };
 		A601EA741C8AB7EB00E0AE3F /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		A601EA751C8AB7EB00E0AE3F /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
-		A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61720701C881BDA00CFF43D /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
 		A61720711C881BDA00CFF43D /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
+		A6192E4F1C9D5FEF00191DD6 /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
+		A6192E501C9D5FEF00191DD6 /* Tutorial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-2.png"; sourceTree = "<group>"; };
+		A6192E511C9D5FEF00191DD6 /* Tutorial-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-3.png"; sourceTree = "<group>"; };
+		A6192E521C9D5FEF00191DD6 /* Tutorial-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-4.png"; sourceTree = "<group>"; };
+		A6192E531C9D5FEF00191DD6 /* Tutorial-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-5.png"; sourceTree = "<group>"; };
+		A6192E541C9D5FEF00191DD6 /* Tutorial-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-6.png"; sourceTree = "<group>"; };
+		A6192E551C9D5FEF00191DD6 /* Tutorial-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-7.png"; sourceTree = "<group>"; };
+		A6192E561C9D5FEF00191DD6 /* Tutorial-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-8.png"; sourceTree = "<group>"; };
+		A6192E571C9D5FEF00191DD6 /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
 		A61F0AF81C9AC1B700258549 /* circle_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_blue.png; sourceTree = "<group>"; };
 		A689C09F1C9318DA003C5AAC /* MetronomoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomoViewController.h; sourceTree = "<group>"; };
 		A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomoViewController.m; sourceTree = "<group>"; };
@@ -217,7 +218,6 @@
 		A689C0AA1C931A9B003C5AAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A689C0BD1C932765003C5AAC /* Pop-02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Pop-02.wav"; sourceTree = "<group>"; };
 		A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boot-Screen.png"; sourceTree = "<group>"; };
-		A6DBCF401C8D856800FA6343 /* Tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-1.png"; sourceTree = "<group>"; };
 		A6DBCF441C8D9AEB00FA6343 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A6DBCF451C8D9AEB00FA6343 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_emptyblank.png; sourceTree = "<group>"; };
@@ -518,15 +518,15 @@
 		A601EA581C8AB18500E0AE3F /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				A6DBCF401C8D856800FA6343 /* Tutorial-1.png */,
-				A601EA791C8ABD0000E0AE3F /* Tutorial-9.png */,
-				A601EA5A1C8AB1EF00E0AE3F /* Tutorial-2.png */,
-				A601EA5B1C8AB1EF00E0AE3F /* Tutorial-3.png */,
-				A601EA5C1C8AB1EF00E0AE3F /* Tutorial-4.png */,
-				A601EA5D1C8AB1EF00E0AE3F /* Tutorial-5.png */,
-				A601EA5E1C8AB1EF00E0AE3F /* Tutorial-6.png */,
-				A601EA5F1C8AB1EF00E0AE3F /* Tutorial-7.png */,
-				A601EA601C8AB1EF00E0AE3F /* Tutorial-8.png */,
+				A6192E4F1C9D5FEF00191DD6 /* Tutorial-1.png */,
+				A6192E501C9D5FEF00191DD6 /* Tutorial-2.png */,
+				A6192E511C9D5FEF00191DD6 /* Tutorial-3.png */,
+				A6192E521C9D5FEF00191DD6 /* Tutorial-4.png */,
+				A6192E531C9D5FEF00191DD6 /* Tutorial-5.png */,
+				A6192E541C9D5FEF00191DD6 /* Tutorial-6.png */,
+				A6192E551C9D5FEF00191DD6 /* Tutorial-7.png */,
+				A6192E561C9D5FEF00191DD6 /* Tutorial-8.png */,
+				A6192E571C9D5FEF00191DD6 /* Tutorial-9.png */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -739,21 +739,21 @@
 				232D55C41C87269A002798F4 /* ic_return_selected.png in Resources */,
 				232D55BE1C87269A002798F4 /* ic_hinos_selected.png in Resources */,
 				A6DD84E51C9416EE00A7ED01 /* ic_emptyblank.png in Resources */,
+				A6192E5C1C9D5FEF00191DD6 /* Tutorial-5.png in Resources */,
 				23B859EC1C85D9D500144193 /* LaunchScreen.storyboard in Resources */,
 				A6FC30951C93EF2B00F01DF4 /* icon_circle.jpeg in Resources */,
 				23B859E91C85D9D500144193 /* Assets.xcassets in Resources */,
-				A601EA681C8AB1EF00E0AE3F /* Tutorial-7.png in Resources */,
-				A601EA631C8AB1EF00E0AE3F /* Tutorial-2.png in Resources */,
 				23B85A1D1C85E30B00144193 /* global.ai in Resources */,
+				A6192E5D1C9D5FEF00191DD6 /* Tutorial-6.png in Resources */,
 				A61F0AF91C9AC1B700258549 /* circle_blue.png in Resources */,
+				A6192E581C9D5FEF00191DD6 /* Tutorial-1.png in Resources */,
 				23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */,
 				232D55C21C87269A002798F4 /* ic_mude_selected.png in Resources */,
 				232D55BA1C87269A002798F4 /* ic_auto_scroll_selected.png in Resources */,
 				A6FC309B1C93F0B500F01DF4 /* ic_increase.png in Resources */,
 				232D55CC1C87269A002798F4 /* ic_tuner.png in Resources */,
-				A601EA661C8AB1EF00E0AE3F /* Tutorial-5.png in Resources */,
+				A6192E5B1C9D5FEF00191DD6 /* Tutorial-4.png in Resources */,
 				232D55BC1C87269A002798F4 /* ic_global_selected.png in Resources */,
-				A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */,
 				A6F789871C9B24A700B1618E /* icon_select.png in Resources */,
 				A6DD84E61C9416EE00A7ED01 /* ic_emptycircle.png in Resources */,
 				23B859E41C85D9D500144193 /* Main.storyboard in Resources */,
@@ -763,13 +763,14 @@
 				23B85A231C85E30B00144193 /* ic_mail.png in Resources */,
 				A6FC30931C93EA1300F01DF4 /* icon_play.png in Resources */,
 				23B85A1F1C85E30B00144193 /* ic_azuda.png in Resources */,
+				A6192E5A1C9D5FEF00191DD6 /* Tutorial-3.png in Resources */,
 				232D55CD1C87269A002798F4 /* ic_x.png in Resources */,
-				A6DBCF411C8D856800FA6343 /* Tutorial-1.png in Resources */,
 				23B85A271C85E30B00144193 /* ic_star_settings.png in Resources */,
 				23B85A211C85E30B00144193 /* ic_facebook.png in Resources */,
 				232D55C01C87269A002798F4 /* ic_metronome_selected.png in Resources */,
 				23B85A241C85E30B00144193 /* ic_notification.png in Resources */,
 				232D55BD1C87269A002798F4 /* ic_global.png in Resources */,
+				A6192E591C9D5FEF00191DD6 /* Tutorial-2.png in Resources */,
 				23B85A261C85E30B00144193 /* ic_share.png in Resources */,
 				A601EA571C8AB03100E0AE3F /* IntroScreen.storyboard in Resources */,
 				232D55BF1C87269A002798F4 /* ic_hinos.png in Resources */,
@@ -779,7 +780,6 @@
 				A6FC30921C93EA1300F01DF4 /* icon_pause.png in Resources */,
 				A6FC309A1C93F0B500F01DF4 /* ic_decrease.png in Resources */,
 				232D55C71C87269A002798F4 /* ic_setting.png in Resources */,
-				A601EA651C8AB1EF00E0AE3F /* Tutorial-4.png in Resources */,
 				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
 				A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */,
@@ -790,11 +790,11 @@
 				232D55C61C87269A002798F4 /* ic_setting_selected.png in Resources */,
 				232D55CA1C87269A002798F4 /* ic_star.png in Resources */,
 				A6FC309C1C93F0B500F01DF4 /* ic_pause.png in Resources */,
+				A6192E5F1C9D5FEF00191DD6 /* Tutorial-8.png in Resources */,
+				A6192E601C9D5FEF00191DD6 /* Tutorial-9.png in Resources */,
 				232D55BB1C87269A002798F4 /* ic_auto_scroll.png in Resources */,
+				A6192E5E1C9D5FEF00191DD6 /* Tutorial-7.png in Resources */,
 				23B85A221C85E30B00144193 /* ic_instagram.png in Resources */,
-				A601EA641C8AB1EF00E0AE3F /* Tutorial-3.png in Resources */,
-				A601EA7A1C8ABD0000E0AE3F /* Tutorial-9.png in Resources */,
-				A601EA691C8AB1EF00E0AE3F /* Tutorial-8.png in Resources */,
 				232D55CB1C87269A002798F4 /* ic_tuner_selected.png in Resources */,
 				A689C0BE1C932765003C5AAC /* Pop-02.wav in Resources */,
 			);
