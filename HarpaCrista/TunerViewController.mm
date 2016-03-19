@@ -230,7 +230,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 - (void)initToneTypeData {
-    _toneTypeArray = [NSArray arrayWithObjects:@"Standard (E,A,D,G,B)",@"Down a half step(D#,G#,C#,F#,A#,D#)",@"Dropped D (D,A,D,G,B,D)",@"Double Dropped D(D,A,D,G,B,D)",@"Open A (E,A,E,A,C#,E)",@"Open C (C,G,C,G,C,E)",@"Open D (D,A,D,F#,A,D)",@"Open E (E,B,E,G#,B,E)",@"Open Em (E,B,E,G,B,E)",@"Open G (G,B,D,G,B,D)", nil];
+    _toneTypeArray = [NSArray arrayWithObjects:@"Standard (E,A,D,G,B,E)",@"Down a half step(D#,G#,C#,F#,A#,D#)",@"Dropped D (D,A,D,G,B,E)",@"Double Dropped D (D,A,D,G,B,D)",@"Open A (E,A,E,A,C#,E)",@"Open C (C,G,C,G,C,E)",@"Open D (D,A,D,F#,A,D)",@"Open E (E,B,E,G#,B,E)",@"Open Em (E,B,E,G,B,E)",@"Open G (G,B,D,G,B,D)", nil];
 }
 - (void)initMomuAudio {
     bool result = false;
