@@ -119,7 +119,6 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         Float32 maxHZValue = 0;
         Float32 maxHZ = strongestFrequencyHZ(dataAccumulator, fftConverter, accumulatorDataLenght, &maxHZValue);
         
-        NSLog(@" max HZ = %0.2f ", maxHZ);
         dispatch_async(dispatch_get_main_queue(), ^{ //update UI only on main thread
             labelToUpdate.text = [NSString stringWithFormat:@"%0.2f HZ",maxHZ];
             TunerViewController *tunerViewController = [[TunerViewController alloc]init];
