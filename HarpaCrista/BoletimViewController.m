@@ -23,8 +23,11 @@
     // Do any additional setup after loading the view.
     self.title = @"Boletim";
     // Border for submitButton
-    _submitButton.layer.cornerRadius = 5;
+    _submitButton.layer.cornerRadius = 8;
     _submitButton.layer.masksToBounds = YES;
+    _submitButton.layer.borderColor =[[UIColor whiteColor]CGColor];
+    _submitButton.layer.borderWidth= 2.0;
+    _submitButton.backgroundColor = [UIColor colorWithRed:15/255.0f green:128/255.0f blue:252/255.0f alpha:1];
     // Border for emailTextField
     _emailTextField.layer.cornerRadius = 5;
     _emailTextField.layer.masksToBounds = YES;

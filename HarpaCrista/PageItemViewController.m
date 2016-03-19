@@ -32,8 +32,11 @@
     _emailTextField.hidden = YES;
     _submitButton.hidden = YES;
     _contentImageView.image = [UIImage imageNamed:imageName];
-    _submitButton.layer.cornerRadius = 5;
+    _submitButton.layer.cornerRadius = 8;
     _submitButton.layer.masksToBounds = YES;
+    _submitButton.layer.borderColor =[[UIColor whiteColor]CGColor];
+    _submitButton.layer.borderWidth= 2.0;
+    _submitButton.backgroundColor = [UIColor colorWithRed:15/255.0f green:128/255.0f blue:252/255.0f alpha:1];
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
