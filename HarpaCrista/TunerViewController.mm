@@ -344,7 +344,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         }
         
         if (i == arrayData.count - 1) {
-            max = [arrayData[i] floatValue] + 30.0f;
+            max = 1.5 * (2 * [arrayData[i] floatValue] - ([arrayData[i] floatValue] + [arrayData[i - 1] floatValue]) / 2);
         } else {
             max = ([arrayData[i] floatValue] + [arrayData[i+1] floatValue]) / 2;
         }
