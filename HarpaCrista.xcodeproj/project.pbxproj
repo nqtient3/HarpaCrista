@@ -56,7 +56,6 @@
 		23B85A381C85E32F00144193 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* SettingsViewController.m */; };
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
 		23D82C4B1C9D5AF1004AC250 /* bass.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23D82C491C9D5AF1004AC250 /* bass.mp3 */; };
-		23D82C4C1C9D5AF1004AC250 /* snare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23D82C4A1C9D5AF1004AC250 /* snare.mp3 */; };
 		A601EA541C8A891500E0AE3F /* ChangeToneCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA531C8A891500E0AE3F /* ChangeToneCollectionViewCell.m */; };
 		A601EA571C8AB03100E0AE3F /* IntroScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */; };
 		A601EA731C8AB7A600E0AE3F /* PageItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A601EA721C8AB7A600E0AE3F /* PageItemViewController.m */; };
@@ -71,6 +70,7 @@
 		A6192E5E1C9D5FEF00191DD6 /* Tutorial-7.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E551C9D5FEF00191DD6 /* Tutorial-7.png */; };
 		A6192E5F1C9D5FEF00191DD6 /* Tutorial-8.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E561C9D5FEF00191DD6 /* Tutorial-8.png */; };
 		A6192E601C9D5FEF00191DD6 /* Tutorial-9.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E571C9D5FEF00191DD6 /* Tutorial-9.png */; };
+		A6192E621C9D99D400191DD6 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6192E611C9D99D400191DD6 /* Boot-Screen.png */; };
 		A61F0AF91C9AC1B700258549 /* circle_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A61F0AF81C9AC1B700258549 /* circle_blue.png */; };
 		A689C0A11C9318DA003C5AAC /* MetronomoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */; };
 		A689C0A31C931A72003C5AAC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A21C931A72003C5AAC /* AVFoundation.framework */; };
@@ -78,7 +78,6 @@
 		A689C0A71C931A85003C5AAC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A61C931A85003C5AAC /* UIKit.framework */; };
 		A689C0A91C931A90003C5AAC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0A81C931A90003C5AAC /* Foundation.framework */; };
 		A689C0AB1C931A9B003C5AAC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A689C0AA1C931A9B003C5AAC /* CoreGraphics.framework */; };
-		A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */; };
 		A6DBCF461C8D9AEB00FA6343 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBCF451C8D9AEB00FA6343 /* Constants.m */; };
 		A6DD84E51C9416EE00A7ED01 /* ic_emptyblank.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */; };
 		A6DD84E61C9416EE00A7ED01 /* ic_emptycircle.png in Resources */ = {isa = PBXBuildFile; fileRef = A6DD84E41C9416EE00A7ED01 /* ic_emptycircle.png */; };
@@ -211,6 +210,7 @@
 		A6192E551C9D5FEF00191DD6 /* Tutorial-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-7.png"; sourceTree = "<group>"; };
 		A6192E561C9D5FEF00191DD6 /* Tutorial-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-8.png"; sourceTree = "<group>"; };
 		A6192E571C9D5FEF00191DD6 /* Tutorial-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-9.png"; sourceTree = "<group>"; };
+		A6192E611C9D99D400191DD6 /* Boot-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boot-Screen.png"; sourceTree = "<group>"; };
 		A61F0AF81C9AC1B700258549 /* circle_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_blue.png; sourceTree = "<group>"; };
 		A689C09F1C9318DA003C5AAC /* MetronomoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomoViewController.h; sourceTree = "<group>"; };
 		A689C0A01C9318DA003C5AAC /* MetronomoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomoViewController.m; sourceTree = "<group>"; };
@@ -219,7 +219,6 @@
 		A689C0A61C931A85003C5AAC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A689C0A81C931A90003C5AAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A689C0AA1C931A9B003C5AAC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boot-Screen.png"; sourceTree = "<group>"; };
 		A6DBCF441C8D9AEB00FA6343 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		A6DBCF451C8D9AEB00FA6343 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		A6DD84E31C9416EE00A7ED01 /* ic_emptyblank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_emptyblank.png; sourceTree = "<group>"; };
@@ -472,8 +471,8 @@
 				A601EA581C8AB18500E0AE3F /* Tutorial */,
 				232D55A61C87269A002798F4 /* ic_auto_scroll_selected.png */,
 				232D55A71C87269A002798F4 /* ic_auto_scroll.png */,
-				A6A76D2E1C8B01170058E2C1 /* Boot-Screen.png */,
 				232D55A81C87269A002798F4 /* ic_global_selected.png */,
+				A6192E611C9D99D400191DD6 /* Boot-Screen.png */,
 				232D55A91C87269A002798F4 /* ic_global.png */,
 				232D55AA1C87269A002798F4 /* ic_hinos_selected.png */,
 				232D55AB1C87269A002798F4 /* ic_hinos.png */,
@@ -757,13 +756,13 @@
 				232D55CC1C87269A002798F4 /* ic_tuner.png in Resources */,
 				A6192E5B1C9D5FEF00191DD6 /* Tutorial-4.png in Resources */,
 				232D55BC1C87269A002798F4 /* ic_global_selected.png in Resources */,
-				A601EA671C8AB1EF00E0AE3F /* Tutorial-6.png in Resources */,
 				A6F789871C9B24A700B1618E /* icon_select.png in Resources */,
 				A6DD84E61C9416EE00A7ED01 /* ic_emptycircle.png in Resources */,
 				23B859E41C85D9D500144193 /* Main.storyboard in Resources */,
 				A6FC30911C93EA1300F01DF4 /* icon_exit_fullscreen.png in Resources */,
 				23B85A201C85E30B00144193 /* ic_book.png in Resources */,
 				A6FC309D1C93F0B500F01DF4 /* ic_play.png in Resources */,
+				A6192E621C9D99D400191DD6 /* Boot-Screen.png in Resources */,
 				23B85A231C85E30B00144193 /* ic_mail.png in Resources */,
 				A6FC30931C93EA1300F01DF4 /* icon_play.png in Resources */,
 				23B85A1F1C85E30B00144193 /* ic_azuda.png in Resources */,
@@ -786,7 +785,6 @@
 				232D55C71C87269A002798F4 /* ic_setting.png in Resources */,
 				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
-				A6A76D2F1C8B01170058E2C1 /* Boot-Screen.png in Resources */,
 				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
 				232D55C31C87269A002798F4 /* ic_mude.png in Resources */,
 				232D55C11C87269A002798F4 /* ic_metronome.png in Resources */,
