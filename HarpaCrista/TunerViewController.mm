@@ -132,7 +132,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 
-@interface TunerViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface TunerViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 @end
 
 @implementation TunerViewController {
@@ -175,6 +175,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                              initWithTarget:self
                              action:@selector(dismissToneTypeTableView)];
+    _tapGestureRecognizer.delegate = self;
 }
 
 - (void) initToneDictionarry {
@@ -257,7 +258,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)dismissToneTypeTableView {
     _toneTypeTableView.hidden = YES;
-//    [self.view removeGestureRecognizer:_tapGestureRecognizer];
+    [self.view removeGestureRecognizer:_tapGestureRecognizer];
 }
 
 - (void)updateCoresspondingToneType:(float)hzValue {
@@ -391,6 +392,13 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     return result;
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:_toneTypeTableView]) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
@@ -426,7 +434,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 - (IBAction)toneTypeButtonAction:(id)sender {
-   // [self.view addGestureRecognizer:_tapGestureRecognizer];
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
     _toneTypeTableView.hidden = NO;
 }
 - (void) dealloc {

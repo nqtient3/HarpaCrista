@@ -20,7 +20,7 @@ typedef enum {
     tone2
 } tone;
 
-@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate> {
+@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate> {
     __weak IBOutlet UIWebView *_webView;
     __weak IBOutlet UIView *_zoomView;
     __weak IBOutlet UIView *_toolView;
@@ -100,7 +100,8 @@ typedef enum {
     // Add tapGestureRecognizer for view to hide the ToneView
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                              initWithTarget:self
-                             action:@selector(dismissChangeToneView)];
+                             action:@selector(dismissChangeToneView:)];
+    _tapGestureRecognizer.delegate = self;
     
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
@@ -183,14 +184,22 @@ typedef enum {
     return tone1;
 }
 
-- (void)dismissChangeToneView {
-//    [self changeToneAction:_mudeButton];
-//    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
+- (void)dismissChangeToneView:(UIGestureRecognizer *)gestureRecognizer {
+    [self changeToneAction:_mudeButton];
+    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:_changeToneCollectionView]) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -232,7 +241,7 @@ typedef enum {
     [self findAndReplaceCorrespondingTone:rangeString];
     _isChangeToneView = NO;
     [self changeToneAction:_mudeButton];
-//    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
+    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
     [_changeToneCollectionView reloadData];
     
 }
@@ -438,7 +447,7 @@ typedef enum {
 #pragma mark - changeToneAction
 
 - (IBAction)changeToneAction:(UIButton *)sender {
-   // [_changeToneView addGestureRecognizer:_tapGestureRecognizer];
+    [_changeToneView addGestureRecognizer:_tapGestureRecognizer];
      sender.selected = !sender.isSelected;
     if (sender.selected) {
         _changeToneView.hidden = NO;
