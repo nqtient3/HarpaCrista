@@ -85,6 +85,9 @@ typedef enum {
     NSURL *bassSoundURL = [[NSBundle mainBundle] URLForResource:@"bass"
                                                    withExtension:@"mp3"];
     _audioPlayerBass = [[AVAudioPlayer alloc] initWithContentsOfURL:bassSoundURL error:&error];
+    
+    // Set the default volume for AudioPlayer
+    [self sliderChangeVolumeValueChanged:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -180,8 +183,8 @@ typedef enum {
 }
 
 - (IBAction)sliderChangeVolumeValueChanged:(id)sender {
-    _audioPlayerSnare.volume = _volumeSlider.value / 1.0;
-    _audioPlayerBass.volume = _volumeSlider.value / 1.0;
+    _audioPlayerSnare.volume = _volumeSlider.value;
+    _audioPlayerBass.volume = _volumeSlider.value;
 }
 
 - (IBAction)sliderChangeBPMValueChanged:(id)sender {
