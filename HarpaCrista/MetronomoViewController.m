@@ -43,7 +43,8 @@ typedef enum {
     
     NSTimer *_timerBeat;
     int _currentBeatNumber;
-    AVAudioPlayer *_audioPlayer;
+    AVAudioPlayer *_audioPlayerSnare;
+    AVAudioPlayer *_audioPlayerBass;
     BeatType _beatType;
     NSArray *tempoMilestone;
     NSArray *tempoMilestoneType;
@@ -73,12 +74,17 @@ typedef enum {
     
     //Set the current beat number to be 0 as default
     _currentBeatNumber = 0;
-    
+
     // Init the audio Player to play sound
     NSError *error = nil;
-    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:@"Pop-02"
-                                              withExtension:@"wav"];
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+    // Snare sound
+    NSURL *snareSoundURL = [[NSBundle mainBundle] URLForResource:@"snare"
+                                              withExtension:@"mp3"];
+    _audioPlayerSnare = [[AVAudioPlayer alloc] initWithContentsOfURL:snareSoundURL error:&error];
+    //Bass sound
+    NSURL *bassSoundURL = [[NSBundle mainBundle] URLForResource:@"bass"
+                                                   withExtension:@"mp3"];
+    _audioPlayerBass = [[AVAudioPlayer alloc] initWithContentsOfURL:bassSoundURL error:&error];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -174,8 +180,8 @@ typedef enum {
 }
 
 - (IBAction)sliderChangeVolumeValueChanged:(id)sender {
-    _audioPlayer.volume = _volumeSlider.value / 1.0;
-    NSLog(@"_audioPlayer.volume : %f",_audioPlayer.volume);
+    _audioPlayerSnare.volume = _volumeSlider.value / 1.0;
+    _audioPlayerBass.volume = _volumeSlider.value / 1.0;
 }
 
 - (IBAction)sliderChangeBPMValueChanged:(id)sender {
@@ -220,7 +226,6 @@ typedef enum {
     }
 }
 - (void)timerFireMethod {
-    [_audioPlayer play];
     [self changeCurrentButtonBackground];
 }
 
@@ -246,6 +251,8 @@ typedef enum {
     // If the current beat number reaches to max, back to 1, otherwise increase it
     switch (_currentBeatNumber) {
         case 1:
+            [self playBassSound:YES];
+            
             _buttonBeat1.selected = NO;
             _buttonBeat2.selected = YES;
             _currentBeatNumber++;
@@ -253,10 +260,13 @@ typedef enum {
             break;
         case 2:
             if (maxBeatNumber == 2) {
+                [self playBassSound:NO];
+                
                 _buttonBeat2.selected = NO;
                 _buttonBeat1.selected = YES;
                 _currentBeatNumber = 1;
             } else {
+                [self playBassSound:YES];
                 _buttonBeat2.selected = NO;
                 _buttonBeat3.selected = YES;
                 _currentBeatNumber++;
@@ -265,10 +275,13 @@ typedef enum {
             break;
         case 3:
             if (maxBeatNumber <= 3) {
+                [self playBassSound:NO];
+                
                 _buttonBeat3.selected = NO;
                 _buttonBeat1.selected = YES;
                 _currentBeatNumber = 1;
             } else {
+                [self playBassSound:YES];
                 _buttonBeat3.selected = NO;
                 _buttonBeat4.selected = YES;
                 _currentBeatNumber++;
@@ -277,10 +290,14 @@ typedef enum {
             break;
         case 4:
             if (maxBeatNumber <= 4) {
+                [self playBassSound:NO];
+                
                 _buttonBeat4.selected = NO;
                 _buttonBeat1.selected = YES;
                 _currentBeatNumber = 1;
             } else {
+
+                [self playBassSound:YES];
                 _buttonBeat4.selected = NO;
                 _buttonBeat5.selected = YES;
                 _currentBeatNumber++;
@@ -289,10 +306,13 @@ typedef enum {
             break;
         case 5:
             if (maxBeatNumber == 6) {
+                [self playBassSound:YES];
                 _buttonBeat5.selected = NO;
                 _buttonBeat6.selected = YES;
                 _currentBeatNumber++;
             } else {
+                [self playBassSound:NO];
+                
                 _buttonBeat5.selected = NO;
                 _buttonBeat1.selected = YES;
                 _currentBeatNumber = 1;
@@ -300,6 +320,8 @@ typedef enum {
             
             break;
         case 6:
+            [self playBassSound:NO];
+            
             _buttonBeat6.selected = NO;
             _buttonBeat1.selected = YES;
             _currentBeatNumber = 1;
@@ -307,10 +329,22 @@ typedef enum {
             break;
             
         default:
+            [self playBassSound:NO];
+            
             _buttonBeat1.selected = YES;
             _currentBeatNumber++;
             
             break;
+    }
+}
+
+- (void)playBassSound:(BOOL)isBassSound {
+    if (isBassSound) {
+        [_audioPlayerBass stop];
+        [_audioPlayerBass play];
+    } else {
+        [_audioPlayerSnare stop];
+        [_audioPlayerSnare play];
     }
 }
 
