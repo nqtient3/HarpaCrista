@@ -50,6 +50,7 @@ typedef enum {
     NSString *_fullString;
     NSMutableArray *_selectedRange;
     BOOL _isChangeToneView;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 @end
 
@@ -95,6 +96,11 @@ typedef enum {
     // Set default time for each loop
     timeEachLoop = DEFAULT_TIME_EACH_LOOP;
     _changeToneView.hidden = YES;
+    
+    // Add tapGestureRecognizer for view to hide the ToneView
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                             initWithTarget:self
+                             action:@selector(dismissChangeToneView)];
     
     if (self.currentCDSong) {
         self.title = [NSString stringWithFormat:@"%@ - %@",self.currentCDSong.cdSongID,self.currentCDSong.cdTitle];
@@ -177,6 +183,11 @@ typedef enum {
     return tone1;
 }
 
+- (void)dismissChangeToneView {
+//    [self changeToneAction:_mudeButton];
+//    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -216,12 +227,14 @@ typedef enum {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self changeSelectedRangeAtIndex:indexPath.row];
-    [self changeToneAction:_mudeButton];
     ChangeToneCollectionViewCell *cell = (ChangeToneCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     NSString *rangeString = cell.titleLabel.text;
     [self findAndReplaceCorrespondingTone:rangeString];
     _isChangeToneView = NO;
+    [self changeToneAction:_mudeButton];
+//    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
     [_changeToneCollectionView reloadData];
+    
 }
 
 #pragma mark - findAndReplaceCorrespondingTone
@@ -425,6 +438,7 @@ typedef enum {
 #pragma mark - changeToneAction
 
 - (IBAction)changeToneAction:(UIButton *)sender {
+   // [_changeToneView addGestureRecognizer:_tapGestureRecognizer];
      sender.selected = !sender.isSelected;
     if (sender.selected) {
         _changeToneView.hidden = NO;

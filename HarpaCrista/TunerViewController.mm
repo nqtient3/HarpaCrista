@@ -24,6 +24,7 @@ static NSInteger _checkToneType;
 static NSDictionary *_standToneTypeDict, *_downAHalfStepToneTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 static NSArray *_standardToneNumber, *_downAHalfStepToneNumber, *_droppedDToneNumber, *_doubleDroppedDToneNumber, *_openAToneNumber, *_openDToneNumber, *_openCToneNumber, *_openEToneNumber, *_openEmToneNumber, *_openGToneNumber;
 static float match;
+static NSString *_statusToneType;
 /// Nyquist Maximum Frequency
 const Float32 NyquistMaxFreq = SAMPLE_RATE/2.0;
 /// caculates HZ value for specified index from a FFT bins vector
@@ -103,6 +104,7 @@ static Float32 strongestFrequencyHZ(Float32 *buffer, FFTHelperRef *fftHelper, UI
 
 __weak UILabel *_labelToUpdate = nil;
 __weak UILabel *_toneTypeToUpdateLabel = nil;
+__weak UILabel *_statusToUpdateLabel = nil;
 
 #pragma mark MAIN CALLBACK
 void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
@@ -136,6 +138,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 @implementation TunerViewController {
     __weak IBOutlet UILabel *_toneTypeLabel;
     __weak IBOutlet UILabel *_hzValueLabel;
+    __weak IBOutlet UILabel *_statusLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
     NSString *_toneValueString;
@@ -155,6 +158,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     [self initToneDictionarry];
     _labelToUpdate = _hzValueLabel;
     _toneTypeToUpdateLabel = _toneTypeLabel;
+    _statusToUpdateLabel = _statusLabel;
     // Border for toneTypeTableView
     _toneTypeTableView.layer.cornerRadius = 5;
     _toneTypeTableView.layer.masksToBounds = YES;
@@ -253,7 +257,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)dismissToneTypeTableView {
     _toneTypeTableView.hidden = YES;
-    [self.view removeGestureRecognizer:_tapGestureRecognizer];
+//    [self.view removeGestureRecognizer:_tapGestureRecognizer];
 }
 
 - (void)updateCoresspondingToneType:(float)hzValue {
@@ -263,26 +267,31 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         case 0:
             checkHZFLoat = [self getCurrentToneString:_standardToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Standard";
             break;
             // Down a half step
         case 1:
             checkHZFLoat = [self getCurrentToneString:_downAHalfStepToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Down a half step";
             break;
             // Dropped D
         case 2:
             checkHZFLoat = [self getCurrentToneString:_droppedDToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Dropped D";
             break;
             // Double Dropped D
         case 3:
             checkHZFLoat = [self getCurrentToneString:_doubleDroppedDToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Double Dropped D";
             break;
             // Open A
         case 4:
             checkHZFLoat = [self getCurrentToneString:_openAToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Open A";
             break;
             // Open C
         case 5:
@@ -293,26 +302,31 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         case 6:
             checkHZFLoat = [self getCurrentToneString:_openDToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Open D";
             break;
             // Open E
         case 7:
             checkHZFLoat = [self getCurrentToneString:_openEToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Open E";
             break;
             // Open Em
         case 8:
             checkHZFLoat = [self getCurrentToneString:_openEmToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Open Em";
             break;
             // Open G
         case 9:
             checkHZFLoat = [self getCurrentToneString:_openGToneNumber withFrequentTone:checkHZFLoat];
             _toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(checkHZFLoat)];
+            _statusToneType = @"Open G";
             break;
         default:
             break;
     }
     [self updatePercent];
+    [self updateStatus];
     if([_toneValueString length] > 0) {
         _toneTypeToUpdateLabel.text = [NSString stringWithFormat:@"%@",_toneValueString];
     } else {
@@ -328,6 +342,18 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
        _labelToUpdate.text = [NSString stringWithFormat:@"%0.0f%@",match * 100,@"%"];
     } else {
          _labelToUpdate.text = @"?%";
+    }
+}
+
+#pragma mark - updatePercent
+
+- (void)updateStatus {
+    if ([_toneValueString length] > 0) {
+        _statusToUpdateLabel.text = [NSString stringWithFormat:@"Currently tuning string %@ from %@ tuning,matched in %0.0f%@",_toneValueString,_statusToneType,match * 100,@"%"];
+        _statusToUpdateLabel.textColor = [UIColor greenColor];
+    } else {
+        _statusToUpdateLabel.text = @"Please reduce background noise (or play louder).";
+        _statusToUpdateLabel.textColor = [UIColor redColor];
     }
 }
 
@@ -400,7 +426,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 - (IBAction)toneTypeButtonAction:(id)sender {
-    [self.view addGestureRecognizer:_tapGestureRecognizer];
+   // [self.view addGestureRecognizer:_tapGestureRecognizer];
     _toneTypeTableView.hidden = NO;
 }
 - (void) dealloc {
