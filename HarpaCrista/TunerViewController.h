@@ -12,5 +12,5 @@
 @interface TunerViewController : UIViewController
 
 - (void)updateCoresspondingToneType:(float)hzValue;
-
+- (CGFloat)getCurrentToneString:(NSArray *)arrayData withFrequentTone:(CGFloat)checkHZFLoat;
 @end

@@ -10,7 +10,7 @@
 #import "mo_audio.h" //stuff that helps set up low-level audio
 #import "FFTHelper.h"
 #import "Constants.h"
-#include <math.h>
+#import <math.h>
 
 
 #define SAMPLE_RATE 44100  //22050 //44100
@@ -23,7 +23,7 @@
 static NSInteger _checkToneType;
 static NSDictionary *_standToneTypeDict, *_downAHalfStepToneTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 static NSArray *_standardToneNumber, *_downAHalfStepToneNumber, *_droppedDToneNumber, *_doubleDroppedDToneNumber, *_openAToneNumber, *_openDToneNumber, *_openCToneNumber, *_openEToneNumber, *_openEmToneNumber, *_openGToneNumber;
-
+static float match;
 /// Nyquist Maximum Frequency
 const Float32 NyquistMaxFreq = SAMPLE_RATE/2.0;
 /// caculates HZ value for specified index from a FFT bins vector
@@ -101,7 +101,7 @@ static Float32 strongestFrequencyHZ(Float32 *buffer, FFTHelperRef *fftHelper, UI
     return HZ;
 }
 
-__weak UILabel *labelToUpdate = nil;
+__weak UILabel *_labelToUpdate = nil;
 __weak UILabel *_toneTypeToUpdateLabel = nil;
 
 #pragma mark MAIN CALLBACK
@@ -120,7 +120,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         Float32 maxHZ = strongestFrequencyHZ(dataAccumulator, fftConverter, accumulatorDataLenght, &maxHZValue);
         
         dispatch_async(dispatch_get_main_queue(), ^{ //update UI only on main thread
-            labelToUpdate.text = [NSString stringWithFormat:@"%0.2f HZ",maxHZ];
+            //labelToUpdate.text = [NSString stringWithFormat:@"%0.2f HZ",maxHZ];
             TunerViewController *tunerViewController = [[TunerViewController alloc]init];
             [tunerViewController updateCoresspondingToneType:ceilf((float)maxHZ*100)/100];
         });
@@ -138,6 +138,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     __weak IBOutlet UILabel *_hzValueLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
+    NSString *_toneValueString;
     NSArray *_toneTypeArray;
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
@@ -152,7 +153,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     _checkToneType = 0;
     [self initToneTypeData];
     [self initToneDictionarry];
-    labelToUpdate = _hzValueLabel;
+    _labelToUpdate = _hzValueLabel;
     _toneTypeToUpdateLabel = _toneTypeLabel;
     // Border for toneTypeTableView
     _toneTypeTableView.layer.cornerRadius = 5;
@@ -257,118 +258,116 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)updateCoresspondingToneType:(float)hzValue {
     float checkHZFLoat = floorf (hzValue);
-    NSString *toneValueString;
     switch (_checkToneType) {
             //standard tone
         case 0:
-            for (int i = 0; i < _standardToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_standardToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_standardToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_standardToneNumber[i] floatValue];;
-                    break;
-                }
-            }
-            toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_standardToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_standToneTypeDict objectForKey:keyStandard] objectForKey:@(checkHZFLoat)];
             break;
             // Down a half step
         case 1:
-            for (int i = 0; i < _downAHalfStepToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_downAHalfStepToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_downAHalfStepToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_downAHalfStepToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_downAHalfStepToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_downAHalfStepToneTypeDict objectForKey:keyDownAHalfStep] objectForKey:@(checkHZFLoat)];
             break;
             // Dropped D
         case 2:
-            for (int i = 0; i < _droppedDToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_droppedDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_droppedDToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_droppedDToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_droppedDToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_droppedDToneDictTypeDict objectForKey:keyDroppedD] objectForKey:@(checkHZFLoat)];
             break;
             // Double Dropped D
         case 3:
-            for (int i = 0; i < _doubleDroppedDToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_doubleDroppedDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_doubleDroppedDToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_doubleDroppedDToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_doubleDroppedDToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_doubleDroppedDToneTypeDict objectForKey:keyDoubleDroppedD] objectForKey:@(checkHZFLoat)];
             break;
             // Open A
         case 4:
-            for (int i = 0; i < _openAToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openAToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openAToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openAToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openAToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openAToneTypeDict objectForKey:keyOpenA] objectForKey:@(checkHZFLoat)];
             break;
             // Open C
         case 5:
-            for (int i = 0; i < _openCToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openCToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openCToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openCToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openCToneTypeDict objectForKey:keyOpenC] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openCToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openCToneTypeDict objectForKey:keyOpenC] objectForKey:@(checkHZFLoat)];
             break;
             // Open D
         case 6:
-            for (int i = 0; i < _openDToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openDToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openDToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openDToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openDToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openDToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
             break;
             // Open E
         case 7:
-            for (int i = 0; i < _openEToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openEToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openEToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openEToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openEToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openEToneTypeDict objectForKey:keyOpenD] objectForKey:@(checkHZFLoat)];
             break;
             // Open Em
         case 8:
-            for (int i = 0; i < _openEmToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openEmToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openEmToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openEmToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openEmToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openEmToneTypeDict objectForKey:keyOpenEm] objectForKey:@(checkHZFLoat)];
             break;
             // Open G
         case 9:
-            for (int i = 0; i < _openGToneNumber.count ; i ++) {
-                if ((checkHZFLoat > [_openGToneNumber[i] floatValue] - 50) && (checkHZFLoat <  [_openGToneNumber[i] floatValue] + 50)) {
-                    checkHZFLoat = [_openGToneNumber[i] floatValue];
-                    break;
-                }
-            }
-            toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(checkHZFLoat)];
+            checkHZFLoat = [self getCurrentToneString:_openGToneNumber withFrequentTone:checkHZFLoat];
+            _toneValueString = [[_openGToneTypeDict objectForKey:keyOpenG] objectForKey:@(checkHZFLoat)];
             break;
         default:
             break;
     }
-    if([toneValueString length] > 0) {
-        _toneTypeToUpdateLabel.text = [NSString stringWithFormat:@"%@",toneValueString];
+    [self updatePercent];
+    if([_toneValueString length] > 0) {
+        _toneTypeToUpdateLabel.text = [NSString stringWithFormat:@"%@",_toneValueString];
     } else {
         _toneTypeToUpdateLabel.text = @"?";
     }
    
 }
+
+#pragma mark - updatePercent
+
+- (void)updatePercent {
+    if ([_toneValueString length] > 0) {
+       _labelToUpdate.text = [NSString stringWithFormat:@"%0.0f%@",match * 100,@"%"];
+    } else {
+         _labelToUpdate.text = @"?%";
+    }
+}
+
+#pragma mark - getCurrentToneString
+
+- (CGFloat)getCurrentToneString:(NSArray *)arrayData withFrequentTone:(CGFloat)checkHZFLoat {
+     NSLog(@" >>>>>>>> checkHZFLoat : %f", checkHZFLoat);
+    CGFloat result = 0.0;
+    float min,max;
+    for (int i = 0; i < arrayData.count ; i++) {
+        if (i == 0) {
+            min = 0.75 * (2 * [arrayData[i] floatValue] - ([arrayData[i] floatValue] + [arrayData[i + 1] floatValue]) / 2);
+        } else {
+            min =([arrayData[i] floatValue] + [arrayData[i-1] floatValue]) / 2;
+        }
+        NSLog(@" >>>>>>>> min : %f", min);
+        if (i == arrayData.count - 1) {
+            max = [arrayData[i] floatValue] + 30.0f;
+        } else {
+            max = ([arrayData[i] floatValue] + [arrayData[i+1] floatValue]) / 2;
+        }
+        
+        NSLog(@" >>>>>>>> max : %f", max);
+        if (min <= checkHZFLoat && checkHZFLoat <=max) {
+            result = [arrayData[i] floatValue];
+            if (checkHZFLoat < result ) {
+                match = (checkHZFLoat - min) / (result - min);
+            } else {
+                match = (max - checkHZFLoat) / (max - result);
+            }
+            NSLog( @" >>>> match : %f", match);
+            break;
+            
+        } else {
+            result = 0;
+        }
+    }
+    return result;
+}
+
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
