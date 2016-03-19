@@ -143,13 +143,12 @@ typedef enum {
         } else if (indexPath.row == 2) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"]];
         } else if (indexPath.row == 3) {
-            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7\n- Android: https://play.google.com/store/apps/details?id=com.harpacrista\n- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7", @"- Android: https://play.google.com/store/apps/details?id=com.harpacrista", @"- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
             
-            // Exclude all activities except AirDrop.
-            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll,
-                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
-            controller.excludedActivityTypes = excludedActivities;
+//            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignTKoContact, UIActivityTypeSaveToCameraRoll,
+//                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
+//                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
+//            controller.excludedActivityTypes = excludedActivities;
             
             // Present the controller
             [self presentViewController:controller animated:YES completion:nil];
@@ -177,15 +176,15 @@ typedef enum {
                 [[UIApplication sharedApplication] openURL:url];
             }
             else {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://m.facebook.com/harpacca"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://facebook.com/harpacca"]];
             }
         } else if (indexPath.row == 2) {
-            NSURL *url = [NSURL URLWithString:@"twitter://status?id=HarpaCrista7"];
+            NSURL *url = [NSURL URLWithString:@"twitter://user?screen_name=HarpaCrista7"];
             if ([[UIApplication sharedApplication] canOpenURL:url]){
                 [[UIApplication sharedApplication] openURL:url];
             }
             else {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://mobile.twitter.com/HarpaCrista7"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/HarpaCrista7"]];
             }
         }
     }

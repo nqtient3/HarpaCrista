@@ -436,19 +436,10 @@ typedef enum {
 #pragma mark - buttonShareTapped
 
 - (IBAction)buttonShareTapped:(id)sender {
-//    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[] applicationActivities:nil];
-//    
-//    // Exclude all activities except AirDrop.
-//    NSArray *excludedActivities = @[UIActivityTypePostToTwitter, UIActivityTypePostToFacebook,
-//                                    UIActivityTypePostToWeibo,
-//                                    UIActivityTypeMessage, UIActivityTypeMail,
-//                                    UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,
-//                                    UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-//                                    UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo];
-//    controller.excludedActivityTypes = excludedActivities;
-//    
-//    // Present the controller
-//    [self presentViewController:controller animated:YES completion:nil];
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Harpa Crista"] applicationActivities:nil];
+    
+    // Present the controller
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end
