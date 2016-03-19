@@ -139,6 +139,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
     NSArray *_toneTypeArray;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -165,6 +166,10 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     fftConverter = FFTHelperCreate(accumulatorDataLenght);
     initializeAccumulator();
     [self initMomuAudio];
+    // Add tapGestureRecognizer for view to hide the keyboard
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                             initWithTarget:self
+                             action:@selector(dismissToneTypeTableView)];
 }
 
 - (void) initToneDictionarry {
@@ -243,6 +248,11 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+
+- (void)dismissToneTypeTableView {
+    _toneTypeTableView.hidden = YES;
+    [self.view removeGestureRecognizer:_tapGestureRecognizer];
 }
 
 - (void)updateCoresspondingToneType:(float)hzValue {
@@ -389,11 +399,12 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [_toneTypeButton setTitle:[_toneTypeArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    _toneTypeTableView.hidden = YES;
+    [self dismissToneTypeTableView];
     _checkToneType = indexPath.row;
 }
 
 - (IBAction)toneTypeButtonAction:(id)sender {
+    [self.view addGestureRecognizer:_tapGestureRecognizer];
     _toneTypeTableView.hidden = NO;
 }
 - (void) dealloc {
