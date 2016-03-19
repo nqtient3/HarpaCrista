@@ -334,7 +334,6 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 #pragma mark - getCurrentToneString
 
 - (CGFloat)getCurrentToneString:(NSArray *)arrayData withFrequentTone:(CGFloat)checkHZFLoat {
-     NSLog(@" >>>>>>>> checkHZFLoat : %f", checkHZFLoat);
     CGFloat result = 0.0;
     float min,max;
     for (int i = 0; i < arrayData.count ; i++) {
@@ -343,14 +342,13 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         } else {
             min =([arrayData[i] floatValue] + [arrayData[i-1] floatValue]) / 2;
         }
-        NSLog(@" >>>>>>>> min : %f", min);
+        
         if (i == arrayData.count - 1) {
             max = [arrayData[i] floatValue] + 30.0f;
         } else {
             max = ([arrayData[i] floatValue] + [arrayData[i+1] floatValue]) / 2;
         }
         
-        NSLog(@" >>>>>>>> max : %f", max);
         if (min <= checkHZFLoat && checkHZFLoat <=max) {
             result = [arrayData[i] floatValue];
             if (checkHZFLoat < result ) {
@@ -358,7 +356,6 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
             } else {
                 match = (max - checkHZFLoat) / (max - result);
             }
-            NSLog( @" >>>> match : %f", match);
             break;
             
         } else {
