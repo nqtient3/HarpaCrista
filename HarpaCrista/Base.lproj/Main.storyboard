@@ -521,7 +521,7 @@
                                     <constraint firstAttribute="width" constant="200" id="TUm-dg-JMo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.24313725490196078" green="0.61960784313725492" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Za-dA-iC9">
@@ -1592,10 +1592,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvl-Tv-2dx">
-                                <rect key="frame" x="138" y="231" width="100" height="30"/>
+                                <rect key="frame" x="138" y="231" width="100" height="35"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="aBu-Nw-7sD"/>
+                                    <constraint firstAttribute="height" constant="35" id="aBu-Nw-7sD"/>
                                     <constraint firstAttribute="width" constant="100" id="g2q-tr-fXn"/>
                                 </constraints>
                                 <state key="normal" title="Continuar"/>
