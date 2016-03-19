@@ -349,7 +349,7 @@ typedef enum {
 
 - (void)startAnimationTimer {
     if (_webView.scrollView.contentOffset.y >= _scrollViewContentHeight - _webView.scrollView.frame.size.height) {
-        [self stopScriptTimer];
+        [self pausePlayAutoScrollWebViewAction:_pauseAutoScrollButton];
     } else {
         CGPoint point = _webView.scrollView.contentOffset;
         
