@@ -458,7 +458,7 @@ typedef enum {
 #pragma mark - buttonShareTapped
 
 - (IBAction)buttonShareTapped:(id)sender {
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Harpa Crista"] applicationActivities:nil];
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7", @"- Android: https://play.google.com/store/apps/details?id=com.harpacrista", @"- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
     
     // Present the controller
     [self presentViewController:controller animated:YES completion:nil];

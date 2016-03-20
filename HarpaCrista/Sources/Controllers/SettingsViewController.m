@@ -145,11 +145,6 @@ typedef enum {
         } else if (indexPath.row == 3) {
             UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7", @"- Android: https://play.google.com/store/apps/details?id=com.harpacrista", @"- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
             
-//            NSArray *excludedActivities = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignTKoContact, UIActivityTypeSaveToCameraRoll,
-//                                            UIActivityTypeAddToReadingList, UIActivityTypePostToFlickr,
-//                                            UIActivityTypePostToVimeo, UIActivityTypePostToTencentWeibo, UIActivityTypeAirDrop, UIActivityTypeOpenInIBooks];
-//            controller.excludedActivityTypes = excludedActivities;
-            
             // Present the controller
             [self presentViewController:controller animated:YES completion:nil];
         }
