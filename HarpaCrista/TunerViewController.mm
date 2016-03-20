@@ -24,6 +24,7 @@ static NSInteger _checkToneType;
 static NSDictionary *_standToneTypeDict, *_downAHalfStepToneTypeDict, *_droppedDToneDictTypeDict, *_doubleDroppedDToneTypeDict, *_openAToneTypeDict,*_openCToneTypeDict, *_openDToneTypeDict, *_openEToneTypeDict, *_openEmToneTypeDict, *_openGToneTypeDict;
 static NSArray *_standardToneNumber, *_downAHalfStepToneNumber, *_droppedDToneNumber, *_doubleDroppedDToneNumber, *_openAToneNumber, *_openDToneNumber, *_openCToneNumber, *_openEToneNumber, *_openEmToneNumber, *_openGToneNumber;
 static float match;
+static BOOL isNotPlayGhita;
 static NSString *_statusToneType;
 /// Nyquist Maximum Frequency
 const Float32 NyquistMaxFreq = SAMPLE_RATE/2.0;
@@ -353,7 +354,11 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         _statusToUpdateLabel.text = [NSString stringWithFormat:@"Currently tuning string %@ from %@ tuning,matched in %0.0f%@",_toneValueString,_statusToneType,match * 100,@"%"];
         _statusToUpdateLabel.textColor = [UIColor greenColor];
     } else {
-        _statusToUpdateLabel.text = @"Please reduce background noise (or play louder).";
+        if (isNotPlayGhita) {
+            _statusToUpdateLabel.text = @"Are you sure instrument you are playing is guitar?.";
+        } else {
+            _statusToUpdateLabel.text = @"Please reduce background noise (or play louder).";
+        }
         _statusToUpdateLabel.textColor = [UIColor redColor];
     }
 }
@@ -385,7 +390,11 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
             }
             break;
             
-        } else {
+        } else if (checkHZFLoat < min) {
+            isNotPlayGhita = YES;
+            result = 0;
+        }
+        else {
             result = 0;
         }
     }
