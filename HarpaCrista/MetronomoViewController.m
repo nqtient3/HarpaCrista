@@ -20,7 +20,6 @@ typedef enum {
 
 @interface MetronomoViewController () <AVAudioRecorderDelegate> {
     __weak IBOutlet UISlider *_slider;
-    __weak IBOutlet UISlider *_volumeSlider;
     
     __weak IBOutlet UILabel *_tempoTypeLabel;
     
@@ -66,8 +65,7 @@ typedef enum {
     tempoMilestoneType = [NSArray arrayWithObjects:@"Larghissimo", @"Grave", @"Largo", @"Larghetto", @"Adagio", @"Andante", @"Andantino", @"Allegretto", @"Allegro", @"Vivace", @"Presto", @"Prestissimo", nil];
     
     // Init the default value for slider and set it for label BPM
-    _slider.value = 10;
-    _volumeSlider.value = 0.5;
+    _slider.value = 60;
     [_buttonShowBPM setTitle:[NSString stringWithFormat:@"%i", (int)_slider.value] forState:UIControlStateNormal];
     
     // Set beat type 3/4 to be the default
@@ -82,9 +80,6 @@ typedef enum {
     
     NSString *soundSnarePath = [[NSBundle mainBundle] pathForResource:@"snare" ofType:@"mp3"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundSnarePath], &_soundSnareID);
-    
-    // Set the default volume for AudioPlayer
-    [self sliderChangeVolumeValueChanged:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -177,11 +172,6 @@ typedef enum {
             break;
     }
     _beatType = beatType;
-}
-
-- (IBAction)sliderChangeVolumeValueChanged:(id)sender {
-//    _audioPlayerSnare.volume = _volumeSlider.value;
-//    _audioPlayerBass.volume = _volumeSlider.value;
 }
 
 - (IBAction)sliderChangeBPMValueChanged:(id)sender {
