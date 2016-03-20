@@ -96,7 +96,9 @@
 - (IBAction)submitEmailAction:(id)sender {
     if ([self validateEmailWithString:_emailTextField.text]) {
         NSDictionary *object = @{@"email":_emailTextField.text};
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_submit_email.php" onSuccess:^(id data, id header) {
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             // Post email successfully. Continue!
             //
             NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
@@ -108,6 +110,7 @@
             [self presentViewController:mainTabbarController animated:YES completion:^{
             }];
         }onError:^(NSInteger code, NSError *error) {
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             NSLog(@"Failed with error: %@", error.description);
         }];
     } else {
