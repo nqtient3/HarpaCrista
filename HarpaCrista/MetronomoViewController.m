@@ -9,6 +9,7 @@
 #import "MetronomoViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 typedef enum {
     BeatType4DevisionBy4 = 0,
@@ -43,8 +44,8 @@ typedef enum {
     
     NSTimer *_timerBeat;
     int _currentBeatNumber;
-    AVAudioPlayer *_audioPlayerSnare;
-    AVAudioPlayer *_audioPlayerBass;
+    SystemSoundID _soundBassID;
+    SystemSoundID _soundSnareID;
     BeatType _beatType;
     NSArray *tempoMilestone;
     NSArray *tempoMilestoneType;
@@ -75,16 +76,12 @@ typedef enum {
     //Set the current beat number to be 0 as default
     _currentBeatNumber = 0;
 
-    // Init the audio Player to play sound
-    NSError *error = nil;
-    // Snare sound
-    NSURL *snareSoundURL = [[NSBundle mainBundle] URLForResource:@"snare"
-                                              withExtension:@"mp3"];
-    _audioPlayerSnare = [[AVAudioPlayer alloc] initWithContentsOfURL:snareSoundURL error:&error];
-    //Bass sound
-    NSURL *bassSoundURL = [[NSBundle mainBundle] URLForResource:@"bass"
-                                                   withExtension:@"mp3"];
-    _audioPlayerBass = [[AVAudioPlayer alloc] initWithContentsOfURL:bassSoundURL error:&error];
+    // Init the sound IDs to play sounds
+    NSString *soundBassPath = [[NSBundle mainBundle] pathForResource:@"bass" ofType:@"mp3"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundBassPath], &_soundBassID);
+    
+    NSString *soundSnarePath = [[NSBundle mainBundle] pathForResource:@"snare" ofType:@"mp3"];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundSnarePath], &_soundSnareID);
     
     // Set the default volume for AudioPlayer
     [self sliderChangeVolumeValueChanged:nil];
@@ -183,8 +180,8 @@ typedef enum {
 }
 
 - (IBAction)sliderChangeVolumeValueChanged:(id)sender {
-    _audioPlayerSnare.volume = _volumeSlider.value;
-    _audioPlayerBass.volume = _volumeSlider.value;
+//    _audioPlayerSnare.volume = _volumeSlider.value;
+//    _audioPlayerBass.volume = _volumeSlider.value;
 }
 
 - (IBAction)sliderChangeBPMValueChanged:(id)sender {
@@ -228,6 +225,7 @@ typedef enum {
         
     }
 }
+
 - (void)timerFireMethod {
     [self changeCurrentButtonBackground];
 }
@@ -255,11 +253,11 @@ typedef enum {
     switch (_currentBeatNumber) {
         case 1:
             [self playBassSound:YES];
-            
+
             _buttonBeat1.selected = NO;
             _buttonBeat2.selected = YES;
             _currentBeatNumber++;
-            
+
             break;
         case 2:
             if (maxBeatNumber == 2) {
@@ -299,7 +297,7 @@ typedef enum {
                 _buttonBeat1.selected = YES;
                 _currentBeatNumber = 1;
             } else {
-
+                
                 [self playBassSound:YES];
                 _buttonBeat4.selected = NO;
                 _buttonBeat5.selected = YES;
@@ -343,11 +341,9 @@ typedef enum {
 
 - (void)playBassSound:(BOOL)isBassSound {
     if (isBassSound) {
-        [_audioPlayerBass stop];
-        [_audioPlayerBass play];
+        AudioServicesPlaySystemSound(_soundBassID);
     } else {
-        [_audioPlayerSnare stop];
-        [_audioPlayerSnare play];
+        AudioServicesPlaySystemSound(_soundSnareID);
     }
 }
 

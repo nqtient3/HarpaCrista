@@ -34,7 +34,6 @@ typedef enum {
     __weak IBOutlet UIButton *_pauseAutoScrollButton;
     __weak IBOutlet UIButton *_mudeButton;
     __weak IBOutlet UIButton *_metromomoButton;
-    __weak IBOutlet UIButton *_tunerButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
     int _textFontSize;
     float _scrollViewContentHeight;
