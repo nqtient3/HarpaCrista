@@ -31,6 +31,7 @@
 		232D55CD1C87269A002798F4 /* ic_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 232D55B91C87269A002798F4 /* ic_x.png */; };
 		233D72F11C93EDF70015A0E6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F01C93EDF70015A0E6 /* OneSignal.framework */; };
 		233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */; };
+		234FDC7A1C9E452A002FC64E /* snare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23D82C4A1C9D5AF1004AC250 /* snare.mp3 */; };
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
 		23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DD1C85D9D500144193 /* AppDelegate.m */; };
 		23B859E41C85D9D500144193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E21C85D9D500144193 /* Main.storyboard */; };
@@ -738,6 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234FDC7A1C9E452A002FC64E /* snare.mp3 in Resources */,
 				232D55C41C87269A002798F4 /* ic_return_selected.png in Resources */,
 				232D55BE1C87269A002798F4 /* ic_hinos_selected.png in Resources */,
 				A6DD84E51C9416EE00A7ED01 /* ic_emptyblank.png in Resources */,
