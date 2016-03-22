@@ -351,13 +351,13 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)updateStatus {
     if ([_toneValueString length] > 0) {
-        _statusToUpdateLabel.text = [NSString stringWithFormat:@"Currently tuning string %@ from %@ tuning,matched in %0.0f%@",_toneValueString,_statusToneType,match * 100,@"%"];
+        _statusToUpdateLabel.text = [NSString stringWithFormat:@"Afinando corda %@ a partir de %@ tuning = %0.0f%%",_toneValueString,_statusToneType,match * 100];
         _statusToUpdateLabel.textColor = [UIColor greenColor];
     } else {
         if (isNotPlayGhita) {
-            _statusToUpdateLabel.text = @"Are you sure instrument you are playing is guitar?.";
+            _statusToUpdateLabel.text = @"Tem certeza de instrumento que você está jogando é uma guitarra?";
         } else {
-            _statusToUpdateLabel.text = @"Please reduce background noise (or play louder).";
+            _statusToUpdateLabel.text = @"Por favor, reduzir o ruído de fundo. Por favor, toque mais alto.";
         }
         _statusToUpdateLabel.textColor = [UIColor redColor];
     }
