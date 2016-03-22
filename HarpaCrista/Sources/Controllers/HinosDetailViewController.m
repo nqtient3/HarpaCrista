@@ -108,7 +108,7 @@ typedef enum {
         _fullString = @"<body>";
         _fullString = [_fullString stringByAppendingString:self.currentCDSong.cdChord];
         _fullString = [_fullString stringByAppendingString:@"</body>"];
-//        [_webView loadHTMLString:[_fullString stringByReplacingOccurrencesOfString:@"\n" withString:@"<br/>"] baseURL:nil];
+
         [_webView loadHTMLString:_fullString baseURL:nil];
     }
 }
@@ -458,7 +458,13 @@ typedef enum {
 #pragma mark - buttonShareTapped
 
 - (IBAction)buttonShareTapped:(id)sender {
-    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[@"Achei o melhor aplicativo evangélico! @harpacrista7", @"- Android: https://play.google.com/store/apps/details?id=com.harpacrista", @"- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"] applicationActivities:nil];
+    NSString *textToShare = @"Achei o melhor aplicativo evangélico! @harpacrista7\n- Android: https://play.google.com/store/apps/details?id=com.harpacrista\n- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8";
+    
+    UISimpleTextPrintFormatter *printData = [[UISimpleTextPrintFormatter alloc]
+                                             initWithText:textToShare];
+    NSArray *itemsToShare = [[NSArray alloc] initWithObjects:textToShare,printData, nil];
+    
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
     
     // Present the controller
     [self presentViewController:controller animated:YES completion:nil];
