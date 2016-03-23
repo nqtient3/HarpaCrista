@@ -9,6 +9,7 @@
 #import "TutorialViewController.h"
 #import "PageItemViewController.h"
 #import "MainTabbarController.h"
+#import "CDSong.h"
 
 @interface TutorialViewController () <UIPageViewControllerDataSource> {
     __weak IBOutlet UIPageControl *_pageControl;
@@ -24,7 +25,10 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self createPageViewController];
+    
+    [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated; {
@@ -57,6 +61,34 @@
     [self.view addSubview: _pageViewController.view];
     [_pageViewController didMoveToParentViewController: self];
     [self.view bringSubviewToFront:_pageControl];
+}
+
+- (void)initData {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString * filePath =[[NSBundle mainBundle] pathForResource:@"app-data" ofType:@"json"];
+        
+        NSError * error;
+        NSString* fileContents =[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+        NSDictionary *itemDict = (NSDictionary *)[NSJSONSerialization
+                                                  JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding]
+                                                  options:0 error:NULL];
+        NSArray *chordList = itemDict[@"chords"];
+        NSArray *titleList = itemDict[@"titles"];
+        
+        for (int i = 0; i < titleList.count; i++) {
+            NSDictionary *titleDict = titleList[i];
+            NSDictionary *chordDict = chordList[i];
+            NSString *objectID = titleDict[@"objectId"];
+            NSString *title = titleDict[@"title"];
+            NSString *chord = chordDict[@"chords"];
+            
+            CDSong *song = [CDSong getOrCreateSongWithId:[objectID intValue]];
+            song.cdTitle = title;
+            song.cdIsFavorite = [NSNumber numberWithBool:NO];
+            song.cdChord = chord;
+            [CDSong saveContext];
+        }
+//    });
 }
 
 #pragma mark -
