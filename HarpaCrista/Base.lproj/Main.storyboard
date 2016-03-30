@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -1321,7 +1321,7 @@
             </objects>
             <point key="canvasLocation" x="966.5" y="1201.5"/>
         </scene>
-        <!--Settings-->
+        <!--Mais-->
         <scene sceneID="6Dl-04-i6O">
             <objects>
                 <viewController id="5QK-ZS-hbf" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -1399,7 +1399,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="O6p-gn-fQD"/>
+                    <navigationItem key="navigationItem" title="Mais" id="O6p-gn-fQD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="_maisTableView" destination="Uf0-ea-1VI" id="SbH-8s-9y5"/>
@@ -1595,11 +1595,11 @@
             </objects>
             <point key="canvasLocation" x="423.5" y="1201.5"/>
         </scene>
-        <!--Settings-->
+        <!--Mais-->
         <scene sceneID="esx-7S-egy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="ic_global.png" id="5b0-kj-kzy"/>
+                    <tabBarItem key="tabBarItem" title="Mais" image="ic_global.png" id="5b0-kj-kzy"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u1d-dQ-b9w">
