@@ -18,12 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     UITabBarItem *tabBarHinosItem = [self.tabBar.items objectAtIndex:0];
-    tabBarHinosItem.selectedImage = [[UIImage imageNamed:@"ic_hinos_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarHinosItem.image = [[UIImage imageNamed:@"icn_hinos"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarHinosItem.selectedImage = [[UIImage imageNamed:@"icn_hinos_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *tabBarFavoritosItem = [self.tabBar.items objectAtIndex:1];
-    tabBarFavoritosItem.selectedImage = [[UIImage imageNamed:@"ic_star_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarFavoritosItem.image = [[UIImage imageNamed:@"icn_favoritos"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarFavoritosItem.selectedImage = [[UIImage imageNamed:@"icn_favoritos_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *tabBarMaisItem = [self.tabBar.items objectAtIndex:2];
-    tabBarMaisItem.selectedImage = [[UIImage imageNamed:@"ic_global_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarMaisItem.image = [[UIImage imageNamed:@"icn_mais"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    tabBarMaisItem.selectedImage = [[UIImage imageNamed:@"icn_mais_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 }
 
 - (void)didReceiveMemoryWarning {

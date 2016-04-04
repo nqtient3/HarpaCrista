@@ -1414,7 +1414,7 @@
         <scene sceneID="I89-IM-WDJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hwl-jm-jKT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Hinos" image="ic_hinos.png" id="laY-ws-HbR"/>
+                    <tabBarItem key="tabBarItem" title="Hinos" id="laY-ws-HbR"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ke1-nw-hpS">
@@ -1575,7 +1575,7 @@
         <scene sceneID="xdF-Qm-DIA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="REc-Ch-OOF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favoritos" image="ic_star.png" id="u3e-Q0-DSm"/>
+                    <tabBarItem key="tabBarItem" title="Favoritos" id="u3e-Q0-DSm"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jrr-xO-wQU">
@@ -1599,7 +1599,7 @@
         <scene sceneID="esx-7S-egy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mais" image="ic_global.png" id="5b0-kj-kzy"/>
+                    <tabBarItem key="tabBarItem" title="Mais" id="5b0-kj-kzy"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="u1d-dQ-b9w">
@@ -1690,8 +1690,6 @@
         <image name="ic_book.png" width="62" height="57"/>
         <image name="ic_decrease.png" width="48" height="48"/>
         <image name="ic_emptyblank.png" width="128" height="128"/>
-        <image name="ic_global.png" width="36" height="36"/>
-        <image name="ic_hinos.png" width="36" height="36"/>
         <image name="ic_increase.png" width="48" height="48"/>
         <image name="ic_metronome_selected.png" width="44" height="63"/>
         <image name="ic_mude_selected.png" width="52" height="59"/>
