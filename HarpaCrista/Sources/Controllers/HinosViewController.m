@@ -9,6 +9,8 @@
 #import "HinosViewController.h"
 #import "CDSong.h"
 #import "HinosDetailViewController.h"
+#import "CDSong.h"
+#import "BaseApi.h"
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
     NSArray *_arraySongs;
@@ -47,11 +49,55 @@
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                              initWithTarget:self
                              action:@selector(dismissKeyboard)];
+    
+    // Check and update the songs if there are any changes
+    [self updateData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Update data
+- (void)updateData {
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *lastUpdateTime = [standardUserDefaults stringForKey:@"last_update_time"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *stringCurrentDate = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [standardUserDefaults setObject:stringCurrentDate forKey:@"last_update_time"];
+    [standardUserDefaults synchronize];
+    
+        NSDictionary *object = @{@"last_update_time":lastUpdateTime};
+//    NSDictionary *object = @{@"last_update_time":@"2015-11-11 13:40:48"};
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_get_songs.php" onSuccess:^(id data, id header) {
+        NSDictionary *dictData = (NSDictionary *)data;
+        if (dictData) {
+            NSArray *arrayData = dictData[@"data"];
+            for (NSDictionary *dictItem in arrayData) {
+                NSString *songID = dictItem[@"ID"];
+                NSString *songTitle = dictItem[@"post_title"];
+                NSString *songChord = dictItem[@"post_content"];
+                
+                CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
+                song.cdTitle = songTitle;
+                song.cdChord = songChord;
+                [CDSong saveContext];
+            }
+            
+        }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+        // Reload table data after updating songs
+        _arraySongs = [CDSong getAllSongs];
+        [_hinosTableView reloadData];
+        
+    }onError:^(NSInteger code, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }];
 }
 
 #pragma mark - Actions

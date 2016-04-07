@@ -52,7 +52,6 @@
     if ([isLoadTutorial boolValue]) {
         MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
         self.window.rootViewController = mainTabbarController;
-        
     } else {
         TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
         self.window.rootViewController = tutorialViewController;

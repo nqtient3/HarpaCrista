@@ -65,29 +65,38 @@
 
 - (void)initData {
 //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString * filePath =[[NSBundle mainBundle] pathForResource:@"app-data" ofType:@"json"];
+    NSString * filePath =[[NSBundle mainBundle] pathForResource:@"app-data" ofType:@"json"];
+    
+    NSError * error;
+    NSString* fileContents =[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSDictionary *itemDict = (NSDictionary *)[NSJSONSerialization
+                                              JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding]
+                                              options:0 error:NULL];
+    NSArray *chordList = itemDict[@"chords"];
+    NSArray *titleList = itemDict[@"titles"];
+    
+    for (int i = 0; i < titleList.count; i++) {
+        NSDictionary *titleDict = titleList[i];
+        NSDictionary *chordDict = chordList[i];
+        NSString *objectID = titleDict[@"objectId"];
+        NSString *title = titleDict[@"title"];
+        NSString *chord = chordDict[@"chords"];
         
-        NSError * error;
-        NSString* fileContents =[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-        NSDictionary *itemDict = (NSDictionary *)[NSJSONSerialization
-                                                  JSONObjectWithData:[fileContents dataUsingEncoding:NSUTF8StringEncoding]
-                                                  options:0 error:NULL];
-        NSArray *chordList = itemDict[@"chords"];
-        NSArray *titleList = itemDict[@"titles"];
-        
-        for (int i = 0; i < titleList.count; i++) {
-            NSDictionary *titleDict = titleList[i];
-            NSDictionary *chordDict = chordList[i];
-            NSString *objectID = titleDict[@"objectId"];
-            NSString *title = titleDict[@"title"];
-            NSString *chord = chordDict[@"chords"];
-            
-            CDSong *song = [CDSong getOrCreateSongWithId:[objectID intValue]];
-            song.cdTitle = title;
-            song.cdIsFavorite = [NSNumber numberWithBool:NO];
-            song.cdChord = chord;
-            [CDSong saveContext];
-        }
+        CDSong *song = [CDSong getOrCreateSongWithId:[objectID intValue]];
+        song.cdTitle = title;
+        song.cdIsFavorite = [NSNumber numberWithBool:NO];
+        song.cdChord = chord;
+        [CDSong saveContext];
+    }
+    
+    // Set the initial value of last_update_time
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *stringCurrentDate = [dateFormatter stringFromDate:[NSDate date]];
+    
+    [standardUserDefaults setObject:stringCurrentDate forKey:@"last_update_time"];
+    [standardUserDefaults synchronize];
 //    });
 }
 
