@@ -9,8 +9,6 @@
 #import "TutorialViewController.h"
 #import "PageItemViewController.h"
 #import "MainTabbarController.h"
-#import "CDSong.h"
-#import "BaseApi.h"
 
 @interface TutorialViewController () <UIPageViewControllerDataSource> {
     __weak IBOutlet UIPageControl *_pageControl;
@@ -28,8 +26,6 @@
     [super viewDidLoad];
     
     [self createPageViewController];
-    
-    [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated; {
@@ -62,41 +58,6 @@
     [self.view addSubview: _pageViewController.view];
     [_pageViewController didMoveToParentViewController: self];
     [self.view bringSubviewToFront:_pageControl];
-}
-
-#pragma mark - Init data
-- (void)initData {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    [[BaseApi client] getJSON:nil headers:nil toUri:@"http://harpacca.com/mobile_get_songs.php" onSuccess:^(id data, id header) {
-        NSDictionary *dictData = (NSDictionary *)data;
-        if (dictData) {
-            NSArray *arrayData = dictData[@"data"];
-            for (NSDictionary *dictItem in arrayData) {
-                NSString *title = dictItem[@"post_title"];
-                NSArray *arrayString = [title componentsSeparatedByString:@" - "];
-                NSString *songID = arrayString[0];
-                NSString *songTitle = arrayString[1];
-                NSString *songChord = dictItem[@"post_content"];
-                
-                CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
-                song.cdTitle = songTitle;
-                song.cdChord = songChord;
-                [CDSong saveContext];
-            }
-        }
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    }onError:^(NSInteger code, NSError *error) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    }];
-    
-    // Set today to be the initial value for last_update_time
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *stringCurrentDate = [dateFormatter stringFromDate:[NSDate date]];
-    [standardUserDefaults setObject:stringCurrentDate forKey:@"last_update_time"];
-    [standardUserDefaults synchronize];
 }
 
 #pragma mark -

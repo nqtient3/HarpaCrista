@@ -75,24 +75,28 @@
     
     [[BaseApi client] getJSON:object headers:nil toUri:@"http://harpacca.com/mobile_get_songs.php" onSuccess:^(id data, id header) {
         NSDictionary *dictData = (NSDictionary *)data;
-        if (dictData) {
+        if (dictData && ![dictData isEqual:[NSNull null]]) {
             NSArray *arrayData = dictData[@"data"];
-            for (NSDictionary *dictItem in arrayData) {
-                NSString *title = dictItem[@"post_title"];
-                NSArray *arrayString = [title componentsSeparatedByString:@" - "];
-                NSString *songID = arrayString[0];
-                NSString *songTitle = arrayString[1];
-                NSString *songChord = dictItem[@"post_content"];
+            if (arrayData && ![arrayData isEqual:[NSNull null]] && arrayData.count > 0) {
+                NSMutableArray *arrayChangedIndexPaths = [NSMutableArray array];
+                for (NSDictionary *dictItem in arrayData) {
+                    NSString *title = dictItem[@"post_title"];
+                    NSArray *arrayString = [title componentsSeparatedByString:@" - "];
+                    NSString *songID = arrayString[0];
+                    [arrayChangedIndexPaths addObject:[NSIndexPath indexPathForRow:[songID intValue] inSection:0]];
+                    NSString *songTitle = arrayString[1];
+                    NSString *songChord = dictItem[@"post_content"];
+                    
+                    CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
+                    song.cdTitle = songTitle;
+                    song.cdChord = songChord;
+                    [CDSong saveContext];
+                }
                 
-                CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
-                song.cdTitle = songTitle;
-                song.cdChord = songChord;
-                [CDSong saveContext];
+                // Reload table data after updating songs
+                _arraySongs = [CDSong getAllSongs];
+                [_hinosTableView reloadRowsAtIndexPaths:arrayChangedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
             }
-            
-            // Reload table data after updating songs
-            _arraySongs = [CDSong getAllSongs];
-            [_hinosTableView reloadData];
         }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }onError:^(NSInteger code, NSError *error) {
