@@ -70,16 +70,18 @@
     [standardUserDefaults setObject:stringCurrentDate forKey:@"last_update_time"];
     [standardUserDefaults synchronize];
     
-        NSDictionary *object = @{@"last_update_time":lastUpdateTime};
-//    NSDictionary *object = @{@"last_update_time":@"2015-11-11 13:40:48"};
+    NSDictionary *object = @{@"last_update_time":lastUpdateTime};
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[BaseApi client] postJSON:object headers:nil toUri:@"http://harpacca.com/mobile_get_songs.php" onSuccess:^(id data, id header) {
+    
+    [[BaseApi client] getJSON:object headers:nil toUri:@"http://harpacca.com/mobile_get_songs.php" onSuccess:^(id data, id header) {
         NSDictionary *dictData = (NSDictionary *)data;
         if (dictData) {
             NSArray *arrayData = dictData[@"data"];
             for (NSDictionary *dictItem in arrayData) {
-                NSString *songID = dictItem[@"ID"];
-                NSString *songTitle = dictItem[@"post_title"];
+                NSString *title = dictItem[@"post_title"];
+                NSArray *arrayString = [title componentsSeparatedByString:@" - "];
+                NSString *songID = arrayString[0];
+                NSString *songTitle = arrayString[1];
                 NSString *songChord = dictItem[@"post_content"];
                 
                 CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
@@ -88,13 +90,11 @@
                 [CDSong saveContext];
             }
             
+            // Reload table data after updating songs
+            _arraySongs = [CDSong getAllSongs];
+            [_hinosTableView reloadData];
         }
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-        // Reload table data after updating songs
-        _arraySongs = [CDSong getAllSongs];
-        [_hinosTableView reloadData];
-        
     }onError:^(NSInteger code, NSError *error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];

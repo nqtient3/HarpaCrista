@@ -107,7 +107,6 @@
 		23B85A281C85E30B00144193 /* ic_trolley.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1A1C85E30B00144193 /* ic_trolley.png */; };
 		23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1B1C85E30B00144193 /* ic_twiiter.png */; };
 		23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A1C1C85E30B00144193 /* logo_secondary.png */; };
-		23B85A2C1C85E31800144193 /* app-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 23B85A2B1C85E31800144193 /* app-data.json */; };
 		23B85A351C85E32F00144193 /* FavoritosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A2E1C85E32F00144193 /* FavoritosViewController.m */; };
 		23B85A361C85E32F00144193 /* HinosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A301C85E32F00144193 /* HinosViewController.m */; };
 		23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A321C85E32F00144193 /* HinosDetailViewController.m */; };
@@ -298,7 +297,6 @@
 		23B85A1A1C85E30B00144193 /* ic_trolley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_trolley.png; path = Resources/Images/ic_trolley.png; sourceTree = "<group>"; };
 		23B85A1B1C85E30B00144193 /* ic_twiiter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_twiiter.png; path = Resources/Images/ic_twiiter.png; sourceTree = "<group>"; };
 		23B85A1C1C85E30B00144193 /* logo_secondary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_secondary.png; path = Resources/Images/logo_secondary.png; sourceTree = "<group>"; };
-		23B85A2B1C85E31800144193 /* app-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "app-data.json"; path = "Resources/Files/app-data.json"; sourceTree = "<group>"; };
 		23B85A2D1C85E32F00144193 /* FavoritosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritosViewController.h; path = Sources/Controllers/FavoritosViewController.h; sourceTree = "<group>"; };
 		23B85A2E1C85E32F00144193 /* FavoritosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritosViewController.m; path = Sources/Controllers/FavoritosViewController.m; sourceTree = "<group>"; };
 		23B85A2F1C85E32F00144193 /* HinosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HinosViewController.h; path = Sources/Controllers/HinosViewController.h; sourceTree = "<group>"; };
@@ -627,7 +625,6 @@
 			children = (
 				23D82C491C9D5AF1004AC250 /* bass.mp3 */,
 				23D82C4A1C9D5AF1004AC250 /* snare.mp3 */,
-				23B85A2B1C85E31800144193 /* app-data.json */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -829,7 +826,6 @@
 				C8E1E4F41CB2485A002808E6 /* icn_favoritos_selected@2x.png in Resources */,
 				230534631CA2F82E00ACEEDA /* Tutorial-1.png in Resources */,
 				230534641CA2F82E00ACEEDA /* Tutorial-2.png in Resources */,
-				23B85A2C1C85E31800144193 /* app-data.json in Resources */,
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
 				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
 				232D55C31C87269A002798F4 /* ic_mude.png in Resources */,
