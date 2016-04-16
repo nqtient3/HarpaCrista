@@ -11,6 +11,9 @@
 #import "Constants.h"
 #import "TutorialViewController.h"
 
+#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-64354435-1"
+//#define GOOGLE_ANALYTICS_TRACKING_ID @"UA-76493241-1"
+
 #define PUSH_NOTIFICATION_APP_ID @"a97ee6a1-abf5-4206-b311-09bb350b1e85"
 
 @interface AppDelegate ()
@@ -21,7 +24,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
+    // Setup Google Analytics
+    [self startGoogleAnalyticsTracking];
+    [self performSelector:@selector(sendGoogleAnalyticsStartup) withObject:nil afterDelay:3];
+    
     // Setup Push Notification service
     self.oneSignal = [[OneSignal alloc] initWithLaunchOptions:launchOptions appId:PUSH_NOTIFICATION_APP_ID handleNotification:^(NSString* message, NSDictionary* additionalData, BOOL isActive) {
         // This function gets call when a notification is tapped on or one is received while the app is in focus.
@@ -65,6 +72,8 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    [self performSelector:@selector(stopGoogleAnalyticsTracking) withObject:nil afterDelay:3];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -83,7 +92,26 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
+    [self performSelector:@selector(stopGoogleAnalyticsTracking) withObject:nil afterDelay:3];
+    
     [self saveContext];
+}
+
+#define mark - Google Analytics
+- (void)startGoogleAnalyticsTracking {
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
+    [GAI sharedInstance].dispatchInterval = 10;
+    self.googleAnalyticsTracker = [[GAI sharedInstance] trackerWithTrackingId:GOOGLE_ANALYTICS_TRACKING_ID];
+}
+
+- (void)sendGoogleAnalyticsStartup {
+    [self.googleAnalyticsTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Application Events" action:@"Open the app" label:@"Tracking Starts" value:nil] build]];
+}
+
+- (void)stopGoogleAnalyticsTracking {
+    [self.googleAnalyticsTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"Application Events" action:@"Close the app" label:@"Tracking Suspended /Stopped" value:nil] build]];
 }
 
 #pragma mark - Core Data stack

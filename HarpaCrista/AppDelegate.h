@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <OneSignal/OneSignal.h>
+#import "GAI.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) OneSignal* oneSignal;
+@property (nonatomic, strong) id<GAITracker> googleAnalyticsTracker;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
