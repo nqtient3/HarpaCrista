@@ -11,6 +11,8 @@
 #import "FFTHelper.h"
 #import "Constants.h"
 #import <math.h>
+#import "GoogleMobileAds/GoogleMobileAds.h"
+#import "Reachability.h"
 
 #define SAMPLE_RATE 44100  //22050 //44100
 #define FRAMESIZE  512
@@ -132,7 +134,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 }
 
 
-@interface TunerViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+@interface TunerViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate, GADBannerViewDelegate>
 @end
 
 @implementation TunerViewController {
@@ -141,6 +143,8 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     __weak IBOutlet UILabel *_statusLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
     
     NSString *_toneValueString;
     NSArray *_toneTypeArray;
@@ -177,6 +181,33 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
                              initWithTarget:self
                              action:@selector(dismissToneTypeTableView)];
     _tapGestureRecognizer.delegate = self;
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
+    }
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 - (void) initToneDictionarry {

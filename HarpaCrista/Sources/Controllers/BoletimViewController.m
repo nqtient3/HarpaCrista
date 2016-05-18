@@ -8,6 +8,7 @@
 
 #import "BoletimViewController.h"
 #import "BaseApi.h"
+#import "Reachability.h"
 @import GoogleMobileAds;
 
 @interface BoletimViewController ()<GADBannerViewDelegate> {
@@ -51,6 +52,16 @@
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                              initWithTarget:self
                              action:@selector(dismissKeyboard)];
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

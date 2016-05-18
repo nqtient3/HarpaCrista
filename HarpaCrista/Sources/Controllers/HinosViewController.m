@@ -11,6 +11,7 @@
 #import "HinosDetailViewController.h"
 #import "CDSong.h"
 #import "BaseApi.h"
+#import "Reachability.h"
 @import GoogleMobileAds;
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, GADBannerViewDelegate> {
@@ -56,6 +57,16 @@
     
     // Check and update the songs if there are any changes
     [self updateData];
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

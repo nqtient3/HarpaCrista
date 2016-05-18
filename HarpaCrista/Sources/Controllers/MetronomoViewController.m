@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "Reachability.h"
 @import GoogleMobileAds;
 
 typedef enum {
@@ -83,6 +84,16 @@ typedef enum {
     
     NSString *soundSnarePath = [[NSBundle mainBundle] pathForResource:@"snare" ofType:@"mp3"];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundSnarePath], &_soundSnareID);
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

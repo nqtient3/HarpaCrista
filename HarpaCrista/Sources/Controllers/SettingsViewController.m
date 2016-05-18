@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import <MessageUI/MessageUI.h>
 #import "BoletimViewController.h"
+#import "Reachability.h"
 @import GoogleMobileAds;
 
 @interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate, GADBannerViewDelegate> {
@@ -73,6 +74,16 @@ typedef enum {
     _contactSectionArrayImage = [NSArray arrayWithObjects:@"ic_azuda",@"ic_person",@"ic_star_settings",@"ic_share", nil];
     _blogSectionArrayImage = [NSArray arrayWithObjects:@"ic_trolley",@"ic_book",@"ic_mail", nil];
     _socialSectionArrayImage = [NSArray arrayWithObjects:@"ic_instagram",@"ic_facebook",@"ic_twiiter", nil];
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

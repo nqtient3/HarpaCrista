@@ -62,13 +62,11 @@ typedef enum {
     __weak IBOutlet UIView *_viewPlayMusic;
     __weak IBOutlet UISlider *_currentTimeSlider;
     __weak IBOutlet UIButton *_playButton;
-    __weak IBOutlet UIButton *_showPlayMusicViewButton;
     
     AVPlayer *_mp3Player;
     NSTimer *_timer;
-    
-    BOOL _mustReloadMusicURL;
 }
+
 @end
 
 @implementation HinosDetailViewController
@@ -76,8 +74,8 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Hide the play music bar first
-    [self buttonPlayMP3Tapped:nil];
+    //Init the music to play
+    [self playMP3];
     
     // Init data for tone item
     if ([self currentTone] == tone1) {
@@ -132,6 +130,16 @@ typedef enum {
         _fullString = [_fullString stringByAppendingString:@"</body>"];
 
         [_webView loadHTMLString:_fullString baseURL:nil];
+    }
+    
+    //Load Ads if the network is connectable
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        //Set the height of banner to 0
+        CGRect rect = _bannerView.frame;
+        rect.size.height = 0.0f;
+        _bannerView.frame = rect;
+    } else {
+        [self loadGoogleAds];
     }
 }
 
@@ -423,6 +431,10 @@ typedef enum {
     _changeToneView.hidden = YES;
     _toolView.hidden = YES;
     
+    //Hide Ads and Play Music bar
+    _bannerView.hidden = YES;
+    _viewPlayMusic.hidden = YES;
+    
     self.navigationController.navigationBar.hidden = YES;
     
     self.tabBarController.tabBar.hidden = YES;
@@ -441,6 +453,10 @@ typedef enum {
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
     _isFullScreenMode = NO;
     _toolView.hidden = NO;
+    
+    //Show Ads and Play Music bar
+    _bannerView.hidden = NO;
+    _viewPlayMusic.hidden = NO;
     
     self.navigationController.navigationBar.hidden = NO;
     
@@ -516,30 +532,22 @@ typedef enum {
 }
 
 #pragma mark - Playing Music
-- (IBAction)buttonPlayMP3Tapped:(id)sender {
-    if (_mustReloadMusicURL) {
-        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-            _viewPlayMusic.hidden = !_viewPlayMusic.isHidden;
-            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            
-//            CDSong *currentCDSong = [_arraySongs objectAtIndex:_indexOfSong];
-//            [self initPlayerDataWithURL:[NSURL URLWithString:currentCDSong.cdLink]];
-            _mustReloadMusicURL = NO;
-        } else {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OOps" message:@"Network connection is unavailable. Please check your connection" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction*actionOK = [UIAlertAction
-                                      actionWithTitle:@"OK"
-                                      style:UIAlertActionStyleDefault
-                                      handler:^(UIAlertAction * action)
-                                      {
-                                          
-                                      }];
-            [alertController addAction:actionOK];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
+- (void)playMP3 {
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+//        [self initPlayerDataWithURL:[NSURL URLWithString:currentCDSong.cdLink]];
     } else {
-        _viewPlayMusic.hidden = !_viewPlayMusic.isHidden;
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OOps" message:@"Network connection is unavailable. Please check your connection" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction*actionOK = [UIAlertAction
+                                  actionWithTitle:@"OK"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      
+                                  }];
+        [alertController addAction:actionOK];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 
@@ -638,8 +646,6 @@ typedef enum {
             
             _currentTimeSlider.minimumValue = 0.0f;
             _currentTimeSlider.maximumValue = CMTimeGetSeconds(_mp3Player.currentItem.asset.duration);
-            
-            [self play:nil];
         } else if (_mp3Player.status == AVPlayerItemStatusUnknown) {
             NSLog(@"AVPlayer Unknown");
             
