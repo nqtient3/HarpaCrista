@@ -9,8 +9,9 @@
 #import "SettingsViewController.h"
 #import <MessageUI/MessageUI.h>
 #import "BoletimViewController.h"
+@import GoogleMobileAds;
 
-@interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate> {
+@interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate, GADBannerViewDelegate> {
     //nameArray
     NSArray *_contactSectionArray;
     NSArray *_blogSectionArray;
@@ -21,6 +22,8 @@
     NSArray *_blogSectionArrayImage;
     NSArray *_socialSectionArrayImage;
     __weak IBOutlet UITableView *_maisTableView;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
 }
 
 typedef enum {
@@ -75,6 +78,23 @@ typedef enum {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource

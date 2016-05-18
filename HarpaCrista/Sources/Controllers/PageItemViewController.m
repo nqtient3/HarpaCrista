@@ -10,10 +10,12 @@
 #import "MainTabbarController.h"
 #import "Constants.h"
 #import "BaseApi.h"
+@import GoogleMobileAds;
 
 @interface PageItemViewController () {
     __weak IBOutlet UITextField *_emailTextField;
     __weak IBOutlet UIButton *_submitButton;
+    __weak IBOutlet UIButton *_skipButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
     __weak IBOutlet UIImageView *_contentImageView;
 }
@@ -31,6 +33,7 @@
     [super viewDidLoad];
     _emailTextField.hidden = YES;
     _submitButton.hidden = YES;
+    _skipButton.hidden = YES;
     _contentImageView.image = [UIImage imageNamed:imageName];
     _submitButton.layer.cornerRadius = 8;
     _submitButton.layer.masksToBounds = YES;
@@ -87,6 +90,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             _emailTextField.hidden = NO;
             _submitButton.hidden = NO;
+            _skipButton.hidden = NO;
         });
     }
 }
@@ -101,14 +105,7 @@
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             // Post email successfully. Continue!
             //
-            NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
-            [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
-            [userDefault synchronize];
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
-            [self presentViewController:mainTabbarController animated:YES completion:^{
-            }];
+            [self goToMainView];
         }onError:^(NSInteger code, NSError *error) {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             NSLog(@"Failed with error: %@", error.description);
@@ -117,6 +114,21 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"This email is invalid. Please check it again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
+}
+
+- (IBAction)skipAction:(id)sender {
+    [self goToMainView];
+}
+
+- (void)goToMainView {
+    NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
+    [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
+    [userDefault synchronize];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
+    [self presentViewController:mainTabbarController animated:YES completion:^{
+    }];
 }
 
 - (BOOL)validateEmailWithString:(NSString*)checkString {

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
+@import GoogleMobileAds;
 
 typedef enum {
     BeatType4DevisionBy4 = 0,
@@ -18,7 +19,7 @@ typedef enum {
     BeatType6DevisionBy8
 } BeatType;
 
-@interface MetronomoViewController () <AVAudioRecorderDelegate> {
+@interface MetronomoViewController () <AVAudioRecorderDelegate, GADBannerViewDelegate> {
     __weak IBOutlet UISlider *_slider;
     
     __weak IBOutlet UILabel *_tempoTypeLabel;
@@ -40,6 +41,8 @@ typedef enum {
     __weak IBOutlet UIButton *_buttonBeat6;
     __weak IBOutlet UIButton *_buttonBeat7;
     __weak IBOutlet UIButton *_buttonBeat8;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
     
     NSTimer *_timerBeat;
     int _currentBeatNumber;
@@ -92,6 +95,23 @@ typedef enum {
     [super didReceiveMemoryWarning];
     
     [self removeTimer];
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 #pragma mark - Actions

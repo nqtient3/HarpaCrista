@@ -9,12 +9,16 @@
 #import "FavoritosViewController.h"
 #import "CDSong.h"
 #import "HinosDetailViewController.h"
+@import GoogleMobileAds;
 
-@interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
+@interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate,GADBannerViewDelegate> {
     NSArray *_arrayFavoriteSongs;
     __weak IBOutlet UITableView *_favoritosTableView;
     __weak IBOutlet UIView *_searchView;
     __weak IBOutlet UISearchBar *_searchBar;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
+    
     UITapGestureRecognizer *_tapGestureRecognizer;
 }
 @end
@@ -54,8 +58,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Actions
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
 
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
+}
+
+#pragma mark - Actions
 - (void)keyboardDidShow {
     [self.view addGestureRecognizer:_tapGestureRecognizer];
 }

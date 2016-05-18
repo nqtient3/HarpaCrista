@@ -12,7 +12,6 @@
 #import "Constants.h"
 #import <math.h>
 
-
 #define SAMPLE_RATE 44100  //22050 //44100
 #define FRAMESIZE  512
 #define NUMCHANNELS 2
@@ -142,6 +141,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
     __weak IBOutlet UILabel *_statusLabel;
     __weak IBOutlet UIButton *_toneTypeButton;
     __weak IBOutlet UITableView *_toneTypeTableView;
+    
     NSString *_toneValueString;
     NSArray *_toneTypeArray;
     UITapGestureRecognizer *_tapGestureRecognizer;

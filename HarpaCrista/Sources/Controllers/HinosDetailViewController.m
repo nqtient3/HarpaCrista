@@ -8,6 +8,10 @@
 
 #import "HinosDetailViewController.h"
 #import "ChangeToneCollectionViewCell.h"
+#import <AVFoundation/AVFoundation.h>
+#import "Reachability.h"
+#import "MBProgressHUD.h"
+@import GoogleMobileAds;
 
 #define DISTANCE_ONCE 10
 #define DEFAULT_TIME_EACH_LOOP 0.05
@@ -20,7 +24,7 @@ typedef enum {
     tone2
 } tone;
 
-@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate> {
+@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate,GADBannerViewDelegate> {
     __weak IBOutlet UIWebView *_webView;
     __weak IBOutlet UIView *_zoomView;
     __weak IBOutlet UIView *_toolView;
@@ -35,6 +39,9 @@ typedef enum {
     __weak IBOutlet UIButton *_mudeButton;
     __weak IBOutlet UIButton *_metromomoButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
+    
     int _textFontSize;
     float _scrollViewContentHeight;
     float _scrollViewContentOffset;
@@ -50,6 +57,17 @@ typedef enum {
     NSMutableArray *_selectedRange;
     BOOL _isChangeToneView;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    
+    //Play Music
+    __weak IBOutlet UIView *_viewPlayMusic;
+    __weak IBOutlet UISlider *_currentTimeSlider;
+    __weak IBOutlet UIButton *_playButton;
+    __weak IBOutlet UIButton *_showPlayMusicViewButton;
+    
+    AVPlayer *_mp3Player;
+    NSTimer *_timer;
+    
+    BOOL _mustReloadMusicURL;
 }
 @end
 
@@ -57,6 +75,10 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Hide the play music bar first
+    [self buttonPlayMP3Tapped:nil];
+    
     // Init data for tone item
     if ([self currentTone] == tone1) {
         _toneItemDataArray = @[@"A", @"A#", @"B", @"C", @"C#", @"D", @"D#", @"E", @"F", @"F#", @"G", @"G#"];
@@ -111,6 +133,23 @@ typedef enum {
 
         [_webView loadHTMLString:_fullString baseURL:nil];
     }
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 //Change rangeArray
@@ -427,7 +466,13 @@ typedef enum {
     [self stopScriptTimer];
     
     if (_isAutoScroll) {
+        //Prevent the screen lock
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+        
         _scriptTimer = [NSTimer scheduledTimerWithTimeInterval:timeEachLoop target:self selector:@selector(startAnimationTimer) userInfo:nil repeats:YES];
+    } else {
+        //Make the screen lock normally
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
     }
 }
 
@@ -468,6 +513,138 @@ typedef enum {
     
     // Present the controller
     [self presentViewController:controller animated:YES completion:nil];
+}
+
+#pragma mark - Playing Music
+- (IBAction)buttonPlayMP3Tapped:(id)sender {
+    if (_mustReloadMusicURL) {
+        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+            _viewPlayMusic.hidden = !_viewPlayMusic.isHidden;
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+//            CDSong *currentCDSong = [_arraySongs objectAtIndex:_indexOfSong];
+//            [self initPlayerDataWithURL:[NSURL URLWithString:currentCDSong.cdLink]];
+            _mustReloadMusicURL = NO;
+        } else {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OOps" message:@"Network connection is unavailable. Please check your connection" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction*actionOK = [UIAlertAction
+                                      actionWithTitle:@"OK"
+                                      style:UIAlertActionStyleDefault
+                                      handler:^(UIAlertAction * action)
+                                      {
+                                          
+                                      }];
+            [alertController addAction:actionOK];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    } else {
+        _viewPlayMusic.hidden = !_viewPlayMusic.isHidden;
+    }
+}
+
+#pragma mark - Play Music
+- (void)initPlayerDataWithURL:(NSURL*)url {
+    AVURLAsset *asset = [AVURLAsset assetWithURL: url];
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset: asset];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(playerItemDidReachEnd:)
+     name:AVPlayerItemDidPlayToEndTimeNotification
+     object:playerItem];
+    
+    _mp3Player = [AVPlayer playerWithPlayerItem:playerItem];
+    [_mp3Player addObserver:self forKeyPath:@"status" options:0 context:nil];
+}
+
+- (IBAction)play:(id)sender {
+    if (!_playButton.selected) {
+        _playButton.selected = YES;
+        
+        //Prevent the screen lock
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+        
+        [_mp3Player play];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+    } else {
+        _playButton.selected = NO;
+        
+        //Make the screen lock normally
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
+        
+        [_mp3Player pause];
+        [self stopTimer];
+        
+        [self updateDisplay];
+    }
+}
+
+- (IBAction)currentTimeSliderValueChanged:(id)sender {
+    if(_timer)
+        [self stopTimer];
+}
+
+- (IBAction)currentTimeSliderTouchUpInside:(id)sender {
+    float result = _currentTimeSlider.value;
+    CMTime seekTime = CMTimeMake(result, 1);
+    
+    [_mp3Player seekToTime:seekTime];
+    
+    //Continue to play
+    if (_mp3Player.rate != 0.0f) {
+        [self play:nil];
+        [self play:nil];
+    }
+}
+
+#pragma mark - Display Update
+- (void)updateDisplay {
+    CMTime currentTime = _mp3Player.currentItem.currentTime;
+    float myCurrentTime = CMTimeGetSeconds(currentTime);
+    
+    _currentTimeSlider.value = myCurrentTime;
+}
+
+#pragma mark - Timer
+- (void)timerFired:(NSTimer*)timer {
+    [self updateDisplay];
+}
+
+- (void)stopTimer {
+    [_timer invalidate];
+    _timer = nil;
+    
+    [self updateDisplay];
+}
+
+#pragma mark - Notification handler
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    [_mp3Player seekToTime:kCMTimeZero];
+    
+    [self stopTimer];
+    [self updateDisplay];
+    [self play:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if (object == _mp3Player && [keyPath isEqualToString:@"status"]) {
+        if (_mp3Player.status == AVPlayerStatusFailed) {
+            NSLog(@"AVPlayer Failed");
+            
+        } else if (_mp3Player.status == AVPlayerStatusReadyToPlay) {
+            NSLog(@"AVPlayerStatusReadyToPlay");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            _currentTimeSlider.minimumValue = 0.0f;
+            _currentTimeSlider.maximumValue = CMTimeGetSeconds(_mp3Player.currentItem.asset.duration);
+            
+            [self play:nil];
+        } else if (_mp3Player.status == AVPlayerItemStatusUnknown) {
+            NSLog(@"AVPlayer Unknown");
+            
+        }
+    }
 }
 
 @end

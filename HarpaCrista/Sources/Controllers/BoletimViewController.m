@@ -8,12 +8,16 @@
 
 #import "BoletimViewController.h"
 #import "BaseApi.h"
+@import GoogleMobileAds;
 
-@interface BoletimViewController () {
+@interface BoletimViewController ()<GADBannerViewDelegate> {
     __weak IBOutlet UITextField *_emailTextField;
     __weak IBOutlet UIButton *_submitButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
 }
+
 @end
 
 @implementation BoletimViewController
@@ -52,6 +56,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 #pragma mark - Actions

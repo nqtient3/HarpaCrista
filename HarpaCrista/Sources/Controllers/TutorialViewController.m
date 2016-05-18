@@ -58,7 +58,7 @@
     }
     _pageViewController = pageController;
     [[_pageViewController view] setFrame:CGRectMake(0, 0, [[self view] bounds].size.width, [[self view] bounds].size.height + 37)];
-    
+    [_pageViewController view].backgroundColor = [UIColor clearColor];
     [self addChildViewController: _pageViewController];
     [self.view addSubview: _pageViewController.view];
     [_pageViewController didMoveToParentViewController: self];

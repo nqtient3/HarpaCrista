@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ybs-aJ-06C">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -1460,7 +1460,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-fR-Mdw">
-                                <rect key="frame" x="-4" y="630" width="383" height="37"/>
+                                <rect key="frame" x="46" y="630" width="283" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="GB1-1a-EQu"/>
@@ -1471,8 +1471,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="vBI-fR-Mdw" secondAttribute="trailing" constant="-20" id="5UC-tf-Cze"/>
-                            <constraint firstItem="vBI-fR-Mdw" firstAttribute="leading" secondItem="lEG-by-fdf" secondAttribute="leadingMargin" constant="-20" id="ehT-Tw-Q3r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vBI-fR-Mdw" secondAttribute="trailing" constant="30" id="5UC-tf-Cze"/>
+                            <constraint firstItem="vBI-fR-Mdw" firstAttribute="leading" secondItem="lEG-by-fdf" secondAttribute="leadingMargin" constant="30" id="ehT-Tw-Q3r"/>
                             <constraint firstItem="PtL-qN-sKs" firstAttribute="top" secondItem="vBI-fR-Mdw" secondAttribute="bottom" id="rj3-z0-XPl"/>
                         </constraints>
                     </view>
@@ -1518,14 +1518,28 @@
                                     <action selector="submitEmailAction:" destination="3PA-np-O52" eventType="touchUpInside" id="euP-Bp-T0B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uQ-q0-8xx">
+                                <rect key="frame" x="319" y="627" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Nsm-do-aMq"/>
+                                    <constraint firstAttribute="width" constant="40" id="cOl-B4-L16"/>
+                                </constraints>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipAction:" destination="3PA-np-O52" eventType="touchUpInside" id="2Gx-eK-Wvj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0Uh-9h-GmP" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="88P-jB-AWL"/>
                             <constraint firstItem="0Uh-9h-GmP" firstAttribute="top" secondItem="lQf-jn-aPQ" secondAttribute="bottom" constant="20" id="BlE-Im-lhu"/>
                             <constraint firstItem="ggj-y1-mb8" firstAttribute="centerY" secondItem="dfW-Gb-FXf" secondAttribute="centerY" id="NRA-G7-4if"/>
+                            <constraint firstItem="wki-XG-pID" firstAttribute="top" secondItem="4uQ-q0-8xx" secondAttribute="bottom" constant="10" id="U1l-Y2-bO2"/>
                             <constraint firstItem="ggj-y1-mb8" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="W2e-UF-gRL"/>
                             <constraint firstItem="wki-XG-pID" firstAttribute="top" secondItem="0Uh-9h-GmP" secondAttribute="bottom" constant="100" id="Xnw-gQ-J83"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4uQ-q0-8xx" secondAttribute="trailing" id="Y5g-A0-SY3"/>
+                            <constraint firstItem="4uQ-q0-8xx" firstAttribute="width" secondItem="dfW-Gb-FXf" secondAttribute="width" id="a3a-iR-ehE"/>
                             <constraint firstItem="lQf-jn-aPQ" firstAttribute="centerX" secondItem="dfW-Gb-FXf" secondAttribute="centerX" id="bWq-83-mYK"/>
                             <constraint firstAttribute="trailing" secondItem="lQf-jn-aPQ" secondAttribute="trailing" constant="30" id="dxP-uE-g0u"/>
                             <constraint firstItem="ggj-y1-mb8" firstAttribute="height" secondItem="dfW-Gb-FXf" secondAttribute="height" id="g3b-FQ-EG0"/>
@@ -1535,6 +1549,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="bWq-83-mYK"/>
+                                <exclude reference="a3a-iR-ehE"/>
                             </mask>
                         </variation>
                     </view>
@@ -1542,6 +1557,7 @@
                     <connections>
                         <outlet property="_contentImageView" destination="ggj-y1-mb8" id="r2U-Y5-p8I"/>
                         <outlet property="_emailTextField" destination="lQf-jn-aPQ" id="iqd-EJ-Cug"/>
+                        <outlet property="_skipButton" destination="4uQ-q0-8xx" id="oYi-A3-j1V"/>
                         <outlet property="_submitButton" destination="0Uh-9h-GmP" id="wAD-22-bpf"/>
                     </connections>
                 </viewController>

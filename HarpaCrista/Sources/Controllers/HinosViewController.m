@@ -11,14 +11,18 @@
 #import "HinosDetailViewController.h"
 #import "CDSong.h"
 #import "BaseApi.h"
+@import GoogleMobileAds;
 
-@interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate> {
+@interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, GADBannerViewDelegate> {
     NSArray *_arraySongs;
     __weak IBOutlet UIView *_searchView;
     __weak IBOutlet UISearchBar *_searchBar;
     __weak IBOutlet UITableView *_hinosTableView;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    
+    __weak IBOutlet GADBannerView *_bannerView;
 }
+
 @end
 
 @implementation HinosViewController
@@ -57,6 +61,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - GoogleAds - GADBannerViewDelegate
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    _bannerView.hidden = NO;
+}
+
+- (void)loadGoogleAds {
+    _bannerView.hidden = YES;
+    //Google AdMob
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    _bannerView.adUnitID = @"ca-app-pub-5569929039117299/9402430169";
+    _bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    _bannerView.rootViewController = self;
+    _bannerView.delegate = self;
+    
+    [_bannerView loadRequest:[GADRequest request]];
 }
 
 #pragma mark - Update data
