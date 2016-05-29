@@ -79,10 +79,12 @@
                 NSString *songID = arrayString[0];
                 NSString *songTitle = arrayString[1];
                 NSString *songChord = dictItem[@"post_content"];
+                NSString *songLink = dictItem[@"audio_url"];
                 
                 CDSong *song = [CDSong getOrCreateSongWithId:[songID intValue]];
                 song.cdTitle = songTitle;
                 song.cdChord = songChord;
+                song.cdSongLink = songLink;
                 [CDSong saveContext];
             }
         }

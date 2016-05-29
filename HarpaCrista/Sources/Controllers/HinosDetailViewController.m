@@ -10,7 +10,6 @@
 #import "ChangeToneCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Reachability.h"
-#import "MBProgressHUD.h"
 @import GoogleMobileAds;
 
 #define DISTANCE_ONCE 10
@@ -41,6 +40,7 @@ typedef enum {
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
     
     __weak IBOutlet GADBannerView *_bannerView;
+    __weak IBOutlet NSLayoutConstraint *_heightBannerConstraint;
     
     int _textFontSize;
     float _scrollViewContentHeight;
@@ -73,9 +73,6 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //Init the music to play
-    [self playMP3];
     
     // Init data for tone item
     if ([self currentTone] == tone1) {
@@ -134,12 +131,31 @@ typedef enum {
     
     //Load Ads if the network is connectable
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
-        //Set the height of banner to 0
-        CGRect rect = _bannerView.frame;
-        rect.size.height = 0.0f;
-        _bannerView.frame = rect;
+        //Set height of banner to 0
+        _heightBannerConstraint.constant = 0.0f;
     } else {
         [self loadGoogleAds];
+        
+        //Init the music to play
+        [self playMP3];
+    }
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        //Release the mp3 player
+        [self releasePlayer];
+    }
+    [super viewWillDisappear:animated];
+}
+
+- (void)releasePlayer {
+    if (_mp3Player) {
+        if (_mp3Player.rate != 0.0f) {
+            [self play:nil];
+        }
+        //Remove observer for status keypath
+        [_mp3Player removeObserver:self forKeyPath:@"status"];
     }
 }
 
@@ -471,6 +487,9 @@ typedef enum {
         [self stopScriptTimer];
     }
     _webView.frame = _partScreenRect;
+    
+    //Make the screen lock normally
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
 }
 
 #pragma mark - pauseAutoScWebViewAction
@@ -495,12 +514,22 @@ typedef enum {
 #pragma mark - tunerButtonAction
 
 - (IBAction)tunerAction:(id)sender {
+    //Pause the mp3 player
+    if (_mp3Player.rate != 0.0f) {
+        [self play:nil];
+    }
+    
     [self performSegueWithIdentifier:@"tunerSegue" sender:nil];
 }
 
 #pragma mark - metronomoAction
 
 - (IBAction)metronomoAction:(id)sender {
+    //Pause the mp3 player
+    if (_mp3Player.rate != 0.0f) {
+        [self play:nil];
+    }
+    
     [self performSegueWithIdentifier:@"metronomoSegue" sender:nil];
 }
 
@@ -534,9 +563,13 @@ typedef enum {
 #pragma mark - Playing Music
 - (void)playMP3 {
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //Disable music controls
+        _playButton.enabled = NO;
+        _currentTimeSlider.enabled = NO;
         
-//        [self initPlayerDataWithURL:[NSURL URLWithString:currentCDSong.cdLink]];
+        if (_currentCDSong.cdSongLink && ![_currentCDSong.cdSongLink isEqualToString:@""]) {
+            [self initPlayerDataWithURL:[NSURL URLWithString:_currentCDSong.cdSongLink]];
+        }
     } else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"OOps" message:@"Network connection is unavailable. Please check your connection" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction*actionOK = [UIAlertAction
@@ -628,10 +661,7 @@ typedef enum {
 #pragma mark - Notification handler
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
     [_mp3Player seekToTime:kCMTimeZero];
-    
-    [self stopTimer];
-    [self updateDisplay];
-    [self play:nil];
+    [self performSelector:@selector(play:) withObject:nil afterDelay:0.5];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -642,10 +672,13 @@ typedef enum {
             
         } else if (_mp3Player.status == AVPlayerStatusReadyToPlay) {
             NSLog(@"AVPlayerStatusReadyToPlay");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             _currentTimeSlider.minimumValue = 0.0f;
             _currentTimeSlider.maximumValue = CMTimeGetSeconds(_mp3Player.currentItem.asset.duration);
+            
+            //Enable music controls
+            _playButton.enabled = YES;
+            _currentTimeSlider.enabled = YES;
         } else if (_mp3Player.status == AVPlayerItemStatusUnknown) {
             NSLog(@"AVPlayer Unknown");
             

@@ -25,6 +25,7 @@
     __weak IBOutlet UITableView *_maisTableView;
     
     __weak IBOutlet GADBannerView *_bannerView;
+    __weak IBOutlet NSLayoutConstraint *_heightBannerConstraint;
 }
 
 typedef enum {
@@ -77,10 +78,8 @@ typedef enum {
     
     //Load Ads if the network is connectable
     if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
-        //Set the height of banner to 0
-        CGRect rect = _bannerView.frame;
-        rect.size.height = 0.0f;
-        _bannerView.frame = rect;
+        //Set height of banner to 0
+        _heightBannerConstraint.constant = 0.0f;
     } else {
         [self loadGoogleAds];
     }

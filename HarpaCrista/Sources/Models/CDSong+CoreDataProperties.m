@@ -2,7 +2,7 @@
 //  CDSong+CoreDataProperties.m
 //  HarpaCrista
 //
-//  Created by Chinh Le on 3/2/16.
+//  Created by Chinh Le on 5/26/16.
 //  Copyright © 2016 Chinh Le. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,9 +13,10 @@
 
 @implementation CDSong (CoreDataProperties)
 
-@dynamic cdSongID;
-@dynamic cdTitle;
 @dynamic cdChord;
 @dynamic cdIsFavorite;
+@dynamic cdSongID;
+@dynamic cdTitle;
+@dynamic cdSongLink;
 
 @end
