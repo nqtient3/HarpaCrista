@@ -12,6 +12,8 @@
 #import "CDSong.h"
 #import "BaseApi.h"
 #import "Reachability.h"
+#import "ECSlidingViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 @import GoogleMobileAds;
 
 @interface HinosViewController ()<UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate, GADBannerViewDelegate> {
@@ -32,6 +34,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setSlideBarViewController];
+    
     // Do any additional setup after loading the view, typically from a nib.
     _searchBar.barTintColor = nil;
     _searchBar.tintColor = [UIColor grayColor];
@@ -164,6 +169,15 @@
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:sender.isSelected];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteListChange" object:nil];
+}
+
+#pragma mark - ECSlidingViewControllerAnchoredGesture
+- (void)setSlideBarViewController {
+    self.slidingViewController.delegate = nil;
+    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

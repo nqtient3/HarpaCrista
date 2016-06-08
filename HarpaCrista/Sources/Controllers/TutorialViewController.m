@@ -8,7 +8,6 @@
 
 #import "TutorialViewController.h"
 #import "PageItemViewController.h"
-#import "MainTabbarController.h"
 #import "BaseApi.h"
 #import "CDSong.h"
 

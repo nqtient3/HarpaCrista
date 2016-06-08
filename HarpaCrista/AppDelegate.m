@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainTabbarController.h"
+#import "ECSlidingViewController.h"
 #import "Constants.h"
 #import "TutorialViewController.h"
 
@@ -57,7 +57,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     if ([isLoadTutorial boolValue]) {
-        MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
+        ECSlidingViewController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"slideMenu"];
         self.window.rootViewController = mainTabbarController;
     } else {
         TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];

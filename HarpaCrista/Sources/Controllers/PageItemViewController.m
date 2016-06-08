@@ -7,9 +7,9 @@
 //
 
 #import "PageItemViewController.h"
-#import "MainTabbarController.h"
 #import "Constants.h"
 #import "BaseApi.h"
+#import "ECSlidingViewController.h"
 @import GoogleMobileAds;
 
 @interface PageItemViewController () {
@@ -126,8 +126,8 @@
     [userDefault synchronize];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainTabbarController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabbarController"];
-    [self presentViewController:mainTabbarController animated:YES completion:^{
+    ECSlidingViewController *slidingViewController = [storyboard instantiateViewControllerWithIdentifier:@"slideMenu"];
+    [self presentViewController:slidingViewController animated:YES completion:^{
     }];
 }
 

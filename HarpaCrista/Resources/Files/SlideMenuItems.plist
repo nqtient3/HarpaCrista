@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>icn_hinos</string>
+		<key>title</key>
+		<string>Hinos</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icn_favoritos</string>
+		<key>title</key>
+		<string>Favoritos</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_tuner_selected</string>
+		<key>title</key>
+		<string>Afinador</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_metronome_selected</string>
+		<key>title</key>
+		<string>Metronomo</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icn_mais</string>
+		<key>title</key>
+		<string>Ajustes</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_azuda</string>
+		<key>title</key>
+		<string>Ajuda</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_person</string>
+		<key>title</key>
+		<string>Contactar</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_star_settings</string>
+		<key>title</key>
+		<string>Avaliação</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_share</string>
+		<key>title</key>
+		<string>Compatihar</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icn_account_setting</string>
+		<key>title</key>
+		<string>Recursos</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Harpa Cristã com Acordes © 2016</string>
+	</dict>
+</array>
+</plist>
