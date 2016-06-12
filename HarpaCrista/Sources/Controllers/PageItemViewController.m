@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "BaseApi.h"
 #import "ECSlidingViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 @import GoogleMobileAds;
 
 @interface PageItemViewController () {
@@ -18,6 +19,8 @@
     __weak IBOutlet UIButton *_skipButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
     __weak IBOutlet UIImageView *_contentImageView;
+    
+    MPMoviePlayerController *_moviePlayer;
 }
 
 @end
@@ -54,6 +57,9 @@
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                              initWithTarget:self
                              action:@selector(dismissKeyboard)];
+    
+    //Play the video
+    [self playVideo];
 }
 
 #pragma mark - Actions
@@ -92,6 +98,28 @@
             _submitButton.hidden = NO;
             _skipButton.hidden = NO;
         });
+    }
+}
+
+#pragma mark - Play/stop video
+- (void)playVideo {
+    [self stopVideo];
+    
+    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"disc" ofType:@"mp4"]];
+    
+    _moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+    _moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
+    _moviePlayer.view.transform = CGAffineTransformConcat(_moviePlayer.view.transform, CGAffineTransformMakeRotation(M_PI_2));
+    UIWindow *backgroundWindow = [[UIApplication sharedApplication] keyWindow];
+    [_moviePlayer.view setFrame:backgroundWindow.frame];
+    [backgroundWindow addSubview:_moviePlayer.view];
+    [_moviePlayer play];
+}
+
+- (void)stopVideo {
+    if (_moviePlayer) {
+        [_moviePlayer stop];
+        _moviePlayer = nil;
     }
 }
 

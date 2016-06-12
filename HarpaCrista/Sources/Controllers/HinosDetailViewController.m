@@ -10,6 +10,7 @@
 #import "ChangeToneCollectionViewCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Reachability.h"
+#import "MenuSlideBarTableViewCell.h"
 @import GoogleMobileAds;
 
 #define DISTANCE_ONCE 10
@@ -23,7 +24,7 @@ typedef enum {
     tone2
 } tone;
 
-@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate,GADBannerViewDelegate> {
+@interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate,GADBannerViewDelegate, UITableViewDataSource,UITableViewDelegate> {
     __weak IBOutlet UIWebView *_webView;
     __weak IBOutlet UIView *_zoomView;
     __weak IBOutlet UIView *_toolView;
@@ -65,6 +66,11 @@ typedef enum {
     
     AVPlayer *_mp3Player;
     NSTimer *_timer;
+    
+    //Menu item list
+    NSArray *_arrayMenuItems;
+    __weak IBOutlet UITableView *_tableView;
+    BOOL _isMenuSelected;
 }
 
 @end
@@ -73,6 +79,11 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Initiate the menu item list
+    _arrayMenuItems = [[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"DetailMenuItems" ofType:@"plist"]] mutableCopy];
+    //Hide the menu at the first time
+    _tableView.hidden = !_isMenuSelected;
     
     // Init data for tone item
     if ([self currentTone] == tone1) {
@@ -156,6 +167,88 @@ typedef enum {
         }
         //Remove observer for status keypath
         [_mp3Player removeObserver:self forKeyPath:@"status"];
+    }
+}
+
+#pragma mark - UITableViewDataSource, UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *dict = _arrayMenuItems[indexPath.section*5 + indexPath.row];
+    
+    static NSString *cellIdentifier = @"MenuSlideBarTableViewCell";
+    MenuSlideBarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[MenuSlideBarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    }
+    
+    cell.lblTitle.text = dict[@"title"];
+    cell.lblTitle.font = [UIFont systemFontOfSize:14];
+    cell.imvIcon.image  = [UIImage imageNamed:dict[@"icon"]];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 44;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                [self fullScreenWebViewAction:nil];
+                break;
+            case 1:
+                [self changeToneAction:nil];
+                break;
+            case 2:
+                [self tunerAction:nil];
+                break;
+            case 3:
+                [self metronomoAction:nil];
+                break;
+            case 4:
+                
+                break;
+                
+            default:
+                break;
+        }
+    } else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+                
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                [self buttonShareTapped:nil];
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -388,6 +481,11 @@ typedef enum {
 
 #pragma mark - MaxZoomWebViewAction
 
+- (IBAction)showMenuAction:(id)sender {
+    _isMenuSelected = !_isMenuSelected;
+    _tableView.hidden = !_isMenuSelected;
+}
+
 - (IBAction)maxZoomWebViewAction:(id)sender {
     if (!_isFullScreenMode) {
         _textFontSize = (_textFontSize < 160) ? _textFontSize +10 : _textFontSize;
@@ -411,7 +509,7 @@ typedef enum {
                               _textFontSize];
         [_webView stringByEvaluatingJavaScriptFromString:jsString];
     } else {
-        if (timeEachLoop < 0.1) {
+        if (timeEachLoop < 0.08) {
             timeEachLoop += 0.01;
         }
     }

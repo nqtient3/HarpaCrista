@@ -22,11 +22,11 @@
 // THE SOFTWARE.
 
 #import "MEMenuViewController.h"
+#import "MenuSlideBarTableViewCell.h"
 
 static MEMenuViewController *__shared = nil;
 
-@interface MEMenuViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
+@interface MEMenuViewController ()<UITableViewDataSource,UITableViewDelegate> {
     __weak IBOutlet UITableView *_tableView;
     __weak IBOutlet UILabel *_lblTitle;
     
@@ -46,11 +46,11 @@ static MEMenuViewController *__shared = nil;
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        return _arrayMenuItems.count;
+        return 5;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,23 +58,19 @@ static MEMenuViewController *__shared = nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"StandardCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSDictionary *dict = _arrayMenuItems[indexPath.section*5 + indexPath.row];
+    
+    static NSString *cellIdentifier = @"MenuSlideBarTableViewCell";
+    MenuSlideBarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[MenuSlideBarTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     }
     
-    NSDictionary *dict = _arrayMenuItems[indexPath.section*5 + indexPath.row];
-    cell.textLabel.text = dict[@"title"];
-    if (indexPath.section < 2) {
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.imageView.frame = CGRectMake(0, 0, 40, 40);
-        cell.imageView.image  = [UIImage imageNamed:dict[@"icon"]];
-    } else {
-        cell.textLabel.font = [UIFont systemFontOfSize:11];
-    }
+    cell.lblTitle.text = dict[@"title"];
+    cell.lblTitle.font = [UIFont systemFontOfSize:14];
+    cell.imvIcon.image  = [UIImage imageNamed:dict[@"icon"]];
     
     return cell;
 }
@@ -83,14 +79,64 @@ static MEMenuViewController *__shared = nil;
     return 44;
 }
 
+- (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return @"Harpa Cristã com Acordes © 2016";
+    }
+    
+    return nil;
+}
+
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                [self performSegueWithIdentifier:@"goToMais" sender:nil];
+                break;
+                
+            default:
+                break;
+        }
+    } else if (indexPath.section == 1) {
+        switch (indexPath.row) {
+            case 0:
+                
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/"]];
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark - Storyboard prepare segues
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"about"]) {
+    if ([segue.identifier isEqualToString:@"goToMais"]) {
         NSLog(@"about");
     }
     else if ([segue.identifier isEqualToString:@"upgradeAccount"]) {

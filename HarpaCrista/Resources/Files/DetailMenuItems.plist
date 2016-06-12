@@ -4,6 +4,42 @@
 <array>
 	<dict>
 		<key>icon</key>
+		<string>ic_auto_scroll_selected</string>
+		<key>title</key>
+		<string>Rolagem</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_mude_selected</string>
+		<key>title</key>
+		<string>Mudar Tom</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_tuner_selected</string>
+		<key>title</key>
+		<string>Afinator</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_metronome_selected</string>
+		<key>title</key>
+		<string>Metronomo</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>icn_favoritos</string>
+		<key>title</key>
+		<string>Marcar Favorito</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>ic_setting</string>
+		<key>title</key>
+		<string>Ajustes</string>
+	</dict>
+	<dict>
+		<key>icon</key>
 		<string>icn_hinos</string>
 		<key>title</key>
 		<string>Hinos</string>
@@ -16,51 +52,15 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_tuner_selected</string>
-		<key>title</key>
-		<string>Afinador</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>ic_metronome_selected</string>
-		<key>title</key>
-		<string>Metronomo</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>icn_mais</string>
-		<key>title</key>
-		<string>Ajustes</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>ic_azuda</string>
+		<string>icn_hinos</string>
 		<key>title</key>
 		<string>Ajuda</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_person</string>
+		<string>ic_return</string>
 		<key>title</key>
-		<string>Contactar</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>ic_star_settings</string>
-		<key>title</key>
-		<string>Avaliação</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>ic_share</string>
-		<key>title</key>
-		<string>Compatihar</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>icn_account_setting</string>
-		<key>title</key>
-		<string>Recursos</string>
+		<string>Compatilhar</string>
 	</dict>
 </array>
 </plist>

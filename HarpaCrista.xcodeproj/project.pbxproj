@@ -100,6 +100,7 @@
 		233D72F11C93EDF70015A0E6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F01C93EDF70015A0E6 /* OneSignal.framework */; };
 		233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */; };
 		234FDC7A1C9E452A002FC64E /* snare.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 23D82C4A1C9D5AF1004AC250 /* snare.mp3 */; };
+		235762AF1D09C6D300AD2073 /* MenuSlideBarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 235762AE1D09C6D300AD2073 /* MenuSlideBarTableViewCell.m */; };
 		236BC1EE1CEB6F0700DA7371 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1ED1CEB6F0700DA7371 /* GoogleMobileAds.framework */; };
 		236BC1F01CEB6F4E00DA7371 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1EF1CEB6F4E00DA7371 /* AdSupport.framework */; };
 		236BC1F21CEB6F7C00DA7371 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1F11CEB6F7C00DA7371 /* CoreTelephony.framework */; };
@@ -108,6 +109,9 @@
 		236BC1F81CEB6FDE00DA7371 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1F71CEB6FDE00DA7371 /* MediaPlayer.framework */; };
 		236BC1FA1CEB6FE800DA7371 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1F91CEB6FE800DA7371 /* MessageUI.framework */; };
 		236BC1FC1CEB6FFF00DA7371 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236BC1FB1CEB6FFF00DA7371 /* StoreKit.framework */; };
+		237A1E4D1D0D547D00A97583 /* DetailMenuItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 237A1E4C1D0D547D00A97583 /* DetailMenuItems.plist */; };
+		23B346E21D0DA6CE0090506C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B346E11D0DA6CE0090506C /* QuartzCore.framework */; };
+		23B346E41D0DA6F80090506C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B346E31D0DA6F80090506C /* AssetsLibrary.framework */; };
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
 		23B859DE1C85D9D500144193 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DD1C85D9D500144193 /* AppDelegate.m */; };
 		23B859E41C85D9D500144193 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B859E21C85D9D500144193 /* Main.storyboard */; };
@@ -329,6 +333,8 @@
 		232D55B91C87269A002798F4 /* ic_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_x.png; path = Resources/Images/ic_x.png; sourceTree = "<group>"; };
 		233D72F01C93EDF70015A0E6 /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneSignal.framework; sourceTree = "<group>"; };
 		233D72F21C93F25A0015A0E6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		235762AD1D09C6D300AD2073 /* MenuSlideBarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSlideBarTableViewCell.h; path = Sources/Views/MenuSlideBarTableViewCell.h; sourceTree = "<group>"; };
+		235762AE1D09C6D300AD2073 /* MenuSlideBarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSlideBarTableViewCell.m; path = Sources/Views/MenuSlideBarTableViewCell.m; sourceTree = "<group>"; };
 		236BC1ED1CEB6F0700DA7371 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		236BC1EF1CEB6F4E00DA7371 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		236BC1F11CEB6F7C00DA7371 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -337,6 +343,9 @@
 		236BC1F71CEB6FDE00DA7371 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		236BC1F91CEB6FE800DA7371 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		236BC1FB1CEB6FFF00DA7371 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		237A1E4C1D0D547D00A97583 /* DetailMenuItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DetailMenuItems.plist; path = Resources/Files/DetailMenuItems.plist; sourceTree = "<group>"; };
+		23B346E11D0DA6CE0090506C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		23B346E31D0DA6F80090506C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		23B859D61C85D9D500144193 /* HarpaCrista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpaCrista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B859DA1C85D9D500144193 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23B859DC1C85D9D500144193 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -414,6 +423,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B346E41D0DA6F80090506C /* AssetsLibrary.framework in Frameworks */,
+				A6F7897A1C9AFC5D00B1618E /* CoreMedia.framework in Frameworks */,
+				23B346E21D0DA6CE0090506C /* QuartzCore.framework in Frameworks */,
 				236BC1FC1CEB6FFF00DA7371 /* StoreKit.framework in Frameworks */,
 				236BC1FA1CEB6FE800DA7371 /* MessageUI.framework in Frameworks */,
 				236BC1F81CEB6FDE00DA7371 /* MediaPlayer.framework in Frameworks */,
@@ -427,7 +439,6 @@
 				2328FABB1CC1279B00924631 /* CoreData.framework in Frameworks */,
 				A6F789851C9AFD5700B1618E /* OpenGLES.framework in Frameworks */,
 				A6F7897C1C9AFC7200B1618E /* Accelerate.framework in Frameworks */,
-				A6F7897A1C9AFC5D00B1618E /* CoreMedia.framework in Frameworks */,
 				2328FAB91CC1273F00924631 /* libGoogleAnalyticsServices.a in Frameworks */,
 				A6E4F0891C945E69005BA03B /* MobileCoreServices.framework in Frameworks */,
 				233D72F31C93F25A0015A0E6 /* SystemConfiguration.framework in Frameworks */,
@@ -639,6 +650,8 @@
 				2305347E1CA2F91C00ACEEDA /* ChangeToneCollectionViewCell.h */,
 				2305347F1CA2F91C00ACEEDA /* ChangeToneCollectionViewCell.m */,
 				A601EA561C8AB03100E0AE3F /* IntroScreen.storyboard */,
+				235762AD1D09C6D300AD2073 /* MenuSlideBarTableViewCell.h */,
+				235762AE1D09C6D300AD2073 /* MenuSlideBarTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -758,6 +771,7 @@
 				23289D5A1D05CCB700235F49 /* SlideMenuItems.plist */,
 				23D82C491C9D5AF1004AC250 /* bass.mp3 */,
 				23D82C4A1C9D5AF1004AC250 /* snare.mp3 */,
+				237A1E4C1D0D547D00A97583 /* DetailMenuItems.plist */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -801,6 +815,8 @@
 		A689C0AC1C931AA3003C5AAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23B346E31D0DA6F80090506C /* AssetsLibrary.framework */,
+				23B346E11D0DA6CE0090506C /* QuartzCore.framework */,
 				236BC1FB1CEB6FFF00DA7371 /* StoreKit.framework */,
 				236BC1F91CEB6FE800DA7371 /* MessageUI.framework */,
 				236BC1F71CEB6FDE00DA7371 /* MediaPlayer.framework */,
@@ -1012,6 +1028,7 @@
 				2305344F1CA2F81800ACEEDA /* ic_decrease.png in Resources */,
 				232D55BB1C87269A002798F4 /* ic_auto_scroll.png in Resources */,
 				2305344D1CA2F81800ACEEDA /* Boot-Screen.png in Resources */,
+				237A1E4D1D0D547D00A97583 /* DetailMenuItems.plist in Resources */,
 				2305346B1CA2F82E00ACEEDA /* Tutorial-9.png in Resources */,
 				23B85A221C85E30B00144193 /* ic_instagram.png in Resources */,
 				230534651CA2F82E00ACEEDA /* Tutorial-3.png in Resources */,
@@ -1060,6 +1077,7 @@
 				230534CE1CA2F9F000ACEEDA /* FFTHelper.mm in Sources */,
 				230534D81CA2F9F000ACEEDA /* NSString+QueryString.m in Sources */,
 				230534DF1CA2F9F000ACEEDA /* LRRestyClient+PUT.m in Sources */,
+				235762AF1D09C6D300AD2073 /* MenuSlideBarTableViewCell.m in Sources */,
 				230534D61CA2F9F000ACEEDA /* NSObject+Tap.m in Sources */,
 				230534EB1CA2F9F000ACEEDA /* mo_audio.mm in Sources */,
 				230534EA1CA2F9F000ACEEDA /* LRURLRequestOperation.m in Sources */,
