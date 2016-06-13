@@ -105,10 +105,11 @@
 - (void)playVideo {
     [self stopVideo];
     
-    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"disc" ofType:@"mp4"]];
+    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Introduction" ofType:@"mp4"]];
     
     _moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
     _moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
+    _moviePlayer.repeatMode = MPMovieRepeatModeOne;
     _moviePlayer.view.transform = CGAffineTransformConcat(_moviePlayer.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     UIWindow *backgroundWindow = [[UIApplication sharedApplication] keyWindow];
     [_moviePlayer.view setFrame:backgroundWindow.frame];
@@ -123,7 +124,7 @@
     }
 }
 
-#pragma mark -Submit Email Action
+#pragma mark - Submit Email Action
 
 - (IBAction)submitEmailAction:(id)sender {
     if ([self validateEmailWithString:_emailTextField.text]) {
@@ -149,6 +150,9 @@
 }
 
 - (void)goToMainView {
+    //Stop the video
+    [self stopVideo];
+    
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     [userDefault setObject:[NSNumber numberWithBool:YES] forKey:keyLoadTutorial];
     [userDefault synchronize];
