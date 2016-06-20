@@ -135,6 +135,10 @@
 		23B85A371C85E32F00144193 /* HinosDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A321C85E32F00144193 /* HinosDetailViewController.m */; };
 		23B85A381C85E32F00144193 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A341C85E32F00144193 /* SettingsViewController.m */; };
 		23B85A3B1C85E3C100144193 /* HarpaCrista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23B85A391C85E3C100144193 /* HarpaCrista.xcdatamodeld */; };
+		23BCEE531D18472700AFE4C6 /* icn_favorite_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BCEE4F1D18472700AFE4C6 /* icn_favorite_selected.png */; };
+		23BCEE541D18472700AFE4C6 /* icn_favorite_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BCEE501D18472700AFE4C6 /* icn_favorite_selected@2x.png */; };
+		23BCEE551D18472700AFE4C6 /* icn_favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BCEE511D18472700AFE4C6 /* icn_favorite.png */; };
+		23BCEE561D18472700AFE4C6 /* icn_favorite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BCEE521D18472700AFE4C6 /* icn_favorite@2x.png */; };
 		23D816A61CECB3EE00EBB205 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D816A21CECB3EE00EBB205 /* MBProgressHUD.m */; };
 		23D816A71CECB3EE00EBB205 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D816A51CECB3EE00EBB205 /* Reachability.m */; };
 		23D816AC1CECCAA500EBB205 /* icn_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D816A81CECCAA500EBB205 /* icn_pause.png */; };
@@ -377,6 +381,10 @@
 		23B85A331C85E32F00144193 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Sources/Controllers/SettingsViewController.h; sourceTree = "<group>"; };
 		23B85A341C85E32F00144193 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Sources/Controllers/SettingsViewController.m; sourceTree = "<group>"; };
 		23B85A3A1C85E3C100144193 /* HarpaCrista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HarpaCrista.xcdatamodel; sourceTree = "<group>"; };
+		23BCEE4F1D18472700AFE4C6 /* icn_favorite_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icn_favorite_selected.png; path = Resources/Images/icn_favorite_selected.png; sourceTree = "<group>"; };
+		23BCEE501D18472700AFE4C6 /* icn_favorite_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_favorite_selected@2x.png"; path = "Resources/Images/icn_favorite_selected@2x.png"; sourceTree = "<group>"; };
+		23BCEE511D18472700AFE4C6 /* icn_favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icn_favorite.png; path = Resources/Images/icn_favorite.png; sourceTree = "<group>"; };
+		23BCEE521D18472700AFE4C6 /* icn_favorite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icn_favorite@2x.png"; path = "Resources/Images/icn_favorite@2x.png"; sourceTree = "<group>"; };
 		23D816A11CECB3EE00EBB205 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		23D816A21CECB3EE00EBB205 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		23D816A41CECB3EE00EBB205 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -700,6 +708,10 @@
 		23B859F81C85DA8D00144193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				23BCEE4F1D18472700AFE4C6 /* icn_favorite_selected.png */,
+				23BCEE501D18472700AFE4C6 /* icn_favorite_selected@2x.png */,
+				23BCEE511D18472700AFE4C6 /* icn_favorite.png */,
+				23BCEE521D18472700AFE4C6 /* icn_favorite@2x.png */,
 				23D816A81CECCAA500EBB205 /* icn_pause.png */,
 				23D816A91CECCAA500EBB205 /* icn_pause@2x.png */,
 				23D816AA1CECCAA500EBB205 /* icn_play.png */,
@@ -960,6 +972,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				234FDC7A1C9E452A002FC64E /* snare.mp3 in Resources */,
+				23BCEE531D18472700AFE4C6 /* icn_favorite_selected.png in Resources */,
 				2305346A1CA2F82E00ACEEDA /* Tutorial-8.png in Resources */,
 				232D55C41C87269A002798F4 /* ic_return_selected.png in Resources */,
 				23B859EC1C85D9D500144193 /* LaunchScreen.storyboard in Resources */,
@@ -968,6 +981,7 @@
 				23D816AE1CECCAA600EBB205 /* icn_play.png in Resources */,
 				C8E1E4F91CB2485A002808E6 /* icn_hinos_selected.png in Resources */,
 				C8E1E4F81CB2485A002808E6 /* icn_favoritos@3x.png in Resources */,
+				23BCEE541D18472700AFE4C6 /* icn_favorite_selected@2x.png in Resources */,
 				23B85A291C85E30B00144193 /* ic_twiiter.png in Resources */,
 				C8E1E4FF1CB2485A002808E6 /* icn_mais_selected.png in Resources */,
 				232D55C21C87269A002798F4 /* ic_mude_selected.png in Resources */,
@@ -1007,6 +1021,7 @@
 				230534591CA2F81800ACEEDA /* icon_select.png in Resources */,
 				232D55C91C87269A002798F4 /* ic_star_yellow.png in Resources */,
 				C8E1E5021CB2485A002808E6 /* icn_mais.png in Resources */,
+				23BCEE551D18472700AFE4C6 /* icn_favorite.png in Resources */,
 				23D816AF1CECCAA600EBB205 /* icn_play@2x.png in Resources */,
 				23F573CB1D0F065400D56D3A /* Introduction.mp4 in Resources */,
 				232D55C51C87269A002798F4 /* ic_return.png in Resources */,
@@ -1025,6 +1040,7 @@
 				23B85A251C85E30B00144193 /* ic_person.png in Resources */,
 				C8E1E4FB1CB2485A002808E6 /* icn_hinos_selected@3x.png in Resources */,
 				C8E1E4FD1CB2485A002808E6 /* icn_hinos@2x.png in Resources */,
+				23BCEE561D18472700AFE4C6 /* icn_favorite@2x.png in Resources */,
 				230534691CA2F82E00ACEEDA /* Tutorial-7.png in Resources */,
 				230534681CA2F82E00ACEEDA /* Tutorial-6.png in Resources */,
 				232D55CA1C87269A002798F4 /* ic_star.png in Resources */,

@@ -27,17 +27,13 @@ typedef enum {
 @interface HinosDetailViewController ()<UIWebViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIGestureRecognizerDelegate,GADBannerViewDelegate, UITableViewDataSource,UITableViewDelegate> {
     __weak IBOutlet UIWebView *_webView;
     __weak IBOutlet UIView *_zoomView;
-    __weak IBOutlet UIView *_toolView;
     __weak IBOutlet UIView *_exitZoomView;
     __weak IBOutlet UIView *_pausePlayAutoScrollView;
     __weak IBOutlet UIView *_changeToneView;
     __weak IBOutlet UIButton *_maxZoomWebViewButton;
     __weak IBOutlet UIButton *_minZoomWebViewButton;
-    __weak IBOutlet UIButton *_fullScreenWebViewButton;
     __weak IBOutlet UIButton *_exitFullScreenWebViewButton;
     __weak IBOutlet UIButton *_pauseAutoScrollButton;
-    __weak IBOutlet UIButton *_mudeButton;
-    __weak IBOutlet UIButton *_metromomoButton;
     __weak IBOutlet UICollectionView *_changeToneCollectionView;
     
     __weak IBOutlet GADBannerView *_bannerView;
@@ -152,8 +148,8 @@ typedef enum {
     }
 }
 
--(void) viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+- (void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
         //Release the mp3 player
         [self releasePlayer];
     }
@@ -199,6 +195,14 @@ typedef enum {
     cell.lblTitle.font = [UIFont systemFontOfSize:14];
     cell.imvIcon.image  = [UIImage imageNamed:dict[@"icon"]];
     
+    if (indexPath.section == 0 && indexPath.row == 4) {
+        if ([_currentCDSong.cdIsFavorite boolValue]) {
+            cell.imvIcon.image = [UIImage imageNamed:@"icn_favorite_selected.png"];
+        } else {
+            cell.imvIcon.image = [UIImage imageNamed:@"icn_favorite.png"];
+        }
+    }
+    
     return cell;
 }
 
@@ -207,13 +211,16 @@ typedef enum {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self showMenuAction:nil];
+    
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
                 [self fullScreenWebViewAction:nil];
                 break;
             case 1:
-                [self changeToneAction:nil];
+                [self showChangeToneAction:YES];
                 break;
             case 2:
                 [self tunerAction:nil];
@@ -221,26 +228,35 @@ typedef enum {
             case 3:
                 [self metronomoAction:nil];
                 break;
-            case 4:
+            case 4: {
+                _currentCDSong.cdIsFavorite = [NSNumber numberWithBool:![_currentCDSong.cdIsFavorite boolValue]];
                 
+                [CDSong makeSongWithSongID:[_currentCDSong.cdSongID intValue] isFavorite:[_currentCDSong.cdIsFavorite boolValue]];
+                
+                //Reload the cell to update
+                [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteListChange" object:nil];
                 break;
-                
+            }
             default:
                 break;
         }
     } else if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 0:
-                
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MenuItemChoose" object:[NSNumber numberWithInt:5]];
                 break;
             case 1:
-                
+                [self.navigationController popToRootViewControllerAnimated:YES];
                 break;
             case 2:
-                
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MenuItemChoose" object:[NSNumber numberWithInt:2]];
                 break;
             case 3:
-                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/perguntas-e-respostas/"]];
                 break;
             case 4:
                 [self buttonShareTapped:nil];
@@ -340,8 +356,7 @@ typedef enum {
 }
 
 - (void)dismissChangeToneView:(UIGestureRecognizer *)gestureRecognizer {
-    [self changeToneAction:_mudeButton];
-    [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
+    [self showChangeToneAction:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -395,7 +410,7 @@ typedef enum {
     NSString *rangeString = cell.titleLabel.text;
     [self findAndReplaceCorrespondingTone:rangeString];
     _isChangeToneView = NO;
-    [self changeToneAction:_mudeButton];
+    [self showChangeToneAction:NO];
     [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
     [_changeToneCollectionView reloadData];
     
@@ -543,7 +558,6 @@ typedef enum {
 - (IBAction)fullScreenWebViewAction:(id)sender {
     _isFullScreenMode = YES;
     _changeToneView.hidden = YES;
-    _toolView.hidden = YES;
     
     //Hide Ads and Play Music bar
     _bannerView.hidden = YES;
@@ -566,7 +580,6 @@ typedef enum {
 
 - (IBAction)exitFullScreenWebViewAction:(id)sender {
     _isFullScreenMode = NO;
-    _toolView.hidden = NO;
     
     //Show Ads and Play Music bar
     _bannerView.hidden = NO;
@@ -633,14 +646,14 @@ typedef enum {
 
 #pragma mark - changeToneAction
 
-- (IBAction)changeToneAction:(UIButton *)sender {
-    [_changeToneView addGestureRecognizer:_tapGestureRecognizer];
-     sender.selected = !sender.isSelected;
-    if (sender.selected) {
-        _changeToneView.hidden = NO;
+- (void)showChangeToneAction:(BOOL)isShow {
+    if (isShow) {
+        [_changeToneView addGestureRecognizer:_tapGestureRecognizer];
     } else {
-        _changeToneView.hidden = YES;
+        [_changeToneView removeGestureRecognizer:_tapGestureRecognizer];
     }
+    
+    _changeToneView.hidden = !isShow;
 }
 
 #pragma mark - buttonShareTapped

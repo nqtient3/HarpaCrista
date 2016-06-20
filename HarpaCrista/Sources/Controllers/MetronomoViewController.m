@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "Reachability.h"
+#import "UIViewController+ECSlidingViewController.h"
 @import GoogleMobileAds;
 
 typedef enum {
@@ -62,6 +63,8 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setSlideBarViewController];
     
     self.title = @"Metrónomo";
 //    
@@ -122,6 +125,24 @@ typedef enum {
     _bannerView.delegate = self;
     
     [_bannerView loadRequest:[GADRequest request]];
+}
+
+#pragma mark - ECSlidingViewControllerAnchoredGesture
+- (void)setSlideBarViewController {
+    self.slidingViewController.delegate = nil;
+    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    ECSlidingViewController *slidingViewController = self.slidingViewController;
+    if (slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [slidingViewController resetTopViewAnimated:YES];
+    } else {
+        [slidingViewController anchorTopViewToRightAnimated:YES];
+    }
 }
 
 #pragma mark - Actions

@@ -35,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
+    
     [self setSlideBarViewController];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -43,8 +45,6 @@
     _searchBar.delegate = self;
     
     _arraySongs = [CDSong getAllSongs];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
     
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -77,6 +77,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)reloadTableView {
+    _arraySongs = [CDSong getAllSongs];
+    [_hinosTableView reloadData];
 }
 
 #pragma mark - GoogleAds - GADBannerViewDelegate
@@ -156,11 +161,6 @@
     [_searchBar resignFirstResponder];
 }
 
-- (void)reloadTableView {
-    _arraySongs = [CDSong getAllSongs];
-    [_hinosTableView reloadData];
-}
-
 - (void)starButtonClicked:(UIButton*)sender {
     sender.selected = !sender.isSelected;
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
@@ -171,6 +171,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteListChange" object:nil];
 }
 
+
 #pragma mark - ECSlidingViewControllerAnchoredGesture
 - (void)setSlideBarViewController {
     self.slidingViewController.delegate = nil;
@@ -178,6 +179,15 @@
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     self.slidingViewController.customAnchoredGestures = @[];
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    ECSlidingViewController *slidingViewController = self.slidingViewController;
+    if (slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [slidingViewController resetTopViewAnimated:YES];
+    } else {
+        [slidingViewController anchorTopViewToRightAnimated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -201,10 +211,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     CDSong *songItem = _arraySongs[indexPath.row];
     
@@ -220,7 +226,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-     CDSong *currentSongItem = _arraySongs[indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CDSong *currentSongItem = _arraySongs[indexPath.row];
     [self performSegueWithIdentifier:@"showHinosDetail" sender:currentSongItem];
 }
 

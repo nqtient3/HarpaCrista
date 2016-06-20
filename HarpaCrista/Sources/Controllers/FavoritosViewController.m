@@ -10,6 +10,7 @@
 #import "CDSong.h"
 #import "HinosDetailViewController.h"
 #import "Reachability.h"
+#import "UIViewController+ECSlidingViewController.h"
 @import GoogleMobileAds;
 
 @interface FavoritosViewController () <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate,GADBannerViewDelegate> {
@@ -30,13 +31,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
+    
+    [self setSlideBarViewController];
+    
     _searchBar.barTintColor = nil;
     _searchBar.tintColor = [UIColor grayColor];
     _searchBar.delegate = self;
     
     _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableView) name:@"FavoriteListChange" object:nil];
     
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -66,6 +71,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)reloadTableView {
+    _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
+    [_favoritosTableView reloadData];
 }
 
 #pragma mark - GoogleAds - GADBannerViewDelegate
@@ -98,11 +108,6 @@
     [_searchBar resignFirstResponder];
 }
 
-- (void)reloadTableView {
-    _arrayFavoriteSongs = [CDSong getAllFavoriteSongs];
-    [_favoritosTableView reloadData];
-}
-
 - (void)starButtonClicked:(UIButton*)sender {
     UITableViewCell *cell = (UITableViewCell *)sender.superview.superview;
     NSIndexPath *indexPath = [_favoritosTableView indexPathForCell:cell];
@@ -110,6 +115,24 @@
     [CDSong makeSongWithSongID:[songItem.cdSongID intValue] isFavorite:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FavoriteListChange" object:nil];
+}
+
+#pragma mark - ECSlidingViewControllerAnchoredGesture
+- (void)setSlideBarViewController {
+    self.slidingViewController.delegate = nil;
+    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    ECSlidingViewController *slidingViewController = self.slidingViewController;
+    if (slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [slidingViewController resetTopViewAnimated:YES];
+    } else {
+        [slidingViewController anchorTopViewToRightAnimated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

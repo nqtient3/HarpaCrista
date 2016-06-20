@@ -23,14 +23,18 @@
 
 #import "MEMenuViewController.h"
 #import "MenuSlideBarTableViewCell.h"
+#import "UIViewController+ECSlidingViewController.h"
+#import <MessageUI/MessageUI.h>
 
 static MEMenuViewController *__shared = nil;
 
-@interface MEMenuViewController ()<UITableViewDataSource,UITableViewDelegate> {
+@interface MEMenuViewController ()<UITableViewDataSource,UITableViewDelegate, MFMailComposeViewControllerDelegate> {
     __weak IBOutlet UITableView *_tableView;
     __weak IBOutlet UILabel *_lblTitle;
     
     NSArray *_arrayMenuItems;
+    
+    UINavigationController *_hinosNavigationController;
 }
 
 @property (nonatomic, strong) NSArray *menuItems;
@@ -41,6 +45,32 @@ static MEMenuViewController *__shared = nil;
 
 - (void)viewDidLoad {
     _arrayMenuItems = [[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SlideMenuItems" ofType:@"plist"]] mutableCopy];
+    
+    _hinosNavigationController = (UINavigationController *)self.slidingViewController.topViewController;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuItemChoose:) name:@"MenuItemChoose" object:nil];
+}
+
+- (void) menuItemChoose:(NSNotification*)notification {
+    if ([notification.name isEqualToString:@"MenuItemChoose"]) {
+        int index = [(NSNumber*)notification.object intValue];
+        switch (index) {
+            case 1:
+                self.slidingViewController.topViewController = _hinosNavigationController;
+                [self.slidingViewController resetTopViewAnimated:YES];
+                break;
+            case 2:
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritosNavigationController"];
+                [self.slidingViewController resetTopViewAnimated:YES];
+                break;
+            case 5:
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];
+                [self.slidingViewController resetTopViewAnimated:YES];
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -89,41 +119,73 @@ static MEMenuViewController *__shared = nil;
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                
+                self.slidingViewController.topViewController = _hinosNavigationController;
                 break;
             case 1:
-                
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritosNavigationController"];
                 break;
             case 2:
-                
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TunerViewController"];
                 break;
             case 3:
-                
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MetronomoViewController"];
                 break;
             case 4:
-                [self performSegueWithIdentifier:@"goToMais" sender:nil];
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];
                 break;
                 
             default:
                 break;
         }
+        [self.slidingViewController resetTopViewAnimated:YES];
     } else if (indexPath.section == 1) {
         switch (indexPath.row) {
             case 0:
-                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/perguntas-e-respostas/"]];
                 break;
             case 1:
-                
+                if ([MFMailComposeViewController canSendMail]) {
+                    // Email Subject
+                    NSString *emailTitle = @"Contact from app";
+                    // Email Content
+                    NSString *messageBody = @"";
+                    // To address
+                    NSArray *toRecipents = @[@"contact@harpacca.com"];
+                    
+                    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+                    mc.mailComposeDelegate = self;
+                    [mc setSubject:emailTitle];
+                    [mc setMessageBody:messageBody isHTML:NO];
+                    [mc setToRecipients:toRecipents];
+                    
+                    // Present mail view controller on screen
+                    [self presentViewController:mc animated:YES completion:NULL];
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Harpa Crista" message:@"Please setup a mail account in your phone first." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alert show];
+                }
                 break;
             case 2:
-                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8"]];
                 break;
-            case 3:
+            case 3: {
+                NSString *textToShare = @"Achei o melhor aplicativo evangélico! @harpacrista7\n- Android: https://play.google.com/store/apps/details?id=com.harpacrista\n- iOS: https://itunes.apple.com/us/app/harpa-crista-com-acordes/id903898552?mt=8";
                 
+                UISimpleTextPrintFormatter *printData = [[UISimpleTextPrintFormatter alloc]
+                                                         initWithText:textToShare];
+                NSArray *itemsToShare = [[NSArray alloc] initWithObjects:textToShare,printData, nil];
+                
+                UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+                
+                // Present the controller
+                [self presentViewController:controller animated:YES completion:nil];
                 break;
+            }
             case 4:
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://harpacca.com/"]];
                 break;
@@ -132,6 +194,29 @@ static MEMenuViewController *__shared = nil;
                 break;
         }
     }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Storyboard prepare segues

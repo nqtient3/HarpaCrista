@@ -168,82 +168,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kd5-fE-hy0" userLabel="ToolView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="54"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2t-Jk-PYx" userLabel="MetronomeButton">
-                                        <rect key="frame" x="20" y="15" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="EGE-iD-azP"/>
-                                            <constraint firstAttribute="height" constant="25" id="lbZ-bD-x9a"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_metronome_selected.png"/>
-                                        <connections>
-                                            <action selector="metronomoAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="y1E-CX-59K"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-V7-Seb" userLabel="TunerButton">
-                                        <rect key="frame" x="103" y="15" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="grT-Fm-1iU"/>
-                                            <constraint firstAttribute="width" constant="20" id="jwa-sj-rxm"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_tuner_selected.png"/>
-                                        <connections>
-                                            <action selector="tunerAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="VbG-HW-D4K"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h87-9N-Ixt" userLabel="MudeButton">
-                                        <rect key="frame" x="178" y="15" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="P3Q-93-hbg"/>
-                                            <constraint firstAttribute="width" constant="20" id="oG4-dM-Uks"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_mude_selected.png"/>
-                                        <connections>
-                                            <action selector="changeToneAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="H0G-QI-c90"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRh-DN-fpK" userLabel="ReturnButton">
-                                        <rect key="frame" x="253" y="15" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="3e5-t1-fRg"/>
-                                            <constraint firstAttribute="width" constant="20" id="w64-aY-Spj"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_return_selected.png"/>
-                                        <connections>
-                                            <action selector="buttonShareTapped:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="k4M-rN-JZY"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-0f-lwv" userLabel="ZoomButton">
-                                        <rect key="frame" x="335" y="15" width="20" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="cgY-tu-33f"/>
-                                            <constraint firstAttribute="width" constant="20" id="jUA-sc-tOM"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_auto_scroll_selected.png"/>
-                                        <connections>
-                                            <action selector="fullScreenWebViewAction:" destination="Gcc-k7-XO8" eventType="touchUpInside" id="XN0-4y-UMn"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hwi-0f-lwv" secondAttribute="trailing" constant="20" id="0PI-Md-qFV"/>
-                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="6I8-p2-xrm"/>
-                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="6cP-1q-CBB"/>
-                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="8cT-o2-yhl"/>
-                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" id="AkR-YB-kIB"/>
-                                    <constraint firstAttribute="height" constant="54" id="BjO-CI-Ys7"/>
-                                    <constraint firstItem="rRh-DN-fpK" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" multiplier="1.4" id="MH5-Bh-XCv"/>
-                                    <constraint firstItem="M2t-Jk-PYx" firstAttribute="leading" secondItem="kd5-fE-hy0" secondAttribute="leading" constant="20" id="NmX-SJ-1zU"/>
-                                    <constraint firstItem="hwi-0f-lwv" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="PeW-3B-Xwg"/>
-                                    <constraint firstItem="h87-9N-Ixt" firstAttribute="centerY" secondItem="kd5-fE-hy0" secondAttribute="centerY" id="aLV-Kt-DFZ"/>
-                                    <constraint firstItem="t8W-V7-Seb" firstAttribute="centerX" secondItem="kd5-fE-hy0" secondAttribute="centerX" multiplier="0.6" id="mva-3q-Dz5"/>
-                                </constraints>
-                            </view>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuf-9m-UwF">
-                                <rect key="frame" x="0.0" y="118" width="375" height="449"/>
+                                <rect key="frame" x="-4" y="54" width="383" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-aE-fK2">
@@ -343,10 +269,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGd-ZJ-j0F" userLabel="ChangeToneView">
-                                <rect key="frame" x="-1" y="118" width="376" height="449"/>
+                                <rect key="frame" x="-4" y="64" width="383" height="503"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="koA-10-qs0" userLabel="ChangeToneCollectionView">
-                                        <rect key="frame" x="11" y="130" width="355" height="190"/>
+                                        <rect key="frame" x="10" y="157" width="363" height="190"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="190" id="fMg-Jv-8J7"/>
@@ -438,9 +364,13 @@
                                     <constraint firstAttribute="height" constant="50" id="min-ZJ-2CI"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qno-mG-e6U">
-                                <rect key="frame" x="160" y="70" width="200" height="400"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qno-mG-e6U">
+                                <rect key="frame" x="169" y="69" width="200" height="400"/>
                                 <color key="backgroundColor" red="0.25098039215686274" green="0.61568627450980395" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="oEN-9g-xnw"/>
+                                    <constraint firstAttribute="height" constant="400" id="pYh-2Q-xDR"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuSlideBarTableViewCell" id="xPm-lV-eDg" customClass="MenuSlideBarTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="200" height="44"/>
@@ -491,27 +421,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="jZA-km-zEN" secondAttribute="trailing" constant="-20" id="0BI-H0-ZpH"/>
+                            <constraint firstItem="fGd-ZJ-j0F" firstAttribute="leading" secondItem="2YO-OT-gze" secondAttribute="leadingMargin" constant="-20" id="0hw-gh-SZW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kuf-9m-UwF" secondAttribute="trailing" constant="-20" id="1lB-U7-hUO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AU9-cV-lIz" secondAttribute="trailing" constant="-20" id="2PJ-Sq-5Ds"/>
                             <constraint firstItem="DF6-fk-Bae" firstAttribute="top" secondItem="2YO-OT-gze" secondAttribute="topMargin" id="2lW-pQ-2P1"/>
                             <constraint firstAttribute="trailing" secondItem="DF6-fk-Bae" secondAttribute="trailing" id="4Cb-ch-SH8"/>
-                            <constraint firstItem="kuf-9m-UwF" firstAttribute="top" secondItem="kd5-fE-hy0" secondAttribute="bottom" id="4DW-zQ-1YY"/>
                             <constraint firstAttribute="trailing" secondItem="lqH-aE-fK2" secondAttribute="trailing" id="61N-20-GSB"/>
                             <constraint firstItem="jZA-km-zEN" firstAttribute="leading" secondItem="2YO-OT-gze" secondAttribute="leadingMargin" constant="-20" id="6Cp-Zr-oG9"/>
                             <constraint firstItem="jZA-km-zEN" firstAttribute="top" secondItem="fGd-ZJ-j0F" secondAttribute="bottom" id="8xE-qK-gaH"/>
-                            <constraint firstItem="fGd-ZJ-j0F" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="AUw-gE-DIn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qno-mG-e6U" secondAttribute="trailing" constant="-10" id="B1z-Rh-Crl"/>
                             <constraint firstItem="jZA-km-zEN" firstAttribute="top" secondItem="kuf-9m-UwF" secondAttribute="bottom" id="CmI-xg-AnG"/>
                             <constraint firstItem="lqH-aE-fK2" firstAttribute="centerY" secondItem="2YO-OT-gze" secondAttribute="centerY" id="K0n-u3-ihN"/>
-                            <constraint firstItem="kd5-fE-hy0" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" id="M27-3W-2U7"/>
+                            <constraint firstItem="Qno-mG-e6U" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" constant="5" id="NCj-db-mzP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="9pt-3V-z1P" secondAttribute="bottom" id="NqY-Ve-l1l"/>
-                            <constraint firstItem="kd5-fE-hy0" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="QQF-ss-zh9"/>
                             <constraint firstItem="AU9-cV-lIz" firstAttribute="leading" secondItem="2YO-OT-gze" secondAttribute="leadingMargin" constant="-20" id="RZr-dL-iuU"/>
-                            <constraint firstItem="kuf-9m-UwF" firstAttribute="width" secondItem="2YO-OT-gze" secondAttribute="width" id="SAW-f8-dZx"/>
-                            <constraint firstItem="kuf-9m-UwF" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="UqE-fa-fBM"/>
+                            <constraint firstItem="kuf-9m-UwF" firstAttribute="leading" secondItem="2YO-OT-gze" secondAttribute="leadingMargin" constant="-20" id="VvU-IB-Wph"/>
+                            <constraint firstItem="kuf-9m-UwF" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" constant="-10" id="W0X-JP-RNg"/>
                             <constraint firstItem="AWQ-m2-FnT" firstAttribute="top" secondItem="AU9-cV-lIz" secondAttribute="bottom" id="bAs-7K-3Ke"/>
-                            <constraint firstItem="kd5-fE-hy0" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="dNO-A6-kbB"/>
-                            <constraint firstItem="fGd-ZJ-j0F" firstAttribute="top" secondItem="kd5-fE-hy0" secondAttribute="bottom" id="doz-ma-Glh"/>
+                            <constraint firstItem="fGd-ZJ-j0F" firstAttribute="top" secondItem="9TD-4b-Oe0" secondAttribute="bottom" id="cIy-rw-7JM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fGd-ZJ-j0F" secondAttribute="trailing" constant="-20" id="faa-5t-nWh"/>
                             <constraint firstItem="AU9-cV-lIz" firstAttribute="top" secondItem="jZA-km-zEN" secondAttribute="bottom" id="ljQ-L0-Y96"/>
-                            <constraint firstItem="fGd-ZJ-j0F" firstAttribute="centerX" secondItem="2YO-OT-gze" secondAttribute="centerX" id="nwL-BL-wab"/>
                             <constraint firstAttribute="trailing" secondItem="9pt-3V-z1P" secondAttribute="trailing" id="zPR-vg-vvc"/>
                         </constraints>
                     </view>
@@ -530,17 +459,13 @@
                         <outlet property="_currentTimeSlider" destination="btI-ks-4pW" id="j7q-8g-0bV"/>
                         <outlet property="_exitFullScreenWebViewButton" destination="ocs-08-hb3" id="pnT-h6-ATG"/>
                         <outlet property="_exitZoomView" destination="9pt-3V-z1P" id="CfG-x3-oyg"/>
-                        <outlet property="_fullScreenWebViewButton" destination="hwi-0f-lwv" id="BTJ-2o-Flk"/>
                         <outlet property="_heightBannerConstraint" destination="min-ZJ-2CI" id="hLy-tq-u4h"/>
                         <outlet property="_maxZoomWebViewButton" destination="M3T-bL-WNC" id="gml-SO-87g"/>
-                        <outlet property="_metromomoButton" destination="M2t-Jk-PYx" id="RVK-GQ-Yha"/>
                         <outlet property="_minZoomWebViewButton" destination="jBg-Zb-SWa" id="ANy-oh-bbf"/>
-                        <outlet property="_mudeButton" destination="h87-9N-Ixt" id="YgD-8B-LOO"/>
                         <outlet property="_pauseAutoScrollButton" destination="L86-fs-AaS" id="oZM-j3-D5l"/>
                         <outlet property="_pausePlayAutoScrollView" destination="DF6-fk-Bae" id="4oq-0Y-zCv"/>
                         <outlet property="_playButton" destination="91J-5p-RRY" id="SMs-e3-czi"/>
                         <outlet property="_tableView" destination="Qno-mG-e6U" id="eI9-wE-XGo"/>
-                        <outlet property="_toolView" destination="kd5-fE-hy0" id="uVd-IV-w7A"/>
                         <outlet property="_viewPlayMusic" destination="jZA-km-zEN" id="MKd-YR-ivh"/>
                         <outlet property="_webView" destination="kuf-9m-UwF" id="rQg-bw-Kha"/>
                         <outlet property="_zoomView" destination="lqH-aE-fK2" id="ahH-gh-enf"/>
@@ -555,7 +480,7 @@
         <!--Tuner View Controller-->
         <scene sceneID="WKX-gG-xDk">
             <objects>
-                <viewController id="1C9-ge-ST8" customClass="TunerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TunerViewController" id="1C9-ge-ST8" customClass="TunerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GQm-dq-Pgt"/>
                         <viewControllerLayoutGuide type="bottom" id="OI6-ZC-3z3"/>
@@ -776,7 +701,7 @@
         <!--Metronomo View Controller-->
         <scene sceneID="LjY-Zu-uUn">
             <objects>
-                <viewController id="uyc-AQ-s3u" customClass="MetronomoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MetronomoViewController" id="uyc-AQ-s3u" customClass="MetronomoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7ft-Kc-Uv1"/>
                         <viewControllerLayoutGuide type="bottom" id="Ora-FZ-yUQ"/>
@@ -1208,7 +1133,7 @@
         <!--Favoritos-->
         <scene sceneID="jlj-3c-2Cq">
             <objects>
-                <viewController id="6io-SZ-awp" customClass="FavoritosViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritosViewController" id="6io-SZ-awp" customClass="FavoritosViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zsM-mL-Tdk"/>
                         <viewControllerLayoutGuide type="bottom" id="jGY-4D-K4t"/>
@@ -1358,7 +1283,7 @@
         <!--Mais-->
         <scene sceneID="6Dl-04-i6O">
             <objects>
-                <viewController id="5QK-ZS-hbf" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="5QK-ZS-hbf" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qTS-Vc-GWl"/>
                         <viewControllerLayoutGuide type="bottom" id="53y-rd-XyD"/>
@@ -1600,7 +1525,7 @@
         <!--Favoritos-->
         <scene sceneID="xdF-Qm-DIA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="REc-Ch-OOF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FavoritosNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="REc-Ch-OOF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favoritos" id="u3e-Q0-DSm"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -1624,7 +1549,7 @@
         <!--Mais-->
         <scene sceneID="esx-7S-egy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2Cm-IO-Xc5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Mais" id="5b0-kj-kzy"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -1844,7 +1769,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_tableView" destination="lUe-mZ-H5h" id="nux-FZ-03L"/>
-                        <segue destination="2Cm-IO-Xc5" kind="modal" identifier="goToMais" id="y8y-G0-BTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqy-2K-WVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1854,19 +1778,14 @@
     </scenes>
     <resources>
         <image name="circle_blue.png" width="512" height="512"/>
-        <image name="ic_auto_scroll_selected.png" width="57" height="57"/>
         <image name="ic_book.png" width="62" height="57"/>
         <image name="ic_decrease.png" width="48" height="48"/>
         <image name="ic_emptyblank.png" width="128" height="128"/>
         <image name="ic_increase.png" width="48" height="48"/>
-        <image name="ic_metronome_selected.png" width="44" height="63"/>
-        <image name="ic_mude_selected.png" width="52" height="59"/>
         <image name="ic_pause.png" width="48" height="48"/>
         <image name="ic_play.png" width="48" height="48"/>
-        <image name="ic_return_selected.png" width="54" height="63"/>
         <image name="ic_star.png" width="36" height="36"/>
         <image name="ic_star_yellow.png" width="36" height="36"/>
-        <image name="ic_tuner_selected.png" width="72" height="66"/>
         <image name="icn_mais.png" width="30" height="30"/>
         <image name="icn_pause.png" width="30" height="30"/>
         <image name="icn_play.png" width="30" height="30"/>
@@ -1875,7 +1794,7 @@
         <image name="icon_select.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="068-PC-nDH"/>
+        <segue reference="rrD-12-YWC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

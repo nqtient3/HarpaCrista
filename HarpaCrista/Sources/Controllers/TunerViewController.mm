@@ -13,6 +13,7 @@
 #import <math.h>
 #import "GoogleMobileAds/GoogleMobileAds.h"
 #import "Reachability.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 #define SAMPLE_RATE 44100  //22050 //44100
 #define FRAMESIZE  512
@@ -158,6 +159,9 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setSlideBarViewController];
+    
     self.title = @"Afinador";
     _checkToneType = 0;
     [self initToneTypeData];
@@ -437,6 +441,24 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
         return NO;
     }
     return YES;
+}
+
+#pragma mark - ECSlidingViewControllerAnchoredGesture
+- (void)setSlideBarViewController {
+    self.slidingViewController.delegate = nil;
+    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    ECSlidingViewController *slidingViewController = self.slidingViewController;
+    if (slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [slidingViewController resetTopViewAnimated:YES];
+    } else {
+        [slidingViewController anchorTopViewToRightAnimated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

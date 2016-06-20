@@ -10,6 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import "BoletimViewController.h"
 #import "Reachability.h"
+#import "UIViewController+ECSlidingViewController.h"
 @import GoogleMobileAds;
 
 @interface SettingsViewController () <UITableViewDelegate,UITableViewDataSource, MFMailComposeViewControllerDelegate, GADBannerViewDelegate> {
@@ -61,6 +62,9 @@ typedef enum {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setSlideBarViewController];
+    
     [self initData];
 }
 
@@ -105,6 +109,24 @@ typedef enum {
     _bannerView.delegate = self;
     
     [_bannerView loadRequest:[GADRequest request]];
+}
+
+#pragma mark - ECSlidingViewControllerAnchoredGesture
+- (void)setSlideBarViewController {
+    self.slidingViewController.delegate = nil;
+    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
+    self.slidingViewController.customAnchoredGestures = @[];
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+- (IBAction)revealMenu:(id)sender {
+    ECSlidingViewController *slidingViewController = self.slidingViewController;
+    if (slidingViewController.currentTopViewPosition == ECSlidingViewControllerTopViewPositionAnchoredRight) {
+        [slidingViewController resetTopViewAnimated:YES];
+    } else {
+        [slidingViewController anchorTopViewToRightAnimated:YES];
+    }
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource

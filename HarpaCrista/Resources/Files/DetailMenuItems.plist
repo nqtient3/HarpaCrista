@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>icn_favoritos</string>
+		<string>icn_favorite</string>
 		<key>title</key>
 		<string>Marcar Favorito</string>
 	</dict>
