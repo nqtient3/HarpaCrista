@@ -13,12 +13,13 @@
 #import <MediaPlayer/MediaPlayer.h>
 @import GoogleMobileAds;
 
-@interface PageItemViewController () {
+@interface PageItemViewController ()<UITextFieldDelegate> {
     __weak IBOutlet UITextField *_emailTextField;
-    __weak IBOutlet UIButton *_submitButton;
     __weak IBOutlet UIButton *_skipButton;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    __weak IBOutlet UIImageView *_contentImageView;
+    __weak IBOutlet UILabel *_lblTitle;
+    __weak IBOutlet UILabel *_lblDescription;
+    __weak IBOutlet UIView *_videoView;
     
     MPMoviePlayerController *_moviePlayer;
 }
@@ -27,22 +28,15 @@
 
 @implementation PageItemViewController
 
-@synthesize itemIndex,imageName;
-
 #pragma mark -
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _emailTextField.hidden = YES;
-    _submitButton.hidden = YES;
-    _skipButton.hidden = YES;
-    _contentImageView.image = [UIImage imageNamed:imageName];
-    _submitButton.layer.cornerRadius = 8;
-    _submitButton.layer.masksToBounds = YES;
-    _submitButton.layer.borderColor =[[UIColor whiteColor]CGColor];
-    _submitButton.layer.borderWidth= 2.0;
-    _submitButton.backgroundColor = [UIColor colorWithRed:15/255.0f green:128/255.0f blue:252/255.0f alpha:1];
+
+    _lblTitle.text = _titleString;
+    _lblDescription.text = _descriptionString;
+    
     // Listen for keyboard appearances and disappearances
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -59,7 +53,7 @@
                              action:@selector(dismissKeyboard)];
     
     //Play the video
-//    [self playVideo];
+    [self playVideo];
 }
 
 #pragma mark - Actions
@@ -89,16 +83,14 @@
 #pragma mark -
 #pragma mark Content
 
-- (void) setImageName:(NSString *)name {
-    imageName = name;
-    _contentImageView.image = [UIImage imageNamed:imageName];
-    if ([imageName isEqualToString:@"Tutorial-9.png"]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _emailTextField.hidden = NO;
-            _submitButton.hidden = NO;
-            _skipButton.hidden = NO;
-        });
-    }
+- (void)setTitleString:(NSString *)titleString {
+    _titleString = titleString;
+    _lblTitle.text = _titleString;
+}
+
+- (void)setDescriptionString:(NSString *)descriptionString {
+    _descriptionString = descriptionString;
+    _lblDescription.text = _descriptionString;
 }
 
 #pragma mark - Play/stop video
@@ -110,10 +102,8 @@
     _moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
     _moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
     _moviePlayer.repeatMode = MPMovieRepeatModeOne;
-    _moviePlayer.view.transform = CGAffineTransformConcat(_moviePlayer.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-    UIWindow *backgroundWindow = [[UIApplication sharedApplication] keyWindow];
-    [_moviePlayer.view setFrame:backgroundWindow.frame];
-    [backgroundWindow addSubview:_moviePlayer.view];
+    [_moviePlayer.view setFrame:_videoView.frame];
+    [_videoView addSubview:_moviePlayer.view];
     [_moviePlayer play];
 }
 
@@ -126,7 +116,7 @@
 
 #pragma mark - Submit Email Action
 
-- (IBAction)submitEmailAction:(id)sender {
+- (void)submitEmailAction {
     if ([self validateEmailWithString:_emailTextField.text]) {
         NSDictionary *object = @{@"email":_emailTextField.text};
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -170,6 +160,13 @@
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self submitEmailAction];
+    
+    return YES;
 }
 
 @end

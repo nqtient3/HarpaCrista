@@ -122,6 +122,7 @@
 		238F81011D1982BF00BDBDAD /* icn_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 238F80F51D1982BF00BDBDAD /* icn_star.png */; };
 		238F81021D1982BF00BDBDAD /* icn_tuner.png in Resources */ = {isa = PBXBuildFile; fileRef = 238F80F61D1982BF00BDBDAD /* icn_tuner.png */; };
 		238F81031D1982BF00BDBDAD /* img_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 238F80F71D1982BF00BDBDAD /* img_logo.png */; };
+		238F81051D199F8C00BDBDAD /* icn_skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 238F81041D199F8C00BDBDAD /* icn_skip.png */; };
 		23B346E21D0DA6CE0090506C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B346E11D0DA6CE0090506C /* QuartzCore.framework */; };
 		23B346E41D0DA6F80090506C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B346E31D0DA6F80090506C /* AssetsLibrary.framework */; };
 		23B859DB1C85D9D500144193 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B859DA1C85D9D500144193 /* main.m */; };
@@ -373,6 +374,7 @@
 		238F80F51D1982BF00BDBDAD /* icn_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icn_star.png; path = Resources/Images/icn_star.png; sourceTree = "<group>"; };
 		238F80F61D1982BF00BDBDAD /* icn_tuner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icn_tuner.png; path = Resources/Images/icn_tuner.png; sourceTree = "<group>"; };
 		238F80F71D1982BF00BDBDAD /* img_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_logo.png; path = Resources/Images/img_logo.png; sourceTree = "<group>"; };
+		238F81041D199F8C00BDBDAD /* icn_skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icn_skip.png; path = Resources/Images/icn_skip.png; sourceTree = "<group>"; };
 		23B346E11D0DA6CE0090506C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23B346E31D0DA6F80090506C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		23B859D61C85D9D500144193 /* HarpaCrista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpaCrista.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -732,6 +734,7 @@
 		23B859F81C85DA8D00144193 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				238F81041D199F8C00BDBDAD /* icn_skip.png */,
 				238F80EC1D1982BF00BDBDAD /* icn_ajuda.png */,
 				238F80ED1D1982BF00BDBDAD /* icn_contact.png */,
 				238F80EE1D1982BF00BDBDAD /* icn_favorites.png */,
@@ -1081,6 +1084,7 @@
 				23B85A281C85E30B00144193 /* ic_trolley.png in Resources */,
 				23B85A2A1C85E30B00144193 /* logo_secondary.png in Resources */,
 				232D55C31C87269A002798F4 /* ic_mude.png in Resources */,
+				238F81051D199F8C00BDBDAD /* icn_skip.png in Resources */,
 				232D55C11C87269A002798F4 /* ic_metronome.png in Resources */,
 				23B85A251C85E30B00144193 /* ic_person.png in Resources */,
 				C8E1E4FB1CB2485A002808E6 /* icn_hinos_selected@3x.png in Resources */,

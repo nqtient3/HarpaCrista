@@ -51,21 +51,28 @@
         [alertView show];
     }];
     
-    // create a standardUserDefaults variable
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *isLoadTutorial = [standardUserDefaults objectForKey:keyLoadTutorial];
+//    // create a standardUserDefaults variable
+//    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+//    NSNumber *isLoadTutorial = [standardUserDefaults objectForKey:keyLoadTutorial];
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    if ([isLoadTutorial boolValue]) {
+//        ECSlidingViewController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"slideMenu"];
+//        self.window.rootViewController = mainTabbarController;
+//    } else {
+//        TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+//        self.window.rootViewController = tutorialViewController;
+//    }
+//    
+//    // synchronize the settings
+//    [standardUserDefaults synchronize];
+//    
+//    return YES;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    if ([isLoadTutorial boolValue]) {
-        ECSlidingViewController *mainTabbarController = [storyboard instantiateViewControllerWithIdentifier:@"slideMenu"];
-        self.window.rootViewController = mainTabbarController;
-    } else {
-        TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
-        self.window.rootViewController = tutorialViewController;
-    }
+    TutorialViewController *tutorialViewController = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+    self.window.rootViewController = tutorialViewController;
     
-    // synchronize the settings
-    [standardUserDefaults synchronize];    
     return YES;
 }
 

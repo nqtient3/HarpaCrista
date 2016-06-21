@@ -12,6 +12,7 @@
 
 // Item controller information
 @property (nonatomic) NSUInteger itemIndex;
-@property (nonatomic,strong) NSString *imageName;
+@property (nonatomic,strong) NSString *titleString;
+@property (nonatomic,strong) NSString *descriptionString;
 
 @end

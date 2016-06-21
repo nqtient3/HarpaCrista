@@ -13,7 +13,8 @@
 
 @interface TutorialViewController () <UIPageViewControllerDataSource> {
     __weak IBOutlet UIPageControl *_pageControl;
-    NSArray *_contentImages;
+    NSArray *_contentTitle;
+    NSArray *_contentDescription;
     UIPageViewController *_pageViewController;
 }
 @end
@@ -37,18 +38,18 @@
 }
 
 - (void) createPageViewController {
-    _contentImages = @[@"Tutorial-1.png",
-                      @"Tutorial-2.png",
-                      @"Tutorial-3.png",
-                      @"Tutorial-4.png",
-                      @"Tutorial-5.png",
-                      @"Tutorial-6.png",
-                      @"Tutorial-7.png",
-                      @"Tutorial-8.png",
-                      @"Tutorial-9.png"];
+    _contentTitle = @[@"Bem-Vindo",
+                      @"Aprenda",
+                      @"Adore",
+                      @"Melhore"];
+    _contentDescription = @[@"Vamos adorar a Deus melhor, juntos.",
+                      @"Escute todos os hinos da harpa, use nosso metrônomo e afinador enquanto vocé toca.",
+                      @"Use o app offline. tocar na igreja, ensaiar ou fazer seu devocional.",
+                      @"Veja recursos, artigos, livros digitais e muito mais em nosso site harpacca.com."];
+    
     UIPageViewController *pageController = [self.storyboard instantiateViewControllerWithIdentifier: @"PageController"];
     pageController.dataSource = self;
-    if([_contentImages count]) {
+    if([_contentTitle count]) {
         NSArray *startingViewControllers = @[[self itemControllerForIndex: 0]];
         [pageController setViewControllers: startingViewControllers
                                  direction: UIPageViewControllerNavigationDirectionForward
@@ -116,17 +117,18 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     PageItemViewController *itemController = (PageItemViewController *) viewController;
     _pageControl.currentPage = itemController.itemIndex;
-    if (itemController.itemIndex < [_contentImages count] - 1) {
+    if (itemController.itemIndex < [_contentTitle count] - 1) {
         return [self itemControllerForIndex: itemController.itemIndex + 1];
     }
     return nil;
 }
 
 - (PageItemViewController *)itemControllerForIndex:(NSUInteger)itemIndex {
-    if (itemIndex < [_contentImages count]) {
+    if (itemIndex < [_contentTitle count]) {
         PageItemViewController *pageItemController = [self.storyboard instantiateViewControllerWithIdentifier: @"ItemController"];
         pageItemController.itemIndex = itemIndex;
-        pageItemController.imageName = _contentImages[itemIndex];
+        pageItemController.titleString = _contentTitle[itemIndex];
+        pageItemController.descriptionString = _contentDescription[itemIndex];
         return pageItemController;
     }
     return nil;
@@ -136,8 +138,8 @@
 #pragma mark Page Indicator
 
 - (NSInteger) presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    _pageControl.numberOfPages = _contentImages.count;
-    return [_contentImages count] ;
+    _pageControl.numberOfPages = _contentTitle.count;
+    return [_contentTitle count] ;
 }
 
 - (NSInteger) presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
