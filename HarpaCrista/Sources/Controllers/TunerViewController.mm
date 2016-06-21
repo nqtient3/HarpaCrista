@@ -446,7 +446,7 @@ void AudioCallback( Float32 * buffer, UInt32 frameSize, void * userData ) {
 #pragma mark - ECSlidingViewControllerAnchoredGesture
 - (void)setSlideBarViewController {
     self.slidingViewController.delegate = nil;
-    self.slidingViewController.anchorRightRevealAmount = 240.f;
+    self.slidingViewController.anchorRightRevealAmount = (float)3/4*[[UIScreen mainScreen] bounds].size.width;
     self.slidingViewController.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning;
     self.slidingViewController.customAnchoredGestures = @[];
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];

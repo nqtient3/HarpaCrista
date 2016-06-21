@@ -16,25 +16,25 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_tuner_selected</string>
+		<string>icn_tuner</string>
 		<key>title</key>
 		<string>Afinator</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_metronome_selected</string>
+		<string>icn_metronomo</string>
 		<key>title</key>
 		<string>Metronomo</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>icn_favorite</string>
+		<string>icn_star</string>
 		<key>title</key>
 		<string>Marcar Favorito</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_setting</string>
+		<string>icn_settings</string>
 		<key>title</key>
 		<string>Ajustes</string>
 	</dict>
@@ -46,19 +46,19 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>icn_favoritos</string>
+		<string>icn_favorites</string>
 		<key>title</key>
 		<string>Favoritos</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>icn_hinos</string>
+		<string>icn_ajuda</string>
 		<key>title</key>
 		<string>Ajuda</string>
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>ic_return</string>
+		<string>icn_share</string>
 		<key>title</key>
 		<string>Compatilhar</string>
 	</dict>

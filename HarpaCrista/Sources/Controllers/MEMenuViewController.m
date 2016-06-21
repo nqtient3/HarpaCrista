@@ -99,22 +99,37 @@ static MEMenuViewController *__shared = nil;
     }
     
     cell.lblTitle.text = dict[@"title"];
-    cell.lblTitle.font = [UIFont systemFontOfSize:14];
     cell.imvIcon.image  = [UIImage imageNamed:dict[@"icon"]];
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 44;
-}
-
-- (nullable NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    UIView* headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, (float)3/4 * screenRect.size.width, 44.0)];
+    //headerView.contentMode = UIViewContentModeScaleToFill;
+    
+    // Add the label
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, (float)3/4 * screenRect.size.width, 44.0)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.highlightedTextColor = [UIColor blackColor];
+    
+    //this is what you asked
+    headerLabel.font = [UIFont systemFontOfSize:11];
+    
+    headerLabel.shadowColor = [UIColor clearColor];
+    headerLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+    headerLabel.numberOfLines = 0;
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    [headerView addSubview: headerLabel];
+    
     if (section == 1) {
-        return @"Harpa Cristã com Acordes © 2016";
+        headerLabel.text = @"Harpa Cristã com Acordes © 2016";
     }
     
-    return nil;
+    return headerView;
 }
 
 #pragma mark - UITableViewDelegate
@@ -130,10 +145,10 @@ static MEMenuViewController *__shared = nil;
                 self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FavoritosNavigationController"];
                 break;
             case 2:
-                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TunerViewController"];
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TunerNavigationController"];
                 break;
             case 3:
-                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MetronomoViewController"];
+                self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MetronomoNavigationController"];
                 break;
             case 4:
                 self.slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsNavigationController"];

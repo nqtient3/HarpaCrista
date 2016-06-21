@@ -59,7 +59,7 @@
                              action:@selector(dismissKeyboard)];
     
     //Play the video
-    [self playVideo];
+//    [self playVideo];
 }
 
 #pragma mark - Actions
